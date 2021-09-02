@@ -24,5 +24,20 @@ namespace IronfallRPG
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GameMessages_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

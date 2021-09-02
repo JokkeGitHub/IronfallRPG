@@ -5,8 +5,334 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IronfallRPG"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="768" Width="1024">
 
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="AUTO"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Menu" Background="AliceBlue"></Label>
+
+        <!--Player Screen-->
+        <Border Grid.Row="1" Grid.Column="0" BorderBrush="Gray" BorderThickness="2">
+            <Grid>
+                <Grid.Background>
+                    <ImageBrush ImageSource="C:\Users\Jaco9515\Pictures\Ironfall\Wood.png"/>
+                </Grid.Background>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="Character"/>
+                <!--"{Binding Character.Name}"-->
+                <Image Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="AUTO" Width="AUTO" 
+                             Source=""/>
+                <TextBlock Grid.Row="2" HorizontalAlignment="Center" Text="{Binding CurrentLocation.Description}" TextWrapping="Wrap"/>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column="0" BorderBrush="Gray" BorderThickness="2">
+            <Border.Background>
+                <ImageBrush ImageSource="C:\Users\Jaco9515\Pictures\Ironfall\Obsidian.png"/>
+            </Border.Background>
+            <TabControl SelectionChanged="TabControl_SelectionChanged">
+                <TabItem Header="Character">
+                    <Grid>
+                        <Grid.Background>
+                            <ImageBrush ImageSource="C:\Users\Jaco9515\Pictures\Ironfall\DarkStone.png"/>
+                        </Grid.Background>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="63*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="91*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Line1 -->
+                        <Label Grid.Row="0" Grid.Column="0" Content="Name:" Margin="0,0,0,26" Grid.RowSpan="2"/>
+                        <Label Grid.Row="0" Content="{Binding CurrentPlayer.Name}" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2"/>
+                        <Label Grid.Row="1" Grid.Column="0" Content="Class:" Margin="0,0,0,5"/>
+                        <Label Grid.Row="1" Content="{Binding CurrentPlayer.CharacterClass}" Grid.ColumnSpan="4" Margin="69,0,0,5"/>
+                        <Label Grid.Row="2" Grid.Column="0" Content="Health:" Margin="0,0,0,26" Grid.RowSpan="2"/>
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2">
+                            <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.MaxHealth}"/>
+                            <Label Grid.Row="2" Grid.Column="1" Content=" / "/>
+                            <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.Health}"/>
+                        </StackPanel>
+                        <Label Grid.Row="3" Grid.Column="0" Content="Gold:" Margin="0,0,0,26" Grid.RowSpan="2"/>
+                        <Label Grid.Row="3" Content="{Binding CurrentPlayer.Gold}" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2"/>
+                        <Label Grid.Row="4" Grid.Column="0" Content="Experience:" Margin="0,0,0,26" Grid.RowSpan="2"/>
+                        <Label Grid.Row="4" Content="{Binding CurrentPlayer.Experience}" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2"/>
+                        <Label Grid.Row="4" Grid.Column="0" Content="Level:" Margin="0,32,0,0" Grid.RowSpan="2"/>
+                        <Label Grid.Row="4" Content="{Binding CurrentPlayer.Level}" Grid.ColumnSpan="4" Margin="69,32,0,0" Grid.RowSpan="2"/>
+
+                        <!-- Line2 -->
+                        <Label Grid.Row="0" Grid.Column="3" Content="Name:" Margin="63,0,91,26" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
+                        <Label Grid.Row="0" Grid.Column="4" Content="{Binding CurrentPlayer.Name}" Grid.ColumnSpan="2" Margin="69,0,0,26" Grid.RowSpan="2"/>
+                        <Label Grid.Row="1" Grid.Column="3" Content="Class:" Margin="63,0,91,5" Grid.ColumnSpan="3"/>
+                        <Label Grid.Row="1" Grid.Column="4" Content="{Binding CurrentPlayer.CharacterClass}" Grid.ColumnSpan="2" Margin="69,0,0,5"/>
+                        <Label Grid.Row="2" Grid.Column="3" Content="Health:" Margin="63,0,91,26" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
+                        <StackPanel Grid.Row="2" Grid.Column="4" Orientation="Horizontal" Grid.ColumnSpan="2" Margin="69,0,0,26" Grid.RowSpan="2">
+                            <Label Grid.Row="2" Grid.Column="3" Content="{Binding CurrentPlayer.MaxHealth}"/>
+                            <Label Grid.Row="2" Grid.Column="3" Content=" / "/>
+                            <Label Grid.Row="2" Grid.Column="3" Content="{Binding CurrentPlayer.Health}"/>
+                        </StackPanel>
+                        <Label Grid.Row="3" Grid.Column="3" Content="Gold:" Margin="63,0,91,26" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
+                        <Label Grid.Row="3" Grid.Column="4" Content="{Binding CurrentPlayer.Gold}" Grid.ColumnSpan="2" Margin="69,0,0,26" Grid.RowSpan="2"/>
+                        <Label Grid.Row="4" Grid.Column="3" Content="Experience:" Margin="63,0,91,26" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
+                        <Label Grid.Row="4" Grid.Column="4" Content="{Binding CurrentPlayer.Experience}" Grid.ColumnSpan="2" Margin="69,0,0,26" Grid.RowSpan="2"/>
+                        <Label Grid.Row="4" Grid.Column="3" Content="Level:" Grid.ColumnSpan="3" Margin="63,32,91,0" Grid.RowSpan="2"/>
+                        <Label Grid.Row="4" Grid.Column="4" Content="{Binding CurrentPlayer.Level}" Grid.ColumnSpan="2" Margin="69,32,0,0" Grid.RowSpan="2"/>
+
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Equipment">
+                    <Grid>
+                        <Grid.Background>
+                            <ImageBrush ImageSource="C:\Users\Jaco9515\Pictures\Ironfall\DarkStone.png"/>
+                        </Grid.Background>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="63*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="91*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+
+
+        </Border>
+
+        <!--Gameplay-->
+        <Grid Grid.Row="1" Grid.RowSpan="2" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Game Messages-->
+            <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" BorderBrush="Gray" BorderThickness="5">
+
+
+                <RichTextBox x:Name="GameMessages" VerticalScrollBarVisibility="Auto" TextChanged="GameMessages_TextChanged">
+                    <RichTextBox.Background>
+                        <ImageBrush ImageSource="C:\Users\Jaco9515\Pictures\Ironfall\Stone.jpg"/>
+                    </RichTextBox.Background>
+
+                    <RichTextBox.Resources>
+                        <Style TargetType="{x:Type Paragraph}">
+                            <Setter Property="Margin" Value="0"/>
+                        </Style>
+                    </RichTextBox.Resources>
+                </RichTextBox>
+            </Border>
+
+
+            <!--Location Display-->
+            <Border Grid.Row="3" Grid.Column="1" BorderBrush="Gray" BorderThickness="2">
+
+                <Grid>
+                    <Grid.Background>
+                        <ImageBrush ImageSource="C:\Users\Jaco9515\Pictures\Ironfall\Wood.png"/>
+                    </Grid.Background>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text=""/>
+                    <Image Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="225" Width="225" 
+                             Source=""/>
+                    <TextBlock Grid.Row="2" HorizontalAlignment="Center" Text="" TextWrapping="Wrap"/>
+                </Grid>
+            </Border>
+
+            <!--Monster/ NPC Display-->
+            <Border Grid.Row="0" Grid.Column="1" BorderBrush="Gray" BorderThickness="2">
+                <Grid>
+                    <Grid.Background>
+                        <ImageBrush ImageSource="C:\Users\Jaco9515\Pictures\Ironfall\Wood.png"/>
+                    </Grid.Background>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Visibility="{Binding HasMonster, Converter={StaticResource BooleanToVisibility}}" HorizontalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock>-</TextBlock>
+                        <TextBlock Text=""/>
+                        <TextBlock>-  Health: [</TextBlock>
+                        <TextBlock Text=""/>
+                        <TextBlock>]</TextBlock>
+                    </StackPanel>
+
+                    <Image Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="225" Width="225" 
+                                     Source=""/>
+                    <TextBlock Grid.Row="2" HorizontalAlignment="Center" Text="{Binding CurrentMonster.Description}" TextWrapping="Wrap"/>
+
+
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text=""/>
+                    <Image Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="225" Width="225" Source="{Binding CurrentMerchant.Image}"/>
+                    <TextBlock Grid.Row="2" HorizontalAlignment="Center" Text="" TextWrapping="Wrap"/>
+
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!--Inventory and Quests-->
+        <Grid Grid.Row="3" Grid.Column="0">
+            
+            <Grid.Background>
+                <ImageBrush ImageSource="C:\Users\Jaco9515\Pictures\Ironfall\Obsidian.png"/>
+            </Grid.Background>
+
+            <TabControl>
+                <TabItem Header="Inventory">
+                    <DataGrid AutoGenerateColumns="False" HeadersVisibility="Column">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Width="200"/>
+                            <DataGridTextColumn Header="#" IsReadOnly="True" Width="50"/>
+                            <DataGridTextColumn Header="Worth" Width="80"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+                <TabItem Header="Quest">
+                    <DataGrid AutoGenerateColumns="False" HeadersVisibility="Column">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Width="180"/>
+                            <DataGridTextColumn Header="Completed?" Width="100"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+
+        <!--User Panel-->
+        <Border Grid.Row="3" Grid.Column="1" >
+            <Grid>
+                <Grid.Background>
+                    <ImageBrush ImageSource="C:\Users\Jaco9515\Pictures\Ironfall\BricksGrey.jpg"></ImageBrush>
+                </Grid.Background>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Combat Controls-->
+
+                <Grid Grid.Row="0" Grid.Column="0" 
+                      HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="60"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox Grid.Row="0" Grid.Column="0" 
+                              SelectedItem="" DisplayMemberPath="ItemName" SelectedValuePath="ItemTypeID"/>
+                    <Button Grid.Row="0" Grid.Column="2" Content="Attack" Click="Button_Click" Visibility="{Binding HasMonster, Converter={StaticResource BooleanToVisibility}}"/>
+
+                </Grid>
+
+                <!--Navigation-->
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Row="0" Grid.Column="1" 
+                              Height="50" Width="100" 
+                              Click="Button_Click" 
+                              Visibility="{Binding HasLocationToNorth, Converter={StaticResource BooleanToVisibility}}"
+                              Content="North"/>
+                    <Button Grid.Row="1" Grid.Column="0" 
+                              Height="50" Width="100" 
+                              Click="Button_Click"
+                              Visibility="{Binding HasLocationToWest, Converter={StaticResource BooleanToVisibility}}"
+                              Content="West"/>
+                    <Button Grid.Row="1" Grid.Column="2" 
+                              Height="50" Width="100" 
+                              Click="Button_Click" 
+                              Visibility="{Binding HasLocationToEast, Converter={StaticResource BooleanToVisibility}}"
+                              Content="East"/>
+                    <Button Grid.Row="2" Grid.Column="1" 
+                              Height="50" Width="100" 
+                              Click="Button_Click" 
+                              Visibility="{Binding HasLocationToSouth, Converter={StaticResource BooleanToVisibility}}"
+                              Content="South"/>
+                    <Button Grid.Row="1" Grid.Column="1" 
+                              Height="50" Width="100" 
+                              Click="Button_Click"
+                              Visibility="{Binding HasMerchant, Converter={StaticResource BooleanToVisibility}}"
+                              Content="Trade"/>
+
+                </Grid>
+            </Grid>
+        </Border>
     </Grid>
 </Window>
