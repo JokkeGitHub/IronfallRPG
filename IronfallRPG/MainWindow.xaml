@@ -30,7 +30,7 @@
         <Border Grid.Row="1" Grid.Column="0" BorderBrush="Gray" BorderThickness="2">
             <Grid>
                 <Grid.Background>
-                    <ImageBrush ImageSource="C:\Users\Jaco9515\Pictures\Ironfall\Wood.png"/>
+                    <ImageBrush ImageSource="pack://IronfallRPG:/Ironfall-Engine/Resources\UI/Wood.png"/>
                 </Grid.Background>
 
                 <Grid.RowDefinitions>
@@ -48,13 +48,13 @@
 
         <Border Grid.Row="2" Grid.Column="0" BorderBrush="Gray" BorderThickness="2">
             <Border.Background>
-                <ImageBrush ImageSource="C:\Users\Jaco9515\Pictures\Ironfall\Obsidian.png"/>
+                <ImageBrush ImageSource=""/>
             </Border.Background>
             <TabControl SelectionChanged="TabControl_SelectionChanged">
                 <TabItem Header="Character">
                     <Grid>
                         <Grid.Background>
-                            <ImageBrush ImageSource="C:\Users\Jaco9515\Pictures\Ironfall\DarkStone.png"/>
+                            <ImageBrush ImageSource=""/>
                         </Grid.Background>
 
                         <Grid.RowDefinitions>
@@ -117,7 +117,7 @@
                 <TabItem Header="Equipment">
                     <Grid>
                         <Grid.Background>
-                            <ImageBrush ImageSource="C:\Users\Jaco9515\Pictures\Ironfall\DarkStone.png"/>
+                            <ImageBrush ImageSource=""/>
                         </Grid.Background>
 
                         <Grid.RowDefinitions>
@@ -163,7 +163,7 @@
 
                 <RichTextBox x:Name="GameMessages" VerticalScrollBarVisibility="Auto" TextChanged="GameMessages_TextChanged">
                     <RichTextBox.Background>
-                        <ImageBrush ImageSource="C:\Users\Jaco9515\Pictures\Ironfall\Stone.jpg"/>
+                        <ImageBrush ImageSource=""/>
                     </RichTextBox.Background>
 
                     <RichTextBox.Resources>
@@ -180,7 +180,7 @@
 
                 <Grid>
                     <Grid.Background>
-                        <ImageBrush ImageSource="C:\Users\Jaco9515\Pictures\Ironfall\Wood.png"/>
+                        <ImageBrush ImageSource=""/>
                     </Grid.Background>
 
                     <Grid.RowDefinitions>
@@ -199,7 +199,7 @@
             <Border Grid.Row="0" Grid.Column="1" BorderBrush="Gray" BorderThickness="2">
                 <Grid>
                     <Grid.Background>
-                        <ImageBrush ImageSource="C:\Users\Jaco9515\Pictures\Ironfall\Wood.png"/>
+                        <ImageBrush ImageSource=""/>
                     </Grid.Background>
 
                     <Grid.RowDefinitions>
@@ -232,7 +232,7 @@
         <Grid Grid.Row="3" Grid.Column="0">
             
             <Grid.Background>
-                <ImageBrush ImageSource="C:\Users\Jaco9515\Pictures\Ironfall\Obsidian.png"/>
+                <ImageBrush ImageSource=""/>
             </Grid.Background>
 
             <TabControl>
@@ -260,7 +260,7 @@
         <Border Grid.Row="3" Grid.Column="1" >
             <Grid>
                 <Grid.Background>
-                    <ImageBrush ImageSource="C:\Users\Jaco9515\Pictures\Ironfall\BricksGrey.jpg"></ImageBrush>
+                    <ImageBrush ImageSource="" />
                 </Grid.Background>
 
                 <Grid.RowDefinitions>
