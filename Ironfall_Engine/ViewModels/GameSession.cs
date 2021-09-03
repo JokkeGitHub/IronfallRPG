@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ironfall_Engine.Models
+namespace Ironfall_Engine.ViewModels
 {
-    class LivingEntity
+    class GameSession
     {
+
     }
 }
