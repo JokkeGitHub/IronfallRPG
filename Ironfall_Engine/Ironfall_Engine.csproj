@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CCEC266F-5731-4158-884B-E1145801A8C3}</ProjectGuid>
+    <ProjectGuid>{F631C43E-54D9-4F43-8652-49D97C7FA178}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Ironfall_Engine</RootNamespace>
@@ -42,16 +42,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\GameSession.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Resources\UI\BricksGrey.jpg">
+    <Resource Include="Images\Locations\tumblr_669a703cf11f9bfd2bec916815e9be4a_7f2353c9_2048.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\UI\DarkStone.png" />
-    <Resource Include="Resources\UI\Obsidian.png" />
-    <Resource Include="Resources\UI\Stone.jpg" />
-    <Resource Include="Resources\UI\Wood.png" />
+    <Resource Include="Images\Characters\index %282%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Characters\index %283%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Images\UI\BricksGrey.jpg" />
+    <Content Include="Images\UI\DarkStone.png" />
+    <Content Include="Images\UI\Obsidian.png" />
+    <Content Include="Images\UI\Stone.jpg" />
+    <Resource Include="Images\UI\Wood.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

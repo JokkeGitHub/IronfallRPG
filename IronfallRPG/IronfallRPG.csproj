@@ -6,4 +6,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Ironfall_Engine\Ironfall_Engine.csproj" />
+  </ItemGroup>
+
 </Project>
