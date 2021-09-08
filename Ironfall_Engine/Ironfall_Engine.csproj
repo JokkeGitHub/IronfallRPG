@@ -41,27 +41,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\LocalPlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\GameSession.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Locations\tumblr_669a703cf11f9bfd2bec916815e9be4a_7f2353c9_2048.jpg">
+    <Resource Include="Resource\Images\Locations\tumblr_669a703cf11f9bfd2bec916815e9be4a_7f2353c9_2048.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\Characters\index %282%29.png">
+    <Resource Include="Resource\Images\Characters\index %282%29.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\Characters\index %283%29.png">
+    <Resource Include="Resource\Images\Characters\index %283%29.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Content Include="Images\UI\BricksGrey.jpg" />
-    <Content Include="Images\UI\DarkStone.png" />
-    <Content Include="Images\UI\Obsidian.png" />
-    <Content Include="Images\UI\Stone.jpg" />
-    <Resource Include="Images\UI\Wood.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Resource\Images\UI\BricksGrey.jpg" />
+    <Resource Include="Resource\Images\UI\DarkStone.png" />
+    <Resource Include="Resource\Images\UI\Obsidian.png" />
+    <Resource Include="Resource\Images\UI\Stone.jpg" />
+    <Resource Include="Resource\Images\UI\Wood.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Factories\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

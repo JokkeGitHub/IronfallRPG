@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:Ironfall_Engine.ViewModels;assembly=Ironfall_Engine"
         xmlns:local="clr-namespace:IronfallRPG"
         mc:Ignorable="d"
         Title="MainWindow" Height="768" Width="1024">
@@ -30,7 +31,7 @@
         <Border Grid.Row="1" Grid.Column="0" BorderBrush="Gray" BorderThickness="2">
             <Grid>
                 <Grid.Background>
-                    <ImageBrush ImageSource="Ironfall_Engine;component/Images/UI/Wood.png"/>
+                    <ImageBrush ImageSource="/Ironfall_Engine;component/Resource/Images/UI/Wood.png"/>
                 </Grid.Background>
 
                 <Grid.RowDefinitions>
@@ -41,108 +42,109 @@
                 <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="Character"/>
                 <!--"{Binding Character.Name}"-->
                 <Image Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="AUTO" Width="AUTO" 
-                             Source="/Ironfall_Engine;component/Images/Characters/index (3).png"/>
+                             Source="/Ironfall_Engine;component/Resource/Images/Characters/index (3).png"/>
                 <TextBlock Grid.Row="2" HorizontalAlignment="Center" Text="{Binding CurrentLocation.Description}" TextWrapping="Wrap"/>
             </Grid>
         </Border>
 
         <Border Grid.Row="2" Grid.Column="0" BorderBrush="Gray" BorderThickness="2">
-            <Border.Background>
-                <ImageBrush ImageSource="Ironfall_Engine;component/Images/UI/Obsidian.png"/>
-            </Border.Background>
-            <TabControl SelectionChanged="TabControl_SelectionChanged">
-                <TabItem Header="Character">
-                    <Grid>
-                        <Grid.Background>
-                            <ImageBrush ImageSource="Ironfall_Engine;component/Images/UI/Wood.png"/>
-                        </Grid.Background>
+            <Grid>
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Ironfall_Engine;component/Resource/Images/UI/Obsidian.png"/>
+                </Grid.Background>
+                <TabControl SelectionChanged="TabControl_SelectionChanged">
+                    <TabItem Header="Character">
+                        <Grid>
+                            <Grid.Background>
+                                <ImageBrush ImageSource="/Ironfall_Engine;component/Resource/Images/UI/Wood.png"/>
+                            </Grid.Background>
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
 
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="9*"/>
-                            <ColumnDefinition Width="63*"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="91*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="20*"/>
+                                <ColumnDefinition Width="9*"/>
+                                <ColumnDefinition Width="63*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="91*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
 
-                        <!-- Line1 -->
-                        <Label Grid.Row="0" Grid.Column="0" Content="Name:" Margin="0,0,0,26" Grid.RowSpan="2"/>
-                        <Label Grid.Row="0" Content="{Binding CurrentPlayer.Name}" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2"/>
-                        <Label Grid.Row="1" Grid.Column="0" Content="Class:" Margin="0,0,0,5"/>
-                        <Label Grid.Row="1" Content="{Binding CurrentPlayer.CharacterClass}" Grid.ColumnSpan="4" Margin="69,0,0,5"/>
-                        <Label Grid.Row="2" Grid.Column="0" Content="Health:" Margin="0,0,0,26" Grid.RowSpan="2"/>
-                        <StackPanel Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2">
-                            <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.MaxHealth}"/>
-                            <Label Grid.Row="2" Grid.Column="1" Content=" / "/>
-                            <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.Health}"/>
-                        </StackPanel>
-                        <Label Grid.Row="3" Grid.Column="0" Content="Gold:" Margin="0,0,0,26" Grid.RowSpan="2"/>
-                        <Label Grid.Row="3" Content="{Binding CurrentPlayer.Gold}" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2"/>
-                        <Label Grid.Row="4" Grid.Column="0" Content="Experience:" Margin="0,0,0,26" Grid.RowSpan="2"/>
-                        <Label Grid.Row="4" Content="{Binding CurrentPlayer.Experience}" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2"/>
-                        <Label Grid.Row="4" Grid.Column="0" Content="Level:" Margin="0,32,0,0" Grid.RowSpan="2"/>
-                        <Label Grid.Row="4" Content="{Binding CurrentPlayer.Level}" Grid.ColumnSpan="4" Margin="69,32,0,0" Grid.RowSpan="2"/>
+                            <!-- Line1 -->
+                            <Label Grid.Row="0" Grid.Column="0" Content="Name:" Margin="0,0,0,26" Grid.RowSpan="2"/>
+                            <Label Grid.Row="0" Content="{Binding CurrentPlayer.Name}" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2"/>
+                            <Label Grid.Row="1" Grid.Column="0" Content="Class:" Margin="0,0,0,5"/>
+                            <Label Grid.Row="1" Content="{Binding CurrentPlayer.CharacterClass}" Grid.ColumnSpan="4" Margin="69,0,0,5"/>
+                            <Label Grid.Row="2" Grid.Column="0" Content="Health:" Margin="0,0,0,26" Grid.RowSpan="2"/>
+                            <StackPanel Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2">
+                                <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.MaxHealth}"/>
+                                <Label Grid.Row="2" Grid.Column="1" Content=" / "/>
+                                <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.Health}"/>
+                            </StackPanel>
+                            <Label Grid.Row="3" Grid.Column="0" Content="Gold:" Margin="0,0,0,26" Grid.RowSpan="2"/>
+                            <Label Grid.Row="3" Content="{Binding CurrentPlayer.Gold}" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2"/>
+                            <Label Grid.Row="4" Grid.Column="0" Content="Experience:" Margin="0,0,0,26" Grid.RowSpan="2"/>
+                            <Label Grid.Row="4" Content="{Binding CurrentPlayer.Experience}" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2"/>
+                            <Label Grid.Row="4" Grid.Column="0" Content="Level:" Margin="0,32,0,0" Grid.RowSpan="2"/>
+                            <Label Grid.Row="4" Content="{Binding CurrentPlayer.Level}" Grid.ColumnSpan="4" Margin="69,32,0,0" Grid.RowSpan="2"/>
 
-                        <!-- Line2 -->
-                        <Label Grid.Row="0" Grid.Column="3" Content="Name:" Margin="63,0,91,26" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
-                        <Label Grid.Row="0" Grid.Column="4" Content="{Binding CurrentPlayer.Name}" Grid.ColumnSpan="2" Margin="69,0,0,26" Grid.RowSpan="2"/>
-                        <Label Grid.Row="1" Grid.Column="3" Content="Class:" Margin="63,0,91,5" Grid.ColumnSpan="3"/>
-                        <Label Grid.Row="1" Grid.Column="4" Content="{Binding CurrentPlayer.CharacterClass}" Grid.ColumnSpan="2" Margin="69,0,0,5"/>
-                        <Label Grid.Row="2" Grid.Column="3" Content="Health:" Margin="63,0,91,26" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
-                        <StackPanel Grid.Row="2" Grid.Column="4" Orientation="Horizontal" Grid.ColumnSpan="2" Margin="69,0,0,26" Grid.RowSpan="2">
-                            <Label Grid.Row="2" Grid.Column="3" Content="{Binding CurrentPlayer.MaxHealth}"/>
-                            <Label Grid.Row="2" Grid.Column="3" Content=" / "/>
-                            <Label Grid.Row="2" Grid.Column="3" Content="{Binding CurrentPlayer.Health}"/>
-                        </StackPanel>
-                        <Label Grid.Row="3" Grid.Column="3" Content="Gold:" Margin="63,0,91,26" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
-                        <Label Grid.Row="3" Grid.Column="4" Content="{Binding CurrentPlayer.Gold}" Grid.ColumnSpan="2" Margin="69,0,0,26" Grid.RowSpan="2"/>
-                        <Label Grid.Row="4" Grid.Column="3" Content="Experience:" Margin="63,0,91,26" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
-                        <Label Grid.Row="4" Grid.Column="4" Content="{Binding CurrentPlayer.Experience}" Grid.ColumnSpan="2" Margin="69,0,0,26" Grid.RowSpan="2"/>
-                        <Label Grid.Row="4" Grid.Column="3" Content="Level:" Grid.ColumnSpan="3" Margin="63,32,91,0" Grid.RowSpan="2"/>
-                        <Label Grid.Row="4" Grid.Column="4" Content="{Binding CurrentPlayer.Level}" Grid.ColumnSpan="2" Margin="69,32,0,0" Grid.RowSpan="2"/>
+                            <!-- Line2 -->
+                            <Label Grid.Row="0" Grid.Column="3" Content="Name:" Margin="63,0,91,26" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
+                            <Label Grid.Row="0" Grid.Column="4" Content="{Binding CurrentPlayer.Name}" Grid.ColumnSpan="2" Margin="69,0,0,26" Grid.RowSpan="2"/>
+                            <Label Grid.Row="1" Grid.Column="3" Content="Class:" Margin="63,0,91,5" Grid.ColumnSpan="3"/>
+                            <Label Grid.Row="1" Grid.Column="4" Content="{Binding CurrentPlayer.CharacterClass}" Grid.ColumnSpan="2" Margin="69,0,0,5"/>
+                            <Label Grid.Row="2" Grid.Column="3" Content="Health:" Margin="63,0,91,26" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
+                            <StackPanel Grid.Row="2" Grid.Column="4" Orientation="Horizontal" Grid.ColumnSpan="2" Margin="69,0,0,26" Grid.RowSpan="2">
+                                <Label Grid.Row="2" Grid.Column="3" Content="{Binding CurrentPlayer.MaxHealth}"/>
+                                <Label Grid.Row="2" Grid.Column="3" Content=" / "/>
+                                <Label Grid.Row="2" Grid.Column="3" Content="{Binding CurrentPlayer.Health}"/>
+                            </StackPanel>
+                            <Label Grid.Row="3" Grid.Column="3" Content="Gold:" Margin="63,0,91,26" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
+                            <Label Grid.Row="3" Grid.Column="4" Content="{Binding CurrentPlayer.Gold}" Grid.ColumnSpan="2" Margin="69,0,0,26" Grid.RowSpan="2"/>
+                            <Label Grid.Row="4" Grid.Column="3" Content="Experience:" Margin="63,0,91,26" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
+                            <Label Grid.Row="4" Grid.Column="4" Content="{Binding CurrentPlayer.Experience}" Grid.ColumnSpan="2" Margin="69,0,0,26" Grid.RowSpan="2"/>
+                            <Label Grid.Row="4" Grid.Column="3" Content="Level:" Grid.ColumnSpan="3" Margin="63,32,91,0" Grid.RowSpan="2"/>
+                            <Label Grid.Row="4" Grid.Column="4" Content="{Binding CurrentPlayer.Level}" Grid.ColumnSpan="2" Margin="69,32,0,0" Grid.RowSpan="2"/>
 
-                    </Grid>
-                </TabItem>
-                <TabItem Header="Equipment">
-                    <Grid>
-                        <Grid.Background>
-                            <ImageBrush ImageSource="Ironfall_Engine;component/Images/UI/Wood.png"/>
-                        </Grid.Background>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Equipment">
+                        <Grid>
+                            <Grid.Background>
+                                <ImageBrush ImageSource="/Ironfall_Engine;component/Resource/Images/UI/Wood.png"/>
+                            </Grid.Background>
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
 
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="9*"/>
-                            <ColumnDefinition Width="63*"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="91*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                    </Grid>
-                </TabItem>
-            </TabControl>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="20*"/>
+                                <ColumnDefinition Width="9*"/>
+                                <ColumnDefinition Width="63*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="91*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
 
-
+            </Grid>
         </Border>
 
         <!--Gameplay-->
@@ -163,7 +165,7 @@
 
                 <RichTextBox x:Name="GameMessages" VerticalScrollBarVisibility="Auto" TextChanged="GameMessages_TextChanged">
                     <RichTextBox.Background>
-                        <ImageBrush ImageSource="Ironfall_Engine;component/Images/UI/Stone.jpg"/>
+                        <ImageBrush ImageSource="/Ironfall_Engine;component/Resource/Images/UI/Stone.jpg"/>
                     </RichTextBox.Background>
 
                     <RichTextBox.Resources>
@@ -180,7 +182,7 @@
 
                 <Grid>
                     <Grid.Background>
-                        <ImageBrush ImageSource="Ironfall_Engine;component/Images/UI/Wood.png"/>
+                        <ImageBrush ImageSource="/Ironfall_Engine;component/Resource/Images/UI/Wood.png"/>
                     </Grid.Background>
 
                     <Grid.RowDefinitions>
@@ -190,7 +192,7 @@
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text=""/>
                     <Image Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="225" Width="225" 
-                             Source="/Ironfall_Engine;component/Images/Locations/tumblr_669a703cf11f9bfd2bec916815e9be4a_7f2353c9_2048.jpg"/>
+                             Source="/Ironfall_Engine;component/Resource/Images/Locations/tumblr_669a703cf11f9bfd2bec916815e9be4a_7f2353c9_2048.jpg"/>
                     <TextBlock Grid.Row="2" HorizontalAlignment="Center" Text="" TextWrapping="Wrap"/>
                 </Grid>
             </Border>
@@ -199,7 +201,7 @@
             <Border Grid.Row="0" Grid.Column="1" BorderBrush="Gray" BorderThickness="2">
                 <Grid>
                     <Grid.Background>
-                        <ImageBrush ImageSource="Ironfall_Engine;component/Images/UI/Wood.png"/>
+                        <ImageBrush ImageSource="/Ironfall_Engine;component/Resource/Images/UI/Wood.png"/>
                     </Grid.Background>
 
                     <Grid.RowDefinitions>
@@ -216,7 +218,7 @@
                     </StackPanel>
 
                     <Image Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="225" Width="225" 
-                                     Source="/Ironfall_Engine;component/Images/Characters/index (3).png" RenderTransformOrigin="0.5,0.5">
+                                     Source="/Ironfall_Engine;component/Resource/Images/Characters/index (3).png" RenderTransformOrigin="0.5,0.5">
                         <Image.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -241,7 +243,7 @@
         <Grid Grid.Row="3" Grid.Column="0">
             
             <Grid.Background>
-                <ImageBrush ImageSource="Ironfall_Engine;component/Images/UI/Obsidian.png"/>
+                <ImageBrush ImageSource="/Ironfall_Engine;component/Resource/Images/UI/Obsidian.png"/>
             </Grid.Background>
 
             <TabControl>
@@ -269,7 +271,7 @@
         <Border Grid.Row="3" Grid.Column="1" >
             <Grid>
                 <Grid.Background>
-                    <ImageBrush ImageSource="Ironfall_Engine;component/Images/UI/DarkStone.png" />
+                    <ImageBrush ImageSource="/Ironfall_Engine;component/Resource/Images/UI/DarkStone.png" />
                 </Grid.Background>
 
                 <Grid.RowDefinitions>
