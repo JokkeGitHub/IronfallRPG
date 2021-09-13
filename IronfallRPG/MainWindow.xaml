@@ -240,10 +240,10 @@
         </Grid>
 
         <!--Inventory and Quests-->
-        <Grid Grid.Row="3" Grid.Column="0">
-            
+        <Grid Grid.Row="3" Grid.Column="0" RenderTransformOrigin="0.5,0.5">
+
             <Grid.Background>
-                <ImageBrush ImageSource="/Ironfall_Engine;component/Resource/Images/UI/Obsidian.png"/>
+                <ImageBrush ImageSource="/Ironfall_Engine;component/Resource/Images/UI/Obsidian.png" AlignmentX="Center"/>
             </Grid.Background>
 
             <TabControl>
