@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\ItemEnum.cs" />
     <Compile Include="Factories\WorldFactory.cs" />
     <Compile Include="Models\Item\Armor.cs" />
     <Compile Include="Models\Item\Artifact.cs" />
@@ -76,7 +77,6 @@
     <Resource Include="Resource\Images\Locations\home.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Enums\" />
     <Folder Include="Factories\Item\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
