@@ -65,7 +65,7 @@
     <Resource Include="Resource\Images\UI\Stone.jpg" />
     <Resource Include="Resource\Images\UI\Wood.png" />
   </ItemGroup>
-<<<<<<< HEAD
+ HEAD
   <ItemGroup />
 =======
   <ItemGroup>
