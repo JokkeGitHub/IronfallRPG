@@ -11,7 +11,7 @@ namespace Ironfall_Engine.ViewModels
 {
     public class GameSession : BaseNotificationClass
     {
-        //public event EventHandler<GameMessageEventArgs> OnMessageRaised;
+        public event EventHandler<GameMessageEventArgs> OnMessageRaised;
         private Location _currentLocation;
 
         LocalPlayer CurrentPlayer { get; set; }
@@ -22,6 +22,10 @@ namespace Ironfall_Engine.ViewModels
             {
                 _currentLocation = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(HasLocationToNorth));
+                OnPropertyChanged(nameof(HasLocationToWest));
+                OnPropertyChanged(nameof(HasLocationToEast));
+                OnPropertyChanged(nameof(HasLocationToSouth));
             } 
         }
         World CurrentWorld { get; set; }
@@ -46,25 +50,66 @@ namespace Ironfall_Engine.ViewModels
             
         }
 
+        #region Movement
+        //A boolean used to show the buttons in the xaml file. If it's true, the button can show, if null the it statement is false and the button can't show.
+        public bool HasLocationToNorth => CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate + 1) != null;
+        public bool HasLocationToWest => CurrentWorld.LocationAt(CurrentLocation.XCoordinate - 1, CurrentLocation.YCoordinate) != null;
+        public bool HasLocationToEast => CurrentWorld.LocationAt(CurrentLocation.XCoordinate + 1, CurrentLocation.YCoordinate) != null;
+        public bool HasLocationToSouth => CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate - 1) != null;
+        
         public void MoveNorth()
         {
             CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate + 1);
+            IsTravelAllowed("North");
         }
         public void MoveSouth()
         {
             CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate - 1);
-
+            IsTravelAllowed("South");
         }
         public void MoveEast()
         {
             CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate +1 , CurrentLocation.YCoordinate);
-
+            IsTravelAllowed("East");
         }
         public void MoveWest()
         {
             CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate - 1, CurrentLocation.YCoordinate);
-
+            IsTravelAllowed("West");
         }
+        public void IsTravelAllowed(string direction)
+        {
+            if (CurrentLocation.IsTravelAllowed == false)
+            {
+                switch (direction)
+                {
+                    case "North":
+                        CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate - 1);
+                        RaiseMessage("You can't go here yet.");
+                        break;
+                    case "West":
+                        CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate + 1, CurrentLocation.YCoordinate);
+                        RaiseMessage("You can't go here yet.");
+                        break;
+                    case "East":
+                        CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate - 1, CurrentLocation.YCoordinate);
+                        RaiseMessage("You can't go here yet.");
+                        break;
+                    case "South":
+                        CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate + 1);
+                        RaiseMessage("You can't go here yet.");
+                        break;
+                    default:
+                        break;
+                }
 
+            }
+        }
+        #endregion
+
+        private void RaiseMessage(string message)
+        {
+            OnMessageRaised?.Invoke(this, new GameMessageEventArgs(message));
+        }
     }
 }
