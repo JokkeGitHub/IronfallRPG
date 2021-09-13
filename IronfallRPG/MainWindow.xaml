@@ -318,22 +318,22 @@
 
                     <Button Grid.Row="0" Grid.Column="1" 
                               Height="50" Width="100" 
-                              Click="Button_Click" 
+                              Click="OnClick_MoveNorth" 
                               Visibility="{Binding HasLocationToNorth, Converter={StaticResource BooleanToVisibility}}"
                               Content="North"/>
                     <Button Grid.Row="1" Grid.Column="0" 
                               Height="50" Width="100" 
-                              Click="Button_Click"
+                              Click="OnClick_MoveWest"
                               Visibility="{Binding HasLocationToWest, Converter={StaticResource BooleanToVisibility}}"
                               Content="West"/>
                     <Button Grid.Row="1" Grid.Column="2" 
                               Height="50" Width="100" 
-                              Click="Button_Click" 
+                              Click="OnClick_MoveEast" 
                               Visibility="{Binding HasLocationToEast, Converter={StaticResource BooleanToVisibility}}"
                               Content="East"/>
                     <Button Grid.Row="2" Grid.Column="1" 
                               Height="50" Width="100" 
-                              Click="Button_Click" 
+                              Click="OnClick_MoveSouth" 
                               Visibility="{Binding HasLocationToSouth, Converter={StaticResource BooleanToVisibility}}"
                               Content="South"/>
                     <Button Grid.Row="1" Grid.Column="1" 

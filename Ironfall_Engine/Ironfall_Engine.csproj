@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events\BaseNotificationClass.cs" />
+    <Compile Include="Events\GameMessageEventArgs.cs" />
     <Compile Include="Factories\WorldFactory.cs" />
     <Compile Include="Models\LivingEntity.cs" />
     <Compile Include="Models\LocalPlayer.cs" />
