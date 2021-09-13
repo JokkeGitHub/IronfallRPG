@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Enums\ItemEnumArmor.cs" />
     <Compile Include="Enums\ItemEnumArtifact.cs" />
     <Compile Include="Enums\ItemEnumConsumable.cs" />
@@ -57,9 +58,15 @@
     <Compile Include="Models\Item\Consumable.cs" />
     <Compile Include="Models\Item\GameItem.cs" />
     <Compile Include="Models\Item\Weapon.cs" />
+=======
+    <Compile Include="Factories\WorldFactory.cs" />
+>>>>>>> 7589d4863b148e5c852b8ea4b8eda745b1d3da55
     <Compile Include="Models\LivingEntity.cs" />
     <Compile Include="Models\LocalPlayer.cs" />
+    <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\World.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RNG.cs" />
     <Compile Include="ViewModels\GameSession.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +85,12 @@
     <Resource Include="Resource\Images\UI\Stone.jpg" />
     <Resource Include="Resource\Images\UI\Wood.png" />
   </ItemGroup>
+<<<<<<< HEAD
   <ItemGroup />
+=======
+  <ItemGroup>
+    <Resource Include="Resource\Images\Locations\home.jpg" />
+  </ItemGroup>
+>>>>>>> 7589d4863b148e5c852b8ea4b8eda745b1d3da55
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

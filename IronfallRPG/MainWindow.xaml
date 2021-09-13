@@ -192,7 +192,7 @@
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text=""/>
                     <Image Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="225" Width="225" 
-                             Source="/Ironfall_Engine;component/Resource/Images/Locations/tumblr_669a703cf11f9bfd2bec916815e9be4a_7f2353c9_2048.jpg"/>
+                             Source="{Binding CurrentLocation.ImageName}"/>
                     <TextBlock Grid.Row="2" HorizontalAlignment="Center" Text="" TextWrapping="Wrap"/>
                 </Grid>
             </Border>
