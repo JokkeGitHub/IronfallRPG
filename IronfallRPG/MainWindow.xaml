@@ -85,14 +85,14 @@
                             <Label Grid.Row="1" Content="{Binding CurrentPlayer.CharacterClass}" Grid.ColumnSpan="4" Margin="69,0,0,5"/>
                             <Label Grid.Row="2" Grid.Column="0" Content="Health:" Margin="0,0,0,26" Grid.RowSpan="2"/>
                             <StackPanel Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2">
-                                <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.MaxHealth}"/>
+                                <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.HpMax}"/>
                                 <Label Grid.Row="2" Grid.Column="1" Content=" / "/>
-                                <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.Health}"/>
+                                <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.HpCurrent}"/>
                             </StackPanel>
                             <Label Grid.Row="3" Grid.Column="0" Content="Gold:" Margin="0,0,0,26" Grid.RowSpan="2"/>
                             <Label Grid.Row="3" Content="{Binding CurrentPlayer.Gold}" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2"/>
                             <Label Grid.Row="4" Grid.Column="0" Content="Experience:" Margin="0,0,0,26" Grid.RowSpan="2"/>
-                            <Label Grid.Row="4" Content="{Binding CurrentPlayer.Experience}" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2"/>
+                            <Label Grid.Row="4" Content="{Binding CurrentPlayer.ExperiencePoints}" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2"/>
                             <Label Grid.Row="4" Grid.Column="0" Content="Level:" Margin="0,32,0,0" Grid.RowSpan="2"/>
                             <Label Grid.Row="4" Content="{Binding CurrentPlayer.Level}" Grid.ColumnSpan="4" Margin="69,32,0,0" Grid.RowSpan="2"/>
 
@@ -318,22 +318,22 @@
 
                     <Button Grid.Row="0" Grid.Column="1" 
                               Height="50" Width="100" 
-                              Click="Button_Click" 
+                              Click="OnClick_MoveNorth" 
                               Visibility="{Binding HasLocationToNorth, Converter={StaticResource BooleanToVisibility}}"
                               Content="North"/>
                     <Button Grid.Row="1" Grid.Column="0" 
                               Height="50" Width="100" 
-                              Click="Button_Click"
+                              Click="OnClick_MoveWest"
                               Visibility="{Binding HasLocationToWest, Converter={StaticResource BooleanToVisibility}}"
                               Content="West"/>
                     <Button Grid.Row="1" Grid.Column="2" 
                               Height="50" Width="100" 
-                              Click="Button_Click" 
+                              Click="OnClick_MoveEast" 
                               Visibility="{Binding HasLocationToEast, Converter={StaticResource BooleanToVisibility}}"
                               Content="East"/>
                     <Button Grid.Row="2" Grid.Column="1" 
                               Height="50" Width="100" 
-                              Click="Button_Click" 
+                              Click="OnClick_MoveSouth" 
                               Visibility="{Binding HasLocationToSouth, Converter={StaticResource BooleanToVisibility}}"
                               Content="South"/>
                     <Button Grid.Row="1" Grid.Column="1" 
