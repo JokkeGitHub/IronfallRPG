@@ -10,6 +10,7 @@ namespace Ironfall_Engine.ViewModels
     public class GameSession
     {
         LocalPlayer CurrentPlayer { get; set; }
+        Location CurrentLocation { get; set; }
 
         public GameSession()
         {
@@ -24,6 +25,7 @@ namespace Ironfall_Engine.ViewModels
             CurrentPlayer.StatBody = 1;
             CurrentPlayer.StatSpirit = 1;
             CurrentPlayer.StatFellowship = 1;
+            
         }
     }
 }
