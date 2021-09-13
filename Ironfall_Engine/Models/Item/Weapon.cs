@@ -13,16 +13,16 @@ namespace Ironfall_Engine.Models.Item
 
         // enchantment
 
-        public Weapon(int id, string name, string description, int value, bool isUnique, int minDamage, int maxDamage, Enum type)
+        public Weapon(int id, string name, string description, int value, bool isUnique, Enum type, int minDamage, int maxDamage)
         {
             Id = id;
             Name = name;
             Description = description;
             Value = value;
             IsUnique = isUnique;
+            Type = type;
             MinDamage = minDamage;
             MaxDamage = maxDamage;
-            Type = type;
         }
 
         // Action Method

@@ -10,15 +10,15 @@ namespace Ironfall_Engine.Models.Item
     {
         public int Quantity { get; set; }
 
-        public Common(int id, string name, string description, int value, bool isUnique, int quantity, Enum type)
+        public Common(int id, string name, string description, int value, bool isUnique, Enum type, int quantity)
         {
             Id = id;
             Name = name;
             Description = description;
             Value = value;
             IsUnique = isUnique;
-            Quantity = quantity;
             Type = type;
+            Quantity = quantity;
         }
     }
 }

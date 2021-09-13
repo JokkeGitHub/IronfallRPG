@@ -41,11 +41,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\ItemEnum.cs" />
+    <Compile Include="Factories\Item\ArmorFactory.cs" />
+    <Compile Include="Factories\Item\ArtifactFactory.cs" />
+    <Compile Include="Factories\Item\CommonFactory.cs" />
+    <Compile Include="Factories\Item\ConsumableFactory.cs" />
+    <Compile Include="Factories\Item\WeaponFactory.cs" />
+    <Compile Include="Factories\WorldFactory.cs" />
+    <Compile Include="Models\Item\Armor.cs" />
+    <Compile Include="Models\Item\Artifact.cs" />
+    <Compile Include="Models\Item\Common.cs" />
+    <Compile Include="Models\Item\Consumable.cs" />
+    <Compile Include="Models\Item\GameItem.cs" />
+    <Compile Include="Models\Item\Weapon.cs" />
     <Compile Include="Models\LivingEntity.cs" />
     <Compile Include="Models\LocalPlayer.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\World.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RNG.cs" />
     <Compile Include="ViewModels\GameSession.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,12 +78,9 @@
     <Resource Include="Resource\Images\UI\Stone.jpg" />
     <Resource Include="Resource\Images\UI\Wood.png" />
   </ItemGroup>
- HEAD
-  <ItemGroup />
-=======
   <ItemGroup>
     <Resource Include="Resource\Images\Locations\home.jpg" />
   </ItemGroup>
->>>>>>> 7589d4863b148e5c852b8ea4b8eda745b1d3da55
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

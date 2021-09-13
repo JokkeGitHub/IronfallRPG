@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Ironfall_Engine.Models.Item;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ironfall_Engine.Models.Item;
-using Ironfall_Engine.Enums;
 
 namespace Ironfall_Engine.Factories.Item
 {
@@ -12,7 +11,7 @@ namespace Ironfall_Engine.Factories.Item
     {
         static int id = 100;
 
-        public Artifact Create(string name, string description, int value, bool isUnique, ItemEnumArtifact.Type type)
+        public Artifact Create(string name, string description, int value, bool isUnique, Enum type)
         {
             id += 1;
 

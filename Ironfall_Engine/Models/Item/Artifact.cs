@@ -8,7 +8,7 @@ namespace Ironfall_Engine.Models.Item
 {
     class Artifact : GameItem
     {
-        // enhcantment
+        // enchantment
         // drawback
 
         public Artifact(int id, string name, string description, int value, bool isUnique, Enum type)

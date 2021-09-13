@@ -13,15 +13,15 @@ namespace Ironfall_Engine.Models.Item
         // enchantment
         // drawback
 
-        public Armor(int id, string name, string description, int value, bool isUnique, int defense, Enum type)
+        public Armor(int id, string name, string description, int value, bool isUnique, Enum type, int defense)
         {
             Id = id;
             Name = name;
             Description = description;
             Value = value;
             IsUnique = isUnique;
-            Defense = defense;
             Type = type;
+            Defense = defense;
         }
     }
 }
