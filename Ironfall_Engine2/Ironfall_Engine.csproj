@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resource\Images\Characters\index (2).png" />
+    <None Remove="Resource\Images\Characters\index (3).png" />
+    <None Remove="Resource\Images\UI\BricksGrey.jpg" />
+    <None Remove="Resource\Images\UI\DarkStone.png" />
+    <None Remove="Resource\Images\UI\Obsidian.png" />
+    <None Remove="Resource\Images\UI\Stone.jpg" />
+    <None Remove="Resource\Images\UI\Wood.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resource\Images\Characters\index (2).png" />
+    <Resource Include="Resource\Images\Characters\index (3).png" />
+    <Resource Include="Resource\Images\Locations\home.jpg" />
+    <Resource Include="Resource\Images\Locations\tumblr_669a703cf11f9bfd2bec916815e9be4a_7f2353c9_2048.jpg" />
+    <Resource Include="Resource\Images\UI\BricksGrey.jpg" />
+    <Resource Include="Resource\Images\UI\DarkStone.png" />
+    <Resource Include="Resource\Images\UI\Obsidian.png" />
+    <Resource Include="Resource\Images\UI\Stone.jpg" />
+    <Resource Include="Resource\Images\UI\Wood.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resource\Images\Characters\" />
+    <Folder Include="Resource\Images\Locations\" />
+    <Folder Include="Resource\Images\UI\" />
+  </ItemGroup>
+
+</Project>

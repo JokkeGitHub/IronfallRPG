@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ironfall_Engine\Ironfall_Engine.csproj" />
+    <ProjectReference Include="..\Ironfall_Engine2\Ironfall_Engine.csproj" />
   </ItemGroup>
 
 </Project>
