@@ -42,6 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Factories\WorldFactory.cs" />
+    <Compile Include="Models\Item\Armor.cs" />
+    <Compile Include="Models\Item\Artifact.cs" />
+    <Compile Include="Models\Item\Common.cs" />
+    <Compile Include="Models\Item\Consumable.cs" />
+    <Compile Include="Models\Item\GameItem.cs" />
+    <Compile Include="Models\Item\Weapon.cs" />
     <Compile Include="Models\LivingEntity.cs" />
     <Compile Include="Models\LocalPlayer.cs" />
     <Compile Include="Models\Location.cs" />
@@ -68,6 +74,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\Images\Locations\home.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enums\" />
+    <Folder Include="Factories\Item\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
