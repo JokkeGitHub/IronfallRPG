@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ironfall_Engine.Interfaces.Item;
 
 namespace Ironfall_Engine.Models.Item
 {
-    class Weapon : GameItem
+    class Weapon : GameItem, IEffect, IEnchantment
     {
         public int MinDamage { get; set; }
         public int MaxDamage { get; set; }
-
-        // enchantment
 
         public Weapon(int id, string name, string description, int value, bool isUnique, Enum type, int minDamage, int maxDamage)
         {
@@ -24,7 +23,19 @@ namespace Ironfall_Engine.Models.Item
             MinDamage = minDamage;
             MaxDamage = maxDamage;
         }
+        
+        int IEffect.MinMax(int minDamage, int maxDamage, int enemyHP)
+        {
+            int damageOutput = RNG.NumberBetween(minDamage, maxDamage);
 
-        // Action Method
+            // damage method example
+            enemyHP -= damageOutput;
+            return enemyHP;
+        }
+
+        int IEnchantment.Effect(int effect, int affectedStat)
+        {
+           return affectedStat += effect;
+        }
     }
 }
