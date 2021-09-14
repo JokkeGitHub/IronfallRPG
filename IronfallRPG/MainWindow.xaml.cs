@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Ironfall_Engine.ViewModels;
+using Ironfall_Engine.Events;
 
 namespace IronfallRPG
 {
@@ -21,12 +22,12 @@ namespace IronfallRPG
     /// </summary>
     public partial class MainWindow : Window
     {
-        private GameSession _gameSession;
+        private GameSession _gameSession = new GameSession();
         public MainWindow()
         {
             InitializeComponent();
 
-            _gameSession = new GameSession();
+            _gameSession.OnMessageRaised += OnGameMessageRaised;
 
             DataContext = _gameSession;
         }
@@ -47,6 +48,14 @@ namespace IronfallRPG
         {
             _gameSession.MoveWest();
         }
+
+        private void OnGameMessageRaised(object sender, GameMessageEventArgs e)
+        {
+            GameMessages.Document.Blocks.Add(new Paragraph(new Run(e.Message)));
+            GameMessages.ScrollToEnd();
+        }
+
+
 
         // Null Buttons
         private void Button_Click(object sender, RoutedEventArgs e)

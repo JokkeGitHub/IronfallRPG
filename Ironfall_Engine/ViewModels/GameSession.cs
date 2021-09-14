@@ -12,6 +12,7 @@ namespace Ironfall_Engine.ViewModels
     public class GameSession : BaseNotificationClass
     {
         public event EventHandler<GameMessageEventArgs> OnMessageRaised;
+
         private Location _currentLocation;
 
         public LocalPlayer CurrentPlayer { get; set; }
