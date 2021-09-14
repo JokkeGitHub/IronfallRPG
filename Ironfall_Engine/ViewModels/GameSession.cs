@@ -14,8 +14,8 @@ namespace Ironfall_Engine.ViewModels
         public event EventHandler<GameMessageEventArgs> OnMessageRaised;
         private Location _currentLocation;
 
-        LocalPlayer CurrentPlayer { get; set; }
-        Location CurrentLocation 
+        public LocalPlayer CurrentPlayer { get; set; }
+        public Location CurrentLocation 
         {
             get { return _currentLocation; }
             set 
@@ -29,7 +29,6 @@ namespace Ironfall_Engine.ViewModels
             } 
         }
         World CurrentWorld { get; set; }
-        
 
         public GameSession()
         {

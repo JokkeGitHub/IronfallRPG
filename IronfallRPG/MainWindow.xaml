@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:Ironfall_Engine.ViewModels;assembly=Ironfall_Engine"
+        d:DataContext="{d:DesignInstance viewModels:GameSession}"
         xmlns:local="clr-namespace:IronfallRPG"
         mc:Ignorable="d"
         Title="MainWindow" Height="768" Width="1024">
@@ -21,8 +22,8 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="7*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Menu" Background="AliceBlue"></Label>
@@ -53,6 +54,7 @@
                     <ImageBrush ImageSource="/Ironfall_Engine;component/Resource/Images/UI/Obsidian.png"/>
                 </Grid.Background>
                 <TabControl SelectionChanged="TabControl_SelectionChanged">
+                    
                     <TabItem Header="Character">
                         <Grid>
                             <Grid.Background>
@@ -60,59 +62,83 @@
                             </Grid.Background>
 
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="20*"/>
-                                <ColumnDefinition Width="9*"/>
-                                <ColumnDefinition Width="63*"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="91*"/>
-                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
                             <!-- Line1 -->
-                            <Label Grid.Row="0" Grid.Column="0" Content="Name:" Margin="0,0,0,26" Grid.RowSpan="2"/>
-                            <Label Grid.Row="0" Content="{Binding CurrentPlayer.Name}" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2"/>
-                            <Label Grid.Row="1" Grid.Column="0" Content="Class:" Margin="0,0,0,5"/>
-                            <Label Grid.Row="1" Content="{Binding CurrentPlayer.CharacterClass}" Grid.ColumnSpan="4" Margin="69,0,0,5"/>
-                            <Label Grid.Row="2" Grid.Column="0" Content="Health:" Margin="0,0,0,26" Grid.RowSpan="2"/>
-                            <StackPanel Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2">
-                                <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.MaxHealth}"/>
-                                <Label Grid.Row="2" Grid.Column="1" Content=" / "/>
-                                <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.Health}"/>
+                             
+                            <Label Grid.Row="0" Grid.Column="0" Content="Name:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="0" Grid.Column="1" Content="{Binding CurrentPlayer.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2"  Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="1" Grid.Column="0" Content="Class:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="1" Grid.Column="1" Content="{Binding CurrentPlayer.CharacterClass}" Grid.ColumnSpan="4" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="2" Grid.Column="0" Content="Health:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <StackPanel Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="4" Margin="85,0,0,26" Grid.RowSpan="2" >
+                                <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.HpMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Grid.Row="2" Grid.Column="1" Content=" / " Foreground="LightGray" FontFamily="Informal Roman"/>
+                                <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.HpCurrent}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             </StackPanel>
-                            <Label Grid.Row="3" Grid.Column="0" Content="Gold:" Margin="0,0,0,26" Grid.RowSpan="2"/>
-                            <Label Grid.Row="3" Content="{Binding CurrentPlayer.Gold}" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2"/>
-                            <Label Grid.Row="4" Grid.Column="0" Content="Experience:" Margin="0,0,0,26" Grid.RowSpan="2"/>
-                            <Label Grid.Row="4" Content="{Binding CurrentPlayer.Experience}" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2"/>
-                            <Label Grid.Row="4" Grid.Column="0" Content="Level:" Margin="0,32,0,0" Grid.RowSpan="2"/>
-                            <Label Grid.Row="4" Content="{Binding CurrentPlayer.Level}" Grid.ColumnSpan="4" Margin="69,32,0,0" Grid.RowSpan="2"/>
+                            <Label Grid.Row="3" Grid.Column="0" Content="Gold:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="3" Grid.Column="1" Content="{Binding CurrentPlayer.Gold}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="4" Grid.Column="0" Content="Level:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="4" Grid.Column="1" Content="{Binding CurrentPlayer.Level}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="5" Grid.Column="0" Content="Experience:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="5" Grid.Column="1" Content="{Binding CurrentPlayer.ExperiencePoints}" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+            
+                        </Grid>
+                    </TabItem>
+                    
+                    <TabItem Header="Stats">
+                        <Grid>
+                            <Grid.Background>
+                                <ImageBrush ImageSource="/Ironfall_Engine;component/Resource/Images/UI/Wood.png"/>
+                            </Grid.Background>
 
-                            <!-- Line2 -->
-                            <Label Grid.Row="0" Grid.Column="3" Content="Name:" Margin="63,0,91,26" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
-                            <Label Grid.Row="0" Grid.Column="4" Content="{Binding CurrentPlayer.Name}" Grid.ColumnSpan="2" Margin="69,0,0,26" Grid.RowSpan="2"/>
-                            <Label Grid.Row="1" Grid.Column="3" Content="Class:" Margin="63,0,91,5" Grid.ColumnSpan="3"/>
-                            <Label Grid.Row="1" Grid.Column="4" Content="{Binding CurrentPlayer.CharacterClass}" Grid.ColumnSpan="2" Margin="69,0,0,5"/>
-                            <Label Grid.Row="2" Grid.Column="3" Content="Health:" Margin="63,0,91,26" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
-                            <StackPanel Grid.Row="2" Grid.Column="4" Orientation="Horizontal" Grid.ColumnSpan="2" Margin="69,0,0,26" Grid.RowSpan="2">
-                                <Label Grid.Row="2" Grid.Column="3" Content="{Binding CurrentPlayer.MaxHealth}"/>
-                                <Label Grid.Row="2" Grid.Column="3" Content=" / "/>
-                                <Label Grid.Row="2" Grid.Column="3" Content="{Binding CurrentPlayer.Health}"/>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="20*"/>
+                                <ColumnDefinition Width="9*"/>
+                                <ColumnDefinition Width="63*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="91*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Content="Name:" Margin="0,0,0,26" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman"/>
+                            <Label Grid.Row="0" Content="{Binding CurrentPlayer.Name}" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2"  Foreground="Bisque" FontFamily="Informal Roman" />
+                            <Label Grid.Row="1" Grid.Column="0" Content="Class:" Margin="0,0,0,5"  Foreground="LightGray" FontFamily="Informal Roman" />
+                            <Label Grid.Row="1" Content="{Binding CurrentPlayer.CharacterClass}" Grid.ColumnSpan="4" Margin="69,0,0,5" Foreground="Bisque" FontFamily="Informal Roman"/>
+                            <Label Grid.Row="2" Grid.Column="0" Content="Health:" Margin="0,0,0,26" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman"/>
+                            <StackPanel Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2" >
+                                <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.HpMax}" Foreground="LightGray" FontFamily="Informal Roman"/>
+                                <Label Grid.Row="2" Grid.Column="1" Content=" / " Foreground="LightGray" FontFamily="Informal Roman"/>
+                                <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.HpCurrent}" Foreground="Bisque" FontFamily="Informal Roman"/>
                             </StackPanel>
-                            <Label Grid.Row="3" Grid.Column="3" Content="Gold:" Margin="63,0,91,26" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
-                            <Label Grid.Row="3" Grid.Column="4" Content="{Binding CurrentPlayer.Gold}" Grid.ColumnSpan="2" Margin="69,0,0,26" Grid.RowSpan="2"/>
-                            <Label Grid.Row="4" Grid.Column="3" Content="Experience:" Margin="63,0,91,26" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
-                            <Label Grid.Row="4" Grid.Column="4" Content="{Binding CurrentPlayer.Experience}" Grid.ColumnSpan="2" Margin="69,0,0,26" Grid.RowSpan="2"/>
-                            <Label Grid.Row="4" Grid.Column="3" Content="Level:" Grid.ColumnSpan="3" Margin="63,32,91,0" Grid.RowSpan="2"/>
-                            <Label Grid.Row="4" Grid.Column="4" Content="{Binding CurrentPlayer.Level}" Grid.ColumnSpan="2" Margin="69,32,0,0" Grid.RowSpan="2"/>
+                            <Label Grid.Row="3" Grid.Column="0" Content="Gold:" Margin="0,0,0,26" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman"/>
+                            <Label Grid.Row="3" Content="{Binding CurrentPlayer.Gold}" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman"/>
+                            <Label Grid.Row="4" Grid.Column="0" Content="Experience:" Margin="0,0,0,26" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman"/>
+                            <Label Grid.Row="4" Content="{Binding CurrentPlayer.ExperiencePoints}" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman"/>
+                            <Label Grid.Row="4" Grid.Column="0" Content="Level:" Margin="0,32,0,0" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman"/>
+                            <Label Grid.Row="4" Content="{Binding CurrentPlayer.Level}" Grid.ColumnSpan="4" Margin="69,32,0,0" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman"/>
 
                         </Grid>
                     </TabItem>
@@ -190,10 +216,10 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text=""/>
+                    <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="{Binding CurrentLocation.Name}"/>
                     <Image Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="225" Width="225" 
                              Source="{Binding CurrentLocation.ImageName}"/>
-                    <TextBlock Grid.Row="2" HorizontalAlignment="Center" Text="" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="2" HorizontalAlignment="Center" Text="{Binding CurrentLocation.Description}" TextWrapping="Wrap"/>
                 </Grid>
             </Border>
 
