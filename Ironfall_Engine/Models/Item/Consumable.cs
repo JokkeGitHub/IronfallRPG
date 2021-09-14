@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ironfall_Engine.Interfaces.Item;
 
 namespace Ironfall_Engine.Models.Item
 {
-    class Consumable : GameItem
+    class Consumable : GameItem, IEffect
     {
         public int Quantity { get; set; }
         public int MinEffect { get; set; }
@@ -25,6 +26,13 @@ namespace Ironfall_Engine.Models.Item
             MaxEffect = maxEffect;
         }
 
-        // Action Method
+        int IEffect.MinMax(int minEffect, int maxEffect, int affectedStat)
+        {
+            int effectOutput = RNG.NumberBetween(minEffect, maxEffect);
+
+            // effect method healing example
+            affectedStat += effectOutput;
+            return affectedStat;
+        }
     }
 }
