@@ -23,6 +23,7 @@ namespace Ironfall_Engine.Models.Item
         {
             return affectedStat += effect;
         }
+
         int IDrawback.Effect(int effect, int affectedStat)
         {
             return affectedStat -= effect;

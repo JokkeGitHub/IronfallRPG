@@ -54,6 +54,7 @@
     <Compile Include="Interfaces\Item\IDrawback.cs" />
     <Compile Include="Interfaces\Item\IEffect.cs" />
     <Compile Include="Interfaces\Item\IEnchantment.cs" />
+    <Compile Include="ItemList.cs" />
     <Compile Include="Models\Item\Armor.cs" />
     <Compile Include="Models\Item\Artifact.cs" />
     <Compile Include="Models\Item\Common.cs" />
