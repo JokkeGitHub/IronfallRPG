@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,14 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events\BaseNotificationClass.cs" />
+    <Compile Include="Events\GameMessageEventArgs.cs" />
     <Compile Include="Enums\ItemEnum.cs" />
     <Compile Include="Factories\Item\ArmorFactory.cs" />
     <Compile Include="Factories\Item\ArtifactFactory.cs" />
     <Compile Include="Factories\Item\CommonFactory.cs" />
     <Compile Include="Factories\Item\ConsumableFactory.cs" />
     <Compile Include="Factories\Item\WeaponFactory.cs" />
-    <Compile Include="Events\BaseNotificationClass.cs" />
-    <Compile Include="Events\GameMessageEventArgs.cs" />
     <Compile Include="Factories\MonsterFactory.cs" />
     <Compile Include="Factories\WorldFactory.cs" />
     <Compile Include="Interfaces\Item\IDrawback.cs" />
@@ -89,9 +91,7 @@
   <ItemGroup>
     <Resource Include="Resource\Images\Locations\home.jpg" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <None Include="packages.config" />
     <Folder Include="Resource\Images\Monsters\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
