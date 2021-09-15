@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Ironfall_Engine.Models;
+﻿using Ironfall_Engine.Models;
+using System;
 
 namespace Ironfall_Engine.Factories
 {
