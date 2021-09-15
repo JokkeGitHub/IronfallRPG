@@ -18,6 +18,10 @@ namespace Ironfall_Engine.Factories
                 "The shop of a trader.",
                 "Shop.jpg");
 
+            newWorld.AddLocation(0, 2, "Back Alley", "It's not a nice place to linger.", "backalley.png");
+            newWorld.LocationAt(0, 2).AddMonster(1, 100);
+
+
             return newWorld;
         }
     }

@@ -14,8 +14,27 @@ namespace Ironfall_Engine.ViewModels
         public event EventHandler<GameMessageEventArgs> OnMessageRaised;
 
         private Location _currentLocation;
+        private Monster _currentMonster;
 
         public LocalPlayer CurrentPlayer { get; set; }
+        public Monster CurrentMonster 
+        {
+            get { return _currentMonster; } 
+            set
+            {
+                if (_currentMonster !=null)
+                {
+
+                }
+                _currentMonster = value;
+                if (_currentMonster != null)
+                {
+
+                }
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(HasMonster));
+            } 
+        }
         public Location CurrentLocation 
         {
             get { return _currentLocation; }
@@ -27,6 +46,8 @@ namespace Ironfall_Engine.ViewModels
                 OnPropertyChanged(nameof(HasLocationToWest));
                 OnPropertyChanged(nameof(HasLocationToEast));
                 OnPropertyChanged(nameof(HasLocationToSouth));
+
+                GetMonsterAtLocation();
             } 
         }
         World CurrentWorld { get; set; }
@@ -38,7 +59,7 @@ namespace Ironfall_Engine.ViewModels
                 0,
                 1, 1, 1,
                 "Happy New Adventurer",
-                "player picture",
+                "placeholderclose.png",
                 10, 10,
                 1,2,
                 5,5,
@@ -52,6 +73,8 @@ namespace Ironfall_Engine.ViewModels
             CurrentLocation = CurrentWorld.LocationAt(0, 0);
             
         }
+
+        public bool HasMonster => CurrentMonster != null;
 
         #region Movement
         //A boolean used to show the buttons in the xaml file. If it's true, the button can show, if null the it statement is false and the button can't show.
@@ -110,9 +133,16 @@ namespace Ironfall_Engine.ViewModels
         }
         #endregion
 
+        private void GetMonsterAtLocation()
+        {
+            CurrentMonster = CurrentLocation.GetMonster();
+        }
+
         private void RaiseMessage(string message)
         {
             OnMessageRaised?.Invoke(this, new GameMessageEventArgs(message));
         }
+
+        
     }
 }

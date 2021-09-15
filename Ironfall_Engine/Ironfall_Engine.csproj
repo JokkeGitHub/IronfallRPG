@@ -77,10 +77,10 @@
     <Resource Include="Resource\Images\Locations\tumblr_669a703cf11f9bfd2bec916815e9be4a_7f2353c9_2048.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resource\Images\Characters\index %282%29.png">
+    <Resource Include="Resource\Images\Characters\placeholder.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resource\Images\Characters\index %283%29.png">
+    <Resource Include="Resource\Images\Characters\placeholderclose.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resource\Images\UI\BricksGrey.jpg" />
@@ -93,7 +93,20 @@
     <Resource Include="Resource\Images\Locations\home.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resource\Images\Monsters\" />
+    <Resource Include="Resource\Images\PlayerImages\placeholder.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Images\Monsters\thief.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Images\Locations\backalley.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Images\PlayerImages\placeholderclose.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

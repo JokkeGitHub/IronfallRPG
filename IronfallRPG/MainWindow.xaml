@@ -43,7 +43,7 @@
                 <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="{Binding CurrentPlayer.Name}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                 <!--"{Binding Character.Name}"-->
                 <Image Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="AUTO" Width="AUTO" 
-                             Source="/Ironfall_Engine;component/Resource/Images/Characters/index (3).png"/>
+                             Source="{Binding CurrentPlayer.Image}"/>
                 <TextBlock Grid.Row="2" HorizontalAlignment="Center" Text="{Binding CurrentPlayer.CharacterClass}" TextWrapping="Wrap" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
             </Grid>
         </Border>
@@ -218,7 +218,7 @@
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="{Binding CurrentLocation.Name}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                     <Image Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="225" Width="225" 
-                             Source="{Binding CurrentLocation.ImageName}"/>
+                             Source="{Binding CurrentLocation.Image}"/>
                     <TextBlock Grid.Row="2" HorizontalAlignment="Center" Text="{Binding CurrentLocation.Description}" TextWrapping="Wrap" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                 </Grid>
             </Border>
@@ -237,14 +237,14 @@
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" Visibility="{Binding HasMonster, Converter={StaticResource BooleanToVisibility}}" HorizontalAlignment="Center" Orientation="Horizontal" >
                         <TextBlock>-</TextBlock>
-                        <TextBlock Text="" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                        <TextBlock Text="{Binding CurrentMonster.Name}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                         <TextBlock Foreground="LightGray" FontFamily="Informal Roman" FontSize="18">-  Health: [</TextBlock>
-                        <TextBlock Text="" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                        <TextBlock Text="{Binding CurrentMonster.HpCurrent}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                         <TextBlock Foreground="LightGray" FontFamily="Informal Roman" FontSize="18">]</TextBlock>
                     </StackPanel>
 
                     <Image Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="225" Width="225" 
-                                     Source="/Ironfall_Engine;component/Resource/Images/Characters/index (3).png" RenderTransformOrigin="0.5,0.5">
+                                     Source="{Binding CurrentMonster.Image}" RenderTransformOrigin="0.5,0.5">
                         <Image.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>

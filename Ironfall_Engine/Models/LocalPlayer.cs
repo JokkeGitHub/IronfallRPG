@@ -19,6 +19,7 @@
             StatBody = statBody;
             StatSpirit = statSpirit;
             StatFellowship = statFellowship;
+            Image = $"/Ironfall_Engine;component/Resource/Images/PlayerImages/{image}";
         }
 
     }
