@@ -45,6 +45,12 @@
   <ItemGroup>
     <Compile Include="Events\BaseNotificationClass.cs" />
     <Compile Include="Events\GameMessageEventArgs.cs" />
+    <Compile Include="Enums\ItemEnum.cs" />
+    <Compile Include="Factories\Item\ArmorFactory.cs" />
+    <Compile Include="Factories\Item\ArtifactFactory.cs" />
+    <Compile Include="Factories\Item\CommonFactory.cs" />
+    <Compile Include="Factories\Item\ConsumableFactory.cs" />
+    <Compile Include="Factories\Item\WeaponFactory.cs" />
     <Compile Include="Factories\MonsterFactory.cs" />
     <Compile Include="Factories\WorldFactory.cs" />
     <Compile Include="Interfaces\Item\IDrawback.cs" />
