@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,8 +45,24 @@
   <ItemGroup>
     <Compile Include="Events\BaseNotificationClass.cs" />
     <Compile Include="Events\GameMessageEventArgs.cs" />
+    <Compile Include="Enums\ItemEnum.cs" />
+    <Compile Include="Factories\Item\ArmorFactory.cs" />
+    <Compile Include="Factories\Item\ArtifactFactory.cs" />
+    <Compile Include="Factories\Item\CommonFactory.cs" />
+    <Compile Include="Factories\Item\ConsumableFactory.cs" />
+    <Compile Include="Factories\Item\WeaponFactory.cs" />
     <Compile Include="Factories\MonsterFactory.cs" />
     <Compile Include="Factories\WorldFactory.cs" />
+    <Compile Include="Interfaces\Item\IDrawback.cs" />
+    <Compile Include="Interfaces\Item\IEffect.cs" />
+    <Compile Include="Interfaces\Item\IEnchantment.cs" />
+    <Compile Include="ItemList.cs" />
+    <Compile Include="Models\Item\Armor.cs" />
+    <Compile Include="Models\Item\Artifact.cs" />
+    <Compile Include="Models\Item\Common.cs" />
+    <Compile Include="Models\Item\Consumable.cs" />
+    <Compile Include="Models\Item\GameItem.cs" />
+    <Compile Include="Models\Item\Weapon.cs" />
     <Compile Include="Models\LivingEntity.cs" />
     <Compile Include="Models\LocalPlayer.cs" />
     <Compile Include="Models\Location.cs" />
