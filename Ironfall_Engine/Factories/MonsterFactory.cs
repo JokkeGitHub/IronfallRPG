@@ -1,4 +1,7 @@
-﻿namespace Ironfall_Engine.Factories
+﻿using Ironfall_Engine.Models;
+using System;
+
+namespace Ironfall_Engine.Factories
 {
     public static class MonsterFactory
     {
