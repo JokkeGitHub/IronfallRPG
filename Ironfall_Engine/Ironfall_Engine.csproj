@@ -92,7 +92,6 @@
   <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
-  <ItemGroup>
     <Folder Include="Resource\Images\Monsters\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
