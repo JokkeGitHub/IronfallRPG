@@ -48,6 +48,10 @@ namespace Ironfall_Engine.ViewModels
                 OnPropertyChanged(nameof(HasLocationToSouth));
 
                 GetMonsterAtLocation();
+                if (HasMonster)
+                {
+                    Combat();
+                }
             } 
         }
         World CurrentWorld { get; set; }
@@ -143,6 +147,14 @@ namespace Ironfall_Engine.ViewModels
             OnMessageRaised?.Invoke(this, new GameMessageEventArgs(message));
         }
 
-        
+        public void Combat()
+        {
+            while (CurrentMonster.HpCurrent > 0)
+            {
+                RaiseMessage("Combat happened");
+                break;
+
+            }
+        }
     }
 }

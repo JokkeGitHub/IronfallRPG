@@ -11,11 +11,11 @@ namespace Ironfall_Engine.Factories.Item
     {
         static int id = 200;
 
-        public Weapon Create(string name, string description, int value, bool isUnique, Enum type, int minDamage, int maxDamage)
+        public Weapon Create(string name, string description, int value, bool isUnique, GameItem.ItemCategory category, int minDamage, int maxDamage, Enum type)
         {
             id += 1;
 
-            return new Weapon(id, name, description, value, isUnique, type, minDamage, maxDamage);
+            return new Weapon(id, name, description, value, isUnique, category, minDamage, maxDamage, type);
         }
     }
 }

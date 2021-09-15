@@ -11,6 +11,6 @@ namespace Ironfall_Engine
 {
     class ItemList
     {
-        public Weapon testWeapon = new WeaponFactory().Create("Developers Axe", "Forged in the code of the Architects.", 100, true, ItemEnum.Weapon.OneHanded, 1, 5);
+        public Weapon testWeapon = new WeaponFactory().Create("Developers Axe", "Forged in the code of the Architects.", 100, true, GameItem.ItemCategory.Weapon, 1, 5, ItemEnum.Weapon.OneHanded);
     }
 }

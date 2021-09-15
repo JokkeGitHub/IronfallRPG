@@ -189,7 +189,7 @@
             <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" BorderBrush="Gray" BorderThickness="5">
 
 
-                <RichTextBox x:Name="GameMessages" VerticalScrollBarVisibility="Auto" TextChanged="GameMessages_TextChanged">
+                <RichTextBox x:Name="GameMessages" VerticalScrollBarVisibility="Auto" TextChanged="GameMessages_TextChanged" Foreground="AntiqueWhite" FontFamily="Informal Roman" FontSize="20">
                     <RichTextBox.Background>
                         <ImageBrush ImageSource="/Ironfall_Engine;component/Resource/Images/UI/Stone.jpg"/>
                     </RichTextBox.Background>

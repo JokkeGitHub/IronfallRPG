@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ironfall_Engine.Enums;
 
 namespace Ironfall_Engine.Models.Item
 {
@@ -13,6 +14,14 @@ namespace Ironfall_Engine.Models.Item
         public string Description { get; set; }
         public int Value { get; set; }
         public bool IsUnique { get; set; }
-        public Enum Type { get; set; }
+        public ItemCategory Category { get; set; }
+
+        public enum ItemCategory
+        {
+            Weapon,
+            Consumable,
+            Artefact,
+            Armor
+        }
     }
 }
