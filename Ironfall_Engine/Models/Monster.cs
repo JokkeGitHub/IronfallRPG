@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ironfall_Engine.Models
 {
-    class Monster : LivingEntity
+    public class Monster : LivingEntity
     {
 
         public string Type { get; set; }
