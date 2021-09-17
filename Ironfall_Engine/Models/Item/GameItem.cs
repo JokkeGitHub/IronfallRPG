@@ -21,7 +21,8 @@ namespace Ironfall_Engine.Models.Item
             Weapon,
             Consumable,
             Artefact,
-            Armor
+            Armor,
+            Common
         }
     }
 }

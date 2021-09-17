@@ -12,11 +12,11 @@ namespace Ironfall_Engine.Factories.Item
     {
         static int id = 300;
 
-        public Armor Create(string name, string description, int value, bool isUnique, Enum type, int defense)
+        public Armor Create(string name, string description, int value, bool isUnique, GameItem.ItemCategory category, Enum armorType, int defense)
         {
             id += 1;
 
-            return new Armor(id, name, description, value, isUnique, type, defense);
+            return new Armor(id, name, description, value, isUnique, category, armorType, defense);
         }
     }
 }

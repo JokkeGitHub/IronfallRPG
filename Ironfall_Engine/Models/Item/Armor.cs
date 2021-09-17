@@ -10,15 +10,17 @@ namespace Ironfall_Engine.Models.Item
     class Armor : GameItem, IEnchantment, IDrawback
     {
         public int Defense { get; set; }
+        public Enum ArmorType { get; set; }
 
-        public Armor(int id, string name, string description, int value, bool isUnique, Enum type, int defense)
+        public Armor(int id, string name, string description, int value, bool isUnique, ItemCategory category, Enum armorType, int defense)
         {
             Id = id;
             Name = name;
             Description = description;
             Value = value;
             IsUnique = isUnique;
-            Type = type;
+            Category = category;
+            ArmorType = armorType;
             Defense = defense;
         }
         int IEnchantment.Effect(int effect, int affectedStat)

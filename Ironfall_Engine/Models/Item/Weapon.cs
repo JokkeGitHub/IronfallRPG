@@ -22,9 +22,9 @@ namespace Ironfall_Engine.Models.Item
             Value = value;
             IsUnique = isUnique;
             Category = category;
+            WeaponType = weaponType;
             MinDamage = minDamage;
             MaxDamage = maxDamage;
-            WeaponType = weaponType;
         }
         
         int IEffect.MinMax(int minDamage, int maxDamage, int enemyHP)
