@@ -59,19 +59,22 @@ namespace Ironfall_Engine.ViewModels
         public GameSession()
         {
             CurrentPlayer = new LocalPlayer(
-                "Classless", "UserID", 
-                0,
-                1, 1, 1,
-                "Happy New Adventurer",
-                "placeholderclose.png",
-                10, 10,
-                1,2,
-                5,5,
-                5,5,
-                1,
-                1,
-                0);
-           
+                "Classless",                //Class
+                "UserID",                   //ID
+                0,                          //ExperienecPoints
+                1, 1, 1,                    //Stats
+                "Happy New Adventurer",     //Name
+                "placeholderclose.png",     //Image
+                10, 10,                     //Health
+                1, 2,                       //Damage
+                5,5,                        //MagicPoints
+                5,5,                        //AbilityPoints
+                1,1,                        //Defence
+                1,                          //Level
+                0);                         //Gold
+
+            CurrentPlayer.DamageMinimum = CurrentPlayer.DamageMinimum + CurrentPlayer.StatBody;
+            CurrentPlayer.DamageMaximum = CurrentPlayer.DamageMaximum + CurrentPlayer.StatBody;
 
             CurrentWorld = WorldFactory.CreateWorld();
             CurrentLocation = CurrentWorld.LocationAt(0, 0);
