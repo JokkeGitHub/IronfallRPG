@@ -11,11 +11,11 @@ namespace Ironfall_Engine.Factories.Item
     {
         static int id = 400;
 
-        public Common Create(string name, string description, int value, bool isUnique, Enum type, int quantity)
+        public Common Create(string name, string description, int value, bool isUnique, GameItem.ItemCategory category, Enum commonType, int quantity)
         {
             id += 1;
 
-            return new Common(id, name, description, value, isUnique, type, quantity);
+            return new Common(id, name, description, value, isUnique, category, commonType, quantity);
         }
     }
 }

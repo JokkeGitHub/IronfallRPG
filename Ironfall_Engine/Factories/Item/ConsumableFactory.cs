@@ -11,11 +11,11 @@ namespace Ironfall_Engine.Factories.Item
     {
         static int id = 0;
 
-        public Consumable Create(string name, string description, int value, bool isUnique, Enum type, int quantity, int minEffect, int maxEffect)
+        public Consumable Create(string name, string description, int value, bool isUnique, GameItem.ItemCategory category, Enum consumableType, int quantity, int minEffect, int maxEffect)
         {
             id += 1;
 
-            return new Consumable(id, name, description, value, isUnique, type, quantity, minEffect, maxEffect);
+            return new Consumable(id, name, description, value, isUnique, category, consumableType, quantity, minEffect, maxEffect);
         }
     }
 }

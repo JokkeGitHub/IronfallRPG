@@ -9,14 +9,17 @@ namespace Ironfall_Engine.Models.Item
 {
     class Artifact : GameItem, IEnchantment, IDrawback
     {
-        public Artifact(int id, string name, string description, int value, bool isUnique, Enum type)
+        public Enum ArtifactType { get; set; }
+
+        public Artifact(int id, string name, string description, int value, bool isUnique, ItemCategory category, Enum artifactType)
         {
             Id = id;
             Name = name;
             Description = description;
             Value = value;
             IsUnique = isUnique;
-            Type = type;
+            Category = category;
+            ArtifactType = artifactType;
         }
 
         int IEnchantment.Effect(int effect, int affectedStat)

@@ -14,7 +14,7 @@ namespace Ironfall_Engine.Models.Item
         public int MaxDamage { get; set; }
         public Enum WeaponType { get; set; }
 
-        public Weapon(int id, string name, string description, int value, bool isUnique, ItemCategory category, int minDamage, int maxDamage, Enum weaponType)
+        public Weapon(int id, string name, string description, int value, bool isUnique, ItemCategory category, Enum weaponType, int minDamage, int maxDamage)
         {
             Id = id;
             Name = name;
@@ -22,9 +22,9 @@ namespace Ironfall_Engine.Models.Item
             Value = value;
             IsUnique = isUnique;
             Category = category;
+            WeaponType = weaponType;
             MinDamage = minDamage;
             MaxDamage = maxDamage;
-            WeaponType = weaponType;
         }
         
         int IEffect.MinMax(int minDamage, int maxDamage, int enemyHP)
