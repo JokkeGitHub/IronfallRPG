@@ -9,7 +9,7 @@ using Ironfall_Engine.Enums;
 
 namespace Ironfall_Engine
 {
-    class ItemList
+    public class ItemList
     {
         public Weapon handRight = new Weapon(-1, "Right Hand", "Unarmed", 0, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.OneHanded, 0, 0);
         public Weapon handLeft = new Weapon(-1, "Left Hand", "Unarmed", 0, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.OneHanded, 0, 0);

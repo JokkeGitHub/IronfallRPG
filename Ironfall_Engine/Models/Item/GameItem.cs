@@ -7,7 +7,7 @@ using Ironfall_Engine.Enums;
 
 namespace Ironfall_Engine.Models.Item
 {
-    abstract class GameItem
+    public abstract class GameItem
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ironfall_Engine.Models.Item
 {
-    class Common : GameItem
+    public class Common : GameItem
     {
         public int Quantity { get; set; }
         public Enum CommonType { get; set; }

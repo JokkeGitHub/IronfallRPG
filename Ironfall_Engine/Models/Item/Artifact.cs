@@ -7,7 +7,7 @@ using Ironfall_Engine.Interfaces.Item;
 
 namespace Ironfall_Engine.Models.Item
 {
-    class Artifact : GameItem, IEnchantment, IDrawback
+    public class Artifact : GameItem, IEnchantment, IDrawback
     {
         public Enum ArtifactType { get; set; }
 

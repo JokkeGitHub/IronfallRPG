@@ -7,7 +7,7 @@ using Ironfall_Engine.Interfaces.Item;
 
 namespace Ironfall_Engine.Models.Item
 {
-    class Armor : GameItem, IEnchantment, IDrawback
+    public class Armor : GameItem, IEnchantment, IDrawback
     {
         public int MinDefense { get; set; }
         public int MaxDefense { get; set; }

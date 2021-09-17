@@ -8,7 +8,7 @@ using Ironfall_Engine.Enums;
 
 namespace Ironfall_Engine.Models.Item
 {
-    class Weapon : GameItem, IEffect, IEnchantment
+    public class Weapon : GameItem, IEffect, IEnchantment
     {
         public int MinDamage { get; set; }
         public int MaxDamage { get; set; }
@@ -41,6 +41,9 @@ namespace Ironfall_Engine.Models.Item
            return affectedStat += effect;
         }
 
-
+        public void Equip(LocalPlayer currentPlayer, Weapon weapon)
+        {
+            currentPlayer.Gear.EquipHandRight(weapon);
+        }
     }
 }
