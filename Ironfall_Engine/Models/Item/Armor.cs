@@ -9,10 +9,11 @@ namespace Ironfall_Engine.Models.Item
 {
     class Armor : GameItem, IEnchantment, IDrawback
     {
-        public int Defense { get; set; }
+        public int MinDefense { get; set; }
+        public int MaxDefense { get; set; }
         public Enum ArmorType { get; set; }
 
-        public Armor(int id, string name, string description, int value, bool isUnique, ItemCategory category, Enum armorType, int defense)
+        public Armor(int id, string name, string description, int value, bool isUnique, ItemCategory category, Enum armorType, int minDefense, int maxDefense)
         {
             Id = id;
             Name = name;
@@ -21,7 +22,8 @@ namespace Ironfall_Engine.Models.Item
             IsUnique = isUnique;
             Category = category;
             ArmorType = armorType;
-            Defense = defense;
+            MinDefense = minDefense;
+            MaxDefense = maxDefense;
         }
         int IEnchantment.Effect(int effect, int affectedStat)
         {

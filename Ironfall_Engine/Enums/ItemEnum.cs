@@ -21,7 +21,7 @@ namespace Ironfall_Engine.Enums
         {
             Neck,
             Head,
-            Foot,
+            Feet,
             Finger
         }
 
