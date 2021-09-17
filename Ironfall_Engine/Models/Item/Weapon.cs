@@ -44,6 +44,7 @@ namespace Ironfall_Engine.Models.Item
         public void Equip(LocalPlayer currentPlayer, Weapon weapon)
         {
             currentPlayer.Gear.EquipHandRight(weapon);
+            // add something to return
         }
     }
 }
