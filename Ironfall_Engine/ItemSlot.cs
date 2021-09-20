@@ -15,10 +15,22 @@ namespace Ironfall_Engine
         public Weapon HandLeft { get; set; }
         public Armor Chest { get; set; }
         public Artifact Head { get; set; }
-        public Artifact Feet { get; set; }
         public Artifact Neck { get; set; }
         public Artifact FingerRight { get; set; }
         public Artifact FingerLeft { get; set; }
+        public Artifact Feet { get; set; }
+
+        public ItemSlot(Weapon handRight, Weapon handLeft, Armor chest, Artifact head, Artifact neck, Artifact fingerRight, Artifact fingerLeft, Artifact feet)
+        {
+            HandRight = handRight;
+            HandLeft = handLeft;
+            Chest = chest;
+            Head = head;
+            Neck = neck;
+            FingerRight = fingerRight;
+            FingerLeft = fingerLeft;
+            Feet = feet;
+        }
 
         public void EquipHandRight(Weapon weapon)
         {
