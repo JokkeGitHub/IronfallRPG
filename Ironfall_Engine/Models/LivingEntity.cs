@@ -24,6 +24,8 @@ namespace Ironfall_Engine.Models
         public int Level { get; set; }
         public int Gold { get; set; }
         public string Image { get; set; }
+        public ItemSlot Gear { get; set; }
+
 
         public bool IsDead => HpCurrent <= 0;
 
@@ -32,7 +34,7 @@ namespace Ironfall_Engine.Models
         public event EventHandler<string> OnActionPerformed;
 
 
-        protected LivingEntity(string name, string image, int hpMax, int hpCurrent, int damageMinimum, int damageMaximum, int mpMax, int mpCurrent, int apMax, int apCurrent, int defenceMinimum, int defenceMaximum, int level, int gold)
+        protected LivingEntity(string name, string image, int hpMax, int hpCurrent, int damageMinimum, int damageMaximum, int mpMax, int mpCurrent, int apMax, int apCurrent, int defenceMinimum, int defenceMaximum, int level, int gold, ItemSlot gear)
         {
             Name = name;
             Image = image;
@@ -48,6 +50,7 @@ namespace Ironfall_Engine.Models
             DefenceMaximum = defenceMaximum;
             Level = level;
             Gold = gold;
+            Gear = gear;
         }
 
         // Basic functions
