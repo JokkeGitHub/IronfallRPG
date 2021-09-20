@@ -59,11 +59,12 @@ namespace Ironfall_Engine.ViewModels
         public GameSession()
         {
             CurrentPlayer = new LocalPlayer(
-                "Classless", "UserID", 
+                "Classless",                //Class
+                "UserID",                   //ID
                 0,                          //ExperienecPoints
                 1, 1, 1,                    //Stats
-                "Happy New Adventurer",
-                "placeholderclose.png",
+                "Happy New Adventurer",     //Name
+                "placeholderclose.png",     //Image
                 10, 10,                     //Health
                 1, 2,                       //Damage
                 5,5,                        //MagicPoints
@@ -153,6 +154,7 @@ namespace Ironfall_Engine.ViewModels
         {
             while (CurrentMonster.HpCurrent > 0)
             {
+                //
                 RaiseMessage("Combat happened");
                 break;
 
