@@ -11,9 +11,9 @@ namespace Ironfall_Engine
 {
     public class ItemList
     {
-        public Weapon handRight = new Weapon(-1, "Right Hand", "Unarmed", 0, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.OneHanded, 0, 0);
-        public Weapon handLeft = new Weapon(-1, "Left Hand", "Unarmed", 0, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.OneHanded, 0, 0);
-        public Armor chest = new Armor(-1, "Chest", "Unarmored", 0, false, GameItem.ItemCategory.Armor, ItemEnum.Armor.Light, 0, 0);
+        public static Weapon handRight = new Weapon(-1, "Right Hand", "Unarmed", 0, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.OneHanded, 0, 0);
+        public static Weapon handLeft = new Weapon(-1, "Left Hand", "Unarmed", 0, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.OneHanded, 0, 0);
+        public static Armor chest = new Armor(-1, "Chest", "Unarmored", 0, false, GameItem.ItemCategory.Armor, ItemEnum.Armor.Light, 0, 0);
         public Artifact head = new Artifact(-1, "Head", "Unarmored", 0, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Head);
         public Artifact neck = new Artifact(-1, "Neck", "Unarmored", 0, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Neck);
         public Artifact feet = new Artifact(-1, "Feet", "Unarmored", 0, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Feet);

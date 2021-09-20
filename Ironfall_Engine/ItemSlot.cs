@@ -20,6 +20,18 @@ namespace Ironfall_Engine
         public Artifact FingerRight { get; set; }
         public Artifact FingerLeft { get; set; }
 
+        public ItemSlot(Weapon handRight, Weapon handLeft, Armor chest, Artifact head, Artifact feet, Artifact neck, Artifact fingerRight, Artifact fingerLeft)
+        {
+            HandRight = handRight;
+            HandLeft = handLeft;
+            Chest = chest;
+            Head = head;
+            Feet = feet;
+            Neck = neck;
+            FingerRight = fingerRight;
+            FingerLeft = fingerLeft;
+        }
+
         public void EquipHandRight(Weapon weapon)
         {
             if (weapon.WeaponType is ItemEnum.Weapon.TwoHanded)
