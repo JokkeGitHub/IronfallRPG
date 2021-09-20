@@ -71,6 +71,11 @@ namespace Ironfall_Engine.Models
             }
         }
 
+        public void UseAttackAction(LivingEntity target)
+        {
+            
+        }
+        
         private void RaiseOnKilledEvent()
         {
             OnKilled?.Invoke(this, new System.EventArgs());

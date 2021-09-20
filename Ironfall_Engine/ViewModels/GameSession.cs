@@ -154,6 +154,7 @@ namespace Ironfall_Engine.ViewModels
         {
             while (CurrentMonster.HpCurrent > 0)
             {
+                //
                 RaiseMessage("Combat happened");
                 break;
 
