@@ -38,10 +38,13 @@ namespace Ironfall_Engine
             {
                 HandRight = weapon;
                 HandLeft = weapon;
+
+                //return something
             }
             else
             {
                 HandRight = weapon;
+                //return something
             }
         }
     }
