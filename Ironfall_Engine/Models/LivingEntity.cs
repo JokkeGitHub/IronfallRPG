@@ -50,7 +50,7 @@ namespace Ironfall_Engine.Models
             Gold = gold;
         }
 
-        // Basic functions
+        //Basic functions
 
         public void TakeDamage(int pointsOfDamage)
         {
@@ -71,6 +71,13 @@ namespace Ironfall_Engine.Models
             }
         }
 
+        //Use Actions
+        public void UseAttackAction(LivingEntity target)
+        {
+            
+        }
+        
+        //Events
         private void RaiseOnKilledEvent()
         {
             OnKilled?.Invoke(this, new System.EventArgs());
