@@ -28,7 +28,7 @@
 
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Menu" Background="AliceBlue"></Label>
 
-        <!--Player Screen-->
+        <!-- #region Player Screen-->
         <Border Grid.Row="1" Grid.Column="0" BorderBrush="Gray" BorderThickness="2">
             <Grid>
                 <Grid.Background>
@@ -192,8 +192,9 @@
 
             </Grid>
         </Border>
-
-        <!--Gameplay-->
+        <!--#endregion-->
+        
+        <!-- #region Gameplay-->
         <Grid Grid.Row="1" Grid.RowSpan="2" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -285,7 +286,9 @@
             </Border>
         </Grid>
 
-        <!--Inventory and Quests-->
+        <!--#endregion-->
+        
+        <!-- #region Inventory and Quests-->
         <Grid Grid.Row="3" Grid.Column="0" RenderTransformOrigin="0.5,0.5">
 
             <Grid.Background>
@@ -312,8 +315,10 @@
                 </TabItem>
             </TabControl>
         </Grid>
-
-        <!--User Panel-->
+        
+        <!--#endregion-->
+        
+        <!-- #region User Panel-->
         <Border Grid.Row="3" Grid.Column="1" >
             <Grid>
                 <Grid.Background>
@@ -391,5 +396,8 @@
                 </Grid>
             </Grid>
         </Border>
+        
+        <!--#endregion-->
+        
     </Grid>
 </Window>
