@@ -149,23 +149,42 @@
                             </Grid.Background>
 
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="20*"/>
-                                <ColumnDefinition Width="9*"/>
-                                <ColumnDefinition Width="63*"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="91*"/>
-                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Content="Head:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="0" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.Head.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2"  Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="1" Grid.Column="0" Content="Chest:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="1" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.Chest.Name}" Grid.ColumnSpan="4" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="2" Grid.Column="0" Content="Neck" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.Neck.Name}" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            
+                            <Label Grid.Row="3" Grid.Column="0" Content="Right Hand:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="3" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.HandRight.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="4" Grid.Column="0" Content="Left Hand:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="4" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.HandLeft.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+
+                            <Label Grid.Row="5" Grid.Column="0" Content="Right Finger:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="5" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.FingerRight}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="6" Grid.Column="0" Content="Left Finger:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="6" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.FingerLeft.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+
+                            <Label Grid.Row="7" Grid.Column="0" Content="Feet:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="7" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.Feet.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+
                         </Grid>
                     </TabItem>
                 </TabControl>
