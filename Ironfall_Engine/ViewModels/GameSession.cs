@@ -15,8 +15,24 @@ namespace Ironfall_Engine.ViewModels
 
         private Location _currentLocation;
         private Monster _currentMonster;
+        private LocalPlayer _currentPlayer;
 
-        public LocalPlayer CurrentPlayer { get; set; }
+        public LocalPlayer CurrentPlayer 
+        {
+            get { return _currentPlayer; }
+            set 
+            {
+                if (_currentPlayer != null)
+                {
+
+                }
+                _currentPlayer = value;
+                if (_currentPlayer != null)
+                {
+
+                }
+            }
+        }
         public Monster CurrentMonster 
         {
             get { return _currentMonster; } 

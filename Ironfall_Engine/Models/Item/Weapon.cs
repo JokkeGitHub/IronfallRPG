@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ironfall_Engine.Interfaces.Item;
-using Ironfall_Engine.Enums;
+using Ironfall_Engine.Actions;
 
 namespace Ironfall_Engine.Models.Item
 {
@@ -13,6 +13,7 @@ namespace Ironfall_Engine.Models.Item
         public int MinDamage { get; set; }
         public int MaxDamage { get; set; }
         public Enum WeaponType { get; set; }
+        public Attack AttackAction { get; set; }
 
         public Weapon(int id, string name, string description, int value, bool isUnique, ItemCategory category, Enum weaponType, int minDamage, int maxDamage)
         {
@@ -43,7 +44,7 @@ namespace Ironfall_Engine.Models.Item
 
         public void Equip(LocalPlayer currentPlayer, Weapon weapon)
         {
-            currentPlayer.Gear.EquipHandRight(weapon);
+            currentPlayer.Gear.EquipHandMain(weapon);
             // add something to return
         }
     }

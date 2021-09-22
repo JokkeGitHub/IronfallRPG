@@ -11,8 +11,9 @@ namespace Ironfall_Engine
 {
     public class ItemSlot
     {
-        public Weapon HandRight { get; set; }
-        public Weapon HandLeft { get; set; }
+        //Changed so that there is no right og left hand, but main and offhand. 
+        public Weapon MainHand { get; set; }
+        public Weapon OffHand { get; set; }
         public Armor Chest { get; set; }
         public Artifact Head { get; set; }
         public Artifact Neck { get; set; }
@@ -20,10 +21,10 @@ namespace Ironfall_Engine
         public Artifact FingerLeft { get; set; }
         public Artifact Feet { get; set; }
 
-        public ItemSlot(Weapon handRight, Weapon handLeft, Armor chest, Artifact head, Artifact neck, Artifact fingerRight, Artifact fingerLeft, Artifact feet)
+        public ItemSlot(Weapon mainHand, Weapon offHand, Armor chest, Artifact head, Artifact neck, Artifact fingerRight, Artifact fingerLeft, Artifact feet)
         {
-            HandRight = handRight;
-            HandLeft = handLeft;
+            MainHand = mainHand;
+            OffHand = offHand;
             Chest = chest;
             Head = head;
             Neck = neck;
@@ -32,16 +33,16 @@ namespace Ironfall_Engine
             Feet = feet;
         }
 
-        public void EquipHandRight(Weapon weapon)
+        public void EquipHandMain(Weapon weapon)
         {
             if (weapon.WeaponType is ItemEnum.Weapon.TwoHanded)
             {
-                HandRight = weapon;
-                HandLeft = weapon;
+                MainHand = weapon;
+                OffHand = weapon;
             }
             else
             {
-                HandRight = weapon;
+                MainHand = weapon;
             }
         }
     }
