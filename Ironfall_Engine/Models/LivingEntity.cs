@@ -60,7 +60,7 @@ namespace Ironfall_Engine.Models
         public int DamageMinimum
         {
             get { return _damageMinimum; }
-            private set
+            set
             {
                 _damageMinimum = value;
                 OnPropertyChanged();
@@ -69,7 +69,7 @@ namespace Ironfall_Engine.Models
         public int DamageMaximum
         {
             get { return _damageMaximum; }
-            private set
+            set
             {
                 _damageMaximum = value;
                 OnPropertyChanged();
@@ -150,7 +150,7 @@ namespace Ironfall_Engine.Models
         public string Image
         {
             get { return _image; }
-            private set
+            set
             {
                 _image = value;
                 OnPropertyChanged();
@@ -166,7 +166,7 @@ namespace Ironfall_Engine.Models
             }
         }
 
-        public Attack AttackAction { get; set; }
+        public BasicAction Action { get; set; }
 
         public bool IsDead => HpCurrent <= 0;
 
@@ -175,7 +175,7 @@ namespace Ironfall_Engine.Models
         public event EventHandler<string> OnActionPerformed;
 
 
-        protected LivingEntity(string name, string image, int hpMax, int hpCurrent, int damageMinimum, int damageMaximum, int mpMax, int mpCurrent, int apMax, int apCurrent, int defenceMinimum, int defenceMaximum, int level, int gold, ItemSlot gear, Attack attackAction)
+        protected LivingEntity(string name, string image, int hpMax, int hpCurrent, int damageMinimum, int damageMaximum, int mpMax, int mpCurrent, int apMax, int apCurrent, int defenceMinimum, int defenceMaximum, int level, int gold, ItemSlot gear, BasicAction basicAction = null)
         {
             Name = name;
             Image = image;
@@ -192,7 +192,7 @@ namespace Ironfall_Engine.Models
             Level = level;
             Gold = gold;
             Gear = gear;
-            AttackAction = attackAction;
+            Action = basicAction;
 
 
         }
@@ -221,7 +221,7 @@ namespace Ironfall_Engine.Models
         //Use Actions
         public void UseAttackAction(LivingEntity actor, LivingEntity target)
         {
-            AttackAction.Execute(actor, target);
+            Action.AttackAction(actor, target);
         }
         
         //Events
@@ -229,7 +229,7 @@ namespace Ironfall_Engine.Models
         {
             OnKilled?.Invoke(this, new System.EventArgs());
         }
-        private void RaiseOnActionPerfomedEvent(object sender, string result)
+        private void RaiseOnActionPerformedEvent(object sender, string result)
         {
             OnActionPerformed?.Invoke(this, result);
         }
