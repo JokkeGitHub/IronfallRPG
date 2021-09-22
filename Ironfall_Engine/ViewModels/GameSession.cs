@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Ironfall_Engine.Models;
 using Ironfall_Engine.Factories;
 using Ironfall_Engine.Events;
+using Ironfall_Engine.Actions;
 
 namespace Ironfall_Engine.ViewModels
 {
@@ -66,7 +67,7 @@ namespace Ironfall_Engine.ViewModels
                 GetMonsterAtLocation();
                 if (HasMonster)
                 {
-                    Combat();
+                    AttackCurrentMonster();
                 }
             } 
         }
@@ -82,8 +83,7 @@ namespace Ironfall_Engine.ViewModels
                 new Models.Item.Artifact(-1, "Neck", "Unarmored", 0, false, Models.Item.GameItem.ItemCategory.Artefact, Enums.ItemEnum.Artifact.Neck),
                 new Models.Item.Artifact(-1, "Right Finger", "Unarmored", 0, false, Models.Item.GameItem.ItemCategory.Artefact, Enums.ItemEnum.Artifact.Finger),
                 new Models.Item.Artifact(-1, "Left Finger", "Unarmored", 0, false, Models.Item.GameItem.ItemCategory.Artefact, Enums.ItemEnum.Artifact.Finger),
-                new Models.Item.Artifact(-1, "Feet", "Unarmored", 0, false, Models.Item.GameItem.ItemCategory.Artefact, Enums.ItemEnum.Artifact.Feet)
-                );
+                new Models.Item.Artifact(-1, "Feet", "Unarmored", 0, false, Models.Item.GameItem.ItemCategory.Artefact, Enums.ItemEnum.Artifact.Feet));
 
             CurrentPlayer = new LocalPlayer(
                 "Classless",                //Class
@@ -173,20 +173,26 @@ namespace Ironfall_Engine.ViewModels
             CurrentMonster = CurrentLocation.GetMonster();
         }
 
+        public void AttackCurrentMonster()
+        {
+            RaiseMessage("Combat has begun");
+
+            CurrentPlayer.UseAttackAction(CurrentPlayer, CurrentMonster);
+
+            if (CurrentMonster.IsDead)
+            {
+                // Add another monster. Maybe it should be changed to when you enter the zone. 
+                //GetMonsterAtLocation();
+            }
+            else
+            {
+                //Monster Attack
+                CurrentMonster.UseAttackAction(CurrentMonster, CurrentPlayer);
+            }
+        }
         private void RaiseMessage(string message)
         {
             OnMessageRaised?.Invoke(this, new GameMessageEventArgs(message));
-        }
-
-        public void Combat()
-        {
-            while (CurrentMonster.HpCurrent > 0)
-            {
-                //
-                RaiseMessage("Combat happened");
-                break;
-
-            }
         }
     }
 }

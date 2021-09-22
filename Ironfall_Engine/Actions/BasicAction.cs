@@ -8,15 +8,16 @@ using Ironfall_Engine.Models.Item;
 
 namespace Ironfall_Engine.Actions
 {
-    public class Attack
+    public class BasicAction
     {
         private readonly GameItem _weapon;
         private readonly int _minDamage;
         private readonly int _maxDamage;
 
-        public event EventHandler<string> OnActionPerformed; 
+        public event EventHandler<string> OnActionPerformed;
 
-        public Attack(GameItem weapon, int minDamage, int maxDamage)
+        //THIS NEEDS TO BE REWORKED!!!
+        /*public Attack(GameItem weapon, int minDamage, int maxDamage)
         {
             if (weapon.Category != GameItem.ItemCategory.Weapon)
             {
@@ -35,8 +36,9 @@ namespace Ironfall_Engine.Actions
             _minDamage = minDamage;
             _maxDamage = maxDamage;
         }
-
-        public void Execute(LivingEntity actor, LivingEntity target)
+        */
+        public BasicAction() { }
+        public void AttackAction(LivingEntity actor, LivingEntity target)
         {
             int basicDamage = RNG.NumberBetween(actor.DamageMinimum, actor.DamageMaximum);
             int damageOutput = basicDamage + RNG.NumberBetween(actor.Gear.MainHand.MinDamage, actor.Gear.MainHand.MaxDamage);

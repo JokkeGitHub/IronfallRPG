@@ -1,4 +1,6 @@
-﻿namespace Ironfall_Engine.Models
+﻿using Ironfall_Engine.Actions;
+
+namespace Ironfall_Engine.Models
 {
     public class LocalPlayer : LivingEntity
     {
