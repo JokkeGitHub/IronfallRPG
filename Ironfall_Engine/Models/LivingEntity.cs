@@ -4,28 +4,169 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using Ironfall_Engine.Events;
+using Ironfall_Engine.Actions;
 
 namespace Ironfall_Engine.Models
 {
-    public class LivingEntity
+    public class LivingEntity : BaseNotificationClass
     {
+        #region Backing Variables
+        private string _name { get; set; }
+        private int _hpMax { get; set; }
+        private int _hpCurrent { get; set; }
+        private int _damageMinimum { get; set; }
+        private int _damageMaximum { get; set; }
+        private int _mpMax { get; set; }
+        private int _mpCurrent { get; set; }
+        private int _apMax { get; set; }
+        private int _apCurrent { get; set; }
+        private int _defenceMinimum { get; set; }
+        private int _defenceMaximum { get; set; }
+        private int _level { get; set; }
+        private int _gold { get; set; }
+        private string _image { get; set; }
+        private ItemSlot _gear { get; set; }
+        #endregion
 
-        public string Name { get; set; }
-        public int HpMax { get; set; }
-        public int HpCurrent { get; set; }
-        public int DamageMinimum { get; set; }
-        public int DamageMaximum { get; set; }
-        public int MpMax { get; set; }
-        public int MpCurrent { get; set; }
-        public int ApMax { get; set; }
-        public int ApCurrent { get; set; }
-        public int DefenceMinimum { get; set; }
-        public int DefenceMaximum { get; set; }
-        public int Level { get; set; }
-        public int Gold { get; set; }
-        public string Image { get; set; }
-        public ItemSlot Gear { get; set; }
+        //Properties
+        public string Name
+        {
+            get { return _name; }
+            private set
+            {
+                _name = value;
+                OnPropertyChanged();
+            }
+        }
+        public int HpMax
+        {
+            get { return _hpMax; }
+            private set
+            {
+                _hpMax = value;
+                OnPropertyChanged();
+            }
+        }
+        public int HpCurrent
+        {
+            get { return _hpCurrent; }
+            private set
+            {
+                _hpCurrent = value;
+                OnPropertyChanged();
+            }
+        }
+        public int DamageMinimum
+        {
+            get { return _damageMinimum; }
+            set
+            {
+                _damageMinimum = value;
+                OnPropertyChanged();
+            }
+        }
+        public int DamageMaximum
+        {
+            get { return _damageMaximum; }
+            set
+            {
+                _damageMaximum = value;
+                OnPropertyChanged();
+            }
+        }
+        public int MpMax
+        {
+            get { return _mpMax; }
+            private set
+            {
+                _mpMax = value;
+                OnPropertyChanged();
+            }
+        }
+        public int MpCurrent
+        {
+            get { return _mpCurrent; }
+            private set
+            {
+                _mpCurrent = value;
+                OnPropertyChanged();
+            }
+        }
+        public int ApMax
+        {
+            get { return _apMax; }
+            private set
+            {
+                _apMax = value;
+                OnPropertyChanged();
+            }
+        }
+        public int ApCurrent
+        {
+            get { return _apCurrent; }
+            private set
+            {
+                _apCurrent = value;
+                OnPropertyChanged();
+            }
+        }
+        public int DefenceMinimum
+        {
+            get { return _defenceMinimum; }
+            private set
+            {
+                _defenceMinimum = value;
+                OnPropertyChanged();
+            }
+        }
+        public int DefenceMaximum
+        {
+            get { return _defenceMaximum; }
+            private set
+            {
+                _defenceMaximum = value;
+                OnPropertyChanged();
+            }
+        }
+        public int Level
+        {
+            get { return _level; }
+            private set
+            {
+                _level = value;
+                OnPropertyChanged();
+            }
+        }
+        public int Gold
+        {
+            get { return _gold; }
+            private set
+            {
+                _gold = value;
+                OnPropertyChanged();
+            }
+        }
+        public string Image
+        {
+            get { return _image; }
+            set
+            {
+                _image = value;
+                OnPropertyChanged();
+            }
+        }
+        public ItemSlot Gear
+        {
+            get { return _gear; }
+            private set
+            {
+                _gear = value;
+                OnPropertyChanged();
+            }
+        }
 
+        public BasicAction Action { get; set; }
 
         public bool IsDead => HpCurrent <= 0;
 
@@ -34,7 +175,7 @@ namespace Ironfall_Engine.Models
         public event EventHandler<string> OnActionPerformed;
 
 
-        protected LivingEntity(string name, string image, int hpMax, int hpCurrent, int damageMinimum, int damageMaximum, int mpMax, int mpCurrent, int apMax, int apCurrent, int defenceMinimum, int defenceMaximum, int level, int gold, ItemSlot gear)
+        protected LivingEntity(string name, string image, int hpMax, int hpCurrent, int damageMinimum, int damageMaximum, int mpMax, int mpCurrent, int apMax, int apCurrent, int defenceMinimum, int defenceMaximum, int level, int gold, ItemSlot gear, BasicAction basicAction = null)
         {
             Name = name;
             Image = image;
@@ -51,6 +192,9 @@ namespace Ironfall_Engine.Models
             Level = level;
             Gold = gold;
             Gear = gear;
+            Action = basicAction;
+
+
         }
 
         //Basic functions
@@ -75,9 +219,9 @@ namespace Ironfall_Engine.Models
         }
 
         //Use Actions
-        public void UseAttackAction(LivingEntity target)
+        public void UseAttackAction(LivingEntity actor, LivingEntity target)
         {
-            
+            Action.AttackAction(actor, target);
         }
         
         //Events
@@ -85,7 +229,7 @@ namespace Ironfall_Engine.Models
         {
             OnKilled?.Invoke(this, new System.EventArgs());
         }
-        private void RaiseOnActionPerfomedEvent(object sender, string result)
+        private void RaiseOnActionPerformedEvent(object sender, string result)
         {
             OnActionPerformed?.Invoke(this, result);
         }

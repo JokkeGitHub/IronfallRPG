@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ironfall_Engine.Interfaces.Item;
-using Ironfall_Engine.Enums;
 
 namespace Ironfall_Engine.Models.Item
 {
@@ -43,7 +42,7 @@ namespace Ironfall_Engine.Models.Item
 
         public void Equip(LocalPlayer currentPlayer, Weapon weapon)
         {
-            currentPlayer.Gear.EquipHandRight(weapon);
+            currentPlayer.Gear.EquipHandMain(weapon);
             // add something to return
         }
     }

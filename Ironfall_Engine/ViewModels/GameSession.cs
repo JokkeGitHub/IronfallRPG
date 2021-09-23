@@ -15,23 +15,49 @@ namespace Ironfall_Engine.ViewModels
 
         private Location _currentLocation;
         private Monster _currentMonster;
+        private LocalPlayer _currentPlayer;
 
-        public LocalPlayer CurrentPlayer { get; set; }
+        public LocalPlayer CurrentPlayer 
+        {
+            get { return _currentPlayer; }
+            set 
+            {
+                if (_currentPlayer != null)
+                {
+                    _currentPlayer.OnActionPerformed -= OnCurrentPlayerActionPerfomed;
+                    _currentPlayer.OnKilled -= OnCurrentPlayerKilled;
+                }
+
+                _currentPlayer = value;
+
+                if (_currentPlayer != null)
+                {
+                    _currentPlayer.OnActionPerformed += OnCurrentPlayerActionPerfomed;
+                    _currentPlayer.OnKilled += OnCurrentPlayerKilled;
+
+                }
+            }
+        }
         public Monster CurrentMonster 
         {
             get { return _currentMonster; } 
             set
             {
-                //OBS! Not done
-                if (_currentMonster !=null)
-                {
-
-                }
-                _currentMonster = value;
                 if (_currentMonster != null)
                 {
-
+                    _currentMonster.OnKilled -= OnCurrentMonsterKilled;
                 }
+
+                _currentMonster = value;
+
+                if (_currentMonster != null)
+                {
+                    _currentMonster.OnKilled += OnCurrentMonsterKilled;
+
+                    RaiseMessage("");
+                    RaiseMessage($"You are being attacked by a {CurrentMonster.Name}!");
+                }
+
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(HasMonster));
             } 
@@ -49,10 +75,7 @@ namespace Ironfall_Engine.ViewModels
                 OnPropertyChanged(nameof(HasLocationToSouth));
 
                 GetMonsterAtLocation();
-                if (HasMonster)
-                {
-                    Combat();
-                }
+                
             } 
         }
         World CurrentWorld { get; set; }
@@ -67,8 +90,7 @@ namespace Ironfall_Engine.ViewModels
                 new Models.Item.Artifact(-1, "Neck", "Unarmored", 0, false, Models.Item.GameItem.ItemCategory.Artefact, Enums.ItemEnum.Artifact.Neck),
                 new Models.Item.Artifact(-1, "Right Finger", "Unarmored", 0, false, Models.Item.GameItem.ItemCategory.Artefact, Enums.ItemEnum.Artifact.Finger),
                 new Models.Item.Artifact(-1, "Left Finger", "Unarmored", 0, false, Models.Item.GameItem.ItemCategory.Artefact, Enums.ItemEnum.Artifact.Finger),
-                new Models.Item.Artifact(-1, "Feet", "Unarmored", 0, false, Models.Item.GameItem.ItemCategory.Artefact, Enums.ItemEnum.Artifact.Feet)
-                );
+                new Models.Item.Artifact(-1, "Feet", "Unarmored", 0, false, Models.Item.GameItem.ItemCategory.Artefact, Enums.ItemEnum.Artifact.Feet));
 
             CurrentPlayer = new LocalPlayer(
                 "Classless",                //Class
@@ -158,20 +180,45 @@ namespace Ironfall_Engine.ViewModels
             CurrentMonster = CurrentLocation.GetMonster();
         }
 
+        public void AttackCurrentMonster()
+        {
+            RaiseMessage("Combat has begun");
+
+            CurrentPlayer.UseAttackAction(CurrentPlayer, CurrentMonster);
+
+            if (CurrentMonster.IsDead)
+            {
+                // Add another monster. Maybe it should be changed to when you enter the zone. 
+                //GetMonsterAtLocation();
+            }
+            else
+            {
+                //Monster Attack
+                CurrentMonster.UseAttackAction(CurrentMonster, CurrentPlayer);
+            }
+        }
+
+        //Event Functions
+        private void OnCurrentMonsterKilled(object sender, System.EventArgs eventArgs)
+        {
+            RaiseMessage("");
+            RaiseMessage($"You killed the {CurrentMonster.Name}!");
+        }
+        private void OnCurrentPlayerActionPerfomed(object sender, string result)
+        {
+            RaiseMessage(result);
+        }
+
+        private void OnCurrentPlayerKilled(object sender, System.EventArgs eventArgs)
+        {
+            RaiseMessage("");
+            RaiseMessage($"The {CurrentMonster} killed you...");
+            CurrentLocation = CurrentWorld.LocationAt(99, 99);
+            CurrentPlayer.Heal(CurrentPlayer.HpMax);
+        }
         private void RaiseMessage(string message)
         {
             OnMessageRaised?.Invoke(this, new GameMessageEventArgs(message));
-        }
-
-        public void Combat()
-        {
-            while (CurrentMonster.HpCurrent > 0)
-            {
-                //
-                RaiseMessage("Combat happened");
-                break;
-
-            }
         }
     }
 }

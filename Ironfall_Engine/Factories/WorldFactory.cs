@@ -21,6 +21,9 @@ namespace Ironfall_Engine.Factories
             newWorld.AddLocation(0, 2, "Back Alley", "It's not a nice place to linger.", "backalley.png");
             newWorld.LocationAt(0, 2).AddMonster(1, 100);
 
+            newWorld.AddLocation(99,99, "The other world", "You are dead, how sad.", "backalley.png");
+
+
 
             return newWorld;
         }

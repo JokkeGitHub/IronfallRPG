@@ -8,15 +8,12 @@ using Ironfall_Engine.Models.Item;
 
 namespace Ironfall_Engine.Actions
 {
-    class Attack
+    public class BasicAction
     {
-        private readonly GameItem _weapon;
-        private readonly int _minDamage;
-        private readonly int _maxDamage;
+        public event EventHandler<string> OnActionPerformed;
 
-        public event EventHandler<string> OnActionPerformed; 
-
-        public Attack(GameItem weapon, int minDamage, int maxDamage)
+        //THIS NEEDS TO BE REWORKED!!!
+        /*public Attack(GameItem weapon, int minDamage, int maxDamage)
         {
             if (weapon.Category != GameItem.ItemCategory.Weapon)
             {
@@ -35,22 +32,23 @@ namespace Ironfall_Engine.Actions
             _minDamage = minDamage;
             _maxDamage = maxDamage;
         }
-
-        public void Execute(LivingEntity actor, LivingEntity target)
+        */
+        public BasicAction() { }
+        public void AttackAction(LivingEntity actor, LivingEntity target)
         {
-            int basicDamage = RNG.NumberBetween(_minDamage, _maxDamage);
-            int damageOutput = basicDamage + RNG.NumberBetween(actor.DamageMinimum, actor.DamageMaximum);
+            int basicDamage = RNG.NumberBetween(actor.DamageMinimum, actor.DamageMaximum);
+            int damageOutput = basicDamage + RNG.NumberBetween(actor.Gear.MainHand.MinDamage, actor.Gear.MainHand.MaxDamage);
             int defence = RNG.NumberBetween(target.DefenceMinimum, target.DefenceMaximum);
             int damage = damageOutput - defence;
 
             if (damage <= 0)
             {
-                ReportResult("You couldn't do damage!");
+                ReportResult("You couldn't do any damage!");
             }
             else
             {
-                actor.TakeDamage(damage);
-                ReportResult($"You hit! {target.Name.ToLower()} took {damage} points of damage.");
+                target.TakeDamage(damage);
+                ReportResult($"You hit! {target.Name} took {damage} points of damage.");
             }
         }
 

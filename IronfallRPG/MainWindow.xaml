@@ -185,9 +185,9 @@
                             <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.Chest.Name}" Grid.ColumnSpan="4" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             
                             <Label Grid.Row="3" Grid.Column="0" Content="Right Hand:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                            <Label Grid.Row="3" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.HandRight.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="3" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.MainHand.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="4" Grid.Column="0" Content="Left Hand:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                            <Label Grid.Row="4" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.HandLeft.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="4" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.OffHand.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
 
                             <Label Grid.Row="5" Grid.Column="0" Content="Right Finger:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="5" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.FingerRight.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
@@ -360,7 +360,7 @@
                     </Grid.ColumnDefinitions>
                     <ComboBox Grid.Row="0" Grid.Column="0" 
                               SelectedItem="" DisplayMemberPath="ItemName" SelectedValuePath="ItemTypeID"/>
-                    <Button Grid.Row="0" Grid.Column="2" Content="Attack" Click="Button_Click" Visibility="{Binding HasMonster, Converter={StaticResource BooleanToVisibility}}"/>
+                    <Button Grid.Row="0" Grid.Column="2" Content="Attack" Click="OnClick_Attack" Visibility="{Binding HasMonster, Converter={StaticResource BooleanToVisibility}}"/>
 
                 </Grid>
 
