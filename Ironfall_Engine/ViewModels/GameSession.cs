@@ -22,6 +22,7 @@ namespace Ironfall_Engine.ViewModels
             get { return _currentMonster; } 
             set
             {
+                //OBS! Not done
                 if (_currentMonster !=null)
                 {
 
