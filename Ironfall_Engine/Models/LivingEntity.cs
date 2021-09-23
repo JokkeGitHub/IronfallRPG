@@ -27,6 +27,7 @@ namespace Ironfall_Engine.Models
         private int _gold { get; set; }
         private string _image { get; set; }
         private ItemSlot _gear { get; set; }
+        private BasicAction _basicAction { get; set; }
         #endregion
 
         //Properties
@@ -166,7 +167,25 @@ namespace Ironfall_Engine.Models
             }
         }
 
-        public BasicAction Action { get; set; }
+        public BasicAction BasicAction 
+        {
+            get { return _basicAction; } 
+            set 
+            {
+                if (_basicAction != null)
+                {
+                    _basicAction.OnActionPerformed -= RaiseOnActionPerformedEvent;
+                }
+
+                _basicAction = value;
+
+                if(_basicAction != null)
+                {
+                    _basicAction.OnActionPerformed += RaiseOnActionPerformedEvent;
+                }
+                OnPropertyChanged();
+            }
+        }
 
         public bool IsDead => HpCurrent <= 0;
 
@@ -175,7 +194,7 @@ namespace Ironfall_Engine.Models
         public event EventHandler<string> OnActionPerformed;
 
 
-        protected LivingEntity(string name, string image, int hpMax, int hpCurrent, int damageMinimum, int damageMaximum, int mpMax, int mpCurrent, int apMax, int apCurrent, int defenceMinimum, int defenceMaximum, int level, int gold, ItemSlot gear, BasicAction basicAction = null)
+        protected LivingEntity(string name, string image, int hpMax, int hpCurrent, int damageMinimum, int damageMaximum, int mpMax, int mpCurrent, int apMax, int apCurrent, int defenceMinimum, int defenceMaximum, int level, int gold, ItemSlot gear, BasicAction basicAction)
         {
             Name = name;
             Image = image;
@@ -192,9 +211,7 @@ namespace Ironfall_Engine.Models
             Level = level;
             Gold = gold;
             Gear = gear;
-            Action = basicAction;
-
-
+            BasicAction = basicAction;
         }
 
         //Basic functions
@@ -219,9 +236,9 @@ namespace Ironfall_Engine.Models
         }
 
         //Use Actions
-        public void UseAttackAction(LivingEntity actor, LivingEntity target)
+        public void UseAttackAction(LivingEntity target)
         {
-            Action.AttackAction(actor, target);
+            BasicAction.AttackAction(this, target);
         }
         
         //Events

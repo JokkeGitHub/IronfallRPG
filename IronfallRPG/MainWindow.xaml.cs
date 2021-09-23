@@ -60,7 +60,7 @@ namespace IronfallRPG
         // Null Buttons
         private void OnClick_Attack(object sender, RoutedEventArgs e)
         {
-            _currentSession.AttackCurrentMonster();
+            _gameSession.AttackCurrentMonster();
         }
 
         private void GameMessages_TextChanged(object sender, TextChangedEventArgs e)
@@ -72,5 +72,6 @@ namespace IronfallRPG
         {
 
         }
+        private void Button_Click(object sender, RoutedEventArgs e) { }
     }
 }

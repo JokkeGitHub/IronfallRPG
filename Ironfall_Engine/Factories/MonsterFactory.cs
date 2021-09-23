@@ -22,7 +22,9 @@ namespace Ironfall_Engine.Factories
                         new Models.Item.Artifact(-1, "Right Finger", "Unarmored", 0, false, Models.Item.GameItem.ItemCategory.Artefact, Enums.ItemEnum.Artifact.Finger),
                         new Models.Item.Artifact(-1, "Left Finger", "Unarmored", 0, false, Models.Item.GameItem.ItemCategory.Artefact, Enums.ItemEnum.Artifact.Finger));
 
-                    Monster thief = new Monster("Thief", "thief.jpg", 5, 5, 1, 2, 0, 0, 2, 2, 1, 2, 1, 2, "Human", "Rogue", "This back alley thief wants your money and your life", 5, gear);
+                    BasicAction basicAction = new BasicAction();
+
+                    Monster thief = new Monster("Thief", "thief.jpg", 5, 5, 1, 2, 0, 0, 2, 2, 1, 2, 1, 2, "Human", "Rogue", "This back alley thief wants your money and your life", 5, gear, basicAction);
                     return thief;
 
                 default:

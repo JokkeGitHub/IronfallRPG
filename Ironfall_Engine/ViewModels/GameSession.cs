@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Ironfall_Engine.Models;
 using Ironfall_Engine.Factories;
 using Ironfall_Engine.Events;
+using Ironfall_Engine.Actions;
 
 namespace Ironfall_Engine.ViewModels
 {
@@ -45,6 +46,7 @@ namespace Ironfall_Engine.ViewModels
             {
                 if (_currentMonster != null)
                 {
+                    _currentMonster.OnActionPerformed -= OnCurrentMonsterPerformedAction;
                     _currentMonster.OnKilled -= OnCurrentMonsterKilled;
                 }
 
@@ -52,10 +54,13 @@ namespace Ironfall_Engine.ViewModels
 
                 if (_currentMonster != null)
                 {
+                    _currentMonster.OnActionPerformed += OnCurrentMonsterPerformedAction;
                     _currentMonster.OnKilled += OnCurrentMonsterKilled;
 
                     RaiseMessage("");
                     RaiseMessage($"You are being attacked by a {CurrentMonster.Name}!");
+                    RaiseMessage("");
+                    RaiseMessage($"Combat has begun.");
                 }
 
                 OnPropertyChanged();
@@ -75,7 +80,6 @@ namespace Ironfall_Engine.ViewModels
                 OnPropertyChanged(nameof(HasLocationToSouth));
 
                 GetMonsterAtLocation();
-                
             } 
         }
         World CurrentWorld { get; set; }
@@ -92,6 +96,8 @@ namespace Ironfall_Engine.ViewModels
                 new Models.Item.Artifact(-1, "Left Finger", "Unarmored", 0, false, Models.Item.GameItem.ItemCategory.Artefact, Enums.ItemEnum.Artifact.Finger),
                 new Models.Item.Artifact(-1, "Feet", "Unarmored", 0, false, Models.Item.GameItem.ItemCategory.Artefact, Enums.ItemEnum.Artifact.Feet));
 
+            BasicAction basicAction = new BasicAction();
+
             CurrentPlayer = new LocalPlayer(
                 "Classless",                //Class
                 "UserID",                   //ID
@@ -106,7 +112,7 @@ namespace Ironfall_Engine.ViewModels
                 1,1,                        //Defence
                 1,                          //Level
                 0,                          //Gold
-                gear);                         
+                gear, basicAction);                         
 
             CurrentPlayer.DamageMinimum = CurrentPlayer.DamageMinimum + CurrentPlayer.StatBody;
             CurrentPlayer.DamageMaximum = CurrentPlayer.DamageMaximum + CurrentPlayer.StatBody;
@@ -179,36 +185,37 @@ namespace Ironfall_Engine.ViewModels
         {
             CurrentMonster = CurrentLocation.GetMonster();
         }
-
         public void AttackCurrentMonster()
         {
-            RaiseMessage("Combat has begun");
-
-            CurrentPlayer.UseAttackAction(CurrentPlayer, CurrentMonster);
+            CurrentPlayer.UseAttackAction(CurrentMonster);
 
             if (CurrentMonster.IsDead)
             {
                 // Add another monster. Maybe it should be changed to when you enter the zone. 
                 //GetMonsterAtLocation();
+                CurrentMonster = null;
             }
             else
             {
                 //Monster Attack
-                CurrentMonster.UseAttackAction(CurrentMonster, CurrentPlayer);
+                CurrentMonster.UseAttackAction(CurrentPlayer);
             }
         }
 
         //Event Functions
+        private void OnCurrentPlayerActionPerfomed(object sender, string result)
+        {
+            RaiseMessage(result);
+        }
+        private void OnCurrentMonsterPerformedAction(object sender, string result)
+        {
+            RaiseMessage(result);
+        }
         private void OnCurrentMonsterKilled(object sender, System.EventArgs eventArgs)
         {
             RaiseMessage("");
             RaiseMessage($"You killed the {CurrentMonster.Name}!");
         }
-        private void OnCurrentPlayerActionPerfomed(object sender, string result)
-        {
-            RaiseMessage(result);
-        }
-
         private void OnCurrentPlayerKilled(object sender, System.EventArgs eventArgs)
         {
             RaiseMessage("");

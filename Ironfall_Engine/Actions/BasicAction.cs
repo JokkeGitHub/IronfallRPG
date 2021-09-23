@@ -33,6 +33,7 @@ namespace Ironfall_Engine.Actions
             _maxDamage = maxDamage;
         }
         */
+
         public BasicAction() { }
         public void AttackAction(LivingEntity actor, LivingEntity target)
         {
@@ -41,20 +42,24 @@ namespace Ironfall_Engine.Actions
             int defence = RNG.NumberBetween(target.DefenceMinimum, target.DefenceMaximum);
             int damage = damageOutput - defence;
 
-            if (damage <= 0)
+            string actorName = (actor is LocalPlayer) ? "You" : $"The {actor.Name}";
+            string targetName = (target is LocalPlayer) ? "you" : $"the {target.Name}";
+
+            if (damage == 0)
             {
-                ReportResult("You couldn't do any damage!");
+                ReportResult($"{actorName} missed {targetName}.");
             }
             else
             {
+                ReportResult($"{actorName} hit {targetName} for {damage} point{(damage > 1 ? "s" : "")}.");
+
                 target.TakeDamage(damage);
-                ReportResult($"You hit! {target.Name} took {damage} points of damage.");
             }
         }
 
         private void ReportResult(string result)
         {
-            OnActionPerformed.Invoke(this, result);
+            OnActionPerformed?.Invoke(this, result);
         }
     }
 }
