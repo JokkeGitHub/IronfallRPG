@@ -55,6 +55,7 @@
                 </Grid.Background>
                 <TabControl SelectionChanged="TabControl_SelectionChanged">
                     
+                    <!-- #region Character -->
                     <TabItem Header="Character">
                         <Grid>
                             <Grid.Background>
@@ -76,7 +77,6 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <!-- Character -->
                              
                             <Label Grid.Row="0" Grid.Column="0" Content="Name:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="0" Grid.Column="1" Content="{Binding CurrentPlayer.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2"  Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
@@ -97,7 +97,9 @@
             
                         </Grid>
                     </TabItem>
+                    <!--#endregion-->
                     
+                    <!-- #region Stats -->
                     <TabItem Header="Stats">
                         <Grid>
                             <Grid.Background>
@@ -121,7 +123,6 @@
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>    
 
-                            <!-- Stats -->
                             <Label Grid.Row="0" Grid.Column="0" Content="Body:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="0" Grid.Column="1" Content="{Binding CurrentPlayer.StatBody}" Grid.RowSpan="2"  Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="1" Grid.Column="0" Content="Spirit:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
@@ -149,11 +150,12 @@
                                 <Label Grid.Row="5" Grid.Column="1" Content="-" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                                 <Label Grid.Row="5" Grid.Column="1" Content="{Binding CurrentPlayer.DefenceMaximum}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             </StackPanel>
-                            
 
                         </Grid>
                     </TabItem>
+                    <!--#endregion-->
                     
+                    <!--#region Equipment-->
                     <TabItem Header="Equipment">
                         <Grid>
                             <Grid.Background>
@@ -200,7 +202,6 @@
                         </Grid>
                     </TabItem>
                 </TabControl>
-
             </Grid>
         </Border>
         <!--#endregion-->

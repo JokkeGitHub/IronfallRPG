@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using Ironfall_Engine.Events;
+using Ironfall_Engine.Models.Item;
 using Ironfall_Engine.Actions;
 
 namespace Ironfall_Engine.Models
@@ -186,6 +187,10 @@ namespace Ironfall_Engine.Models
                 OnPropertyChanged();
             }
         }
+
+        public ObservableCollection<GameItem> Inventory { get; }
+        public List<GameItem> Weapons => Inventory.Where(i => i.Category == GameItem.ItemCategory.Weapon).ToList();
+
 
         public bool IsDead => HpCurrent <= 0;
         #endregion

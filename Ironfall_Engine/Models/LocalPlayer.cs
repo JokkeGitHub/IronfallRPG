@@ -4,7 +4,6 @@ namespace Ironfall_Engine.Models
 {
     public class LocalPlayer : LivingEntity
     {
-
         public string CharacterClass { get; set; }
         public string UserID { get; set; }
         public int ExperiencePoints { get; set; }
