@@ -11,30 +11,6 @@ namespace Ironfall_Engine.Actions
     public class BasicAction
     {
         public event EventHandler<string> OnActionPerformed;
-
-        //THIS NEEDS TO BE REWORKED!!!
-        /*public Attack(GameItem weapon, int minDamage, int maxDamage)
-        {
-            if (weapon.Category != GameItem.ItemCategory.Weapon)
-            {
-                throw new ArgumentException($"{weapon.Name} is not a weapon");
-            }
-            if (_minDamage < 0)
-            {
-                throw new ArgumentException($"minimumDamage must be at least 0");
-            }
-            if (_maxDamage < _minDamage)
-            {
-                throw new ArgumentException($"maximumDamage must be bigger than minimumDamage");
-            }
-
-            _weapon = weapon;
-            _minDamage = minDamage;
-            _maxDamage = maxDamage;
-        }
-        */
-
-        public BasicAction() { }
         public void AttackAction(LivingEntity actor, LivingEntity target)
         {
             int basicDamage = RNG.NumberBetween(actor.DamageMinimum, actor.DamageMaximum);

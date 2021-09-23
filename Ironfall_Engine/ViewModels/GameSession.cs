@@ -12,8 +12,10 @@ namespace Ironfall_Engine.ViewModels
 {
     public class GameSession : BaseNotificationClass
     {
+        public bool HasMonster => CurrentMonster != null;
         public event EventHandler<GameMessageEventArgs> OnMessageRaised;
 
+        #region Instantiations
         private Location _currentLocation;
         private Monster _currentMonster;
         private LocalPlayer _currentPlayer;
@@ -83,6 +85,7 @@ namespace Ironfall_Engine.ViewModels
             } 
         }
         World CurrentWorld { get; set; }
+        #endregion
 
         public GameSession()
         {
@@ -121,8 +124,6 @@ namespace Ironfall_Engine.ViewModels
             CurrentLocation = CurrentWorld.LocationAt(0, 0);
             
         }
-
-        public bool HasMonster => CurrentMonster != null;
 
         #region Movement
         //A boolean used to show the buttons in the xaml file. If it's true, the button can show, if null the it statement is false and the button can't show.
@@ -181,6 +182,7 @@ namespace Ironfall_Engine.ViewModels
         }
         #endregion
 
+        #region Functions
         private void GetMonsterAtLocation()
         {
             CurrentMonster = CurrentLocation.GetMonster();
@@ -227,5 +229,6 @@ namespace Ironfall_Engine.ViewModels
         {
             OnMessageRaised?.Invoke(this, new GameMessageEventArgs(message));
         }
+        #endregion
     }
 }

@@ -30,6 +30,7 @@ namespace Ironfall_Engine.Models
         private BasicAction _basicAction { get; set; }
         #endregion
 
+        #region Variables
         //Properties
         public string Name
         {
@@ -166,7 +167,6 @@ namespace Ironfall_Engine.Models
                 OnPropertyChanged();
             }
         }
-
         public BasicAction BasicAction 
         {
             get { return _basicAction; } 
@@ -188,11 +188,13 @@ namespace Ironfall_Engine.Models
         }
 
         public bool IsDead => HpCurrent <= 0;
+        #endregion
 
+        #region Events
         //Events
         public event EventHandler OnKilled;
         public event EventHandler<string> OnActionPerformed;
-
+        #endregion
 
         protected LivingEntity(string name, string image, int hpMax, int hpCurrent, int damageMinimum, int damageMaximum, int mpMax, int mpCurrent, int apMax, int apCurrent, int defenceMinimum, int defenceMaximum, int level, int gold, ItemSlot gear, BasicAction basicAction)
         {
@@ -215,7 +217,6 @@ namespace Ironfall_Engine.Models
         }
 
         //Basic functions
-
         public void TakeDamage(int pointsOfDamage)
         {
             HpCurrent -= pointsOfDamage;
