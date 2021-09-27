@@ -1,6 +1,8 @@
 ﻿using System;
 using Ironfall_Engine.Models;
 using Ironfall_Engine.Actions;
+using System.Collections.ObjectModel;
+using Ironfall_Engine.Models.Item;
 
 namespace Ironfall_Engine.Factories
 {
@@ -14,8 +16,9 @@ namespace Ironfall_Engine.Factories
                 case 1:
                     ItemSlot gear = new ItemSlotFactory().Create();
                     BasicAction basicAction = new BasicAction();
+                    ObservableCollection<GameItem> inventory = new ObservableCollection<GameItem>();
 
-                    Monster thief = new Monster("Thief", "thief.jpg", 5,5, 1,2, 0,0, 2,2, 1,2, 1, 2, "Human", "Rogue", "This back alley thief wants your money and your life", 5, gear, basicAction);
+                    Monster thief = new Monster("Thief", "thief.jpg", 5,5, 1,2, 0,0, 2,2, 1,2, 1, 2, "Human", "Rogue", "This back alley thief wants your money and your life", 5, gear, basicAction, inventory);
                     return thief;
 
                 default:

@@ -309,11 +309,11 @@
 
             <TabControl>
                 <TabItem Header="Inventory">
-                    <DataGrid AutoGenerateColumns="False" HeadersVisibility="Column">
+                    <DataGrid AutoGenerateColumns="False" HeadersVisibility="Column" ItemsSource="{Binding CurrentPlayer.Inventory}">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Name" Width="200"/>
+                            <DataGridTextColumn Header="Name" IsReadOnly="True" Width="200" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="#" IsReadOnly="True" Width="50"/>
-                            <DataGridTextColumn Header="Worth" Width="80"/>
+                            <DataGridTextColumn Header="Worth" IsReadOnly="True" Width="80" Binding="{Binding Value}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </TabItem>

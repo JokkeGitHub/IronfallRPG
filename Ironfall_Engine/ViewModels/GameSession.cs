@@ -10,6 +10,7 @@ using Ironfall_Engine.Actions;
 using Ironfall_Engine.Models.Item;
 using Ironfall_Engine.Factories.Item;
 using Ironfall_Engine.Enums;
+using System.Collections.ObjectModel;
 
 namespace Ironfall_Engine.ViewModels
 {
@@ -94,6 +95,7 @@ namespace Ironfall_Engine.ViewModels
         {
             ItemSlot gear = new ItemSlotFactory().Create();
             BasicAction basicAction = new BasicAction();
+            ObservableCollection<GameItem> inventory = new ObservableCollection<GameItem>();
             CurrentPlayer = new LocalPlayer(
                 "Classless",                //Class
                 "UserID",                   //ID
@@ -108,7 +110,7 @@ namespace Ironfall_Engine.ViewModels
                 1,1,                        //Defence
                 1,                          //Level
                 0,                          //Gold
-                gear, basicAction);                         
+                gear, basicAction, inventory);                         
 
             //This should not be here but maybe in localPlayer
             CurrentPlayer.DamageMinimum += CurrentPlayer.StatBody;
@@ -118,7 +120,7 @@ namespace Ironfall_Engine.ViewModels
             Weapon test = testFactory.Create("test Weapon", "noisy kids must leave", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.OneHanded, 1, 2);
 
 
-            //CurrentPlayer.Inventory.Add(test);
+            CurrentPlayer.Inventory.Add(test);
 
             CurrentWorld = WorldFactory.CreateWorld();
             CurrentLocation = CurrentWorld.LocationAt(0, 0);
