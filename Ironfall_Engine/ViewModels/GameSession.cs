@@ -107,7 +107,7 @@ namespace Ironfall_Engine.ViewModels
                 0,                          //ExperienecPoints
                 1, 1, 1,                    //Stats
                 "Happy New Adventurer",     //Name
-                "placeholderclose.png",     //Image
+                "soldier.png",             //Image
                 10, 10,                     //Health
                 1, 2,                       //Damage
                 5,5,                        //MagicPoints

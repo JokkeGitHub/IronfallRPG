@@ -110,5 +110,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Images\PlayerImages\soldier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Images\Locations\shop.jpg" />
+    <Resource Include="Resource\Images\Locations\townsquare.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
