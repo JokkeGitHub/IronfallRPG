@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Actions\Attack.cs" />
+    <Compile Include="Actions\BasicAction.cs" />
     <Compile Include="Events\BaseNotificationClass.cs" />
     <Compile Include="Events\GameMessageEventArgs.cs" />
     <Compile Include="Enums\ItemEnum.cs" />

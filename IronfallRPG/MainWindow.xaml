@@ -28,7 +28,7 @@
 
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Menu" Background="AliceBlue"></Label>
 
-        <!--Player Screen-->
+        <!-- #region Player Screen-->
         <Border Grid.Row="1" Grid.Column="0" BorderBrush="Gray" BorderThickness="2">
             <Grid>
                 <Grid.Background>
@@ -55,6 +55,7 @@
                 </Grid.Background>
                 <TabControl SelectionChanged="TabControl_SelectionChanged">
                     
+                    <!-- #region Character -->
                     <TabItem Header="Character">
                         <Grid>
                             <Grid.Background>
@@ -76,7 +77,6 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <!-- Line1 -->
                              
                             <Label Grid.Row="0" Grid.Column="0" Content="Name:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="0" Grid.Column="1" Content="{Binding CurrentPlayer.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2"  Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
@@ -97,7 +97,9 @@
             
                         </Grid>
                     </TabItem>
+                    <!--#endregion-->
                     
+                    <!-- #region Stats -->
                     <TabItem Header="Stats">
                         <Grid>
                             <Grid.Background>
@@ -114,35 +116,46 @@
                             </Grid.RowDefinitions>
 
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="20*"/>
-                                <ColumnDefinition Width="9*"/>
-                                <ColumnDefinition Width="63*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="91*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>    
 
-                            <Label Grid.Row="0" Grid.Column="0" Content="Name:" Margin="0,0,0,26" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman"/>
-                            <Label Grid.Row="0" Content="{Binding CurrentPlayer.Name}" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2"  Foreground="Bisque" FontFamily="Informal Roman" />
-                            <Label Grid.Row="1" Grid.Column="0" Content="Class:" Margin="0,0,0,5"  Foreground="LightGray" FontFamily="Informal Roman" />
-                            <Label Grid.Row="1" Content="{Binding CurrentPlayer.CharacterClass}" Grid.ColumnSpan="4" Margin="69,0,0,5" Foreground="Bisque" FontFamily="Informal Roman"/>
-                            <Label Grid.Row="2" Grid.Column="0" Content="Health:" Margin="0,0,0,26" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman"/>
-                            <StackPanel Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2" >
-                                <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.HpMax}" Foreground="LightGray" FontFamily="Informal Roman"/>
-                                <Label Grid.Row="2" Grid.Column="1" Content=" / " Foreground="LightGray" FontFamily="Informal Roman"/>
-                                <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.HpCurrent}" Foreground="Bisque" FontFamily="Informal Roman"/>
+                            <Label Grid.Row="0" Grid.Column="0" Content="Body:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="0" Grid.Column="1" Content="{Binding CurrentPlayer.StatBody}" Grid.RowSpan="2"  Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="1" Grid.Column="0" Content="Spirit:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="1" Grid.Column="1" Content="{Binding CurrentPlayer.StatSpirit}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="2" Grid.Column="0" Content="Fellowship:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.StatFellowship}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+
+                            <Label Grid.Row="3" Grid.Column="0" Content="Ability Points:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <StackPanel Grid.Row="3" Orientation="Horizontal" Grid.Column="1">
+                                <Label Grid.Row="3" Grid.Column="1" Content="{Binding CurrentPlayer.ApMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Grid.Row="3" Grid.Column="1" Content=" / " Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Grid.Row="3" Grid.Column="2" Content="{Binding CurrentPlayer.ApCurrent}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             </StackPanel>
-                            <Label Grid.Row="3" Grid.Column="0" Content="Gold:" Margin="0,0,0,26" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman"/>
-                            <Label Grid.Row="3" Content="{Binding CurrentPlayer.Gold}" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman"/>
-                            <Label Grid.Row="4" Grid.Column="0" Content="Experience:" Margin="0,0,0,26" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman"/>
-                            <Label Grid.Row="4" Content="{Binding CurrentPlayer.ExperiencePoints}" Grid.ColumnSpan="4" Margin="69,0,0,26" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman"/>
-                            <Label Grid.Row="4" Grid.Column="0" Content="Level:" Margin="0,32,0,0" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman"/>
-                            <Label Grid.Row="4" Content="{Binding CurrentPlayer.Level}" Grid.ColumnSpan="4" Margin="69,32,0,0" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman"/>
+
+                            <Label Grid.Row="4" Grid.Column="0" Content="Mana Points:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <StackPanel Grid.Row="4" Orientation="Horizontal" Grid.ColumnSpan="4" Grid.RowSpan="2" >
+                                <Label Grid.Row="4" Grid.Column="1" Content="{Binding CurrentPlayer.MpMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Grid.Row="4" Grid.Column="1" Content=" / " Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Grid.Row="4" Grid.Column="1" Content="{Binding CurrentPlayer.MpCurrent}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            </StackPanel>
+
+                            <Label Grid.Row="5" Grid.Column="0" Content="Defence:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <StackPanel Grid.Row="5" Orientation="Horizontal" Grid.ColumnSpan="4" Grid.RowSpan="2" >
+                                <Label Grid.Row="5" Grid.Column="1" Content="{Binding CurrentPlayer.DefenceMinimum}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Grid.Row="5" Grid.Column="1" Content="-" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Grid.Row="5" Grid.Column="1" Content="{Binding CurrentPlayer.DefenceMaximum}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            </StackPanel>
 
                         </Grid>
                     </TabItem>
+                    <!--#endregion-->
                     
+                    <!--#region Equipment-->
                     <TabItem Header="Equipment">
                         <Grid>
                             <Grid.Background>
@@ -168,18 +181,18 @@
 
                             <Label Grid.Row="0" Grid.Column="0" Content="Head:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="0" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.Head.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2"  Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
-                            <Label Grid.Row="1" Grid.Column="0" Content="Chest:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                            <Label Grid.Row="1" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.Chest.Name}" Grid.ColumnSpan="4" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
-                            <Label Grid.Row="2" Grid.Column="0" Content="Neck" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                            <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.Neck.Name}" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="1" Grid.Column="0" Content="Neck" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="1" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.Neck.Name}" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="2" Grid.Column="0" Content="Chest:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.Chest.Name}" Grid.ColumnSpan="4" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             
                             <Label Grid.Row="3" Grid.Column="0" Content="Right Hand:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                            <Label Grid.Row="3" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.HandRight.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="3" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.MainHand.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="4" Grid.Column="0" Content="Left Hand:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                            <Label Grid.Row="4" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.HandLeft.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="4" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.OffHand.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
 
                             <Label Grid.Row="5" Grid.Column="0" Content="Right Finger:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                            <Label Grid.Row="5" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.FingerRight}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="5" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.FingerRight.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="6" Grid.Column="0" Content="Left Finger:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="6" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.FingerLeft.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
 
@@ -189,11 +202,11 @@
                         </Grid>
                     </TabItem>
                 </TabControl>
-
             </Grid>
         </Border>
-
-        <!--Gameplay-->
+        <!--#endregion-->
+        
+        <!-- #region Gameplay-->
         <Grid Grid.Row="1" Grid.RowSpan="2" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -285,7 +298,9 @@
             </Border>
         </Grid>
 
-        <!--Inventory and Quests-->
+        <!--#endregion-->
+        
+        <!-- #region Inventory and Quests-->
         <Grid Grid.Row="3" Grid.Column="0" RenderTransformOrigin="0.5,0.5">
 
             <Grid.Background>
@@ -312,8 +327,10 @@
                 </TabItem>
             </TabControl>
         </Grid>
-
-        <!--User Panel-->
+        
+        <!--#endregion-->
+        
+        <!-- #region User Panel-->
         <Border Grid.Row="3" Grid.Column="1" >
             <Grid>
                 <Grid.Background>
@@ -344,7 +361,7 @@
                     </Grid.ColumnDefinitions>
                     <ComboBox Grid.Row="0" Grid.Column="0" 
                               SelectedItem="" DisplayMemberPath="ItemName" SelectedValuePath="ItemTypeID"/>
-                    <Button Grid.Row="0" Grid.Column="2" Content="Attack" Click="Button_Click" Visibility="{Binding HasMonster, Converter={StaticResource BooleanToVisibility}}"/>
+                    <Button Grid.Row="0" Grid.Column="2" Content="Attack" Click="OnClick_Attack" Visibility="{Binding HasMonster, Converter={StaticResource BooleanToVisibility}}"/>
 
                 </Grid>
 
@@ -391,5 +408,8 @@
                 </Grid>
             </Grid>
         </Border>
+        
+        <!--#endregion-->
+        
     </Grid>
 </Window>

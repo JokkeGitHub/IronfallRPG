@@ -6,31 +6,65 @@ using System.Threading.Tasks;
 using Ironfall_Engine.Models;
 using Ironfall_Engine.Factories;
 using Ironfall_Engine.Events;
+using Ironfall_Engine.Actions;
 
 namespace Ironfall_Engine.ViewModels
 {
     public class GameSession : BaseNotificationClass
     {
+        public bool HasMonster => CurrentMonster != null;
         public event EventHandler<GameMessageEventArgs> OnMessageRaised;
 
+        #region Instantiations
         private Location _currentLocation;
         private Monster _currentMonster;
+        private LocalPlayer _currentPlayer;
 
-        public LocalPlayer CurrentPlayer { get; set; }
+        public LocalPlayer CurrentPlayer 
+        {
+            get { return _currentPlayer; }
+            set 
+            {
+                if (_currentPlayer != null)
+                {
+                    _currentPlayer.OnActionPerformed -= OnCurrentPlayerActionPerfomed;
+                    _currentPlayer.OnKilled -= OnCurrentPlayerKilled;
+                }
+
+                _currentPlayer = value;
+
+                if (_currentPlayer != null)
+                {
+                    _currentPlayer.OnActionPerformed += OnCurrentPlayerActionPerfomed;
+                    _currentPlayer.OnKilled += OnCurrentPlayerKilled;
+
+                }
+            }
+        }
         public Monster CurrentMonster 
         {
             get { return _currentMonster; } 
             set
             {
-                if (_currentMonster !=null)
-                {
-
-                }
-                _currentMonster = value;
                 if (_currentMonster != null)
                 {
-
+                    _currentMonster.OnActionPerformed -= OnCurrentMonsterPerformedAction;
+                    _currentMonster.OnKilled -= OnCurrentMonsterKilled;
                 }
+
+                _currentMonster = value;
+
+                if (_currentMonster != null)
+                {
+                    _currentMonster.OnActionPerformed += OnCurrentMonsterPerformedAction;
+                    _currentMonster.OnKilled += OnCurrentMonsterKilled;
+
+                    RaiseMessage("");
+                    RaiseMessage($"You are being attacked by a {CurrentMonster.Name}!");
+                    RaiseMessage("");
+                    RaiseMessage($"Combat has begun.");
+                }
+
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(HasMonster));
             } 
@@ -48,19 +82,15 @@ namespace Ironfall_Engine.ViewModels
                 OnPropertyChanged(nameof(HasLocationToSouth));
 
                 GetMonsterAtLocation();
-                if (HasMonster)
-                {
-                    Combat();
-                }
             } 
         }
         World CurrentWorld { get; set; }
+        #endregion
 
         public GameSession()
         {
-
             ItemSlot gear = new ItemSlotFactory().Create();
-
+            BasicAction basicAction = new BasicAction();
             CurrentPlayer = new LocalPlayer(
                 "Classless",                //Class
                 "UserID",                   //ID
@@ -75,7 +105,7 @@ namespace Ironfall_Engine.ViewModels
                 1,1,                        //Defence
                 1,                          //Level
                 0,                          //Gold
-                gear);                         
+                gear, basicAction);                         
 
             CurrentPlayer.DamageMinimum = CurrentPlayer.DamageMinimum + CurrentPlayer.StatBody;
             CurrentPlayer.DamageMaximum = CurrentPlayer.DamageMaximum + CurrentPlayer.StatBody;
@@ -84,8 +114,6 @@ namespace Ironfall_Engine.ViewModels
             CurrentLocation = CurrentWorld.LocationAt(0, 0);
             
         }
-
-        public bool HasMonster => CurrentMonster != null;
 
         #region Movement
         //A boolean used to show the buttons in the xaml file. If it's true, the button can show, if null the it statement is false and the button can't show.
@@ -144,25 +172,53 @@ namespace Ironfall_Engine.ViewModels
         }
         #endregion
 
+        #region Functions
         private void GetMonsterAtLocation()
         {
             CurrentMonster = CurrentLocation.GetMonster();
         }
+        public void AttackCurrentMonster()
+        {
+            CurrentPlayer.UseAttackAction(CurrentMonster);
 
+            if (CurrentMonster.IsDead)
+            {
+                // Add another monster. Maybe it should be changed to when you enter the zone. 
+                //GetMonsterAtLocation();
+                CurrentMonster = null;
+            }
+            else
+            {
+                //Monster Attack
+                CurrentMonster.UseAttackAction(CurrentPlayer);
+            }
+        }
+
+        //Event Functions
+        private void OnCurrentPlayerActionPerfomed(object sender, string result)
+        {
+            RaiseMessage(result);
+        }
+        private void OnCurrentMonsterPerformedAction(object sender, string result)
+        {
+            RaiseMessage(result);
+        }
+        private void OnCurrentMonsterKilled(object sender, System.EventArgs eventArgs)
+        {
+            RaiseMessage("");
+            RaiseMessage($"You killed the {CurrentMonster.Name}!");
+        }
+        private void OnCurrentPlayerKilled(object sender, System.EventArgs eventArgs)
+        {
+            RaiseMessage("");
+            RaiseMessage($"The {CurrentMonster} killed you...");
+            CurrentLocation = CurrentWorld.LocationAt(99, 99);
+            CurrentPlayer.Heal(CurrentPlayer.HpMax);
+        }
         private void RaiseMessage(string message)
         {
             OnMessageRaised?.Invoke(this, new GameMessageEventArgs(message));
         }
-
-        public void Combat()
-        {
-            while (CurrentMonster.HpCurrent > 0)
-            {
-                //
-                RaiseMessage("Combat happened");
-                break;
-
-            }
-        }
+        #endregion
     }
 }

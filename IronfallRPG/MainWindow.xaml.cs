@@ -54,15 +54,12 @@ namespace IronfallRPG
             GameMessages.Document.Blocks.Add(new Paragraph(new Run(e.Message)));
             GameMessages.ScrollToEnd();
         }
-
-
-
-        // Null Buttons
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void OnClick_Attack(object sender, RoutedEventArgs e)
         {
-
+            _gameSession.AttackCurrentMonster();
         }
 
+        // Null Buttons
         private void GameMessages_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -72,5 +69,6 @@ namespace IronfallRPG
         {
 
         }
+        private void Button_Click(object sender, RoutedEventArgs e) { }
     }
 }
