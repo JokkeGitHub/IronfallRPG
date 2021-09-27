@@ -188,7 +188,7 @@ namespace Ironfall_Engine.Models
             }
         }
 
-        public ObservableCollection<GameItem> Inventory { get; set; }
+        public ObservableCollection<GameItem> Inventory { get; }
         public List<GameItem> Weapons => Inventory.Where(i => i.Category == GameItem.ItemCategory.Weapon).ToList();
 
 
@@ -201,7 +201,7 @@ namespace Ironfall_Engine.Models
         public event EventHandler<string> OnActionPerformed;
         #endregion
 
-        protected LivingEntity(string name, string image, int hpMax, int hpCurrent, int damageMinimum, int damageMaximum, int mpMax, int mpCurrent, int apMax, int apCurrent, int defenceMinimum, int defenceMaximum, int level, int gold, ItemSlot gear, BasicAction basicAction, ObservableCollection<GameItem> inventory)
+        protected LivingEntity(string name, string image, int hpMax, int hpCurrent, int damageMinimum, int damageMaximum, int mpMax, int mpCurrent, int apMax, int apCurrent, int defenceMinimum, int defenceMaximum, int level, int gold, ItemSlot gear, BasicAction basicAction)
         {
             Name = name;
             Image = image;
@@ -219,7 +219,6 @@ namespace Ironfall_Engine.Models
             Gold = gold;
             Gear = gear;
             BasicAction = basicAction;
-            Inventory = inventory;
         }
 
         //Basic functions
