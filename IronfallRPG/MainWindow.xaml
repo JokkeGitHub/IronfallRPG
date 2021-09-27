@@ -206,7 +206,7 @@
         </Border>
         <!--#endregion-->
         
-        <!-- #region Gameplay-->
+        <!-- #region Gameplay, Location and NPC -->
         <Grid Grid.Row="1" Grid.RowSpan="2" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -250,7 +250,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="{Binding CurrentLocation.Name}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                    <Image Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="225" Width="225" 
+                    <Image Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="Auto" Width="Auto" 
                              Source="{Binding CurrentLocation.Image}"/>
                     <TextBlock Grid.Row="2" HorizontalAlignment="Center" Text="{Binding CurrentLocation.Description}" TextWrapping="Wrap" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                 </Grid>
@@ -276,7 +276,7 @@
                         <TextBlock Foreground="LightGray" FontFamily="Informal Roman" FontSize="18">]</TextBlock>
                     </StackPanel>
 
-                    <Image Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="225" Width="225" 
+                    <Image Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="Auto" Width="Auto" 
                                      Source="{Binding CurrentMonster.Image}" RenderTransformOrigin="0.5,0.5">
                         <Image.RenderTransform>
                             <TransformGroup>

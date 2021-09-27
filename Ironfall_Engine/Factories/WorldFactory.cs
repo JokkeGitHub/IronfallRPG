@@ -12,11 +12,11 @@ namespace Ironfall_Engine.Factories
 
             newWorld.AddLocation(0, 1, "Town square",
                 "You see a fountain here and two shops one to the north and one to the east. You live to the south",
-                "TownSquare.jpg");
+                "townsquare.jpg");
 
             newWorld.AddLocation(-1, 1, "Trading Shop",
                 "The shop of a trader.",
-                "Shop.jpg");
+                "shop.jpg");
 
             newWorld.AddLocation(0, 2, "Back Alley", "It's not a nice place to linger.", "backalley.png");
             newWorld.LocationAt(0, 2).AddMonster(1, 100);
