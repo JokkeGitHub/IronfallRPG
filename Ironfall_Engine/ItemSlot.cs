@@ -6,13 +6,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ironfall_Engine.Events;
 
 namespace Ironfall_Engine
 {
-    public class ItemSlot
+    public class ItemSlot : BaseNotificationClass
     {
         //Changed so that there is no right og left hand, but main and offhand. 
-        public Weapon MainHand { get; set; }
+        private Weapon _mainHand;
+        
+        public Weapon MainHand
+        {
+            get { return _mainHand; }
+            set
+            {
+                _mainHand = value;
+                OnPropertyChanged();
+            }
+        }
+
         public Weapon OffHand { get; set; }
         public Armor Chest { get; set; }
         public Artifact Head { get; set; }
