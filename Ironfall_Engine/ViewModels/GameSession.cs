@@ -201,9 +201,12 @@ namespace Ironfall_Engine.ViewModels
         #endregion
         public void UseItem(object item)
         {
+            // When item is being equipped remove from inventory list
+
             if (item is Weapon)
             {
                string weaponName =  CurrentPlayer.Gear.EquipWeapon(CurrentPlayer, (Weapon)item);
+               //CurrentPlayer.Inventory.Remove((Weapon)item);
                RaiseMessage($"You have equipped {weaponName}");
             }
             else if (item is Armor)
@@ -215,6 +218,28 @@ namespace Ironfall_Engine.ViewModels
             {
                 string artifactName = CurrentPlayer.Gear.EquipArtifact(CurrentPlayer, (Artifact)item);
                 RaiseMessage($"You have equipped {artifactName}");
+            }
+        }
+
+        public void UnequipItem(object item)
+        {
+            // When item is being unequipped then add to inventory list again
+
+            if (item is Weapon)
+            {
+                string weaponName = CurrentPlayer.Gear.UnequipWeapon(CurrentPlayer, (Weapon)item);
+                //CurrentPlayer.Inventory.Add((Weapon)item);
+                RaiseMessage($"You have unequipped {weaponName}");
+            }
+            else if (item is Armor)
+            {
+                string armorName = CurrentPlayer.Gear.EquipArmor(CurrentPlayer, (Armor)item);
+                RaiseMessage($"You have unequipped {armorName}");
+            }
+            else if (item is Artifact)
+            {
+                string artifactName = CurrentPlayer.Gear.EquipArtifact(CurrentPlayer, (Artifact)item);
+                RaiseMessage($"You have unequipped {artifactName}");
             }
         }
 

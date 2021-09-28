@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Ironfall_Engine.Events;
 using Ironfall_Engine.Models;
+using Ironfall_Engine.Factories.Item;
 
 namespace Ironfall_Engine
 {
@@ -109,6 +110,8 @@ namespace Ironfall_Engine
             Feet = feet;
         }
 
+        // Make a unequip method. Call this method every time equipping and slot != empty 
+
         public string EquipWeapon(LocalPlayer currentPlayer, Weapon weapon)
         {
             switch (weapon.WeaponType)
@@ -136,11 +139,13 @@ namespace Ironfall_Engine
             }
             return weapon.Name;
         }
+
         public string EquipArmor(LocalPlayer currentPlayer, Armor armor)
         {
             currentPlayer.Gear.Chest = armor;
             return armor.Name;
         }
+
         public string EquipArtifact(LocalPlayer currentPlayer, Artifact artifact)
         {
             switch (artifact.ArtifactType)
@@ -168,6 +173,36 @@ namespace Ironfall_Engine
                     break;
             }
             return artifact.Name;
+        }
+
+        public string UnequipWeapon(LocalPlayer currentPlayer, Weapon weapon)
+        {
+            WeaponFactory weaponFactory = new WeaponFactory();
+
+            switch (weapon.WeaponType)
+            {
+                case ItemEnum.Weapon.OneHanded:
+                    currentPlayer.Gear.MainHand = weaponFactory.GetEmptyMainHand();
+                    break;
+
+                case ItemEnum.Weapon.Shield:
+                    currentPlayer.Gear.OffHand = weapon;
+                    break;
+
+                case ItemEnum.Weapon.Ranged:
+                    currentPlayer.Gear.MainHand = weapon;
+                    currentPlayer.Gear.OffHand = weapon;
+                    break;
+
+                case ItemEnum.Weapon.TwoHanded:
+                    currentPlayer.Gear.MainHand = weapon;
+                    currentPlayer.Gear.OffHand = weapon;
+                    break;
+
+                default:
+                    break;
+            }
+            return weapon.Name;
         }
     }
 }

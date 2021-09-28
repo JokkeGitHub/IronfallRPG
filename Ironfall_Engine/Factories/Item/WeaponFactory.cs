@@ -1,4 +1,5 @@
-﻿using Ironfall_Engine.Models.Item;
+﻿using Ironfall_Engine.Enums;
+using Ironfall_Engine.Models.Item;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,12 @@ namespace Ironfall_Engine.Factories.Item
             id += 1;
 
             return new Weapon(id, name, description, value, isUnique, category, weaponType, minDamage, maxDamage);
+        }
+
+        public Weapon GetEmptyMainHand()
+        {
+            Weapon emptyMainHand = new Weapon(-1, "Empty", "Nothin is eqiupped in this slot.", 0, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.OneHanded, 0, 0);            
+            return emptyMainHand;
         }
     }
 }
