@@ -24,10 +24,10 @@ namespace Ironfall_Engine.ViewModels
         private Monster _currentMonster;
         private LocalPlayer _currentPlayer;
 
-        public LocalPlayer CurrentPlayer 
+        public LocalPlayer CurrentPlayer
         {
             get { return _currentPlayer; }
-            set 
+            set
             {
                 if (_currentPlayer != null)
                 {
@@ -45,9 +45,9 @@ namespace Ironfall_Engine.ViewModels
                 }
             }
         }
-        public Monster CurrentMonster 
+        public Monster CurrentMonster
         {
-            get { return _currentMonster; } 
+            get { return _currentMonster; }
             set
             {
                 if (_currentMonster != null)
@@ -71,12 +71,12 @@ namespace Ironfall_Engine.ViewModels
 
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(HasMonster));
-            } 
+            }
         }
-        public Location CurrentLocation 
+        public Location CurrentLocation
         {
             get { return _currentLocation; }
-            set 
+            set
             {
                 _currentLocation = value;
                 OnPropertyChanged();
@@ -86,7 +86,7 @@ namespace Ironfall_Engine.ViewModels
                 OnPropertyChanged(nameof(HasLocationToSouth));
 
                 GetMonsterAtLocation();
-            } 
+            }
         }
         World CurrentWorld { get; set; }
         #endregion
@@ -105,26 +105,29 @@ namespace Ironfall_Engine.ViewModels
                 "soldier.png",              //Image
                 10, 10,                     //Health
                 1, 2,                       //Damage
-                5,5,                        //MagicPoints
-                5,5,                        //AbilityPoints
-                1,1,                        //Defence
+                5, 5,                        //MagicPoints
+                5, 5,                        //AbilityPoints
+                1, 1,                        //Defence
                 1,                          //Level
                 0,                          //Gold
-                gear, basicAction, inventory);                         
+                gear, basicAction, inventory);
 
             //This should not be here but maybe in localPlayer
             CurrentPlayer.DamageMinimum += CurrentPlayer.StatBody;
             CurrentPlayer.DamageMaximum += CurrentPlayer.StatBody;
 
-            WeaponFactory testFactory = new WeaponFactory();
-            Weapon test = testFactory.Create("test Weapon", "noisy kids must leave", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.OneHanded, 1, 2);
+            WeaponFactory weaponFactory = new WeaponFactory();
+            ArmorFactory armorFactory = new ArmorFactory();
 
+            Weapon testWeapon = weaponFactory.Create("test Weapon", "noisy kids must leave", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.OneHanded, 55, 77);
+            Armor testChest = armorFactory.Create("test Chest", "i wanna go home", 95, false, GameItem.ItemCategory.Armor, ItemEnum.Armor.Light, 3, 4);
 
-            CurrentPlayer.Inventory.Add(test);
+            CurrentPlayer.Inventory.Add(testWeapon);
+            CurrentPlayer.Inventory.Add(testChest);
 
             CurrentWorld = WorldFactory.CreateWorld();
             CurrentLocation = CurrentWorld.LocationAt(0, 0);
-            
+
         }
 
         #region Movement
@@ -133,7 +136,7 @@ namespace Ironfall_Engine.ViewModels
         public bool HasLocationToWest => CurrentWorld.LocationAt(CurrentLocation.XCoordinate - 1, CurrentLocation.YCoordinate) != null;
         public bool HasLocationToEast => CurrentWorld.LocationAt(CurrentLocation.XCoordinate + 1, CurrentLocation.YCoordinate) != null;
         public bool HasLocationToSouth => CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate - 1) != null;
-        
+
         public void MoveNorth()
         {
             CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate + 1);
@@ -146,7 +149,7 @@ namespace Ironfall_Engine.ViewModels
         }
         public void MoveEast()
         {
-            CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate +1 , CurrentLocation.YCoordinate);
+            CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate + 1, CurrentLocation.YCoordinate);
             IsTravelAllowed("East");
         }
         public void MoveWest()
@@ -183,6 +186,14 @@ namespace Ironfall_Engine.ViewModels
             }
         }
         #endregion
+        public void UseItem(object parameter)
+        {
+            if (parameter is Weapon)
+            {
+                CurrentPlayer.Gear.MainHand = (Weapon)parameter;
+                RaiseMessage($"You have equipped {CurrentPlayer.Gear.MainHand.Name}");
+            }
+        }
 
         #region Functions
         private void GetMonsterAtLocation()

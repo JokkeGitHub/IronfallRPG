@@ -70,5 +70,11 @@ namespace IronfallRPG
 
         }
         private void Button_Click(object sender, RoutedEventArgs e) { }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            object obj = (object)((Button)e.Source).DataContext;
+            _gameSession.UseItem(obj);
+        }
     }
 }
