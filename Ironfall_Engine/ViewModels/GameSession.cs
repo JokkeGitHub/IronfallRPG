@@ -118,12 +118,25 @@ namespace Ironfall_Engine.ViewModels
 
             WeaponFactory weaponFactory = new WeaponFactory();
             ArmorFactory armorFactory = new ArmorFactory();
+            ArtifactFactory artifactFactory = new ArtifactFactory();
 
-            Weapon testWeapon = weaponFactory.Create("test Weapon", "noisy kids must leave", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.OneHanded, 55, 77);
-            Armor testChest = armorFactory.Create("test Chest", "i wanna go home", 95, false, GameItem.ItemCategory.Armor, ItemEnum.Armor.Light, 3, 4);
+            Weapon testWeapon = weaponFactory.Create("Dev Weapon", "noisy kids must leave", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.OneHanded, 3, 5);
+            Weapon testWeapon2 = weaponFactory.Create("Dev 2 Hander", "noisy kids must leave", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.TwoHanded, 6, 9);
+
+            Armor testChest = armorFactory.Create("Dev Chest", "i wanna go home", 95, false, GameItem.ItemCategory.Armor, ItemEnum.Armor.Light, 3, 4);
+
+            Artifact testHead = artifactFactory.Create("Dev Head", "From Malai, from Thailand", 5, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Head);
+            Artifact testNeck = artifactFactory.Create("Dev Neck", "hmmmmm", 55, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Neck);
+            Artifact testFinger = artifactFactory.Create("Dev Finger", "hygge fingers", 35, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
+            Artifact testFeet = artifactFactory.Create("Dev Feet", "Shoes", 555, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Feet);
 
             CurrentPlayer.Inventory.Add(testWeapon);
+            CurrentPlayer.Inventory.Add(testWeapon2);
             CurrentPlayer.Inventory.Add(testChest);
+            CurrentPlayer.Inventory.Add(testHead);
+            CurrentPlayer.Inventory.Add(testNeck);
+            CurrentPlayer.Inventory.Add(testFinger);
+            CurrentPlayer.Inventory.Add(testFeet);
 
             CurrentWorld = WorldFactory.CreateWorld();
             CurrentLocation = CurrentWorld.LocationAt(0, 0);
