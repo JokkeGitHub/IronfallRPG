@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ironfall_Engine.Events;
+using Ironfall_Engine.Models;
 
 namespace Ironfall_Engine
 {
@@ -107,7 +108,21 @@ namespace Ironfall_Engine
             FingerLeft = fingerLeft;
             Feet = feet;
         }
-        
 
+        public string EquipWeapon(LocalPlayer currentPlayer, Weapon weapon)
+        {
+            currentPlayer.Gear.MainHand = weapon;
+            return weapon.Name;
+        }
+        public string EquipArmor(LocalPlayer currentPlayer, Armor armor)
+        {
+            currentPlayer.Gear.Chest = armor;
+            return armor.Name;
+        }
+        public string EquipArtifact(LocalPlayer currentPlayer, Artifact artifact)
+        {
+            currentPlayer.Gear.Head = artifact;
+            return artifact.Name;
+        }
     }
 }

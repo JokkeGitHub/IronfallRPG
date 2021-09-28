@@ -186,23 +186,22 @@ namespace Ironfall_Engine.ViewModels
             }
         }
         #endregion
-        public void UseItem(object parameter)
+        public void UseItem(object item)
         {
-            // Send these further into the code to deterine which item slots to put items
-
-            if (parameter is Weapon)
+            if (item is Weapon)
             {
-                CurrentPlayer.Gear.MainHand = (Weapon)parameter;
-                RaiseMessage($"You have equipped {CurrentPlayer.Gear.MainHand.Name}");
+               string weaponName =  CurrentPlayer.Gear.EquipWeapon(CurrentPlayer, (Weapon)item);
+               RaiseMessage($"You have equipped {weaponName}");
             }
-            else if (parameter is Armor)
+            else if (item is Armor)
             {
-                CurrentPlayer.Gear.Chest = (Armor)parameter;
-                RaiseMessage($"You have equipped {CurrentPlayer.Gear.Chest.Name}");
+                string armorName = CurrentPlayer.Gear.EquipArmor(CurrentPlayer, (Armor)item);
+                RaiseMessage($"You have equipped {armorName}");
             }
-            else if (parameter is Artifact)
+            else if (item is Artifact)
             {
-                // something
+                string artifactName = CurrentPlayer.Gear.EquipArtifact(CurrentPlayer, (Artifact)item);
+                RaiseMessage($"You have equipped {artifactName}");
             }
         }
 
