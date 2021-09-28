@@ -111,7 +111,29 @@ namespace Ironfall_Engine
 
         public string EquipWeapon(LocalPlayer currentPlayer, Weapon weapon)
         {
-            currentPlayer.Gear.MainHand = weapon;
+            switch (weapon.WeaponType)
+            {
+                case ItemEnum.Weapon.OneHanded:
+                    currentPlayer.Gear.MainHand = weapon;
+                    break;
+
+                case ItemEnum.Weapon.Shield:
+                    currentPlayer.Gear.OffHand = weapon;
+                    break;
+
+                case ItemEnum.Weapon.Ranged:
+                    currentPlayer.Gear.MainHand = weapon;
+                    currentPlayer.Gear.OffHand = weapon;
+                    break;
+
+                case ItemEnum.Weapon.TwoHanded:
+                    currentPlayer.Gear.MainHand = weapon;
+                    currentPlayer.Gear.OffHand = weapon;
+                    break;
+
+                default:
+                    break;
+            }
             return weapon.Name;
         }
         public string EquipArmor(LocalPlayer currentPlayer, Armor armor)
@@ -121,7 +143,30 @@ namespace Ironfall_Engine
         }
         public string EquipArtifact(LocalPlayer currentPlayer, Artifact artifact)
         {
-            currentPlayer.Gear.Head = artifact;
+            switch (artifact.ArtifactType)
+            {
+                case ItemEnum.Artifact.Head:
+                    currentPlayer.Gear.Head = artifact;
+                    break;
+
+                case ItemEnum.Artifact.Neck:
+                    currentPlayer.Gear.Neck = artifact;
+                    break;
+
+                case ItemEnum.Artifact.Finger:
+                    currentPlayer.Gear.FingerRight = artifact;
+
+                    // Do something
+
+                    break;
+
+                case ItemEnum.Artifact.Feet:
+                    currentPlayer.Gear.Feet = artifact;
+                    break;
+
+                default:
+                    break;
+            }
             return artifact.Name;
         }
     }
