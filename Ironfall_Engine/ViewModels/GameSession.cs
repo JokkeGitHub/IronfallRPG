@@ -188,10 +188,21 @@ namespace Ironfall_Engine.ViewModels
         #endregion
         public void UseItem(object parameter)
         {
+            // Send these further into the code to deterine which item slots to put items
+
             if (parameter is Weapon)
             {
                 CurrentPlayer.Gear.MainHand = (Weapon)parameter;
                 RaiseMessage($"You have equipped {CurrentPlayer.Gear.MainHand.Name}");
+            }
+            else if (parameter is Armor)
+            {
+                CurrentPlayer.Gear.Chest = (Armor)parameter;
+                RaiseMessage($"You have equipped {CurrentPlayer.Gear.Chest.Name}");
+            }
+            else if (parameter is Artifact)
+            {
+                // something
             }
         }
 
