@@ -107,19 +107,7 @@ namespace Ironfall_Engine
             FingerLeft = fingerLeft;
             Feet = feet;
         }
+        
 
-        /*
-        public void EquipHandMain(Weapon weapon)
-        {
-            if (weapon.WeaponType is ItemEnum.Weapon.TwoHanded)
-            {
-                MainHand = weapon;
-                OffHand = weapon;
-            }
-            else
-            {
-                MainHand = weapon;
-            }
-        }*/
     }
 }

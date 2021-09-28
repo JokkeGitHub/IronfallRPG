@@ -39,11 +39,5 @@ namespace Ironfall_Engine.Models.Item
         {
            return affectedStat += effect;
         }
-
-        /*public void Equip(LocalPlayer currentPlayer, Weapon weapon)
-        {
-            currentPlayer.Gear.EquipHandMain(weapon);
-            // add something to return
-        }*/
     }
 }
