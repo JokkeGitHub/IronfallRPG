@@ -16,6 +16,9 @@ namespace Ironfall_Engine.Models
         private string _name { get; set; }
         private int _hpMax { get; set; }
         private int _hpCurrent { get; set; }
+        private int _statBody { get; set; }
+        private int _statSpirit { get; set; }
+        private int _statFellowship { get; set; }
         private int _damageMinimum { get; set; }
         private int _damageMaximum { get; set; }
         private int _mpMax { get; set; }
@@ -57,6 +60,33 @@ namespace Ironfall_Engine.Models
             private set
             {
                 _hpCurrent = value;
+                OnPropertyChanged();
+            }
+        }
+        public int StatBody
+        {
+            get { return _statBody; }
+            set
+            {
+                _statBody = value;
+                OnPropertyChanged();
+            }
+        }
+        public int StatSpirit
+        {
+            get { return _statSpirit; }
+            set
+            {
+                _statBody = value;
+                OnPropertyChanged();
+            }
+        }
+        public int StatFellowship
+        {
+            get { return _statFellowship; }
+            set
+            {
+                _statBody = value;
                 OnPropertyChanged();
             }
         }
