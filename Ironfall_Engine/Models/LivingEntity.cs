@@ -190,7 +190,16 @@ namespace Ironfall_Engine.Models
                 OnPropertyChanged();
             }
         }
-        public ObservableCollection<GameItem> Inventory { get; }
+        public ObservableCollection<GameItem> Inventory
+        {
+            get { return _inventory; }
+            private set
+            {
+                _inventory = value;
+                OnPropertyChanged();
+            }
+        }
+
         public ItemSlot Gear
         {
             get { return _gear; }
@@ -200,10 +209,10 @@ namespace Ironfall_Engine.Models
                 OnPropertyChanged();
             }
         }
-        public BasicAction BasicAction 
+        public BasicAction BasicAction
         {
-            get { return _basicAction; } 
-            set 
+            get { return _basicAction; }
+            set
             {
                 if (_basicAction != null)
                 {
@@ -212,7 +221,7 @@ namespace Ironfall_Engine.Models
 
                 _basicAction = value;
 
-                if(_basicAction != null)
+                if (_basicAction != null)
                 {
                     _basicAction.OnActionPerformed += RaiseOnActionPerformedEvent;
                 }
@@ -220,16 +229,7 @@ namespace Ironfall_Engine.Models
             }
         }
 
-        ppublic ObservableCollection<GameItem> Inventory
-        {
-            get { return _inventory; }
-            private set
-            {
-                _inventory = value;
-                OnPropertyChanged();
-    }
-}
-public List<GameItem> Weapons => Inventory.Where(i => i.Category == GameItem.ItemCategory.Weapon).ToList();
+        public List<GameItem> Weapons => Inventory.Where(i => i.Category == GameItem.ItemCategory.Weapon).ToList();
 
 
         public bool IsDead => HpCurrent <= 0;
@@ -287,7 +287,7 @@ public List<GameItem> Weapons => Inventory.Where(i => i.Category == GameItem.Ite
         {
             BasicAction.AttackAction(this, target);
         }
-        
+
         //Events
         private void RaiseOnKilledEvent()
         {
