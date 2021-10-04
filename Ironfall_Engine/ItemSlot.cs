@@ -15,14 +15,44 @@ namespace Ironfall_Engine
     public class ItemSlot : BaseNotificationClass
     {
         //Changed so that there is no right og left hand, but main and offhand. 
-        private Weapon _mainHand;
-        private Weapon _offHand;
-        private Armor _chest;
         private Artifact _head;
         private Artifact _neck;
+        private Armor _chest;
+        private Weapon _mainHand;
+        private Weapon _offHand;
         private Artifact _fingerRight;
         private Artifact _fingerLeft;
         private Artifact _feet;
+
+        public Artifact Head
+        {
+            get { return _head; }
+            set
+            {
+                _head = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Artifact Neck
+        {
+            get { return _neck; }
+            set
+            {
+                _neck = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Armor Chest
+        {
+            get { return _chest; }
+            set
+            {
+                _chest = value;
+                OnPropertyChanged();
+            }
+        }
 
         public Weapon MainHand
         {
@@ -43,33 +73,7 @@ namespace Ironfall_Engine
                 OnPropertyChanged();
             }
         }
-        public Armor Chest
-        {
-            get { return _chest; }
-            set
-            {
-                _chest = value;
-                OnPropertyChanged();
-            }
-        }
-        public Artifact Head
-        {
-            get { return _head; }
-            set
-            {
-                _head = value;
-                OnPropertyChanged();
-            }
-        }
-        public Artifact Neck
-        {
-            get { return _neck; }
-            set
-            {
-                _neck = value;
-                OnPropertyChanged();
-            }
-        }
+
         public Artifact FingerRight
         {
             get { return _fingerRight; }
@@ -79,6 +83,7 @@ namespace Ironfall_Engine
                 OnPropertyChanged();
             }
         }
+
         public Artifact FingerLeft
         {
             get { return _fingerLeft; }
@@ -88,6 +93,7 @@ namespace Ironfall_Engine
                 OnPropertyChanged();
             }
         }
+
         public Artifact Feet
         {
             get { return _feet; }
@@ -98,13 +104,13 @@ namespace Ironfall_Engine
             }
         }
 
-        public ItemSlot(Weapon mainHand, Weapon offHand, Armor chest, Artifact head, Artifact neck, Artifact fingerRight, Artifact fingerLeft, Artifact feet)
+        public ItemSlot(Artifact head, Artifact neck, Armor chest, Weapon mainHand, Weapon offHand, Artifact fingerRight, Artifact fingerLeft, Artifact feet)
         {
-            MainHand = mainHand;
-            OffHand = offHand;
-            Chest = chest;
             Head = head;
             Neck = neck;
+            Chest = chest;
+            MainHand = mainHand;
+            OffHand = offHand;
             FingerRight = fingerRight;
             FingerLeft = fingerLeft;
             Feet = feet;
