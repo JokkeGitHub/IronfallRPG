@@ -17,8 +17,8 @@ namespace Ironfall_Engine.Models
         public string Description { get; set; }
         public int RewardExp { get; set; }
 
-        public Monster(string name, string image, int hpCurrent, int hpMax, int damageMin, int damageMax, int mpCurrent, int mpMax, int apCurrent, int apMax, int defenceMinimum, int defenceMaximum, int level, int gold, string type, string subType, string description, int rewardExp, ObservableCollection<GameItem> inventory, ItemSlot gear, BasicAction basicAction) 
-            : base(name, image, hpMax, hpCurrent, damageMin, damageMax, mpMax, mpCurrent, apMax, apCurrent, defenceMinimum, defenceMaximum, level, gold, inventory, gear, basicAction)
+        public Monster(string name, string image, int hpMax, int hpCurrent, int statBody, int statSpirit, int statFellowship, int damageMin, int damageMax, int mpMax, int mpCurrent, int apMax, int apCurrent, int defenceMinimum, int defenceMaximum, int level, int gold, string type, string subType, string description, int rewardExp, ObservableCollection<GameItem> inventory, ItemSlot gear, BasicAction basicAction) 
+            : base(name, image, hpMax, hpCurrent, statBody, statSpirit, statFellowship, damageMin, damageMax, mpMax, mpCurrent, apMax, apCurrent, defenceMinimum, defenceMaximum, level, gold, inventory, gear, basicAction)
         {
             Image = $"/Ironfall_Engine;component/Resource/Images/Monsters/{image}";
             Type = type;

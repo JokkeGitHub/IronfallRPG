@@ -13,7 +13,7 @@ namespace Ironfall_Engine.Factories
             ItemList itemsInGame = new ItemList();
             switch (monsterID)
             {
-                // Name, Image, HpCurrent, HpMax, DamageMin, DamageMax, MpCurrent, MpMax, ApCurrent, ApMax, DefenceMin, DefenceMax, Level, Gold, Type, Suptype, Description, RewardExp.
+                // Name, Image, HpCurrent, HpMax, StatBody, StatSpirit, StatFellowship, DamageMin, DamageMax, MpCurrent, MpMax, ApCurrent, ApMax, DefenceMin, DefenceMax, Level, Gold, Type, Suptype, Description, RewardExp.
                 case 1:
                     ItemSlot gear = new ItemSlotFactory().Create();
                     BasicAction basicAction = new BasicAction();
@@ -21,7 +21,8 @@ namespace Ironfall_Engine.Factories
                     ObservableCollection<GameItem> inventory = new ObservableCollection<GameItem>();
                     inventory.Add(itemsInGame.testWeapon);
 
-                    Monster thief = new Monster("Thief", "thief.jpg", 5, 5, 1, 2, 0, 0, 2, 2, 1, 2, 1, 2, "Human", "Rogue", "This back alley thief wants your money and your life", 5, inventory, gear, basicAction);
+                    Monster thief = new Monster("Thief", "thief.jpg", 4, 4, 1,1,1, 1, 2, 0, 0, 2, 2, 1, 2, 1, 2, "Human", "Rogue", "This back alley thief wants your money and your life", 5, inventory, gear, basicAction);
+                    thief.Heal(10);
                     return thief;
 
                 default:

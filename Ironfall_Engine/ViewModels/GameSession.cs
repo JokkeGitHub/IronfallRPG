@@ -100,10 +100,11 @@ namespace Ironfall_Engine.ViewModels
                 "Classless",                //Class
                 "UserID",                   //ID
                 0,                          //ExperienecPoints
+                3,                          //UnAllocatedStatPoints
                 1, 1, 1,                    //Stats
                 "Happy New Adventurer",     //Name
                 "soldier.png",              //Image
-                10, 10,                     //Health
+                10, 5,                     //Health
                 1, 2,                       //Damage
                 5, 5,                       //MagicPoints
                 5, 5,                       //AbilityPoints
@@ -115,6 +116,8 @@ namespace Ironfall_Engine.ViewModels
             //This should not be here but maybe in localPlayer
             CurrentPlayer.DamageMinimum += CurrentPlayer.StatBody;
             CurrentPlayer.DamageMaximum += CurrentPlayer.StatBody;
+
+            CurrentPlayer.Heal(CurrentPlayer.HpMax);
 
             WeaponFactory weaponFactory = new WeaponFactory();
             ArmorFactory armorFactory = new ArmorFactory();
@@ -277,6 +280,7 @@ namespace Ironfall_Engine.ViewModels
             }
         }
 
+        
         //Event Functions
         private void OnCurrentPlayerActionPerfomed(object sender, string result)
         {
@@ -294,8 +298,8 @@ namespace Ironfall_Engine.ViewModels
         private void OnCurrentPlayerKilled(object sender, System.EventArgs eventArgs)
         {
             RaiseMessage("");
-            RaiseMessage($"The {CurrentMonster} killed you...");
-            CurrentLocation = CurrentWorld.LocationAt(99, 99);
+            RaiseMessage($"The {CurrentMonster.Name} killed you...");
+            CurrentLocation = CurrentWorld.LocationAt(0, 0);
             CurrentPlayer.Heal(CurrentPlayer.HpMax);
         }
         private void RaiseMessage(string message)

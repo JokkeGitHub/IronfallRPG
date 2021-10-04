@@ -94,7 +94,9 @@
                             <Label Grid.Row="4" Grid.Column="1" Content="{Binding CurrentPlayer.Level}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="5" Grid.Column="0" Content="Experience:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="5" Grid.Column="1" Content="{Binding CurrentPlayer.ExperiencePoints}" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
-            
+                            <Label Grid.Row="6" Grid.Column="0" Content="Free points:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="6" Grid.Column="1" Content="{Binding CurrentPlayer.UnAllocatedStatPoints}" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+
                         </Grid>
                     </TabItem>
                     <!--#endregion-->
@@ -125,10 +127,15 @@
 
                             <Label Grid.Row="0" Grid.Column="0" Content="Body:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="0" Grid.Column="1" Content="{Binding CurrentPlayer.StatBody}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Button Click="OnClick_AddStatBody" Content="+" Grid.Column="5" Margin="5,5,5,5" FontSize="10" FontFamily="Informal Roman" />
+                            
                             <Label Grid.Row="1" Grid.Column="0" Content="Spirit:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="1" Grid.Column="1" Content="{Binding CurrentPlayer.StatSpirit}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Button Click="OnClick_AddStatSpirit" Content="+" Grid.Row="1" Grid.Column="5" Margin="5,5,5,5" FontSize="10" FontFamily="Informal Roman" />
+
                             <Label Grid.Row="2" Grid.Column="0" Content="Fellowship:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.StatFellowship}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Button Click="OnClick_AddStatFellowship" Content="+" Grid.Row="2" Grid.Column="5" Margin="5,5,5,5" FontSize="10" FontFamily="Informal Roman" />
 
                             <Label Grid.Row="3" Grid.Column="0" Content="Ability Points:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <StackPanel Grid.Row="3" Grid.Column="1" Grid.RowSpan="4" Orientation="Horizontal" >
@@ -286,6 +293,8 @@
                         <TextBlock>-</TextBlock>
                         <TextBlock Text="{Binding CurrentMonster.Name}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                         <TextBlock Foreground="LightGray" FontFamily="Informal Roman" FontSize="18">-  Health: [</TextBlock>
+                        <TextBlock Text="{Binding CurrentMonster.HpMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                        <TextBlock Foreground="LightGray" FontFamily="Informal Roman" FontSize="18">/</TextBlock>
                         <TextBlock Text="{Binding CurrentMonster.HpCurrent}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                         <TextBlock Foreground="LightGray" FontFamily="Informal Roman" FontSize="18">]</TextBlock>
                     </StackPanel>

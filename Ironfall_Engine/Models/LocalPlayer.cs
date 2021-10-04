@@ -1,12 +1,14 @@
 ﻿using Ironfall_Engine.Actions;
 using System.Collections.ObjectModel;
 using Ironfall_Engine.Models.Item;
+using System;
 
 namespace Ironfall_Engine.Models
 {
     public class LocalPlayer : LivingEntity
     {
         private int _experiencePoints;
+        private int _unAllocatedStatPoints;
 
         public string CharacterClass { get; set; }
         public string UserID { get; set; }
@@ -17,22 +19,79 @@ namespace Ironfall_Engine.Models
             {
                 _experiencePoints = value;
                 OnPropertyChanged();
+                SetLevelAndMaxHealth();
             }
         }
-        
+        public int UnAllocatedStatPoints
+        {
+            get { return _unAllocatedStatPoints; }
+            set
+            {
+                _unAllocatedStatPoints = value;
+                OnPropertyChanged();
+            }
+        }
 
-        public LocalPlayer(string characterClass, string userID, int experiencePoints, int statBody, int statSpirit, int statFellowship, string name, string image, int hpMax, int hpCurrent, int damageMinimum, int damageMaximum, int mpMax, int mpCurrent, int apMax, int apCurrent, int defenceMinimum, int defenceMaximum, int level, int gold, ObservableCollection<GameItem> inventory, ItemSlot gear, BasicAction basicAction) : 
-            base(name, image, hpMax, hpCurrent, damageMinimum, damageMaximum, mpMax, mpCurrent, apMax, apCurrent, defenceMinimum, defenceMaximum, level, gold, inventory, gear, basicAction)
+        public event EventHandler OnLeveledUp; 
+
+        public LocalPlayer(string characterClass, string userID, int experiencePoints, int unAllocatedStatPoints, int statBody, int statSpirit, int statFellowship, string name, string image, int hpMax, int hpCurrent, int damageMinimum, int damageMaximum, int mpMax, int mpCurrent, int apMax, int apCurrent, int defenceMinimum, int defenceMaximum, int level, int gold, ObservableCollection<GameItem> inventory, ItemSlot gear, BasicAction basicAction) : 
+            base(name, image, hpMax, hpCurrent, statBody, statSpirit, statFellowship, damageMinimum, damageMaximum, mpMax, mpCurrent, apMax, apCurrent, defenceMinimum, defenceMaximum, level, gold, inventory, gear, basicAction)
         {
             CharacterClass = characterClass;
             UserID = userID;
             ExperiencePoints = experiencePoints;
-            StatBody = statBody;
-            StatSpirit = statSpirit;
-            StatFellowship = statFellowship;
+            UnAllocatedStatPoints = unAllocatedStatPoints;
             Image = $"/Ironfall_Engine;component/Resource/Images/PlayerImages/{image}";
             
         }
 
+
+        private void SetLevelAndMaxHealth()
+        {
+            int originalLevel = Level;
+            Level = (ExperiencePoints / 15) + 1;
+            if (Level != originalLevel)
+            {
+                HpMax = 5 + (Level * 5);
+                UnAllocatedStatPoints += 1;
+                OnLeveledUp?.Invoke(this, System.EventArgs.Empty);
+            }
+        }
+        public void AddStatToBody()
+        {
+            if (UnAllocatedStatPoints > 0)
+            {
+                UnAllocatedStatPoints--;
+                StatBody++;
+            }
+            else
+            {
+
+            }
+        }
+        public void AddStatToSpirit()
+        {
+            if (UnAllocatedStatPoints > 0)
+            {
+                UnAllocatedStatPoints--;
+                StatSpirit++;
+            }
+            else
+            {
+
+            }
+        }
+        public void AddStatToFellowship()
+        {
+            if (UnAllocatedStatPoints > 0)
+            {
+                UnAllocatedStatPoints--;
+                StatFellowship++;
+            }
+            else
+            {
+
+            }
+        }
     }
 }

@@ -40,7 +40,7 @@ namespace Ironfall_Engine.Models
         public string Name
         {
             get { return _name; }
-            private set
+            set
             {
                 _name = value;
                 OnPropertyChanged();
@@ -49,16 +49,16 @@ namespace Ironfall_Engine.Models
         public int HpMax
         {
             get { return _hpMax; }
-            private set
+            set
             {
-                _hpMax = value;
+                _hpMax = value + StatBody;
                 OnPropertyChanged();
             }
         }
         public int HpCurrent
         {
             get { return _hpCurrent; }
-            private set
+            set
             {
                 _hpCurrent = value;
                 OnPropertyChanged();
@@ -71,6 +71,7 @@ namespace Ironfall_Engine.Models
             {
                 _statBody = value;
                 OnPropertyChanged();
+                OnPropertyChanged("HpMax");
             }
         }
         public int StatSpirit
@@ -78,7 +79,7 @@ namespace Ironfall_Engine.Models
             get { return _statSpirit; }
             set
             {
-                _statBody = value;
+                _statSpirit = value;
                 OnPropertyChanged();
             }
         }
@@ -87,7 +88,7 @@ namespace Ironfall_Engine.Models
             get { return _statFellowship; }
             set
             {
-                _statBody = value;
+                _statFellowship = value;
                 OnPropertyChanged();
             }
         }
@@ -112,7 +113,7 @@ namespace Ironfall_Engine.Models
         public int MpMax
         {
             get { return _mpMax; }
-            private set
+            set
             {
                 _mpMax = value;
                 OnPropertyChanged();
@@ -121,7 +122,7 @@ namespace Ironfall_Engine.Models
         public int MpCurrent
         {
             get { return _mpCurrent; }
-            private set
+            set
             {
                 _mpCurrent = value;
                 OnPropertyChanged();
@@ -130,7 +131,7 @@ namespace Ironfall_Engine.Models
         public int ApMax
         {
             get { return _apMax; }
-            private set
+            set
             {
                 _apMax = value;
                 OnPropertyChanged();
@@ -139,7 +140,7 @@ namespace Ironfall_Engine.Models
         public int ApCurrent
         {
             get { return _apCurrent; }
-            private set
+            set
             {
                 _apCurrent = value;
                 OnPropertyChanged();
@@ -148,7 +149,7 @@ namespace Ironfall_Engine.Models
         public int DefenceMinimum
         {
             get { return _defenceMinimum; }
-            private set
+            set
             {
                 _defenceMinimum = value;
                 OnPropertyChanged();
@@ -157,7 +158,7 @@ namespace Ironfall_Engine.Models
         public int DefenceMaximum
         {
             get { return _defenceMaximum; }
-            private set
+            set
             {
                 _defenceMaximum = value;
                 OnPropertyChanged();
@@ -166,7 +167,7 @@ namespace Ironfall_Engine.Models
         public int Level
         {
             get { return _level; }
-            private set
+            set
             {
                 _level = value;
                 OnPropertyChanged();
@@ -175,7 +176,7 @@ namespace Ironfall_Engine.Models
         public int Gold
         {
             get { return _gold; }
-            private set
+            set
             {
                 _gold = value;
                 OnPropertyChanged();
@@ -193,7 +194,7 @@ namespace Ironfall_Engine.Models
         public ObservableCollection<GameItem> Inventory
         {
             get { return _inventory; }
-            private set
+            set
             {
                 _inventory = value;
                 OnPropertyChanged();
@@ -241,12 +242,15 @@ namespace Ironfall_Engine.Models
         public event EventHandler<string> OnActionPerformed;
         #endregion
 
-        protected LivingEntity(string name, string image, int hpMax, int hpCurrent, int damageMinimum, int damageMaximum, int mpMax, int mpCurrent, int apMax, int apCurrent, int defenceMinimum, int defenceMaximum, int level, int gold, ObservableCollection<GameItem> inventory, ItemSlot gear, BasicAction basicAction)
+        protected LivingEntity(string name, string image, int hpMax, int hpCurrent, int statBody, int statSpirit, int statFellowship, int damageMinimum, int damageMaximum, int mpMax, int mpCurrent, int apMax, int apCurrent, int defenceMinimum, int defenceMaximum, int level, int gold, ObservableCollection<GameItem> inventory, ItemSlot gear, BasicAction basicAction)
         {
             Name = name;
             Image = image;
-            HpMax = hpMax;
+            HpMax = hpMax + statBody;
             HpCurrent = hpCurrent;
+            StatBody = statBody;
+            StatSpirit = statSpirit;
+            StatFellowship = statFellowship;
             DamageMinimum = damageMinimum;
             DamageMaximum = damageMaximum;
             MpMax = mpMax;

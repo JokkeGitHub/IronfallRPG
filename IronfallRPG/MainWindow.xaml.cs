@@ -59,6 +59,19 @@ namespace IronfallRPG
             _gameSession.AttackCurrentMonster();
         }
 
+        private void OnClick_AddStatBody(object sender, RoutedEventArgs e)
+        {
+            _gameSession.CurrentPlayer.AddStatToBody();
+        }
+        private void OnClick_AddStatSpirit(object sender, RoutedEventArgs e)
+        {
+            _gameSession.CurrentPlayer.AddStatToSpirit();
+        }
+        private void OnClick_AddStatFellowship(object sender, RoutedEventArgs e)
+        {
+            _gameSession.CurrentPlayer.AddStatToFellowship();
+        }
+
         // Null Buttons
         private void GameMessages_TextChanged(object sender, TextChangedEventArgs e)
         {
