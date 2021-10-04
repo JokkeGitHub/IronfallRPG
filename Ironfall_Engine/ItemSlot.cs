@@ -14,7 +14,6 @@ namespace Ironfall_Engine
 {
     public class ItemSlot : BaseNotificationClass
     {
-        //Changed so that there is no right og left hand, but main and offhand. 
         private Artifact _head;
         private Artifact _neck;
         private Armor _chest;
@@ -24,6 +23,7 @@ namespace Ironfall_Engine
         private Artifact _fingerLeft;
         private Artifact _feet;
 
+        #region ENCAPSULATIONS
         public Artifact Head
         {
             get { return _head; }
@@ -103,6 +103,7 @@ namespace Ironfall_Engine
                 OnPropertyChanged();
             }
         }
+        #endregion
 
         public ItemSlot(Artifact head, Artifact neck, Armor chest, Weapon mainHand, Weapon offHand, Artifact fingerRight, Artifact fingerLeft, Artifact feet)
         {
