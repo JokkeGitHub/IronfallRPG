@@ -121,26 +121,40 @@ namespace Ironfall_Engine.ViewModels
             ArtifactFactory artifactFactory = new ArtifactFactory();
 
             Weapon testWeapon = weaponFactory.Create("Dev Weapon", "noisy kids must leave", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.OneHanded, 3, 5);
-            Weapon testWeapon2 = weaponFactory.Create("Dev 2 Hander", "noisy kids must leave", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.TwoHanded, 6, 9);
+            Weapon testWeapon2 = weaponFactory.Create("Dev Weapon 2", "noisy kids must leave", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.OneHanded, 3, 5);
+            Weapon testShield = weaponFactory.Create("Dev Shield", "noisy kids must leave", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.Shield, 0, 0);
+            Weapon testShield2 = weaponFactory.Create("Dev Shield 2", "noisy kids must leave", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.Shield, 0, 0);
+
+            Weapon test2Hander = weaponFactory.Create("Dev 2 Hander", "noisy kids must leave", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.TwoHanded, 6, 9);
 
             Armor testChest = armorFactory.Create("Dev Chest", "i wanna go home", 95, false, GameItem.ItemCategory.Armor, ItemEnum.Armor.Light, 3, 4);
+            Armor testChest2 = armorFactory.Create("Dev Chest 2", "i wanna go home", 95, false, GameItem.ItemCategory.Armor, ItemEnum.Armor.Light, 3, 4);
 
             Artifact testHead = artifactFactory.Create("Dev Head", "From Malai, from Thailand", 5, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Head);
+            Artifact testHead2 = artifactFactory.Create("Dev Head 2", "From Malai, from Thailand", 5, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Head);
             Artifact testNeck = artifactFactory.Create("Dev Neck", "hmmmmm", 55, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Neck);
+            Artifact testNeck2 = artifactFactory.Create("Dev Neck 2", "hmmmmm", 55, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Neck);
             Artifact testFingerOne = artifactFactory.Create("Dev Finger", "hygge fingers", 35, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
             Artifact testFingerTwo = artifactFactory.Create("The Second Ring", "hygge fingers", 99, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
             Artifact testFingerThree = artifactFactory.Create("The Third Ring", "hygge fingers", 1, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
             Artifact testFeet = artifactFactory.Create("Dev Feet", "Shoes", 555, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Feet);
+            Artifact testFeet2 = artifactFactory.Create("Dev Feet 2", "Shoes", 555, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Feet);
 
             CurrentPlayer.Inventory.Add(testWeapon);
             CurrentPlayer.Inventory.Add(testWeapon2);
+            CurrentPlayer.Inventory.Add(testShield);
+            CurrentPlayer.Inventory.Add(testShield2);
             CurrentPlayer.Inventory.Add(testChest);
+            CurrentPlayer.Inventory.Add(testChest2);
             CurrentPlayer.Inventory.Add(testHead);
+            CurrentPlayer.Inventory.Add(testHead2);
             CurrentPlayer.Inventory.Add(testNeck);
+            CurrentPlayer.Inventory.Add(testNeck2);
             CurrentPlayer.Inventory.Add(testFingerOne);
             CurrentPlayer.Inventory.Add(testFingerTwo);
             CurrentPlayer.Inventory.Add(testFingerThree);
             CurrentPlayer.Inventory.Add(testFeet);
+            CurrentPlayer.Inventory.Add(testFeet2);
 
             CurrentWorld = WorldFactory.CreateWorld();
             CurrentLocation = CurrentWorld.LocationAt(0, 0);

@@ -126,11 +126,11 @@ namespace Ironfall_Engine
             switch (weapon.WeaponType)
             {
                 case ItemEnum.Weapon.OneHanded:
-                    currentPlayer.Gear.MainHand = weapon;
+                    EquipMainHand(currentPlayer, weapon);
                     break;
 
                 case ItemEnum.Weapon.Shield:
-                    currentPlayer.Gear.OffHand = weapon;
+                    EquipOffHand(currentPlayer, weapon);
                     break;
 
                 case ItemEnum.Weapon.Ranged:
@@ -151,8 +151,33 @@ namespace Ironfall_Engine
             return weapon.Name;
         }
 
+        #region CHECKING WEAPON SLOTS
+        public void EquipMainHand(LocalPlayer currentPlayer, Weapon weapon)
+        {
+            if (currentPlayer.Gear.MainHand.Name != "Empty")
+            {
+                currentPlayer.Inventory.Add(currentPlayer.Gear.MainHand);
+            }
+            currentPlayer.Gear.MainHand = weapon;
+        }
+
+        public void EquipOffHand(LocalPlayer currentPlayer, Weapon weapon)
+        {
+            if (currentPlayer.Gear.OffHand.Name != "Empty")
+            {
+                currentPlayer.Inventory.Add(currentPlayer.Gear.OffHand);
+            }
+            currentPlayer.Gear.OffHand = weapon;
+        }
+
+        #endregion
+
         public string EquipArmor(LocalPlayer currentPlayer, Armor armor)
         {
+            if (currentPlayer.Gear.Chest.Name != "Empty")
+            {
+                currentPlayer.Inventory.Add(currentPlayer.Gear.Chest);
+            }
             currentPlayer.Gear.Chest = armor;
             currentPlayer.Inventory.Remove(armor);
             return armor.Name;
@@ -163,11 +188,11 @@ namespace Ironfall_Engine
             switch (artifact.ArtifactType)
             {
                 case ItemEnum.Artifact.Head:
-                    currentPlayer.Gear.Head = artifact;
+                    EquipHead(currentPlayer, artifact);
                     break;
 
                 case ItemEnum.Artifact.Neck:
-                    currentPlayer.Gear.Neck = artifact;
+                    EquipNeck(currentPlayer, artifact);
                     break;
 
                 case ItemEnum.Artifact.Finger:
@@ -175,7 +200,7 @@ namespace Ironfall_Engine
                     break;
 
                 case ItemEnum.Artifact.Feet:
-                    currentPlayer.Gear.Feet = artifact;
+                    EquipFeet(currentPlayer, artifact);
                     break;
 
                 default:
@@ -184,6 +209,25 @@ namespace Ironfall_Engine
             currentPlayer.Inventory.Remove(artifact);
 
             return artifact.Name;
+        }
+
+        #region CHECKING ARTIFACT SLOTS
+        public void EquipHead(LocalPlayer currentPlayer, Artifact artifact)
+        {
+            if (currentPlayer.Gear.Head.Name != "Empty")
+            {
+                currentPlayer.Inventory.Add(currentPlayer.Gear.Head);
+            }
+            currentPlayer.Gear.Head = artifact;
+        }
+
+        public void EquipNeck(LocalPlayer currentPlayer, Artifact artifact)
+        {
+            if (currentPlayer.Gear.Neck.Name != "Empty")
+            {
+                currentPlayer.Inventory.Add(currentPlayer.Gear.Neck);
+            }
+            currentPlayer.Gear.Neck = artifact;
         }
 
         public void EquipFinger(LocalPlayer currentPlayer, Artifact artifact)
@@ -203,6 +247,15 @@ namespace Ironfall_Engine
             }
         }
 
+        public void EquipFeet(LocalPlayer currentPlayer, Artifact artifact)
+        {
+            if (currentPlayer.Gear.Feet.Name != "Empty")
+            {
+                currentPlayer.Inventory.Add(currentPlayer.Gear.Feet);
+            }
+            currentPlayer.Gear.Feet = artifact;
+        }
+        #endregion
         #endregion
 
         #region UNEQUIP ITEMS
