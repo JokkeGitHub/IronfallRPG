@@ -86,10 +86,10 @@ namespace IronfallRPG
             MessageBox.Show("Hello");
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void Button_UnequipItem(object sender, RoutedEventArgs e)
         {
             // Unequip items temp button
-            object obj = (object)((Button)e.Source).DataContext;
+            object obj = ((Button)sender).CommandParameter;
             _gameSession.UnequipItem(obj);
         }
     }

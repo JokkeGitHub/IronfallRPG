@@ -23,7 +23,7 @@ namespace Ironfall_Engine
         private Artifact _fingerRight;
         private Artifact _fingerLeft;
         private Artifact _feet;
-        
+
         public Weapon MainHand
         {
             get { return _mainHand; }
@@ -186,23 +186,60 @@ namespace Ironfall_Engine
                     break;
 
                 case ItemEnum.Weapon.Shield:
-                    currentPlayer.Gear.OffHand = weapon;
+                    currentPlayer.Gear.OffHand = weaponFactory.GetEmptyOffHand();
                     break;
 
                 case ItemEnum.Weapon.Ranged:
-                    currentPlayer.Gear.MainHand = weapon;
-                    currentPlayer.Gear.OffHand = weapon;
+                    currentPlayer.Gear.MainHand = weaponFactory.GetEmptyMainHand();
+                    currentPlayer.Gear.OffHand = weaponFactory.GetEmptyOffHand();
                     break;
 
                 case ItemEnum.Weapon.TwoHanded:
-                    currentPlayer.Gear.MainHand = weapon;
-                    currentPlayer.Gear.OffHand = weapon;
+                    currentPlayer.Gear.MainHand = weaponFactory.GetEmptyMainHand();
+                    currentPlayer.Gear.OffHand = weaponFactory.GetEmptyOffHand();
                     break;
 
                 default:
                     break;
             }
             return weapon.Name;
+        }
+
+        public string UnequipArmor(LocalPlayer currentPlayer, Armor armor)
+        {
+            ArmorFactory armorFactory = new ArmorFactory();
+
+            currentPlayer.Gear.Chest = armorFactory.GetEmptyChest();
+            return armor.Name;
+        }
+
+        public string UnequipArtifact(LocalPlayer currentPlayer, Artifact artifact)
+        {
+            ArtifactFactory artifactFactory = new ArtifactFactory();
+
+            switch (artifact.ArtifactType)
+            {
+                case ItemEnum.Artifact.Head:
+                    currentPlayer.Gear.Head = artifactFactory.GetEmptyHead();
+                    break;
+
+                case ItemEnum.Artifact.Neck:
+                    currentPlayer.Gear.Neck = artifactFactory.GetEmptyNeck();
+                    break;
+
+                case ItemEnum.Artifact.Finger:
+                    currentPlayer.Gear.FingerRight = artifactFactory.GetEmptyFingerRight();
+                    // DO something
+                    break;
+
+                case ItemEnum.Artifact.Feet:
+                    currentPlayer.Gear.Feet = artifactFactory.GetEmptyFeet();
+                    break;
+
+                default:
+                    break;
+            }
+            return artifact.Name;
         }
     }
 }

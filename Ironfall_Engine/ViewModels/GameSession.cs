@@ -206,17 +206,19 @@ namespace Ironfall_Engine.ViewModels
             if (item is Weapon)
             {
                string weaponName =  CurrentPlayer.Gear.EquipWeapon(CurrentPlayer, (Weapon)item);
-               //CurrentPlayer.Inventory.Remove((Weapon)item);
+               CurrentPlayer.Inventory.Remove((Weapon)item);
                RaiseMessage($"You have equipped {weaponName}");
             }
             else if (item is Armor)
             {
                 string armorName = CurrentPlayer.Gear.EquipArmor(CurrentPlayer, (Armor)item);
+                CurrentPlayer.Inventory.Remove((Armor)item);
                 RaiseMessage($"You have equipped {armorName}");
             }
             else if (item is Artifact)
             {
                 string artifactName = CurrentPlayer.Gear.EquipArtifact(CurrentPlayer, (Artifact)item);
+                CurrentPlayer.Inventory.Remove((Artifact)item);
                 RaiseMessage($"You have equipped {artifactName}");
             }
         }
@@ -227,18 +229,20 @@ namespace Ironfall_Engine.ViewModels
 
             if (item is Weapon)
             {
+                CurrentPlayer.Inventory.Add((Weapon)item);
                 string weaponName = CurrentPlayer.Gear.UnequipWeapon(CurrentPlayer, (Weapon)item);
-                //CurrentPlayer.Inventory.Add((Weapon)item);
                 RaiseMessage($"You have unequipped {weaponName}");
             }
             else if (item is Armor)
             {
-                string armorName = CurrentPlayer.Gear.EquipArmor(CurrentPlayer, (Armor)item);
+                CurrentPlayer.Inventory.Add((Armor)item);
+                string armorName = CurrentPlayer.Gear.UnequipArmor(CurrentPlayer, (Armor)item);
                 RaiseMessage($"You have unequipped {armorName}");
             }
             else if (item is Artifact)
             {
-                string artifactName = CurrentPlayer.Gear.EquipArtifact(CurrentPlayer, (Artifact)item);
+                CurrentPlayer.Inventory.Add((Artifact)item);
+                string artifactName = CurrentPlayer.Gear.UnequipArtifact(CurrentPlayer, (Artifact)item);
                 RaiseMessage($"You have unequipped {artifactName}");
             }
         }
