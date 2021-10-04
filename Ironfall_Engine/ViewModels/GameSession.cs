@@ -129,6 +129,7 @@ namespace Ironfall_Engine.ViewModels
             Artifact testNeck = artifactFactory.Create("Dev Neck", "hmmmmm", 55, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Neck);
             Artifact testFingerOne = artifactFactory.Create("Dev Finger", "hygge fingers", 35, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
             Artifact testFingerTwo = artifactFactory.Create("The Second Ring", "hygge fingers", 99, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
+            Artifact testFingerThree = artifactFactory.Create("The Third Ring", "hygge fingers", 1, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
             Artifact testFeet = artifactFactory.Create("Dev Feet", "Shoes", 555, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Feet);
 
             CurrentPlayer.Inventory.Add(testWeapon);
@@ -138,6 +139,7 @@ namespace Ironfall_Engine.ViewModels
             CurrentPlayer.Inventory.Add(testNeck);
             CurrentPlayer.Inventory.Add(testFingerOne);
             CurrentPlayer.Inventory.Add(testFingerTwo);
+            CurrentPlayer.Inventory.Add(testFingerThree);
             CurrentPlayer.Inventory.Add(testFeet);
 
             CurrentWorld = WorldFactory.CreateWorld();
@@ -203,47 +205,37 @@ namespace Ironfall_Engine.ViewModels
         #endregion
         public void UseItem(object item)
         {
-            // When item is being equipped remove from inventory list
-
             if (item is Weapon)
             {
                string weaponName =  CurrentPlayer.Gear.EquipWeapon(CurrentPlayer, (Weapon)item);
-               CurrentPlayer.Inventory.Remove((Weapon)item);
                RaiseMessage($"You have equipped {weaponName}");
             }
             else if (item is Armor)
             {
                 string armorName = CurrentPlayer.Gear.EquipArmor(CurrentPlayer, (Armor)item);
-                CurrentPlayer.Inventory.Remove((Armor)item);
                 RaiseMessage($"You have equipped {armorName}");
             }
             else if (item is Artifact)
             {
                 string artifactName = CurrentPlayer.Gear.EquipArtifact(CurrentPlayer, (Artifact)item);
-                CurrentPlayer.Inventory.Remove((Artifact)item);
                 RaiseMessage($"You have equipped {artifactName}");
             }
         }
 
         public void UnequipItem(object item)
         {
-            // When item is being unequipped then add to inventory list again
-
             if (item is Weapon)
             {
-                CurrentPlayer.Inventory.Add((Weapon)item);
                 string weaponName = CurrentPlayer.Gear.UnequipWeapon(CurrentPlayer, (Weapon)item);
                 RaiseMessage($"You have unequipped {weaponName}");
             }
             else if (item is Armor)
             {
-                CurrentPlayer.Inventory.Add((Armor)item);
                 string armorName = CurrentPlayer.Gear.UnequipArmor(CurrentPlayer, (Armor)item);
                 RaiseMessage($"You have unequipped {armorName}");
             }
             else if (item is Artifact)
             {
-                CurrentPlayer.Inventory.Add((Artifact)item);
                 string artifactName = CurrentPlayer.Gear.UnequipArtifact(CurrentPlayer, (Artifact)item);
                 RaiseMessage($"You have unequipped {artifactName}");
             }

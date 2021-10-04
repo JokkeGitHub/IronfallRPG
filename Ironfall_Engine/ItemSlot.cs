@@ -146,12 +146,15 @@ namespace Ironfall_Engine
                 default:
                     break;
             }
+            currentPlayer.Inventory.Remove(weapon);
+
             return weapon.Name;
         }
 
         public string EquipArmor(LocalPlayer currentPlayer, Armor armor)
         {
             currentPlayer.Gear.Chest = armor;
+            currentPlayer.Inventory.Remove(armor);
             return armor.Name;
         }
 
@@ -168,10 +171,7 @@ namespace Ironfall_Engine
                     break;
 
                 case ItemEnum.Artifact.Finger:
-                    currentPlayer.Gear.FingerRight = artifact;
-
-                    // Do something
-
+                    EquipFinger(currentPlayer, artifact);
                     break;
 
                 case ItemEnum.Artifact.Feet:
@@ -181,7 +181,26 @@ namespace Ironfall_Engine
                 default:
                     break;
             }
+            currentPlayer.Inventory.Remove(artifact);
+
             return artifact.Name;
+        }
+
+        public void EquipFinger(LocalPlayer currentPlayer, Artifact artifact)
+        {
+            if (currentPlayer.Gear.FingerRight.Name == "Empty")
+            {
+                currentPlayer.Gear.FingerRight = artifact;
+            }
+            else if (currentPlayer.Gear.FingerLeft.Name == "Empty")
+            {
+                currentPlayer.Gear.FingerLeft = artifact;
+            }
+            else
+            {
+                currentPlayer.Inventory.Add(currentPlayer.Gear.FingerRight);
+                currentPlayer.Gear.FingerRight = artifact;                
+            }
         }
 
         #endregion
@@ -215,6 +234,8 @@ namespace Ironfall_Engine
                 default:
                     break;
             }
+            currentPlayer.Inventory.Add(weapon);
+
             return weapon.Name;
         }
 
@@ -223,6 +244,8 @@ namespace Ironfall_Engine
             ArmorFactory armorFactory = new ArmorFactory();
 
             currentPlayer.Gear.Chest = armorFactory.GetEmptyChest();
+            currentPlayer.Inventory.Add(armor);
+
             return armor.Name;
         }
 
@@ -241,8 +264,7 @@ namespace Ironfall_Engine
                     break;
 
                 case ItemEnum.Artifact.Finger:
-                    currentPlayer.Gear.FingerRight = artifactFactory.GetEmptyFingerRight();
-                    // DO something
+                    UnequipFinger(currentPlayer, artifact);
                     break;
 
                 case ItemEnum.Artifact.Feet:
@@ -252,7 +274,22 @@ namespace Ironfall_Engine
                 default:
                     break;
             }
+            currentPlayer.Inventory.Add(artifact);
+
             return artifact.Name;
+        }
+        public void UnequipFinger(LocalPlayer currentPlayer, Artifact artifact)
+        {
+            ArtifactFactory artifactFactory = new ArtifactFactory();
+
+            if (currentPlayer.Gear.FingerRight == artifact)
+            {
+                currentPlayer.Gear.FingerRight = artifactFactory.GetEmptyFingerRight();
+            }
+            else if (currentPlayer.Gear.FingerLeft == artifact)
+            {
+                currentPlayer.Gear.FingerLeft = artifactFactory.GetEmptyFingerLeft();
+            }
         }
 
         #endregion
