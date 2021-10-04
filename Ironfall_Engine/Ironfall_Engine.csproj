@@ -47,6 +47,7 @@
     <Compile Include="Events\BaseNotificationClass.cs" />
     <Compile Include="Events\GameMessageEventArgs.cs" />
     <Compile Include="Enums\ItemEnum.cs" />
+    <Compile Include="Factories\ItemSlotFactory.cs" />
     <Compile Include="Factories\Item\ArmorFactory.cs" />
     <Compile Include="Factories\Item\ArtifactFactory.cs" />
     <Compile Include="Factories\Item\CommonFactory.cs" />

@@ -70,5 +70,27 @@ namespace IronfallRPG
 
         }
         private void Button_Click(object sender, RoutedEventArgs e) { }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            // Equip items temp button
+            object obj = (object)((Button)e.Source).DataContext;
+            _gameSession.UseItem(obj);
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            // Info items temp button
+            object obj = (object)((Button)e.Source).DataContext;
+            // Maybe send this to logic and return string crafted from info
+            MessageBox.Show("Hello");
+        }
+
+        private void Button_UnequipItem(object sender, RoutedEventArgs e)
+        {
+            // Unequip items temp button
+            object obj = ((Button)sender).CommandParameter;
+            _gameSession.UnequipItem(obj);
+        }
     }
 }

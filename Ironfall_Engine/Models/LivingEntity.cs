@@ -32,6 +32,7 @@ namespace Ironfall_Engine.Models
         private string _image { get; set; }
         private ItemSlot _gear { get; set; }
         private BasicAction _basicAction { get; set; }
+        private ObservableCollection<GameItem> _inventory;
         #endregion
 
         #region Variables
@@ -219,7 +220,16 @@ namespace Ironfall_Engine.Models
             }
         }
 
-        public List<GameItem> Weapons => Inventory.Where(i => i.Category == GameItem.ItemCategory.Weapon).ToList();
+        ppublic ObservableCollection<GameItem> Inventory
+        {
+            get { return _inventory; }
+            private set
+            {
+                _inventory = value;
+                OnPropertyChanged();
+    }
+}
+public List<GameItem> Weapons => Inventory.Where(i => i.Category == GameItem.ItemCategory.Weapon).ToList();
 
 
         public bool IsDead => HpCurrent <= 0;

@@ -7,8 +7,10 @@ using Ironfall_Engine.Models;
 using Ironfall_Engine.Factories;
 using Ironfall_Engine.Events;
 using Ironfall_Engine.Actions;
-using System.Collections.ObjectModel;
 using Ironfall_Engine.Models.Item;
+using Ironfall_Engine.Factories.Item;
+using Ironfall_Engine.Enums;
+using System.Collections.ObjectModel;
 
 namespace Ironfall_Engine.ViewModels
 {
@@ -22,10 +24,10 @@ namespace Ironfall_Engine.ViewModels
         private Monster _currentMonster;
         private LocalPlayer _currentPlayer;
 
-        public LocalPlayer CurrentPlayer 
+        public LocalPlayer CurrentPlayer
         {
             get { return _currentPlayer; }
-            set 
+            set
             {
                 if (_currentPlayer != null)
                 {
@@ -43,9 +45,9 @@ namespace Ironfall_Engine.ViewModels
                 }
             }
         }
-        public Monster CurrentMonster 
+        public Monster CurrentMonster
         {
-            get { return _currentMonster; } 
+            get { return _currentMonster; }
             set
             {
                 if (_currentMonster != null)
@@ -69,12 +71,12 @@ namespace Ironfall_Engine.ViewModels
 
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(HasMonster));
-            } 
+            }
         }
-        public Location CurrentLocation 
+        public Location CurrentLocation
         {
             get { return _currentLocation; }
-            set 
+            set
             {
                 _currentLocation = value;
                 OnPropertyChanged();
@@ -84,48 +86,63 @@ namespace Ironfall_Engine.ViewModels
                 OnPropertyChanged(nameof(HasLocationToSouth));
 
                 GetMonsterAtLocation();
-            } 
+            }
         }
         World CurrentWorld { get; set; }
         #endregion
 
         public GameSession()
         {
-            ItemSlot gear = new ItemSlot(
-                new Models.Item.Weapon(-1, "Right Hand", "Unarmed", 0, false, Models.Item.GameItem.ItemCategory.Weapon, Enums.ItemEnum.Weapon.OneHanded, 0, 0),
-                new Models.Item.Weapon(-1, "Left Hand", "Unarmed", 0, false, Models.Item.GameItem.ItemCategory.Weapon, Enums.ItemEnum.Weapon.OneHanded, 0, 0),
-                new Models.Item.Armor(-1, "Chest", "Unarmored", 0, false, Models.Item.GameItem.ItemCategory.Armor, Enums.ItemEnum.Armor.Light, 0, 0),
-                new Models.Item.Artifact(-1, "Head", "Unarmored", 0, false, Models.Item.GameItem.ItemCategory.Artefact, Enums.ItemEnum.Artifact.Head),
-                new Models.Item.Artifact(-1, "Neck", "Unarmored", 0, false, Models.Item.GameItem.ItemCategory.Artefact, Enums.ItemEnum.Artifact.Neck),
-                new Models.Item.Artifact(-1, "Right Finger", "Unarmored", 0, false, Models.Item.GameItem.ItemCategory.Artefact, Enums.ItemEnum.Artifact.Finger),
-                new Models.Item.Artifact(-1, "Left Finger", "Unarmored", 0, false, Models.Item.GameItem.ItemCategory.Artefact, Enums.ItemEnum.Artifact.Finger),
-                new Models.Item.Artifact(-1, "Feet", "Unarmored", 0, false, Models.Item.GameItem.ItemCategory.Artefact, Enums.ItemEnum.Artifact.Feet));
-
+            ItemSlot gear = new ItemSlotFactory().Create();
             BasicAction basicAction = new BasicAction();
             ObservableCollection<GameItem> inventory = new ObservableCollection<GameItem>();
-
             CurrentPlayer = new LocalPlayer(
                 "Classless",                //Class
                 "UserID",                   //ID
                 0,                          //ExperienecPoints
                 1, 1, 1,                    //Stats
                 "Happy New Adventurer",     //Name
-                "soldier.png",             //Image
+                "soldier.png",              //Image
                 10, 10,                     //Health
                 1, 2,                       //Damage
-                5,5,                        //MagicPoints
-                5,5,                        //AbilityPoints
-                1,1,                        //Defence
+                5, 5,                       //MagicPoints
+                5, 5,                       //AbilityPoints
+                1, 1,                       //Defence
                 1,                          //Level
                 0,                          //Gold
                 inventory, gear, basicAction);                         
 
-            CurrentPlayer.DamageMinimum = CurrentPlayer.DamageMinimum + CurrentPlayer.StatBody;
-            CurrentPlayer.DamageMaximum = CurrentPlayer.DamageMaximum + CurrentPlayer.StatBody;
+            //This should not be here but maybe in localPlayer
+            CurrentPlayer.DamageMinimum += CurrentPlayer.StatBody;
+            CurrentPlayer.DamageMaximum += CurrentPlayer.StatBody;
+
+            WeaponFactory weaponFactory = new WeaponFactory();
+            ArmorFactory armorFactory = new ArmorFactory();
+            ArtifactFactory artifactFactory = new ArtifactFactory();
+
+            Weapon testWeapon = weaponFactory.Create("Dev Weapon", "noisy kids must leave", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.OneHanded, 3, 5);
+            Weapon testWeapon2 = weaponFactory.Create("Dev 2 Hander", "noisy kids must leave", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.TwoHanded, 6, 9);
+
+            Armor testChest = armorFactory.Create("Dev Chest", "i wanna go home", 95, false, GameItem.ItemCategory.Armor, ItemEnum.Armor.Light, 3, 4);
+
+            Artifact testHead = artifactFactory.Create("Dev Head", "From Malai, from Thailand", 5, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Head);
+            Artifact testNeck = artifactFactory.Create("Dev Neck", "hmmmmm", 55, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Neck);
+            Artifact testFingerOne = artifactFactory.Create("Dev Finger", "hygge fingers", 35, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
+            Artifact testFingerTwo = artifactFactory.Create("The Second Ring", "hygge fingers", 99, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
+            Artifact testFeet = artifactFactory.Create("Dev Feet", "Shoes", 555, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Feet);
+
+            CurrentPlayer.Inventory.Add(testWeapon);
+            CurrentPlayer.Inventory.Add(testWeapon2);
+            CurrentPlayer.Inventory.Add(testChest);
+            CurrentPlayer.Inventory.Add(testHead);
+            CurrentPlayer.Inventory.Add(testNeck);
+            CurrentPlayer.Inventory.Add(testFingerOne);
+            CurrentPlayer.Inventory.Add(testFingerTwo);
+            CurrentPlayer.Inventory.Add(testFeet);
 
             CurrentWorld = WorldFactory.CreateWorld();
             CurrentLocation = CurrentWorld.LocationAt(0, 0);
-            
+
         }
 
         #region Movement
@@ -134,7 +151,7 @@ namespace Ironfall_Engine.ViewModels
         public bool HasLocationToWest => CurrentWorld.LocationAt(CurrentLocation.XCoordinate - 1, CurrentLocation.YCoordinate) != null;
         public bool HasLocationToEast => CurrentWorld.LocationAt(CurrentLocation.XCoordinate + 1, CurrentLocation.YCoordinate) != null;
         public bool HasLocationToSouth => CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate - 1) != null;
-        
+
         public void MoveNorth()
         {
             CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate + 1);
@@ -147,7 +164,7 @@ namespace Ironfall_Engine.ViewModels
         }
         public void MoveEast()
         {
-            CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate +1 , CurrentLocation.YCoordinate);
+            CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate + 1, CurrentLocation.YCoordinate);
             IsTravelAllowed("East");
         }
         public void MoveWest()
@@ -184,6 +201,53 @@ namespace Ironfall_Engine.ViewModels
             }
         }
         #endregion
+        public void UseItem(object item)
+        {
+            // When item is being equipped remove from inventory list
+
+            if (item is Weapon)
+            {
+               string weaponName =  CurrentPlayer.Gear.EquipWeapon(CurrentPlayer, (Weapon)item);
+               CurrentPlayer.Inventory.Remove((Weapon)item);
+               RaiseMessage($"You have equipped {weaponName}");
+            }
+            else if (item is Armor)
+            {
+                string armorName = CurrentPlayer.Gear.EquipArmor(CurrentPlayer, (Armor)item);
+                CurrentPlayer.Inventory.Remove((Armor)item);
+                RaiseMessage($"You have equipped {armorName}");
+            }
+            else if (item is Artifact)
+            {
+                string artifactName = CurrentPlayer.Gear.EquipArtifact(CurrentPlayer, (Artifact)item);
+                CurrentPlayer.Inventory.Remove((Artifact)item);
+                RaiseMessage($"You have equipped {artifactName}");
+            }
+        }
+
+        public void UnequipItem(object item)
+        {
+            // When item is being unequipped then add to inventory list again
+
+            if (item is Weapon)
+            {
+                CurrentPlayer.Inventory.Add((Weapon)item);
+                string weaponName = CurrentPlayer.Gear.UnequipWeapon(CurrentPlayer, (Weapon)item);
+                RaiseMessage($"You have unequipped {weaponName}");
+            }
+            else if (item is Armor)
+            {
+                CurrentPlayer.Inventory.Add((Armor)item);
+                string armorName = CurrentPlayer.Gear.UnequipArmor(CurrentPlayer, (Armor)item);
+                RaiseMessage($"You have unequipped {armorName}");
+            }
+            else if (item is Artifact)
+            {
+                CurrentPlayer.Inventory.Add((Artifact)item);
+                string artifactName = CurrentPlayer.Gear.UnequipArtifact(CurrentPlayer, (Artifact)item);
+                RaiseMessage($"You have unequipped {artifactName}");
+            }
+        }
 
         #region Functions
         private void GetMonsterAtLocation()

@@ -25,5 +25,7 @@ namespace Ironfall_Engine.Models.Item
         public int Value { get; set; }
         public bool IsUnique { get; set; }
         public ItemCategory Category { get; set; }
+
+        // Add overloadable method here and overload in subclasses
     }
 }
