@@ -105,9 +105,9 @@ namespace Ironfall_Engine.ViewModels
                 "soldier.png",              //Image
                 10, 10,                     //Health
                 1, 2,                       //Damage
-                5, 5,                        //MagicPoints
-                5, 5,                        //AbilityPoints
-                1, 1,                        //Defence
+                5, 5,                       //MagicPoints
+                5, 5,                       //AbilityPoints
+                1, 1,                       //Defence
                 1,                          //Level
                 0,                          //Gold
                 gear, basicAction, inventory);
@@ -127,7 +127,8 @@ namespace Ironfall_Engine.ViewModels
 
             Artifact testHead = artifactFactory.Create("Dev Head", "From Malai, from Thailand", 5, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Head);
             Artifact testNeck = artifactFactory.Create("Dev Neck", "hmmmmm", 55, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Neck);
-            Artifact testFinger = artifactFactory.Create("Dev Finger", "hygge fingers", 35, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
+            Artifact testFingerOne = artifactFactory.Create("Dev Finger", "hygge fingers", 35, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
+            Artifact testFingerTwo = artifactFactory.Create("The Second Ring", "hygge fingers", 99, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
             Artifact testFeet = artifactFactory.Create("Dev Feet", "Shoes", 555, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Feet);
 
             CurrentPlayer.Inventory.Add(testWeapon);
@@ -135,7 +136,8 @@ namespace Ironfall_Engine.ViewModels
             CurrentPlayer.Inventory.Add(testChest);
             CurrentPlayer.Inventory.Add(testHead);
             CurrentPlayer.Inventory.Add(testNeck);
-            CurrentPlayer.Inventory.Add(testFinger);
+            CurrentPlayer.Inventory.Add(testFingerOne);
+            CurrentPlayer.Inventory.Add(testFingerTwo);
             CurrentPlayer.Inventory.Add(testFeet);
 
             CurrentWorld = WorldFactory.CreateWorld();
