@@ -112,6 +112,8 @@ namespace Ironfall_Engine
 
         // Make a unequip method. Call this method every time equipping and slot != empty 
 
+        #region EQUIP ITEMS
+
         public string EquipWeapon(LocalPlayer currentPlayer, Weapon weapon)
         {
             switch (weapon.WeaponType)
@@ -174,6 +176,10 @@ namespace Ironfall_Engine
             }
             return artifact.Name;
         }
+
+        #endregion
+
+        #region UNEQUIP ITEMS
 
         public string UnequipWeapon(LocalPlayer currentPlayer, Weapon weapon)
         {
@@ -241,5 +247,7 @@ namespace Ironfall_Engine
             }
             return artifact.Name;
         }
+
+        #endregion
     }
 }
