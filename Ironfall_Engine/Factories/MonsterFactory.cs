@@ -1,6 +1,8 @@
 ﻿using System;
 using Ironfall_Engine.Models;
 using Ironfall_Engine.Actions;
+using Ironfall_Engine.Models.Item;
+using System.Collections.ObjectModel;
 
 namespace Ironfall_Engine.Factories
 {
@@ -8,6 +10,7 @@ namespace Ironfall_Engine.Factories
     {
         public static Monster GetMonster(int monsterID)
         {
+            ItemList itemsInGame = new ItemList();
             switch (monsterID)
             {
                 // Name, Image, HpCurrent, HpMax, DamageMin, DamageMax, MpCurrent, MpMax, ApCurrent, ApMax, DefenceMin, DefenceMax, Level, Gold, Type, Suptype, Description, RewardExp.
@@ -23,8 +26,10 @@ namespace Ironfall_Engine.Factories
                         new Models.Item.Artifact(-1, "Left Finger", "Unarmored", 0, false, Models.Item.GameItem.ItemCategory.Artefact, Enums.ItemEnum.Artifact.Finger));
 
                     BasicAction basicAction = new BasicAction();
+                    ObservableCollection<GameItem> inventory = new ObservableCollection<GameItem>();
+                    inventory.Add(itemsInGame.testWeapon);
 
-                    Monster thief = new Monster("Thief", "thief.jpg", 5, 5, 1, 2, 0, 0, 2, 2, 1, 2, 1, 2, "Human", "Rogue", "This back alley thief wants your money and your life", 5, gear, basicAction);
+                    Monster thief = new Monster("Thief", "thief.jpg", 5, 5, 1, 2, 0, 0, 2, 2, 1, 2, 1, 2, "Human", "Rogue", "This back alley thief wants your money and your life", 5, inventory, gear, basicAction);
                     return thief;
 
                 default:

@@ -78,10 +78,10 @@
                             </Grid.ColumnDefinitions>
 
                              
-                            <Label Grid.Row="0" Grid.Column="0" Content="Name:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                            <Label Grid.Row="0" Grid.Column="1" Content="{Binding CurrentPlayer.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2"  Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="0" Grid.Column="0" Content="Name:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="0" Grid.Column="1" Content="{Binding CurrentPlayer.Name}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="1" Grid.Column="0" Content="Class:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                            <Label Grid.Row="1" Grid.Column="1" Content="{Binding CurrentPlayer.CharacterClass}" Grid.ColumnSpan="4" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="1" Grid.Column="1" Content="{Binding CurrentPlayer.CharacterClass}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="2" Grid.Column="0" Content="Health:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Grid.ColumnSpan="3">
                                 <Label Content="{Binding CurrentPlayer.HpMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>

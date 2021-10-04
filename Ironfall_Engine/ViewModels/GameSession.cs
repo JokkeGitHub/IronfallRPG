@@ -7,6 +7,8 @@ using Ironfall_Engine.Models;
 using Ironfall_Engine.Factories;
 using Ironfall_Engine.Events;
 using Ironfall_Engine.Actions;
+using System.Collections.ObjectModel;
+using Ironfall_Engine.Models.Item;
 
 namespace Ironfall_Engine.ViewModels
 {
@@ -100,6 +102,7 @@ namespace Ironfall_Engine.ViewModels
                 new Models.Item.Artifact(-1, "Feet", "Unarmored", 0, false, Models.Item.GameItem.ItemCategory.Artefact, Enums.ItemEnum.Artifact.Feet));
 
             BasicAction basicAction = new BasicAction();
+            ObservableCollection<GameItem> inventory = new ObservableCollection<GameItem>();
 
             CurrentPlayer = new LocalPlayer(
                 "Classless",                //Class
@@ -115,7 +118,7 @@ namespace Ironfall_Engine.ViewModels
                 1,1,                        //Defence
                 1,                          //Level
                 0,                          //Gold
-                gear, basicAction);                         
+                inventory, gear, basicAction);                         
 
             CurrentPlayer.DamageMinimum = CurrentPlayer.DamageMinimum + CurrentPlayer.StatBody;
             CurrentPlayer.DamageMaximum = CurrentPlayer.DamageMaximum + CurrentPlayer.StatBody;
@@ -195,6 +198,12 @@ namespace Ironfall_Engine.ViewModels
             {
                 // Add another monster. Maybe it should be changed to when you enter the zone. 
                 //GetMonsterAtLocation();
+                CurrentPlayer.ExperiencePoints += CurrentMonster.RewardExp;
+
+                foreach (GameItem itemReward in CurrentMonster.Inventory)
+                {
+                    CurrentPlayer.Inventory.Add(itemReward);
+                }
                 CurrentMonster = null;
             }
             else
