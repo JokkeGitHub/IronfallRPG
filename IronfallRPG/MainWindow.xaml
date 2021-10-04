@@ -83,10 +83,10 @@
                             <Label Grid.Row="1" Grid.Column="0" Content="Class:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="1" Grid.Column="1" Content="{Binding CurrentPlayer.CharacterClass}" Grid.ColumnSpan="4" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="2" Grid.Column="0" Content="Health:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                            <StackPanel Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="4" Margin="85,0,0,26" Grid.RowSpan="2" >
-                                <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.HpMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                                <Label Grid.Row="2" Grid.Column="1" Content=" / " Foreground="LightGray" FontFamily="Informal Roman"/>
-                                <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.HpCurrent}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Grid.ColumnSpan="3">
+                                <Label Content="{Binding CurrentPlayer.HpMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="/" Foreground="LightGray" FontFamily="Informal Roman"/>
+                                <Label Content="{Binding CurrentPlayer.HpCurrent}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             </StackPanel>
                             <Label Grid.Row="3" Grid.Column="0" Content="Gold:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="3" Grid.Column="1" Content="{Binding CurrentPlayer.Gold}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
@@ -116,39 +116,39 @@
                             </Grid.RowDefinitions>
 
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="4*"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="4*"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>    
 
-                            <Label Grid.Row="0" Grid.Column="0" Content="Body:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                            <Label Grid.Row="0" Grid.Column="1" Content="{Binding CurrentPlayer.StatBody}" Grid.RowSpan="2"  Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="0" Grid.Column="0" Content="Body:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="0" Grid.Column="1" Content="{Binding CurrentPlayer.StatBody}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="1" Grid.Column="0" Content="Spirit:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="1" Grid.Column="1" Content="{Binding CurrentPlayer.StatSpirit}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="2" Grid.Column="0" Content="Fellowship:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                            <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.StatFellowship}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.StatFellowship}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
 
-                            <Label Grid.Row="3" Grid.Column="0" Content="Ability Points:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                            <StackPanel Grid.Row="3" Orientation="Horizontal" Grid.Column="1">
-                                <Label Grid.Row="3" Grid.Column="1" Content="{Binding CurrentPlayer.ApMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                                <Label Grid.Row="3" Grid.Column="1" Content=" / " Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                                <Label Grid.Row="3" Grid.Column="2" Content="{Binding CurrentPlayer.ApCurrent}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="3" Grid.Column="0" Content="Ability Points:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <StackPanel Grid.Row="3" Grid.Column="1" Grid.RowSpan="4" Orientation="Horizontal" >
+                                <Label Content="{Binding CurrentPlayer.ApMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="/" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="{Binding CurrentPlayer.ApCurrent}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             </StackPanel>
 
-                            <Label Grid.Row="4" Grid.Column="0" Content="Mana Points:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                            <StackPanel Grid.Row="4" Orientation="Horizontal" Grid.ColumnSpan="4" Grid.RowSpan="2" >
-                                <Label Grid.Row="4" Grid.Column="1" Content="{Binding CurrentPlayer.MpMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                                <Label Grid.Row="4" Grid.Column="1" Content=" / " Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                                <Label Grid.Row="4" Grid.Column="1" Content="{Binding CurrentPlayer.MpCurrent}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="4" Grid.Column="0" Content="Mana Points:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <StackPanel Grid.Row="4" Grid.Column="1" Grid.RowSpan="4" Orientation="Horizontal">
+                                <Label Content="{Binding CurrentPlayer.MpMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="/" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="{Binding CurrentPlayer.MpCurrent}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             </StackPanel>
 
-                            <Label Grid.Row="5" Grid.Column="0" Content="Defence:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                            <StackPanel Grid.Row="5" Orientation="Horizontal" Grid.ColumnSpan="4" Grid.RowSpan="2" >
-                                <Label Grid.Row="5" Grid.Column="1" Content="{Binding CurrentPlayer.DefenceMinimum}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                                <Label Grid.Row="5" Grid.Column="1" Content="-" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                                <Label Grid.Row="5" Grid.Column="1" Content="{Binding CurrentPlayer.DefenceMaximum}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="5" Grid.Column="0" Content="Defence:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <StackPanel Grid.Row="5" Grid.Column="1" Grid.RowSpan="4" Orientation="Horizontal">
+                                <Label Content="{Binding CurrentPlayer.DefenceMinimum}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="-" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="{Binding CurrentPlayer.DefenceMaximum}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             </StackPanel>
 
                         </Grid>
