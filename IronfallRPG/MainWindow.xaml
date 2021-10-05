@@ -182,7 +182,7 @@
 
                             <Label Grid.Row="0" Grid.Column="0" Content="Head:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="0" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.Head.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2"  Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
-                            <Button Grid.Row="0" Grid.Column="2" Content="Info" Margin="18,8,18,8" FontFamily="Informal Roman" FontSize="18" Command="{Binding RowActionCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=DataContext}" Click="Button_Click_2"/>
+                            <Button Grid.Row="0" Grid.Column="2" Content="Info" Margin="18,8,18,8" FontFamily="Informal Roman" FontSize="18" CommandParameter="{Binding CurrentPlayer.Gear.Head}" Click="Button_ItemInfo"/>
                             <Button Grid.Row="0" Grid.Column="3" Content="Unequip" Margin="18,8,18,8" FontFamily="Informal Roman" FontSize="18" Padding="0" CommandParameter="{Binding CurrentPlayer.Gear.Head}" Click="Button_UnequipItem" />
                             
                             <Label Grid.Row="1" Grid.Column="0" Content="Neck" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
@@ -191,14 +191,17 @@
                             
                             <Label Grid.Row="2" Grid.Column="0" Content="Chest:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.Chest.Name}" Grid.ColumnSpan="4" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Button Grid.Row="2" Grid.Column="2" Content="Info" Margin="18,8,18,8" FontFamily="Informal Roman" FontSize="18" CommandParameter="{Binding CurrentPlayer.Gear.Chest}" Click="Button_ItemInfo"/>
                             <Button Grid.Row="2" Grid.Column="3" Content="Unequip" Margin="18,8,18,8" FontFamily="Informal Roman" FontSize="18" Padding="0" CommandParameter="{Binding CurrentPlayer.Gear.Chest}" Click="Button_UnequipItem" />
                             
                             <Label Grid.Row="3" Grid.Column="0" Content="Right Hand:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="3" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.MainHand.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Button Grid.Row="3" Grid.Column="2" Content="Info" Margin="18,8,18,8" FontFamily="Informal Roman" FontSize="18" CommandParameter="{Binding CurrentPlayer.Gear.MainHand}" Click="Button_ItemInfo"/>
                             <Button Grid.Row="3" Grid.Column="3" Content="Unequip" Margin="18,8,18,8" FontFamily="Informal Roman" FontSize="18" Padding="0" CommandParameter="{Binding CurrentPlayer.Gear.MainHand}" Click="Button_UnequipItem" />
                             
                             <Label Grid.Row="4" Grid.Column="0" Content="Left Hand:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="4" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.OffHand.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Button Grid.Row="4" Grid.Column="2" Content="Info" Margin="18,8,18,8" FontFamily="Informal Roman" FontSize="18" CommandParameter="{Binding CurrentPlayer.Gear.OffHand}" Click="Button_ItemInfo"/>
                             <Button Grid.Row="4" Grid.Column="3" Content="Unequip" Margin="18,8,18,8" FontFamily="Informal Roman" FontSize="18" Padding="0" CommandParameter="{Binding CurrentPlayer.Gear.OffHand}" Click="Button_UnequipItem" />
                             
                             <Label Grid.Row="5" Grid.Column="0" Content="Right Finger:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
@@ -331,7 +334,7 @@
                             <DataGridTemplateColumn>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Content="Use" Command="{Binding RowActionCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=DataContext}" Click="Button_Click_1"></Button>
+                                        <Button Content="Use" Command="{Binding RowActionCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=DataContext}" Click="Button_UseItem"></Button>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>

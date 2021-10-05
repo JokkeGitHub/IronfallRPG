@@ -258,6 +258,26 @@ namespace Ironfall_Engine.ViewModels
             }
         }
 
+        public string ItemInfo(object item)
+        {
+            string itemInfo = "";
+            
+            if (item is Weapon)
+            {
+                itemInfo += CurrentPlayer.Gear.InfoWeapon(CurrentPlayer, (Weapon)item);
+            }
+            else if (item is Armor)
+            {
+                itemInfo += CurrentPlayer.Gear.InfoArmor(CurrentPlayer, (Armor)item);
+            }
+            else if (item is Artifact)
+            {
+
+            }
+
+            return itemInfo;
+        }
+
         #region Functions
         private void GetMonsterAtLocation()
         {

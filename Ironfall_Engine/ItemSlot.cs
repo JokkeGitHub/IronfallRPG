@@ -381,5 +381,70 @@ namespace Ironfall_Engine
         }
 
         #endregion
+
+        #region ITEM INFO
+        public string InfoWeapon(LocalPlayer currentPlayer, Weapon weapon)
+        {
+            string weaponInfo = "";
+            
+            switch (weapon.WeaponType)
+            {
+                case ItemEnum.Weapon.OneHanded:
+                    weaponInfo = "Weapon Type: " + currentPlayer.Gear.MainHand.WeaponType.ToString();
+                    weaponInfo += "\nUnique: " + currentPlayer.Gear.MainHand.IsUnique.ToString();
+                    weaponInfo += "\nWeapon Name: " + currentPlayer.Gear.MainHand.Name;
+                    weaponInfo += "\nDescription: " + currentPlayer.Gear.MainHand.Description;
+                    weaponInfo += $"\nDamage: {currentPlayer.Gear.MainHand.MinDamage} - {currentPlayer.Gear.MainHand.MaxDamage}";
+                    break;
+
+                case ItemEnum.Weapon.Shield:
+                    weaponInfo = "Weapon Type: " + currentPlayer.Gear.OffHand.WeaponType.ToString();
+                    weaponInfo += "\nUnique: " + currentPlayer.Gear.OffHand.IsUnique.ToString();
+                    weaponInfo += "\nWeapon Name: " + currentPlayer.Gear.OffHand.Name;
+                    weaponInfo += "\nDescription: " + currentPlayer.Gear.OffHand.Description;
+                    break;
+
+                case ItemEnum.Weapon.Ranged:
+                    weaponInfo = "Weapon Type: " + currentPlayer.Gear.MainHand.WeaponType.ToString();
+                    weaponInfo += "\nUnique: " + currentPlayer.Gear.MainHand.IsUnique.ToString();
+                    weaponInfo += "\nWeapon Name: " + currentPlayer.Gear.MainHand.Name;
+                    weaponInfo += "\nDescription: " + currentPlayer.Gear.MainHand.Description;
+                    weaponInfo += $"\nDamage: {currentPlayer.Gear.MainHand.MinDamage} - {currentPlayer.Gear.MainHand.MaxDamage}";
+                    break;
+
+                case ItemEnum.Weapon.TwoHanded:
+                    weaponInfo = "Weapon Type: " + currentPlayer.Gear.MainHand.WeaponType.ToString();
+                    weaponInfo += "\nUnique: " + currentPlayer.Gear.MainHand.IsUnique.ToString();
+                    weaponInfo += "\nWeapon Name: " + currentPlayer.Gear.MainHand.Name;
+                    weaponInfo += "\nDescription: " + currentPlayer.Gear.MainHand.Description;
+                    weaponInfo += $"\nDamage: {currentPlayer.Gear.MainHand.MinDamage} - {currentPlayer.Gear.MainHand.MaxDamage}";
+                    break;
+
+                default:
+                    break;
+            }
+
+            return weaponInfo;
+        }
+
+        public string InfoArmor(LocalPlayer currentPlayer, Armor armor)
+        {
+            string armorInfo = "Armor Type: " + currentPlayer.Gear.Chest.ArmorType.ToString();
+            armorInfo += "\nUnique: " + currentPlayer.Gear.Chest.IsUnique.ToString();
+            armorInfo += "\nArmor Name: " + currentPlayer.Gear.Chest.Name;
+            armorInfo += "\nDescription: " + currentPlayer.Gear.Chest.Description;
+            armorInfo += $"\nDefense: {currentPlayer.Gear.Chest.MinDefense} - {currentPlayer.Gear.Chest.MaxDefense}";
+
+            return armorInfo;
+        }
+
+        public string InfoArtifact(Artifact artifact)
+        {
+            string artifactInfo = "";
+
+            return artifactInfo;
+        }
+
+        #endregion
     }
 }
