@@ -187,6 +187,7 @@
                             
                             <Label Grid.Row="1" Grid.Column="0" Content="Neck" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="1" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.Neck.Name}" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Button Grid.Row="1" Grid.Column="2" Content="Info" Margin="18,8,18,8" FontFamily="Informal Roman" FontSize="18" CommandParameter="{Binding CurrentPlayer.Gear.Neck}" Click="Button_ItemInfo"/>
                             <Button Grid.Row="1" Grid.Column="3" Content="Unequip" Margin="18,8,18,8" FontFamily="Informal Roman" FontSize="18" Padding="0" CommandParameter="{Binding CurrentPlayer.Gear.Neck}" Click="Button_UnequipItem" />
                             
                             <Label Grid.Row="2" Grid.Column="0" Content="Chest:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
@@ -206,6 +207,7 @@
                             
                             <Label Grid.Row="5" Grid.Column="0" Content="Right Finger:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="5" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.FingerRight.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Button Grid.Row="5" Grid.Column="2" Content="Info" Margin="18,8,18,8" FontFamily="Informal Roman" FontSize="18" CommandParameter="{Binding CurrentPlayer.Gear.FingerRight}" Click="Button_ItemInfo"/>
                             <Button Grid.Row="5" Grid.Column="3" Content="Unequip" Margin="18,8,18,8" FontFamily="Informal Roman" FontSize="18" Padding="0" CommandParameter="{Binding CurrentPlayer.Gear.FingerRight}" Click="Button_UnequipItem" />
                             
                             <Label Grid.Row="6" Grid.Column="0" Content="Left Finger:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
@@ -214,6 +216,7 @@
                             
                             <Label Grid.Row="7" Grid.Column="0" Content="Feet:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="7" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.Feet.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Button Grid.Row="7" Grid.Column="2" Content="Info" Margin="18,8,18,8" FontFamily="Informal Roman" FontSize="18" CommandParameter="{Binding CurrentPlayer.Gear.Feet}" Click="Button_ItemInfo"/>
                             <Button Grid.Row="7" Grid.Column="3" Content="Unequip" Margin="18,8,18,8" FontFamily="Informal Roman" FontSize="18" Padding="0" CommandParameter="{Binding CurrentPlayer.Gear.Feet}" Click="Button_UnequipItem" />
                             
                         </Grid>

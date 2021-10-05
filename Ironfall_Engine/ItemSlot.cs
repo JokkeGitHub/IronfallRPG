@@ -438,10 +438,46 @@ namespace Ironfall_Engine
             return armorInfo;
         }
 
-        public string InfoArtifact(Artifact artifact)
+        public string InfoArtifact(LocalPlayer currentPlayer, Artifact artifact)
         {
             string artifactInfo = "";
 
+            switch (artifact.ArtifactType)
+            {
+                case ItemEnum.Artifact.Head:
+                    artifactInfo = "Artifact Type: " + currentPlayer.Gear.Head.ArtifactType.ToString();
+                    artifactInfo += "\nUnique: " + currentPlayer.Gear.Head.IsUnique.ToString();
+                    artifactInfo += "\nArtifact Name: " + currentPlayer.Gear.Head.Name;
+                    artifactInfo += "\nDescription: " + currentPlayer.Gear.Head.Description;
+                    break;
+
+                case ItemEnum.Artifact.Neck:
+                    artifactInfo = "Artifact Type: " + currentPlayer.Gear.Neck.ArtifactType.ToString();
+                    artifactInfo += "\nUnique: " + currentPlayer.Gear.Neck.IsUnique.ToString();
+                    artifactInfo += "\nArtifact Name: " + currentPlayer.Gear.Neck.Name;
+                    artifactInfo += "\nDescription: " + currentPlayer.Gear.Neck.Description;
+                    break;
+
+                case ItemEnum.Artifact.Finger:
+
+                    // DO SOMETHING 
+
+                    artifactInfo = "Artifact Type: " + currentPlayer.Gear.FingerRight.ArtifactType.ToString();
+                    artifactInfo += "\nUnique: " + currentPlayer.Gear.FingerRight.IsUnique.ToString();
+                    artifactInfo += "\nArtifact Name: " + currentPlayer.Gear.FingerRight.Name;
+                    artifactInfo += "\nDescription: " + currentPlayer.Gear.FingerRight.Description;
+                    break;
+
+                case ItemEnum.Artifact.Feet:
+                    artifactInfo = "Artifact Type: " + currentPlayer.Gear.Feet.ArtifactType.ToString();
+                    artifactInfo += "\nUnique: " + currentPlayer.Gear.Feet.IsUnique.ToString();
+                    artifactInfo += "\nArtifact Name: " + currentPlayer.Gear.Feet.Name;
+                    artifactInfo += "\nDescription: " + currentPlayer.Gear.Feet.Description;
+                    break;
+
+                default:
+                    break;
+            }
             return artifactInfo;
         }
 

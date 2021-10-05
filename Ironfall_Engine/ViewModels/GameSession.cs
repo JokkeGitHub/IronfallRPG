@@ -272,7 +272,7 @@ namespace Ironfall_Engine.ViewModels
             }
             else if (item is Artifact)
             {
-
+                itemInfo += CurrentPlayer.Gear.InfoArtifact(CurrentPlayer, (Artifact)item);
             }
 
             return itemInfo;
