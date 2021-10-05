@@ -21,7 +21,7 @@ namespace Ironfall_Engine.Actions
             string actorName = (actor is LocalPlayer) ? "You" : $"The {actor.Name}";
             string targetName = (target is LocalPlayer) ? "you" : $"the {target.Name}";
 
-            if (damage == 0)
+            if (damage <= 0)
             {
                 ReportResult($"{actorName} missed {targetName}.");
             }
