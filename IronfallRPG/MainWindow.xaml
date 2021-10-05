@@ -320,6 +320,7 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
+                    
                     <StackPanel Grid.Row="0" Visibility="{Binding HasMonster, Converter={StaticResource BooleanToVisibility}}" HorizontalAlignment="Center" Orientation="Horizontal" >
                         <TextBlock>-</TextBlock>
                         <TextBlock Text="{Binding CurrentMonster.Name}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
@@ -343,10 +344,29 @@
                     </Image>
                     <TextBlock Grid.Row="2" HorizontalAlignment="Center" Text="{Binding CurrentMonster.Description}" TextWrapping="Wrap" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
 
+                    <StackPanel Grid.Row="0" Visibility="{Binding HasNpc, Converter={StaticResource BooleanToVisibility}}" HorizontalAlignment="Center" Orientation="Horizontal" >
+                        <TextBlock>-</TextBlock>
+                        <TextBlock Text="{Binding CurrentNpc.Name}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                        <TextBlock Foreground="LightGray" FontFamily="Informal Roman" FontSize="18">-  Health: [</TextBlock>
+                        <TextBlock Text="{Binding CurrentNpc.HpMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                        <TextBlock Foreground="LightGray" FontFamily="Informal Roman" FontSize="18">/</TextBlock>
+                        <TextBlock Text="{Binding CurrentNpc.HpCurrent}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                        <TextBlock Foreground="LightGray" FontFamily="Informal Roman" FontSize="18">]</TextBlock>
+                    </StackPanel>
+                    
+                    <Image Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="Auto" Width="Auto" 
+                                     Source="{Binding CurrentNpc.Image}" RenderTransformOrigin="0.5,0.5">
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="-1"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
+                    <TextBlock Grid.Row="2" HorizontalAlignment="Center" Text="{Binding CurrentNpc.Description}" TextWrapping="Wrap" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
 
-                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text=""/>
-                    <Image Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="225" Width="225" Source="{Binding CurrentMerchant.Image}"/>
-                    <TextBlock Grid.Row="2" HorizontalAlignment="Center" Text="" TextWrapping="Wrap"/>
 
                 </Grid>
             </Border>

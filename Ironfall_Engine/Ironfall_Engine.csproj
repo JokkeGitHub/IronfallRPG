@@ -54,6 +54,7 @@
     <Compile Include="Factories\Item\ConsumableFactory.cs" />
     <Compile Include="Factories\Item\WeaponFactory.cs" />
     <Compile Include="Factories\MonsterFactory.cs" />
+    <Compile Include="Factories\NpcFactory.cs" />
     <Compile Include="Factories\WorldFactory.cs" />
     <Compile Include="Interfaces\Item\IDrawback.cs" />
     <Compile Include="Interfaces\Item\IEffect.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\Monster.cs" />
     <Compile Include="Models\MonsterEncounter.cs" />
+    <Compile Include="Models\Npc.cs" />
     <Compile Include="Models\World.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RNG.cs" />
@@ -117,6 +119,9 @@
   <ItemGroup>
     <Resource Include="Resource\Images\Locations\shop.jpg" />
     <Resource Include="Resource\Images\Locations\townsquare.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Images\Characters\river.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

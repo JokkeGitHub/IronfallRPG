@@ -17,12 +17,14 @@ namespace Ironfall_Engine.ViewModels
     public class GameSession : BaseNotificationClass
     {
         public bool HasMonster => CurrentMonster != null;
+        public bool HasNpc => CurrentNpc != null;
         public event EventHandler<GameMessageEventArgs> OnMessageRaised;
 
         #region Instantiations
         private Location _currentLocation;
         private Monster _currentMonster;
         private LocalPlayer _currentPlayer;
+        private Npc _currentNpc;
 
         public LocalPlayer CurrentPlayer
         {
@@ -86,9 +88,22 @@ namespace Ironfall_Engine.ViewModels
                 OnPropertyChanged(nameof(HasLocationToSouth));
 
                 GetMonsterAtLocation();
+
+                CurrentNpc = CurrentLocation.NpcHere;
+            }
+        }
+        public Npc CurrentNpc
+        {
+            get { return _currentNpc; }
+            set
+            {
+                _currentNpc = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(HasNpc));
             }
         }
         World CurrentWorld { get; set; }
+
         #endregion
 
         public GameSession()
@@ -239,7 +254,6 @@ namespace Ironfall_Engine.ViewModels
                 RaiseMessage($"You have equipped {artifactName}");
             }
         }
-
         public void UnequipItem(object item)
         {
             if (item is Weapon)
@@ -258,7 +272,6 @@ namespace Ironfall_Engine.ViewModels
                 RaiseMessage($"You have unequipped {artifactName}");
             }
         }
-
         public string ItemInfo(object item)
         {
             string itemInfo = "";
@@ -278,12 +291,13 @@ namespace Ironfall_Engine.ViewModels
 
             return itemInfo;
         }
-
         #region Functions
+        
         private void GetMonsterAtLocation()
         {
             CurrentMonster = CurrentLocation.GetMonster();
         }
+
         public void AttackCurrentMonster()
         {
             CurrentPlayer.UseAttackAction(CurrentMonster);
