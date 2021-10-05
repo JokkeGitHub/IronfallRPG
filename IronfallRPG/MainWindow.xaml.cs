@@ -84,14 +84,31 @@ namespace IronfallRPG
 
         // Null Buttons
         private void GameMessages_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        { }
 
-        }
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        { }
 
-        }
         private void Button_Click(object sender, RoutedEventArgs e) { }
-        private void Button_Click2(object sender, RoutedEventArgs e) { }
+
+        private void Button_UseItem(object sender, RoutedEventArgs e)
+        {
+            object obj = (object)((Button)e.Source).DataContext;
+            _gameSession.UseItem(obj);
+        }
+
+        private void Button_UnequipItem(object sender, RoutedEventArgs e)
+        {
+            object obj = ((Button)sender).CommandParameter;
+            _gameSession.UnequipItem(obj);
+        }
+
+        private void Button_ItemInfo(object sender, RoutedEventArgs e)
+        {
+            object obj = ((Button)sender).CommandParameter;
+            string itemInfo = _gameSession.ItemInfo(obj);
+
+            MessageBox.Show(itemInfo);
+        }
+
     }
-}
