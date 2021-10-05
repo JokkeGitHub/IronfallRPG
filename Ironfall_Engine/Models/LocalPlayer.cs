@@ -45,14 +45,15 @@ namespace Ironfall_Engine.Models
             
         }
 
-
         private void SetLevelAndMaxHealth()
         {
             int originalLevel = Level;
             Level = (ExperiencePoints / 15) + 1;
             if (Level != originalLevel)
             {
-                HpMax = 5 + (Level * 5);
+                HpMax += StatBody;
+                MpMax += StatSpirit;
+                ApMax += StatFellowship;
                 UnAllocatedStatPoints += 1;
                 OnLeveledUp?.Invoke(this, System.EventArgs.Empty);
             }
@@ -63,6 +64,8 @@ namespace Ironfall_Engine.Models
             {
                 UnAllocatedStatPoints--;
                 StatBody++;
+                HpMax++;
+                HpCurrent++;
             }
             else
             {
@@ -75,6 +78,8 @@ namespace Ironfall_Engine.Models
             {
                 UnAllocatedStatPoints--;
                 StatSpirit++;
+                MpMax++;
+                MpCurrent++;
             }
             else
             {
@@ -87,6 +92,8 @@ namespace Ironfall_Engine.Models
             {
                 UnAllocatedStatPoints--;
                 StatFellowship++;
+                ApMax++;
+                ApCurrent++;
             }
             else
             {

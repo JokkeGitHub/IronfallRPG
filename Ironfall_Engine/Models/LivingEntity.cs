@@ -51,7 +51,7 @@ namespace Ironfall_Engine.Models
             get { return _hpMax; }
             set
             {
-                _hpMax = value + StatBody;
+                _hpMax = value;
                 OnPropertyChanged();
             }
         }
@@ -71,7 +71,6 @@ namespace Ironfall_Engine.Models
             {
                 _statBody = value;
                 OnPropertyChanged();
-                OnPropertyChanged("HpMax");
             }
         }
         public int StatSpirit
