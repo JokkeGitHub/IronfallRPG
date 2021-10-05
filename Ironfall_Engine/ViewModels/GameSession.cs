@@ -126,6 +126,7 @@ namespace Ironfall_Engine.ViewModels
             Weapon testShield2 = weaponFactory.Create("Dev Shield 2", "noisy kids must leave", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.Shield, 0, 0);
 
             Weapon test2Hander = weaponFactory.Create("Dev 2 Hander", "noisy kids must leave", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.TwoHanded, 6, 9);
+            Weapon testRanged = weaponFactory.Create("Dev Ranged", "noisy kids must leave", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.Ranged, 6, 9);
 
             Armor testChest = armorFactory.Create("Dev Chest", "i wanna go home", 95, false, GameItem.ItemCategory.Armor, ItemEnum.Armor.Light, 3, 4);
             Armor testChest2 = armorFactory.Create("Dev Chest 2", "i wanna go home", 95, false, GameItem.ItemCategory.Armor, ItemEnum.Armor.Light, 3, 4);
@@ -155,6 +156,8 @@ namespace Ironfall_Engine.ViewModels
             CurrentPlayer.Inventory.Add(testFingerThree);
             CurrentPlayer.Inventory.Add(testFeet);
             CurrentPlayer.Inventory.Add(testFeet2);
+            CurrentPlayer.Inventory.Add(test2Hander);
+            CurrentPlayer.Inventory.Add(testRanged);
 
             CurrentWorld = WorldFactory.CreateWorld();
             CurrentLocation = CurrentWorld.LocationAt(0, 0);

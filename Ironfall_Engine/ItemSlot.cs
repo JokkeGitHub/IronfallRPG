@@ -134,13 +134,11 @@ namespace Ironfall_Engine
                     break;
 
                 case ItemEnum.Weapon.Ranged:
-                    currentPlayer.Gear.MainHand = weapon;
-                    currentPlayer.Gear.OffHand = weapon;
+                    EquipBothHands(currentPlayer, weapon);
                     break;
 
                 case ItemEnum.Weapon.TwoHanded:
-                    currentPlayer.Gear.MainHand = weapon;
-                    currentPlayer.Gear.OffHand = weapon;
+                    EquipBothHands(currentPlayer, weapon);
                     break;
 
                 default:
@@ -154,6 +152,13 @@ namespace Ironfall_Engine
         #region CHECKING WEAPON SLOTS
         public void EquipMainHand(LocalPlayer currentPlayer, Weapon weapon)
         {
+            WeaponFactory weaponFactory = new WeaponFactory();
+
+            if (currentPlayer.Gear.MainHand.WeaponType is ItemEnum.Weapon.TwoHanded || currentPlayer.Gear.MainHand.WeaponType is ItemEnum.Weapon.Ranged)
+            {
+                currentPlayer.Gear.OffHand = weaponFactory.GetEmptyOffHand();
+            }
+
             if (currentPlayer.Gear.MainHand.Name != "Empty")
             {
                 currentPlayer.Inventory.Add(currentPlayer.Gear.MainHand);
@@ -163,10 +168,40 @@ namespace Ironfall_Engine
 
         public void EquipOffHand(LocalPlayer currentPlayer, Weapon weapon)
         {
+            WeaponFactory weaponFactory = new WeaponFactory();
+
+            if (currentPlayer.Gear.MainHand.WeaponType is ItemEnum.Weapon.TwoHanded || currentPlayer.Gear.MainHand.WeaponType is ItemEnum.Weapon.Ranged)
+            {
+                currentPlayer.Gear.MainHand = weaponFactory.GetEmptyMainHand();
+            }
+
             if (currentPlayer.Gear.OffHand.Name != "Empty")
             {
                 currentPlayer.Inventory.Add(currentPlayer.Gear.OffHand);
             }
+            currentPlayer.Gear.OffHand = weapon;
+        }
+
+        public void EquipBothHands(LocalPlayer currentPlayer, Weapon weapon)
+        {
+            WeaponFactory weaponFactory = new WeaponFactory();
+
+            if (currentPlayer.Gear.MainHand.WeaponType is ItemEnum.Weapon.TwoHanded || currentPlayer.Gear.MainHand.WeaponType is ItemEnum.Weapon.Ranged)
+            {
+                currentPlayer.Gear.OffHand = weaponFactory.GetEmptyOffHand();
+            }
+
+            if (currentPlayer.Gear.MainHand.Name != "Empty")
+            {
+                currentPlayer.Inventory.Add(currentPlayer.Gear.MainHand);
+            }
+
+            if (currentPlayer.Gear.OffHand.Name != "Empty")
+            {
+                currentPlayer.Inventory.Add(currentPlayer.Gear.OffHand);
+            }
+
+            currentPlayer.Gear.MainHand = weapon;
             currentPlayer.Gear.OffHand = weapon;
         }
 
