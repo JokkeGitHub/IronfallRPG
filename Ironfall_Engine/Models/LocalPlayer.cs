@@ -19,7 +19,7 @@ namespace Ironfall_Engine.Models
             {
                 _experiencePoints = value;
                 OnPropertyChanged();
-                SetLevelAndMaxHealth();
+                SetLevelUp();
             }
         }
         public int UnAllocatedStatPoints
@@ -45,7 +45,7 @@ namespace Ironfall_Engine.Models
             
         }
 
-        private void SetLevelAndMaxHealth()
+        private void SetLevelUp()
         {
             int originalLevel = Level;
             Level = (ExperiencePoints / 15) + 1;
@@ -67,10 +67,6 @@ namespace Ironfall_Engine.Models
                 HpMax++;
                 HpCurrent++;
             }
-            else
-            {
-
-            }
         }
         public void AddStatToSpirit()
         {
@@ -80,10 +76,6 @@ namespace Ironfall_Engine.Models
                 StatSpirit++;
                 MpMax++;
                 MpCurrent++;
-            }
-            else
-            {
-
             }
         }
         public void AddStatToFellowship()
@@ -95,9 +87,30 @@ namespace Ironfall_Engine.Models
                 ApMax++;
                 ApCurrent++;
             }
-            else
+        }
+        public void AddStatToDamage()
+        {
+            if (UnAllocatedStatPoints > 0)
             {
+                UnAllocatedStatPoints--;
+                DamageMaximum++;
 
+                if (DamageMaximum % 3 == 0)
+                {
+                    DamageMinimum++;
+                }
+            }
+        }
+        public void AddStatToDefence()
+        {
+            if (UnAllocatedStatPoints > 0)
+            {
+                UnAllocatedStatPoints--;
+                DefenceMaximum++;
+                if (DefenceMaximum % 3 == 0)
+                {
+                    DefenceMinimum++;
+                }
             }
         }
     }

@@ -121,42 +121,67 @@
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="4*"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="2*"/>
                             </Grid.ColumnDefinitions>    
 
                             <Label Grid.Row="0" Grid.Column="0" Content="Body:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="0" Grid.Column="1" Content="{Binding CurrentPlayer.StatBody}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
-                            <Button Click="OnClick_AddStatBody" Content="+" Grid.Column="5" Margin="5,5,5,5" FontSize="10" FontFamily="Informal Roman" />
+                            <Button Click="OnClick_AddStatBody" Content="+" Grid.Column="2" Margin="5,5,5,5" FontSize="10" FontFamily="Informal Roman" />
                             
                             <Label Grid.Row="1" Grid.Column="0" Content="Spirit:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="1" Grid.Column="1" Content="{Binding CurrentPlayer.StatSpirit}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
-                            <Button Click="OnClick_AddStatSpirit" Content="+" Grid.Row="1" Grid.Column="5" Margin="5,5,5,5" FontSize="10" FontFamily="Informal Roman" />
+                            <Button Click="OnClick_AddStatSpirit" Content="+" Grid.Row="1" Grid.Column="2" Margin="5,5,5,5" FontSize="10" FontFamily="Informal Roman" />
 
                             <Label Grid.Row="2" Grid.Column="0" Content="Fellowship:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.StatFellowship}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
-                            <Button Click="OnClick_AddStatFellowship" Content="+" Grid.Row="2" Grid.Column="5" Margin="5,5,5,5" FontSize="10" FontFamily="Informal Roman" />
-
-                            <Label Grid.Row="3" Grid.Column="0" Content="Ability Points:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                            <StackPanel Grid.Row="3" Grid.Column="1" Grid.RowSpan="4" Orientation="Horizontal" >
+                            <Button Click="OnClick_AddStatFellowship" Content="+" Grid.Row="2" Grid.Column="2" Margin="5,5,5,5" FontSize="10" FontFamily="Informal Roman" />
+                            
+                            <Label Grid.Row="0" Grid.Column="3" Content="Health:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <StackPanel Grid.Row="0" Grid.Column="4" Grid.RowSpan="4" Orientation="Horizontal" >
+                                <Label Content="{Binding CurrentPlayer.HpMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="/" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="{Binding CurrentPlayer.HpCurrent}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            </StackPanel>
+                           
+                            <Label Grid.Row="1" Grid.Column="3" Content="Mana Points:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <StackPanel Grid.Row="1" Grid.Column="4" Grid.RowSpan="4" Orientation="Horizontal">
+                                <Label Content="{Binding CurrentPlayer.MpMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="/" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="{Binding CurrentPlayer.MpCurrent}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            </StackPanel>
+                            
+                            <Label Grid.Row="2" Grid.Column="3" Content="Ability Points:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <StackPanel Grid.Row="2" Grid.Column="4" Grid.RowSpan="4" Orientation="Horizontal" >
                                 <Label Content="{Binding CurrentPlayer.ApMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                                 <Label Content="/" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                                 <Label Content="{Binding CurrentPlayer.ApCurrent}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             </StackPanel>
 
-                            <Label Grid.Row="4" Grid.Column="0" Content="Mana Points:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                            <StackPanel Grid.Row="4" Grid.Column="1" Grid.RowSpan="4" Orientation="Horizontal">
-                                <Label Content="{Binding CurrentPlayer.MpMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                                <Label Content="/" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                                <Label Content="{Binding CurrentPlayer.MpCurrent}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="3" Grid.Column="0" Content="Damage:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <StackPanel Grid.Row="3" Grid.Column="1" Grid.RowSpan="4" Orientation="Horizontal">
+                                <Label Content="{Binding CurrentPlayer.DamageMinimum}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="-" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="{Binding CurrentPlayer.DamageMaximum}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             </StackPanel>
+                            <Button Click="OnClick_AddStatDamage" Content="+" Grid.Row="3" Grid.Column="2" Margin="5,5,5,5" FontSize="10" FontFamily="Informal Roman" />
 
-                            <Label Grid.Row="5" Grid.Column="0" Content="Defence:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                            <StackPanel Grid.Row="5" Grid.Column="1" Grid.RowSpan="4" Orientation="Horizontal">
+
+                            <Label Grid.Row="4" Grid.Column="0" Content="Defence:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <StackPanel Grid.Row="4" Grid.Column="1" Grid.RowSpan="4" Orientation="Horizontal">
                                 <Label Content="{Binding CurrentPlayer.DefenceMinimum}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                                 <Label Content="-" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                                 <Label Content="{Binding CurrentPlayer.DefenceMaximum}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             </StackPanel>
+                            <Button Click="OnClick_AddDefence" Content="+" Grid.Row="4" Grid.Column="2" Margin="5,5,5,5" FontSize="10" FontFamily="Informal Roman" />
+
+
+                            <Label Grid.Row="5" Grid.Column="0" Content="Spell Damage:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+
+                            <Label Grid.Row="3" Grid.Column="3" Content="Initiativ:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+
+                            <Label Grid.Row="5" Grid.Column="3" Content="Free Points:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            <Label Grid.Row="5" Grid.Column="4" Content="{Binding CurrentPlayer.UnAllocatedStatPoints}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
 
                         </Grid>
                     </TabItem>

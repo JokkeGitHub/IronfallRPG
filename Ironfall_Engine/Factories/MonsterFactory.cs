@@ -21,7 +21,7 @@ namespace Ironfall_Engine.Factories
                     ObservableCollection<GameItem> inventory = new ObservableCollection<GameItem>();
                     inventory.Add(itemsInGame.testWeapon);
 
-                    Monster thief = new Monster("Thief", "thief.jpg", 4, 4, 1,1,1, 1, 2, 0, 0, 2, 2, 1, 2, 1, 2, "Human", "Rogue", "This back alley thief wants your money and your life", 5, inventory, gear, basicAction);
+                    Monster thief = new Monster("Thief", "thief.jpg", 4, 4, 1,1,1, 1, 2, 0, 0, 2, 2, 1, 1, 1, 2, "Human", "Rogue", "This back alley thief wants your money and your life", 5, inventory, gear, basicAction);
                     thief.Heal(10);
                     return thief;
 

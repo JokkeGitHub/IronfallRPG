@@ -101,10 +101,10 @@ namespace Ironfall_Engine.ViewModels
                 "UserID",                   //ID
                 0,                          //ExperienecPoints
                 3,                          //UnAllocatedStatPoints
-                1, 1, 1,                    //Stats
+                0, 0, 0,                    //Stats
                 "Happy New Adventurer",     //Name
                 "soldier.png",              //Image
-                10, 5,                     //Health
+                10, 5,                      //Health
                 1, 2,                       //Damage
                 5, 5,                       //MagicPoints
                 5, 5,                       //AbilityPoints
@@ -114,8 +114,6 @@ namespace Ironfall_Engine.ViewModels
                 inventory, gear, basicAction);                         
 
             //This should not be here but maybe in localPlayer
-            CurrentPlayer.DamageMinimum += CurrentPlayer.StatBody;
-            CurrentPlayer.DamageMaximum += CurrentPlayer.StatBody;
 
             CurrentPlayer.Heal(CurrentPlayer.HpMax);
 
