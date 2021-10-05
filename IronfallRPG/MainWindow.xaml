@@ -173,7 +173,7 @@
                                 <Label Content="-" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                                 <Label Content="{Binding CurrentPlayer.DefenceMaximum}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             </StackPanel>
-                            <Button Click="OnClick_AddDefence" Content="+" Grid.Row="4" Grid.Column="2" Margin="5,5,5,5" FontSize="10" FontFamily="Informal Roman" />
+                            <Button Click="OnClick_AddStatDefence" Content="+" Grid.Row="4" Grid.Column="2" Margin="5,5,5,5" FontSize="10" FontFamily="Informal Roman" />
 
 
                             <Label Grid.Row="5" Grid.Column="0" Content="Spell Damage:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>

@@ -72,11 +72,11 @@ namespace IronfallRPG
         {
             _gameSession.CurrentPlayer.AddStatToFellowship();
         }
-        private void OnClick_AddDamage(Object sender, RoutedEventArgs e)
+        private void OnClick_AddStatDamage(Object sender, RoutedEventArgs e)
         {
             _gameSession.CurrentPlayer.AddStatToDamage();
         }
-        private void OnClick_AddDefence(Object sender, RoutedEventArgs e)
+        private void OnClick_AddStatDefence(Object sender, RoutedEventArgs e)
         {
             _gameSession.CurrentPlayer.AddStatToDefence();
         }
@@ -112,3 +112,4 @@ namespace IronfallRPG
         }
 
     }
+}
