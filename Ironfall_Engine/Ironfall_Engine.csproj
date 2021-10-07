@@ -66,6 +66,7 @@
     <Compile Include="Models\Item\Common.cs" />
     <Compile Include="Models\Item\Consumable.cs" />
     <Compile Include="Models\Item\GameItem.cs" />
+    <Compile Include="Models\Item\GroupedInventoryItem.cs" />
     <Compile Include="Models\Item\Weapon.cs" />
     <Compile Include="Models\LivingEntity.cs" />
     <Compile Include="Models\LocalPlayer.cs" />

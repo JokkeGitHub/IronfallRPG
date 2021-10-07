@@ -34,8 +34,8 @@ namespace Ironfall_Engine.Models
 
         public event EventHandler OnLeveledUp; 
 
-        public LocalPlayer(string characterClass, string userID, int experiencePoints, int unAllocatedStatPoints, int statBody, int statSpirit, int statFellowship, string name, string image, int hpMax, int hpCurrent, int damageMinimum, int damageMaximum, int mpMax, int mpCurrent, int apMax, int apCurrent, int defenceMinimum, int defenceMaximum, int level, int gold, ObservableCollection<GameItem> inventory, ItemSlot gear, BasicAction basicAction) : 
-            base(name, image, hpMax, hpCurrent, statBody, statSpirit, statFellowship, damageMinimum, damageMaximum, mpMax, mpCurrent, apMax, apCurrent, defenceMinimum, defenceMaximum, level, gold, inventory, gear, basicAction)
+        public LocalPlayer(string characterClass, string userID, int experiencePoints, int unAllocatedStatPoints, int statBody, int statSpirit, int statFellowship, string name, string image, int hpMax, int hpCurrent, int damageMinimum, int damageMaximum, int mpMax, int mpCurrent, int apMax, int apCurrent, int defenceMinimum, int defenceMaximum, int level, int gold) : 
+            base(name, image, hpMax, hpCurrent, statBody, statSpirit, statFellowship, damageMinimum, damageMaximum, mpMax, mpCurrent, apMax, apCurrent, defenceMinimum, defenceMaximum, level, gold)
         {
             CharacterClass = characterClass;
             UserID = userID;

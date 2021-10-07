@@ -60,25 +60,32 @@ namespace IronfallRPG
         }
 
         //Add stat buttons
-        private void OnClick_AddStatBody(Object sender, RoutedEventArgs e)
+        private void OnClick_AddStatBody(object sender, RoutedEventArgs e)
         {
             _gameSession.CurrentPlayer.AddStatToBody();
         }
-        private void OnClick_AddStatSpirit(Object sender, RoutedEventArgs e)
+        private void OnClick_AddStatSpirit(object sender, RoutedEventArgs e)
         {
             _gameSession.CurrentPlayer.AddStatToSpirit();
         }
-        private void OnClick_AddStatFellowship(Object sender, RoutedEventArgs e)
+        private void OnClick_AddStatFellowship(object sender, RoutedEventArgs e)
         {
             _gameSession.CurrentPlayer.AddStatToFellowship();
         }
-        private void OnClick_AddStatDamage(Object sender, RoutedEventArgs e)
+        private void OnClick_AddStatDamage(object sender, RoutedEventArgs e)
         {
             _gameSession.CurrentPlayer.AddStatToDamage();
         }
-        private void OnClick_AddStatDefence(Object sender, RoutedEventArgs e)
+        private void OnClick_AddStatDefence(object sender, RoutedEventArgs e)
         {
             _gameSession.CurrentPlayer.AddStatToDefence();
+        }
+        private void OnClick_Trade(object sender, RoutedEventArgs e)
+        {
+            TradeScreen tradeScreen = new TradeScreen();
+            tradeScreen.Owner = this;
+            tradeScreen.DataContext = _gameSession;
+            tradeScreen.ShowDialog();
         }
 
 

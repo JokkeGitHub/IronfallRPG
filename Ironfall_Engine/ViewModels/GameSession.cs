@@ -109,8 +109,6 @@ namespace Ironfall_Engine.ViewModels
         public GameSession()
         {
             ItemSlot gear = new ItemSlotFactory().Create();
-            BasicAction basicAction = new BasicAction();
-            ObservableCollection<GameItem> inventory = new ObservableCollection<GameItem>();
             CurrentPlayer = new LocalPlayer(
                 "Classless",                //Class
                 "UserID",                   //ID
@@ -125,8 +123,8 @@ namespace Ironfall_Engine.ViewModels
                 5, 5,                       //AbilityPoints
                 1, 1,                       //Defence
                 1,                          //Level
-                0,                          //Gold
-                inventory, gear, basicAction);                         
+                0                          //Gold
+                );                         
 
             //This should not be here but maybe in localPlayer
 
@@ -157,23 +155,23 @@ namespace Ironfall_Engine.ViewModels
             Artifact testFeet = artifactFactory.Create("Dev Feet", "Shoes", 555, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Feet);
             Artifact testFeet2 = artifactFactory.Create("Dev Feet 2", "Shoes", 555, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Feet);
 
-            CurrentPlayer.Inventory.Add(testWeapon);
-            CurrentPlayer.Inventory.Add(testWeapon2);
-            CurrentPlayer.Inventory.Add(testShield);
-            CurrentPlayer.Inventory.Add(testShield2);
-            CurrentPlayer.Inventory.Add(testChest);
-            CurrentPlayer.Inventory.Add(testChest2);
-            CurrentPlayer.Inventory.Add(testHead);
-            CurrentPlayer.Inventory.Add(testHead2);
-            CurrentPlayer.Inventory.Add(testNeck);
-            CurrentPlayer.Inventory.Add(testNeck2);
-            CurrentPlayer.Inventory.Add(testFingerOne);
-            CurrentPlayer.Inventory.Add(testFingerTwo);
-            CurrentPlayer.Inventory.Add(testFingerThree);
-            CurrentPlayer.Inventory.Add(testFeet);
-            CurrentPlayer.Inventory.Add(testFeet2);
-            CurrentPlayer.Inventory.Add(test2Hander);
-            CurrentPlayer.Inventory.Add(testRanged);
+            CurrentPlayer.AddItemToInventory(testWeapon);
+            CurrentPlayer.AddItemToInventory(testWeapon2);
+            CurrentPlayer.AddItemToInventory(testShield);
+            CurrentPlayer.AddItemToInventory(testShield2);
+            CurrentPlayer.AddItemToInventory(testChest);
+            CurrentPlayer.AddItemToInventory(testChest2);
+            CurrentPlayer.AddItemToInventory(testHead);
+            CurrentPlayer.AddItemToInventory(testHead2);
+            CurrentPlayer.AddItemToInventory(testNeck);
+            CurrentPlayer.AddItemToInventory(testNeck2);
+            CurrentPlayer.AddItemToInventory(testFingerOne);
+            CurrentPlayer.AddItemToInventory(testFingerTwo);
+            CurrentPlayer.AddItemToInventory(testFingerThree);
+            CurrentPlayer.AddItemToInventory(testFeet);
+            CurrentPlayer.AddItemToInventory(testFeet2);
+            CurrentPlayer.AddItemToInventory(test2Hander);
+            CurrentPlayer.AddItemToInventory(testRanged);
 
             CurrentWorld = WorldFactory.CreateWorld();
             CurrentLocation = CurrentWorld.LocationAt(0, 0);
@@ -236,6 +234,7 @@ namespace Ironfall_Engine.ViewModels
             }
         }
         #endregion
+        #region Functions
         public void UseItem(object item)
         {
             if (item is Weapon)
@@ -291,7 +290,6 @@ namespace Ironfall_Engine.ViewModels
 
             return itemInfo;
         }
-        #region Functions
         
         private void GetMonsterAtLocation()
         {
@@ -307,10 +305,12 @@ namespace Ironfall_Engine.ViewModels
                 // Add another monster. Maybe it should be changed to when you enter the zone. 
                 //GetMonsterAtLocation();
                 CurrentPlayer.ExperiencePoints += CurrentMonster.RewardExp;
+                RaiseMessage($"You have defeated the {CurrentMonster.Name}- You get {CurrentMonster.RewardExp} Experience.");
 
                 foreach (GameItem itemReward in CurrentMonster.Inventory)
                 {
-                    CurrentPlayer.Inventory.Add(itemReward);
+                    CurrentPlayer.AddItemToInventory(itemReward);
+                    RaiseMessage($"The {CurrentMonster.Name} have dropped {itemReward.Name}");
                 }
                 CurrentMonster = null;
             }

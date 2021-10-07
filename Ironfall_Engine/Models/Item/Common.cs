@@ -8,10 +8,9 @@ namespace Ironfall_Engine.Models.Item
 {
     public class Common : GameItem
     {
-        public int Quantity { get; set; }
         public Enum CommonType { get; set; }
 
-        public Common(int id, string name, string description, int value, bool isUnique, ItemCategory category, Enum commonType, int quantity)
+        public Common(int id, string name, string description, int value, bool isUnique, ItemCategory category, Enum commonType)
         {
             Id = id;
             Name = name;
@@ -20,7 +19,6 @@ namespace Ironfall_Engine.Models.Item
             IsUnique = isUnique;
             Category = category;
             CommonType = commonType;
-            Quantity = quantity;
         }
     }
 }

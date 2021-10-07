@@ -13,13 +13,9 @@ namespace Ironfall_Engine.Factories
     class NpcFactory
     {
         private static readonly List<Npc> _npc = new List<Npc>();
-        private static ObservableCollection<GameItem> inventory;
-        private static ItemSlot gear;
-        private static BasicAction basicAction;
-
         static NpcFactory()
         {
-            Npc river = new Npc("River", "river.png", 15,15,5,5,10,5,10,5,5,5,5,3,5,6,150, inventory, gear, basicAction, "She looks crazy.", 30);
+            Npc river = new Npc("River", "river.png", 15,20, 5,5,10, 5,10, 5,5, 5,5, 3,5, 6, 150, "She looks crazy.", 30);
 
             AddNpcToList(river);
         }
