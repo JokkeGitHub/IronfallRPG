@@ -235,8 +235,10 @@ namespace Ironfall_Engine.ViewModels
         }
         #endregion
         #region Functions
-        public void UseItem(object item)
+        public void UseItem(GroupedInventoryItem tempItem)
         {
+            object item = tempItem.ReturnItem();
+
             if (item is Weapon)
             {
                string weaponName =  CurrentPlayer.Gear.EquipWeapon(CurrentPlayer, (Weapon)item);

@@ -35,5 +35,10 @@ namespace Ironfall_Engine.Models.Item
             Item = item;
             Quantity = quantity;
         }
+
+        public GameItem ReturnItem()
+        {
+            return this.Item;
+        }
     }
 }

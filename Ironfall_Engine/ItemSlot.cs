@@ -144,7 +144,7 @@ namespace Ironfall_Engine
                 default:
                     break;
             }
-            currentPlayer.Inventory.Remove(weapon);
+            currentPlayer.RemoveItemFromInventory(weapon);
 
             return weapon.Name;
         }
@@ -161,7 +161,7 @@ namespace Ironfall_Engine
 
             if (currentPlayer.Gear.MainHand.Name != "Empty")
             {
-                currentPlayer.Inventory.Add(currentPlayer.Gear.MainHand);
+                currentPlayer.AddItemToInventory(currentPlayer.Gear.MainHand);
             }
             currentPlayer.Gear.MainHand = weapon;
         }
@@ -177,7 +177,7 @@ namespace Ironfall_Engine
 
             if (currentPlayer.Gear.OffHand.Name != "Empty")
             {
-                currentPlayer.Inventory.Add(currentPlayer.Gear.OffHand);
+                currentPlayer.AddItemToInventory(currentPlayer.Gear.OffHand);
             }
             currentPlayer.Gear.OffHand = weapon;
         }
@@ -193,12 +193,12 @@ namespace Ironfall_Engine
 
             if (currentPlayer.Gear.MainHand.Name != "Empty")
             {
-                currentPlayer.Inventory.Add(currentPlayer.Gear.MainHand);
+                currentPlayer.AddItemToInventory(currentPlayer.Gear.MainHand);
             }
 
             if (currentPlayer.Gear.OffHand.Name != "Empty")
             {
-                currentPlayer.Inventory.Add(currentPlayer.Gear.OffHand);
+                currentPlayer.AddItemToInventory(currentPlayer.Gear.OffHand);
             }
 
             currentPlayer.Gear.MainHand = weapon;
@@ -211,10 +211,10 @@ namespace Ironfall_Engine
         {
             if (currentPlayer.Gear.Chest.Name != "Empty")
             {
-                currentPlayer.Inventory.Add(currentPlayer.Gear.Chest);
+                currentPlayer.AddItemToInventory(currentPlayer.Gear.Chest);
             }
             currentPlayer.Gear.Chest = armor;
-            currentPlayer.Inventory.Remove(armor);
+            currentPlayer.RemoveItemFromInventory(armor);
             return armor.Name;
         }
 
@@ -241,7 +241,7 @@ namespace Ironfall_Engine
                 default:
                     break;
             }
-            currentPlayer.Inventory.Remove(artifact);
+            currentPlayer.RemoveItemFromInventory(artifact);
 
             return artifact.Name;
         }
@@ -251,7 +251,7 @@ namespace Ironfall_Engine
         {
             if (currentPlayer.Gear.Head.Name != "Empty")
             {
-                currentPlayer.Inventory.Add(currentPlayer.Gear.Head);
+                currentPlayer.AddItemToInventory(currentPlayer.Gear.Head);
             }
             currentPlayer.Gear.Head = artifact;
         }
@@ -260,7 +260,7 @@ namespace Ironfall_Engine
         {
             if (currentPlayer.Gear.Neck.Name != "Empty")
             {
-                currentPlayer.Inventory.Add(currentPlayer.Gear.Neck);
+                currentPlayer.AddItemToInventory(currentPlayer.Gear.Neck);
             }
             currentPlayer.Gear.Neck = artifact;
         }
@@ -277,7 +277,7 @@ namespace Ironfall_Engine
             }
             else
             {
-                currentPlayer.Inventory.Add(currentPlayer.Gear.FingerRight);
+                currentPlayer.AddItemToInventory(currentPlayer.Gear.FingerRight);
                 currentPlayer.Gear.FingerRight = artifact;                
             }
         }
@@ -286,7 +286,7 @@ namespace Ironfall_Engine
         {
             if (currentPlayer.Gear.Feet.Name != "Empty")
             {
-                currentPlayer.Inventory.Add(currentPlayer.Gear.Feet);
+                currentPlayer.AddItemToInventory(currentPlayer.Gear.Feet);
             }
             currentPlayer.Gear.Feet = artifact;
         }
@@ -322,7 +322,7 @@ namespace Ironfall_Engine
                 default:
                     break;
             }
-            currentPlayer.Inventory.Add(weapon);
+            currentPlayer.AddItemToInventory(weapon);
 
             return weapon.Name;
         }
@@ -332,7 +332,7 @@ namespace Ironfall_Engine
             ArmorFactory armorFactory = new ArmorFactory();
 
             currentPlayer.Gear.Chest = armorFactory.GetEmptyChest();
-            currentPlayer.Inventory.Add(armor);
+            currentPlayer.AddItemToInventory(armor);
 
             return armor.Name;
         }
@@ -362,7 +362,7 @@ namespace Ironfall_Engine
                 default:
                     break;
             }
-            currentPlayer.Inventory.Add(artifact);
+            currentPlayer.AddItemToInventory(artifact);
 
             return artifact.Name;
         }

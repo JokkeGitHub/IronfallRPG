@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Ironfall_Engine.ViewModels;
 using Ironfall_Engine.Events;
+using Ironfall_Engine.Models.Item;
 
 namespace IronfallRPG
 {
@@ -101,7 +102,7 @@ namespace IronfallRPG
         private void Button_UseItem(object sender, RoutedEventArgs e)
         {
             object obj = (object)((Button)e.Source).DataContext;
-            _gameSession.UseItem(obj);
+            _gameSession.UseItem((GroupedInventoryItem)obj);
         }
 
         private void Button_UnequipItem(object sender, RoutedEventArgs e)
