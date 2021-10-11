@@ -16,15 +16,17 @@ namespace Ironfall_Engine.ViewModels
 {
     public class GameSession : BaseNotificationClass
     {
+        #region Varibles etc
+
         public bool HasMonster => CurrentMonster != null;
         public bool HasNpc => CurrentNpc != null;
         public event EventHandler<GameMessageEventArgs> OnMessageRaised;
 
-        #region Instantiations
         private Location _currentLocation;
         private Monster _currentMonster;
         private LocalPlayer _currentPlayer;
         private Npc _currentNpc;
+
 
         public LocalPlayer CurrentPlayer
         {
@@ -100,9 +102,15 @@ namespace Ironfall_Engine.ViewModels
                 _currentNpc = value;
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(HasNpc));
+
+                //Might not be best practice. 
+                DialogFactory.AddDialogToNpc(CurrentNpc);
             }
         }
         World CurrentWorld { get; set; }
+        public Dialog CurrentMessage;
+        public ObservableCollection<Dialog> CurrentResponses = new ObservableCollection<Dialog>();
+
 
         #endregion
 
@@ -234,6 +242,7 @@ namespace Ironfall_Engine.ViewModels
             }
         }
         #endregion
+
         #region Functions
         public void UseItem(GroupedInventoryItem tempItem)
         {
@@ -321,6 +330,41 @@ namespace Ironfall_Engine.ViewModels
                 //Monster Attack
                 CurrentMonster.UseAttackAction(CurrentPlayer);
             }
+        }
+
+        public void IngameDialogInitiation()
+        {
+            CurrentMessage = CurrentNpc.NpcDialog.FirstOrDefault();
+
+            //Add the appropriate responses to response list. 
+            foreach (Dialog dialog in CurrentNpc.NpcDialogResponses)
+            {
+                if (Math.Floor(dialog.DialogId) == CurrentMessage.DialogId)
+                {
+                    CurrentResponses.Add(dialog);
+                }
+            }
+
+            RaiseMessage($"{CurrentMessage.DialogText}");
+        }
+        public void ChooseDialogOption(double responseDialog)
+        {
+
+            //Create Regex check to find the number after the dot. 
+            double responseNmb = (Math.Floor(responseDialog) - responseDialog) * 100;
+
+            foreach (Dialog dialog in CurrentNpc.NpcDialog)
+            {
+                //Create a check that sees if the second number in the line is equal to any number in dialog
+                if (dialog.DialogId == responseNmb)
+                {
+                    CurrentMessage = dialog;
+                    RaiseMessage($"{CurrentMessage.DialogText}");
+
+                }
+            }
+
+
         }
 
         

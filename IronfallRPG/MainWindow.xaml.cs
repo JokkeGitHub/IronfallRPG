@@ -88,6 +88,14 @@ namespace IronfallRPG
             tradeScreen.DataContext = _gameSession;
             tradeScreen.ShowDialog();
         }
+        private void OnClick_Dialog(object sender, RoutedEventArgs e)
+        {
+            DialogScreen dialogScreen = new DialogScreen();
+            dialogScreen.Owner = this;
+            dialogScreen.DataContext = _contentLoaded;
+            dialogScreen.ShowDialog();
+        }
+        
 
 
         // Null Buttons

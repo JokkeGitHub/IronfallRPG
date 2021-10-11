@@ -10,12 +10,12 @@ namespace Ironfall_Engine.Models
     public class Dialog
     {
         public Npc DialogNpc { get; set; }
-        public int DialogId { get; set; }
+        public double DialogId { get; set; }
         public string DialogText { get; set; }
         public bool IsResponse { get; set; }
         public bool IsRecurring { get; set; }
 
-        public Dialog(Npc dialogNpc, int dialogId, string dialogText, bool isResponse, bool isRecurring)
+        public Dialog(Npc dialogNpc, double dialogId, string dialogText, bool isResponse, bool isRecurring)
         {
             DialogNpc = dialogNpc;
             DialogId = dialogId;

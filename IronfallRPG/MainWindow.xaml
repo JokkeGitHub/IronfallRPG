@@ -383,7 +383,7 @@
 
             <TabControl>
                 <TabItem Header="Inventory">
-                    <DataGrid AutoGenerateColumns="False" HeadersVisibility="Column" ItemsSource="{Binding CurrentPlayer.GroupedInventory}">
+                    <DataGrid AutoGenerateColumns="False" HeadersVisibility="Column" ItemsSource="{Binding CurrentResponses}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Description" Binding="{Binding Item.Name}" Width="*"/>
                             <DataGridTextColumn Header="Qty" IsReadOnly="True" Width="Auto" Binding="{Binding Quantity}"/>
@@ -487,6 +487,11 @@
                               Click="OnClick_Trade"
                               Visibility="{Binding HasNpc, Converter={StaticResource BooleanToVisibility}}"
                               Content="Trade"/>
+                    <Button Grid.Row="0" Grid.Column="0" 
+                              Height="50" Width="100" 
+                              Click="OnClick_Dialog"
+                              Visibility="{Binding HasNpc, Converter={StaticResource BooleanToVisibility}}"
+                              Content="Talk"/>
 
                 </Grid>
             </Grid>

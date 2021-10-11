@@ -6,7 +6,7 @@
         xmlns:viewModels="clr-namespace:Ironfall_Engine.ViewModels;assembly=Ironfall_Engine"
         d:DataContext="{d:DesignInstance viewModels:GameSession}"
         mc:Ignorable="d"
-        Title="TradeScreen" Height="450" Width="800">
+        Title="Dialog Screen" Height="450" Width="800">
 
 
     <Grid Margin="10">
@@ -26,7 +26,37 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        
+        <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" BorderBrush="Gray" BorderThickness="5" Margin="30">
+            <RichTextBox x:Name="GameMessages" VerticalScrollBarVisibility="Auto" Foreground="AntiqueWhite" FontFamily="Informal Roman" FontSize="20">
+                <RichTextBox.Background>
+                    <ImageBrush ImageSource="/Ironfall_Engine;component/Resource/Images/UI/Stone.jpg"/>
+                </RichTextBox.Background>
 
+                <RichTextBox.Resources>
+                    <Style TargetType="{x:Type Paragraph}">
+                        <Setter Property="Margin" Value="0"/>
+                    </Style>
+                </RichTextBox.Resources>
+            </RichTextBox>
+        </Border>
+
+        <Grid Grid.Column="1" Margin="30">
+            <DataGrid AutoGenerateColumns="False" HeadersVisibility="Column" ItemsSource="{Binding CurrentResponses}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Response" Binding="{Binding DialogText}" Width="*"/>
+
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Answer" Command="{Binding DialogId}" Click="OnClick_Answer"></Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
 
     </Grid>
 </Window>

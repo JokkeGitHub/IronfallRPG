@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Ironfall_Engine.Events;
+using Ironfall_Engine.ViewModels;
 
 namespace IronfallRPG
 {
@@ -19,9 +21,26 @@ namespace IronfallRPG
     /// </summary>
     public partial class DialogScreen : Window
     {
+        private GameSession _gameSession = new GameSession();
+
         public DialogScreen()
         {
             InitializeComponent();
+            _gameSession.OnMessageRaised += OnGameMessageRaised;
+
+            DataContext = _gameSession;
+        }
+        private void OnGameMessageRaised(object sender, GameMessageEventArgs e)
+        {
+            GameMessages.Document.Blocks.Add(new Paragraph(new Run(e.Message)));
+            GameMessages.ScrollToEnd();
+        }
+
+        private void OnClick_Answer(object sender, RoutedEventArgs e)
+        {
+            double nmb = (double)((Button)e.Source).DataContext;
+
+            _gameSession.ChooseDialogOption(nmb);
         }
     }
 }

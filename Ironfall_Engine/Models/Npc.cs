@@ -13,7 +13,8 @@ namespace Ironfall_Engine.Models
     {
         public string Description { get; set; }
         public int RewardExp { get; set; }
-        public ObservableCollection<Dialog> NpcDialog;
+        public ObservableCollection<Dialog> NpcDialog { get; set; }
+        public ObservableCollection<Dialog> NpcDialogResponses { get; set; }
 
         public Npc(string name, string image, int hpMax, int hpCurrent, int statBody, int statSpirit, int statFellowship, int damageMinimum, int damageMaximum, int mpMax, int mpCurrent, int apMax, int apCurrent, int defenceMinimum, int defenceMaximum, int level, int gold, string description, int rewardExp) 
             : base(name, image, hpMax, hpCurrent, statBody, statSpirit, statFellowship, damageMinimum, damageMaximum, mpMax, mpCurrent, apMax, apCurrent, defenceMinimum, defenceMaximum, level, gold)
@@ -22,6 +23,7 @@ namespace Ironfall_Engine.Models
             RewardExp = rewardExp;
             Image = $"/Ironfall_Engine;component/Resource/Images/Characters/{image}";
             NpcDialog = new ObservableCollection<Dialog>();
+            NpcDialogResponses = new ObservableCollection<Dialog>();
 
         }
     }
