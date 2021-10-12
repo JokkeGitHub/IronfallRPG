@@ -331,27 +331,38 @@ namespace Ironfall_Engine.ViewModels
                 CurrentMonster.UseAttackAction(CurrentPlayer);
             }
         }
-
+        
+        
+        //
+        //
+        // 
         public void IngameDialogInitiation()
         {
-            CurrentMessage = CurrentNpc.NpcDialog.FirstOrDefault();
+            if (CurrentNpc.NpcCurrentDialogResponses.Any())
+            {
+                CurrentNpc.NpcCurrentDialogResponses.Clear();
+            }
+
+            Dialog currentDialog = CurrentNpc.NpcDialog.FirstOrDefault();
 
             //Add the appropriate responses to response list. 
             foreach (Dialog dialog in CurrentNpc.NpcDialogResponses)
             {
-                if (Math.Floor(dialog.DialogId) == CurrentMessage.DialogId)
+                if (Math.Floor(dialog.DialogId) == currentDialog.DialogId)
                 {
-                    CurrentResponses.Add(dialog);
+                    CurrentNpc.NpcCurrentDialogResponses.Add(dialog);
                 }
             }
 
-            RaiseMessage($"{CurrentMessage.DialogText}");
+            RaiseMessage($"{currentDialog.DialogText}");
         }
-        public void ChooseDialogOption(double responseDialog)
+        public void ChooseDialogOption(object obj)
         {
+            double responseDialog = Convert.ToDouble(obj.ToString());
+            Dialog currentDialog;
 
             //Create Regex check to find the number after the dot. 
-            double responseNmb = (Math.Floor(responseDialog) - responseDialog) * 100;
+            double responseNmb = Math.Floor((responseDialog - Math.Floor(responseDialog)) * 100);
 
             foreach (Dialog dialog in CurrentNpc.NpcDialog)
             {
@@ -361,10 +372,16 @@ namespace Ironfall_Engine.ViewModels
                     CurrentMessage = dialog;
                     RaiseMessage($"{CurrentMessage.DialogText}");
 
+                    //Check to see if the dialog continues. 
+                    foreach (Dialog dialogR in CurrentNpc.NpcDialogResponses)
+                    {
+                        if (Math.Floor(dialogR.DialogId) == dialog.DialogId)
+                        {
+                            CurrentNpc.NpcCurrentDialogResponses.Add(dialog);
+                        }
+                    }
                 }
             }
-
-
         }
 
         

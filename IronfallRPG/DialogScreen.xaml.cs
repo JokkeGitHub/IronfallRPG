@@ -21,14 +21,12 @@ namespace IronfallRPG
     /// </summary>
     public partial class DialogScreen : Window
     {
-        private GameSession _gameSession = new GameSession();
+        public GameSession Session => DataContext as GameSession;
 
         public DialogScreen()
         {
             InitializeComponent();
-            _gameSession.OnMessageRaised += OnGameMessageRaised;
 
-            DataContext = _gameSession;
         }
         private void OnGameMessageRaised(object sender, GameMessageEventArgs e)
         {
@@ -40,7 +38,16 @@ namespace IronfallRPG
         {
             double nmb = (double)((Button)e.Source).DataContext;
 
-            _gameSession.ChooseDialogOption(nmb);
+            Session.ChooseDialogOption(nmb);
+        }
+        private void OnClick_Initiate(object sender, RoutedEventArgs e)
+        {
+            Session.OnMessageRaised += OnGameMessageRaised;
+            Session.IngameDialogInitiation();
+        }
+        private void OnClick_CloseScreen(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

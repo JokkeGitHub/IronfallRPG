@@ -14,13 +14,17 @@ namespace Ironfall_Engine.Factories
 
         static DialogFactory()
         {
-            Dialog riverDialog1 = new Dialog(NpcFactory.GetNpcByName("River"), 1, "Welcome to my shop! How can I help you?", false, true);
-            Dialog riverDialog2 = new Dialog(NpcFactory.GetNpcByName("River"), 1.21, "Can I see your wares?", true, true);
-            Dialog riverDialog3 = new Dialog(NpcFactory.GetNpcByName("River"), 1.22, "Do you need help with anything?", true, true);
-            Dialog riverDialog4 = new Dialog(NpcFactory.GetNpcByName("River"), 1.23, "What are the rumors around town?", true, true);
-            Dialog riverDialog5 = new Dialog(NpcFactory.GetNpcByName("River"), 1.24, "Thank you for your time.", true, true);
-            Dialog riverDialog6 = new Dialog(NpcFactory.GetNpcByName("River"), 23.1, "Well, I heard that the Mercenary Company The Iron Daggers are stealing from the bank!", false, true);
-
+            Dialog riverDialog1 = new Dialog(NpcFactory.GetNpcByName("River"), 10, "Welcome to my shop! How can I help you?", false, true);
+            Dialog riverDialog2 = new Dialog(NpcFactory.GetNpcByName("River"), 10.21, "Can I see your wares?", true, true);
+            Dialog riverDialog3 = new Dialog(NpcFactory.GetNpcByName("River"), 10.22, "Do you need help with anything?", true, true);
+            Dialog riverDialog4 = new Dialog(NpcFactory.GetNpcByName("River"), 10.23, "What are the rumors around town?", true, true);
+            Dialog riverDialog5 = new Dialog(NpcFactory.GetNpcByName("River"), 10.24, "Thank you for your time.", true, true);
+            Dialog riverDialog6 = new Dialog(NpcFactory.GetNpcByName("River"), 21, "Sure! I am ready to trade anytime.", false, true);
+            Dialog riverDialog7 = new Dialog(NpcFactory.GetNpcByName("River"), 22, "Yes I have problems with some bandits (Insert Quest here)", false, true);
+            Dialog riverDialog8 = new Dialog(NpcFactory.GetNpcByName("River"), 23, "Well, I heard that the Mercenary Company The Iron Daggers are stealing from the bank!", false, true);
+            Dialog riverDialog8A = new Dialog(NpcFactory.GetNpcByName("River"), 23.31, "That is a blatant lie!", true, true);
+            Dialog riverDialog8B = new Dialog(NpcFactory.GetNpcByName("River"), 23.32, "That is very interesting...", true, true);
+            Dialog riverDialog9 = new Dialog(NpcFactory.GetNpcByName("River"), 24, "Okay Bye!", false, true);
 
             AddDialogToList(riverDialog1);
             AddDialogToList(riverDialog2);
@@ -28,6 +32,11 @@ namespace Ironfall_Engine.Factories
             AddDialogToList(riverDialog4);
             AddDialogToList(riverDialog5);
             AddDialogToList(riverDialog6);
+            AddDialogToList(riverDialog7);
+            AddDialogToList(riverDialog8);
+            AddDialogToList(riverDialog8A);
+            AddDialogToList(riverDialog8B);
+            AddDialogToList(riverDialog9);
         }
 
         public static Dialog GetDialogByID(int id)

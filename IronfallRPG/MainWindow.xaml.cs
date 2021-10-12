@@ -92,8 +92,18 @@ namespace IronfallRPG
         {
             DialogScreen dialogScreen = new DialogScreen();
             dialogScreen.Owner = this;
-            dialogScreen.DataContext = _contentLoaded;
+            dialogScreen.DataContext = _gameSession;
             dialogScreen.ShowDialog();
+        }
+        private void OnClick_Talk(object sender, RoutedEventArgs e)
+        {
+            _gameSession.IngameDialogInitiation();
+        }
+        private void OnClick_Answer(object sender, RoutedEventArgs e)
+        {
+            object obj = ((Button)sender).CommandParameter;
+            
+            _gameSession.ChooseDialogOption(obj);
         }
         
 
@@ -116,6 +126,7 @@ namespace IronfallRPG
         private void Button_UnequipItem(object sender, RoutedEventArgs e)
         {
             object obj = ((Button)sender).CommandParameter;
+            
             _gameSession.UnequipItem(obj);
         }
 
