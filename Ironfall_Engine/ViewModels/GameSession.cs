@@ -108,7 +108,6 @@ namespace Ironfall_Engine.ViewModels
             }
         }
         World CurrentWorld { get; set; }
-        public Dialog CurrentMessage;
         public ObservableCollection<Dialog> CurrentResponses = new ObservableCollection<Dialog>();
 
 
@@ -369,15 +368,15 @@ namespace Ironfall_Engine.ViewModels
                 //Create a check that sees if the second number in the line is equal to any number in dialog
                 if (dialog.DialogId == responseNmb)
                 {
-                    CurrentMessage = dialog;
-                    RaiseMessage($"{CurrentMessage.DialogText}");
+                    RaiseMessage($"{dialog.DialogText}");
+
 
                     //Check to see if the dialog continues. 
                     foreach (Dialog dialogR in CurrentNpc.NpcDialogResponses)
                     {
                         if (Math.Floor(dialogR.DialogId) == dialog.DialogId)
                         {
-                            CurrentNpc.NpcCurrentDialogResponses.Add(dialog);
+                            CurrentNpc.NpcCurrentDialogResponses.Add(dialogR);
                         }
                     }
                 }
