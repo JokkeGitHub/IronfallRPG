@@ -103,8 +103,11 @@ namespace Ironfall_Engine.ViewModels
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(HasNpc));
 
-                //Might not be best practice. 
-                DialogFactory.AddDialogToNpc(CurrentNpc);
+                if (_currentNpc != null)
+                {
+                    DialogFactory.AddDialogToNpc(CurrentNpc);
+                    RaiseMessage($"{CurrentNpc.NpcDialog.FirstOrDefault().DialogText}");
+                }
             }
         }
         World CurrentWorld { get; set; }
@@ -352,16 +355,15 @@ namespace Ironfall_Engine.ViewModels
                     CurrentNpc.NpcCurrentDialogResponses.Add(dialog);
                 }
             }
-
-            RaiseMessage($"{currentDialog.DialogText}");
         }
         public void ChooseDialogOption(object obj)
         {
             double responseDialog = Convert.ToDouble(obj.ToString());
-            Dialog currentDialog;
 
-            //Create Regex check to find the number after the dot. 
-            double responseNmb = Math.Floor((responseDialog - Math.Floor(responseDialog)) * 100);
+            //Formular to fint the number behind the dot.  
+            double responseNmb = (responseDialog - Math.Floor(responseDialog)) * 100;
+            responseNmb = Math.Round(responseNmb);
+            int emptyDialogChecker = 0;
 
             foreach (Dialog dialog in CurrentNpc.NpcDialog)
             {
@@ -369,16 +371,30 @@ namespace Ironfall_Engine.ViewModels
                 if (dialog.DialogId == responseNmb)
                 {
                     RaiseMessage($"{dialog.DialogText}");
-
-
+                    CurrentNpc.NpcCurrentDialogResponses.Clear();
+                    
                     //Check to see if the dialog continues. 
                     foreach (Dialog dialogR in CurrentNpc.NpcDialogResponses)
                     {
                         if (Math.Floor(dialogR.DialogId) == dialog.DialogId)
                         {
                             CurrentNpc.NpcCurrentDialogResponses.Add(dialogR);
+                            emptyDialogChecker++;
                         }
                     }
+                    
+                }
+            }
+            //Check to see if the dialog continues and then resets or ends. 
+            if (emptyDialogChecker == 0)
+            {
+                if (responseNmb == 99)
+                {
+                    CurrentNpc.NpcCurrentDialogResponses.Clear();
+                }
+                else
+                {
+                    IngameDialogInitiation();
                 }
             }
         }
