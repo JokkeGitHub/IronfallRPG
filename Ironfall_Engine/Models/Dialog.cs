@@ -14,14 +14,16 @@ namespace Ironfall_Engine.Models
         public string DialogText { get; set; }
         public bool IsResponse { get; set; }
         public bool IsRecurring { get; set; }
+        public bool IsUsed { get; set; }
 
-        public Dialog(Npc dialogNpc, double dialogId, string dialogText, bool isResponse, bool isRecurring)
+        public Dialog(Npc dialogNpc, double dialogId, string dialogText, bool isResponse, bool isRecurring, bool isUsed = false)
         {
             DialogNpc = dialogNpc;
             DialogId = dialogId;
             DialogText = dialogText;
             IsResponse = isResponse;
             IsRecurring = isRecurring;
+            IsUsed = isUsed;
         }
     }
 }

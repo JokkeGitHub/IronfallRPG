@@ -246,6 +246,8 @@ namespace Ironfall_Engine.ViewModels
         #endregion
 
         #region Functions
+
+        #region Items
         public void UseItem(GroupedInventoryItem tempItem)
         {
             object item = tempItem.ReturnItem();
@@ -303,7 +305,9 @@ namespace Ironfall_Engine.ViewModels
 
             return itemInfo;
         }
-        
+        #endregion
+
+        #region Get and Attack
         private void GetMonsterAtLocation()
         {
             CurrentMonster = CurrentLocation.GetMonster();
@@ -333,13 +337,12 @@ namespace Ironfall_Engine.ViewModels
                 CurrentMonster.UseAttackAction(CurrentPlayer);
             }
         }
-        
-        
-        //
-        //
-        // 
+        #endregion
+
+        #region Dialogue
         public void IngameDialogInitiation()
         {
+            //This function is used at start and also if the dialog returns to start. 
             if (CurrentNpc.NpcCurrentDialogResponses.Any())
             {
                 CurrentNpc.NpcCurrentDialogResponses.Clear();
@@ -347,10 +350,10 @@ namespace Ironfall_Engine.ViewModels
 
             Dialog currentDialog = CurrentNpc.NpcDialog.FirstOrDefault();
 
-            //Add the appropriate responses to response list. 
+            //Add the right responses to response list. 
             foreach (Dialog dialog in CurrentNpc.NpcDialogResponses)
             {
-                if (Math.Floor(dialog.DialogId) == currentDialog.DialogId)
+                if (Math.Floor(dialog.DialogId) == currentDialog.DialogId && dialog.IsUsed != true)
                 {
                     CurrentNpc.NpcCurrentDialogResponses.Add(dialog);
                 }
@@ -360,29 +363,37 @@ namespace Ironfall_Engine.ViewModels
         {
             double responseDialog = Convert.ToDouble(obj.ToString());
 
-            //Formular to fint the number behind the dot.  
+            //Formular to get the decimal number.  
             double responseNmb = (responseDialog - Math.Floor(responseDialog)) * 100;
             responseNmb = Math.Round(responseNmb);
+
+            //Int to help check if there is any responses to the npc line. 
             int emptyDialogChecker = 0;
 
+            //Looking through all the Npc's dialog. 
             foreach (Dialog dialog in CurrentNpc.NpcDialog)
             {
                 //Create a check that sees if the second number in the line is equal to any number in dialog
                 if (dialog.DialogId == responseNmb)
                 {
                     RaiseMessage($"{dialog.DialogText}");
+
+                    //Setting the dialog in question as used if it isn't recuring.
+                    SetDialogToUsed(responseDialog);
+
+                    //Clear the player responses for new responses. 
                     CurrentNpc.NpcCurrentDialogResponses.Clear();
                     
-                    //Check to see if the dialog continues. 
+                    //Finds all the responses that match the new number. 
                     foreach (Dialog dialogR in CurrentNpc.NpcDialogResponses)
                     {
                         if (Math.Floor(dialogR.DialogId) == dialog.DialogId)
                         {
                             CurrentNpc.NpcCurrentDialogResponses.Add(dialogR);
+                            //If any responses is added, the number will rise, making sure the it wont reset.
                             emptyDialogChecker++;
                         }
                     }
-                    
                 }
             }
             //Check to see if the dialog continues and then resets or ends. 
@@ -398,9 +409,19 @@ namespace Ironfall_Engine.ViewModels
                 }
             }
         }
+        public void SetDialogToUsed(double id)
+        {
+            foreach (Dialog dialog in CurrentNpc.NpcDialogResponses)
+            {
+                if (dialog.DialogId == id && dialog.IsRecurring == false)
+                {
+                    dialog.IsUsed = true;
+                }
+            }
+        }
+        #endregion
 
-        
-        //Event Functions
+        #region Event Functions
         private void OnCurrentPlayerActionPerfomed(object sender, string result)
         {
             RaiseMessage(result);
@@ -425,6 +446,8 @@ namespace Ironfall_Engine.ViewModels
         {
             OnMessageRaised?.Invoke(this, new GameMessageEventArgs(message));
         }
+        #endregion
+
         #endregion
     }
 }

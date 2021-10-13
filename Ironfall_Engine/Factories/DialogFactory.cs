@@ -14,9 +14,15 @@ namespace Ironfall_Engine.Factories
 
         static DialogFactory()
         {
+            /// Dialogue, how does it work?
+            /// A dialouge has an id that is a double and a response bool. The response bool help sorts into the things the npc says
+            /// and lines the player can say. If the double has a decimal, it means it will continue. So 10.XX means it's a follow up to
+            /// 10. Then the dialogue goes to 23 and then the responses is 23.XX and so on.
+            
+            // 99 is exit.
             Dialog riverDialog10 = new Dialog(NpcFactory.GetNpcByName("River"), 10, "Welcome to my shop! How can I help you?", false, true);
             Dialog riverDialog1021 = new Dialog(NpcFactory.GetNpcByName("River"), 10.21, "Can I see your wares?", true, true);
-            Dialog riverDialog1022 = new Dialog(NpcFactory.GetNpcByName("River"), 10.22, "Do you need help with anything?", true, true);
+            Dialog riverDialog1022 = new Dialog(NpcFactory.GetNpcByName("River"), 10.22, "Do you need help with anything?", true, false);
             Dialog riverDialog1023 = new Dialog(NpcFactory.GetNpcByName("River"), 10.23, "What are the rumors around town?", true, true);
             Dialog riverDialog1024 = new Dialog(NpcFactory.GetNpcByName("River"), 10.99, "Thank you for your time.", true, true);
             Dialog riverDialog21 = new Dialog(NpcFactory.GetNpcByName("River"), 21, "Sure! I am ready to trade anytime.", false, true);
