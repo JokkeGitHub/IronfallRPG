@@ -105,7 +105,10 @@ namespace Ironfall_Engine.ViewModels
 
                 if (_currentNpc != null)
                 {
-                    DialogFactory.AddDialogToNpc(CurrentNpc);
+                    if (CurrentNpc.NpcDialog.Count == 0)
+                    {
+                        DialogFactory.AddDialogToNpc(CurrentNpc);
+                    }
                     RaiseMessage($"{CurrentNpc.NpcDialog.FirstOrDefault().DialogText}");
                 }
             }
