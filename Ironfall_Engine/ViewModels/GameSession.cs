@@ -105,7 +105,10 @@ namespace Ironfall_Engine.ViewModels
 
                 if (_currentNpc != null)
                 {
-                    DialogFactory.AddDialogToNpc(CurrentNpc);
+                    if (CurrentNpc.NpcDialog.Count == 0)
+                    {
+                        DialogFactory.AddDialogToNpc(CurrentNpc);
+                    }
                     RaiseMessage($"{CurrentNpc.NpcDialog.FirstOrDefault().DialogText}");
                 }
             }
@@ -342,7 +345,7 @@ namespace Ironfall_Engine.ViewModels
         #region Dialogue
         public void IngameDialogInitiation()
         {
-            //This function is used at start and also if the dialog returns to start. 
+            //This function is used at start, and also if the dialog returns to start. It clears to avoid dublications.  
             if (CurrentNpc.NpcCurrentDialogResponses.Any())
             {
                 CurrentNpc.NpcCurrentDialogResponses.Clear();
@@ -350,7 +353,7 @@ namespace Ironfall_Engine.ViewModels
 
             Dialog currentDialog = CurrentNpc.NpcDialog.FirstOrDefault();
 
-            //Add the right responses to response list. 
+            //Add the start responses to response list. 
             foreach (Dialog dialog in CurrentNpc.NpcDialogResponses)
             {
                 if (Math.Floor(dialog.DialogId) == currentDialog.DialogId && dialog.IsUsed != true)
