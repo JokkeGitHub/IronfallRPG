@@ -2,6 +2,8 @@
 using System.Collections.ObjectModel;
 using Ironfall_Engine.Models.Item;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Ironfall_Engine.Models
 {
@@ -12,7 +14,7 @@ namespace Ironfall_Engine.Models
 
         public string CharacterClass { get; set; }
         public string UserID { get; set; }
-        public int ExperiencePoints 
+        public int ExperiencePoints
         {
             get { return _experiencePoints; }
             set
@@ -31,6 +33,7 @@ namespace Ironfall_Engine.Models
                 OnPropertyChanged();
             }
         }
+        public ObservableCollection<Quest> QuestLog { get; set; }
 
         public event EventHandler OnLeveledUp; 
 
@@ -42,8 +45,10 @@ namespace Ironfall_Engine.Models
             ExperiencePoints = experiencePoints;
             UnAllocatedStatPoints = unAllocatedStatPoints;
             Image = $"/Ironfall_Engine;component/Resource/Images/PlayerImages/{image}";
+            QuestLog = new ObservableCollection<Quest>();
             
         }
+
 
         private void SetLevelUp()
         {
@@ -112,6 +117,19 @@ namespace Ironfall_Engine.Models
                     DefenceMinimum++;
                 }
             }
+        }
+
+        
+        public bool HasItemsToCompleteCheck(List<GroupedInventoryItem> items)
+        {
+            foreach (GroupedInventoryItem item in items)
+            {
+                if (Inventory.Count(i => i.Id == item.Item.Id) < item.Quantity)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

@@ -110,6 +110,10 @@ namespace Ironfall_Engine.ViewModels
                     {
                         DialogFactory.AddDialogToNpc(CurrentNpc);
                     }
+                    if (CurrentNpc.NpcQuests.Count == 0)
+                    {
+                        QuestFactory.AddQuestToNpc(CurrentNpc);
+                    }
                     RaiseMessage($"{CurrentNpc.NpcDialog.FirstOrDefault().DialogText}");
                 }
             }
@@ -157,15 +161,15 @@ namespace Ironfall_Engine.ViewModels
             Armor testChest = armorFactory.Create("Dev Chest", "i wanna go home", 95, false, GameItem.ItemCategory.Armor, ItemEnum.Armor.Light, 3, 4);
             Armor testChest2 = armorFactory.Create("Dev Chest 2", "i wanna go home", 95, false, GameItem.ItemCategory.Armor, ItemEnum.Armor.Light, 3, 4);
 
-            Artifact testHead = artifactFactory.Create("Dev Head", "From Malai, from Thailand", 5, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Head);
-            Artifact testHead2 = artifactFactory.Create("Dev Head 2", "From Malai, from Thailand", 5, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Head);
-            Artifact testNeck = artifactFactory.Create("Dev Neck", "hmmmmm", 55, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Neck);
-            Artifact testNeck2 = artifactFactory.Create("Dev Neck 2", "hmmmmm", 55, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Neck);
-            Artifact testFingerOne = artifactFactory.Create("Dev Finger", "hygge fingers", 35, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
-            Artifact testFingerTwo = artifactFactory.Create("The Second Ring", "hygge fingers", 99, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
-            Artifact testFingerThree = artifactFactory.Create("The Third Ring", "hygge fingers", 1, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
-            Artifact testFeet = artifactFactory.Create("Dev Feet", "Shoes", 555, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Feet);
-            Artifact testFeet2 = artifactFactory.Create("Dev Feet 2", "Shoes", 555, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Feet);
+            Artifact testHead = artifactFactory.Create(5991,"Dev Head", "From Malai, from Thailand", 5, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Head);
+            Artifact testHead2 = artifactFactory.Create(5992,"Dev Head 2", "From Malai, from Thailand", 5, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Head);
+            Artifact testNeck = artifactFactory.Create(5993,"Dev Neck", "hmmmmm", 55, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Neck);
+            Artifact testNeck2 = artifactFactory.Create(5994,"Dev Neck 2", "hmmmmm", 55, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Neck);
+            Artifact testFingerOne = artifactFactory.Create(5995,"Dev Finger", "hygge fingers", 35, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
+            Artifact testFingerTwo = artifactFactory.Create(5996,"The Second Ring", "hygge fingers", 99, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
+            Artifact testFingerThree = artifactFactory.Create(5997,"The Third Ring", "hygge fingers", 1, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
+            Artifact testFeet = artifactFactory.Create(5998,"Dev Feet", "Shoes", 555, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Feet);
+            Artifact testFeet2 = artifactFactory.Create(5999,"Dev Feet 2", "Shoes", 555, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Feet);
 
             CurrentPlayer.AddItemToInventory(testWeapon);
             CurrentPlayer.AddItemToInventory(testWeapon2);
@@ -368,6 +372,7 @@ namespace Ironfall_Engine.ViewModels
             //Formular to get the decimal number.  
             double responseNmb = (responseDialog - Math.Floor(responseDialog)) * 100;
             responseNmb = Math.Round(responseNmb);
+            Dialog savedDialog = null;
 
             //bool to help check if there is any responses to the npc line. 
             bool emptyDialogChecker = true;
@@ -379,30 +384,62 @@ namespace Ironfall_Engine.ViewModels
                 if (dialog.DialogId == responseNmb)
                 {
                     RaiseMessage($"{dialog.DialogText}");
-
-                    //Setting the dialog in question as used if it isn't recuring.
-                    SetDialogToUsed(responseDialog);
-
+                    savedDialog = dialog;
+                                        
                     //Clear the player responses for new responses. 
                     CurrentNpc.NpcCurrentDialogResponses.Clear();
                     
                     //Finds all the responses that match the new number. 
                     foreach (Dialog dialogR in CurrentNpc.NpcDialogResponses)
                     {
-                        if (Math.Floor(dialogR.DialogId) == dialog.DialogId)
+                        if (Math.Floor(dialogR.DialogId) == dialog.DialogId && dialogR.IsUsed == false)
                         {
                             CurrentNpc.NpcCurrentDialogResponses.Add(dialogR);
                             //If any responses is added, the number will rise, making sure the it wont reset.
                             emptyDialogChecker = false;
+                            
                         }
                     }
+                    if (emptyDialogChecker)
+                    {
+                        //There is no new dialog load the standard responses. 
+                        foreach (Dialog dialogR in CurrentNpc.NpcDialogResponses)
+                        {
+                            if (Math.Floor(dialogR.DialogId) == 10 && dialogR.IsUsed == false)
+                            {
+                                CurrentNpc.NpcCurrentDialogResponses.Add(dialogR);
+                            }
+                        }
+                    }
+                    //Setting the dialog in question as used if it isn't recuring.
+                    SetDialogToUsed(responseDialog);
                 }
             }
             
             switch (responseNmb)
             {
+                case 96:
+                    foreach (Quest quest in CurrentNpc.NpcQuests)
+                    {
+                        if (quest.IsComplete != true && quest.ID == savedDialog.DialogQuestId)
+                        {
+                            CurrentPlayer.QuestLog.Add(quest);
+
+                            //Finding the following dialog and activates it. 
+                            foreach (Dialog dialog in CurrentNpc.NpcDialog)
+                            {
+                                if (dialog.DialogId == 97)
+                                {
+                                    dialog.IsUsed = false;
+                                }
+                            }
+                        }
+                    }
+                    break;
                 case 97:
-                    //Quest
+                    //Check if quest is completed
+                    RaiseMessage("Cheking if quest is completed");
+                    CompleteQuest(savedDialog.DialogQuestId);
                     break;
                 case 98:
                     Trade?.Invoke(this, new EventArgs()); 
@@ -418,7 +455,6 @@ namespace Ironfall_Engine.ViewModels
                     }
                     break;
             }
-            
         }
         public void SetDialogToUsed(double id)
         {
@@ -427,6 +463,53 @@ namespace Ironfall_Engine.ViewModels
                 if (dialog.DialogId == id && dialog.IsRecurring == false)
                 {
                     dialog.IsUsed = true;
+                }
+            }
+        }
+        #endregion
+
+        #region Quest
+        private void CompleteQuest(int questID)
+        {
+            foreach (Quest quest in CurrentPlayer.QuestLog)
+            {
+                if (quest != null && !quest.IsComplete && quest.ID == questID)
+                {
+                    if (CurrentPlayer.HasItemsToCompleteCheck(quest.ItemsToComplete))
+                    {
+                        // Remove the quest completion items from the player's inventory
+                        foreach (GroupedInventoryItem groupedInventory in quest.ItemsToComplete)
+                        {
+                            for (int i = 0; i < groupedInventory.Quantity; i++)
+                            {
+                                CurrentPlayer.RemoveItemFromInventory(CurrentPlayer.Inventory.First(item => item.Id == groupedInventory.Item.Id));
+                            }
+                        }
+
+                        RaiseMessage("");
+                        RaiseMessage($"You completed the '{quest.Name}' quest");
+
+                        // Give the player the quest rewards
+                        CurrentPlayer.ExperiencePoints += quest.RewardExperience;
+                        RaiseMessage($"You receive {quest.RewardExperience} experience points");
+
+                        CurrentPlayer.Gold += quest.RewardGold;
+                        RaiseMessage($"You receive {quest.RewardGold} gold");
+
+                        foreach (GroupedInventoryItem item in quest.RewardItems)
+                        {
+                            for (int i = 0; i < item.Quantity; i++)
+                            {
+                                GameItem rewardItem = item.Item;
+
+                                CurrentPlayer.AddItemToInventory(rewardItem);
+                                RaiseMessage($"You receive a {rewardItem.Name}");
+                            }
+                        }
+
+                        // Mark the Quest as completed
+                        quest.IsComplete = true;
+                    }
                 }
             }
         }

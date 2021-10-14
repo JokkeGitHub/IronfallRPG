@@ -401,10 +401,11 @@
                     </DataGrid>
                 </TabItem>
                 <TabItem Header="Quest">
-                    <DataGrid AutoGenerateColumns="False" HeadersVisibility="Column">
+                    <DataGrid AutoGenerateColumns="False" HeadersVisibility="Column" ItemsSource="{Binding CurrentPlayer.QuestLog}">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Name" Width="180"/>
-                            <DataGridTextColumn Header="Completed?" Width="100"/>
+                            <DataGridTextColumn Header="Name" Width="180" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Description" Width="180" Binding="{Binding Description}"/>
+                            <DataGridTextColumn Header="Completed?" Width="100" Binding="{Binding IsComplete}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </TabItem>

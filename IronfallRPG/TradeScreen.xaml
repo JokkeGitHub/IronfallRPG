@@ -6,7 +6,7 @@
         xmlns:viewModels="clr-namespace:Ironfall_Engine.ViewModels;assembly=Ironfall_Engine"
         d:DataContext="{d:DesignInstance viewModels:GameSession}"
         mc:Ignorable="d"
-        Title="TradeScreen" Height="450" Width="800">
+        Title="TradeScreen" Height="600" Width="800">
 
 
     <Grid Margin="10">
