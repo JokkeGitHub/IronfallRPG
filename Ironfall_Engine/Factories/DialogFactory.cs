@@ -19,26 +19,26 @@ namespace Ironfall_Engine.Factories
             /// and lines the player can say. If the double has a decimal, it means it will continue. So 10.XX means it's a follow up to
             /// 10. Then the dialogue goes to 23 and then the responses is 23.XX and so on.
             
-            // 99 is exit.
+            // 98 Trade, 99 is exit.
             Dialog riverDialog10 = new Dialog(NpcFactory.GetNpcByName("River"), 10, "Welcome to my shop! How can I help you?", false, true);
-            Dialog riverDialog1021 = new Dialog(NpcFactory.GetNpcByName("River"), 10.21, "Can I see your wares?", true, true);
             Dialog riverDialog1022 = new Dialog(NpcFactory.GetNpcByName("River"), 10.22, "Do you need help with anything?", true, false);
             Dialog riverDialog1023 = new Dialog(NpcFactory.GetNpcByName("River"), 10.23, "What are the rumors around town?", true, true);
-            Dialog riverDialog1024 = new Dialog(NpcFactory.GetNpcByName("River"), 10.99, "Thank you for your time.", true, true);
-            Dialog riverDialog21 = new Dialog(NpcFactory.GetNpcByName("River"), 21, "Sure! I am ready to trade anytime.", false, true);
+            Dialog riverDialog1098 = new Dialog(NpcFactory.GetNpcByName("River"), 10.98, "Can I see your wares?", true, true);
+            Dialog riverDialog1099 = new Dialog(NpcFactory.GetNpcByName("River"), 10.99, "Thank you for your time.", true, true);
             Dialog riverDialog22 = new Dialog(NpcFactory.GetNpcByName("River"), 22, "Yes I have problems with some bandits (Insert Quest here)", false, true);
             Dialog riverDialog23 = new Dialog(NpcFactory.GetNpcByName("River"), 23, "Well, I heard that the Mercenary Company The Iron Daggers are stealing from the bank!", false, true);
             Dialog riverDialog2331 = new Dialog(NpcFactory.GetNpcByName("River"), 23.31, "That is a blatant lie!", true, true);
             Dialog riverDialog2332 = new Dialog(NpcFactory.GetNpcByName("River"), 23.32, "That is very interesting...", true, true);
             Dialog riverDialog31 = new Dialog(NpcFactory.GetNpcByName("River"), 31, "What! Are you calling me a liar? You can leave then.", false, true);
             Dialog riverDialog32 = new Dialog(NpcFactory.GetNpcByName("River"), 32, "I know right! They are nothing but trouble.", false, true);
+            Dialog riverDialog21 = new Dialog(NpcFactory.GetNpcByName("River"), 98, "Sure! I am ready to trade anytime.", false, true);
             Dialog riverDialog99 = new Dialog(NpcFactory.GetNpcByName("River"), 99, "Okay Bye!", false, true);
 
             AddDialogToList(riverDialog10);
-            AddDialogToList(riverDialog1021);
+            AddDialogToList(riverDialog1098);
             AddDialogToList(riverDialog1022);
             AddDialogToList(riverDialog1023);
-            AddDialogToList(riverDialog1024);
+            AddDialogToList(riverDialog1099);
             AddDialogToList(riverDialog21);
             AddDialogToList(riverDialog22);
             AddDialogToList(riverDialog23);

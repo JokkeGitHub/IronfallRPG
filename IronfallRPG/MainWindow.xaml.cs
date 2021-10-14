@@ -29,10 +29,12 @@ namespace IronfallRPG
             InitializeComponent();
 
             _gameSession.OnMessageRaised += OnGameMessageRaised;
+            _gameSession.Trade += OnClick_Trade;
 
             DataContext = _gameSession;
         }
 
+        #region Move
         private void OnClick_MoveNorth(object sender, RoutedEventArgs e)
         {
             _gameSession.MoveNorth();
@@ -49,6 +51,7 @@ namespace IronfallRPG
         {
             _gameSession.MoveWest();
         }
+        #endregion
 
         private void OnGameMessageRaised(object sender, GameMessageEventArgs e)
         {
@@ -81,19 +84,12 @@ namespace IronfallRPG
         {
             _gameSession.CurrentPlayer.AddStatToDefence();
         }
-        private void OnClick_Trade(object sender, RoutedEventArgs e)
+        private void OnClick_Trade(object sender, EventArgs e)
         {
             TradeScreen tradeScreen = new TradeScreen();
             tradeScreen.Owner = this;
             tradeScreen.DataContext = _gameSession;
             tradeScreen.ShowDialog();
-        }
-        private void OnClick_Dialog(object sender, RoutedEventArgs e)
-        {
-            DialogScreen dialogScreen = new DialogScreen();
-            dialogScreen.Owner = this;
-            dialogScreen.DataContext = _gameSession;
-            dialogScreen.ShowDialog();
         }
         private void OnClick_Talk(object sender, RoutedEventArgs e)
         {
@@ -105,18 +101,8 @@ namespace IronfallRPG
             
             _gameSession.ChooseDialogOption(obj);
         }
-        
 
-
-        // Null Buttons
-        private void GameMessages_TextChanged(object sender, TextChangedEventArgs e)
-        { }
-
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        { }
-
-        private void Button_Click(object sender, RoutedEventArgs e) { }
-
+        #region items
         private void Button_UseItem(object sender, RoutedEventArgs e)
         {
             object obj = (object)((Button)e.Source).DataContext;
@@ -137,6 +123,18 @@ namespace IronfallRPG
 
             MessageBox.Show(itemInfo);
         }
+        #endregion
+
+
+        // Null Buttons
+        private void GameMessages_TextChanged(object sender, TextChangedEventArgs e)
+        { }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        { }
+
+        private void Button_Click(object sender, RoutedEventArgs e) { }
+
 
     }
 }

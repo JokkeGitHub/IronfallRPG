@@ -21,6 +21,7 @@ namespace Ironfall_Engine.ViewModels
         public bool HasMonster => CurrentMonster != null;
         public bool HasNpc => CurrentNpc != null;
         public event EventHandler<GameMessageEventArgs> OnMessageRaised;
+        public event EventHandler<EventArgs> Trade;
 
         private Location _currentLocation;
         private Monster _currentMonster;
@@ -114,8 +115,6 @@ namespace Ironfall_Engine.ViewModels
             }
         }
         World CurrentWorld { get; set; }
-        public ObservableCollection<Dialog> CurrentResponses = new ObservableCollection<Dialog>();
-
 
         #endregion
 
@@ -370,8 +369,8 @@ namespace Ironfall_Engine.ViewModels
             double responseNmb = (responseDialog - Math.Floor(responseDialog)) * 100;
             responseNmb = Math.Round(responseNmb);
 
-            //Int to help check if there is any responses to the npc line. 
-            int emptyDialogChecker = 0;
+            //bool to help check if there is any responses to the npc line. 
+            bool emptyDialogChecker = true;
 
             //Looking through all the Npc's dialog. 
             foreach (Dialog dialog in CurrentNpc.NpcDialog)
@@ -394,23 +393,32 @@ namespace Ironfall_Engine.ViewModels
                         {
                             CurrentNpc.NpcCurrentDialogResponses.Add(dialogR);
                             //If any responses is added, the number will rise, making sure the it wont reset.
-                            emptyDialogChecker++;
+                            emptyDialogChecker = false;
                         }
                     }
                 }
             }
-            //Check to see if the dialog continues and then resets or ends. 
-            if (emptyDialogChecker == 0)
+            
+            switch (responseNmb)
             {
-                if (responseNmb == 99)
-                {
+                case 97:
+                    //Quest
+                    break;
+                case 98:
+                    Trade?.Invoke(this, new EventArgs()); 
+                    break;
+                case 99:
                     CurrentNpc.NpcCurrentDialogResponses.Clear();
-                }
-                else
-                {
-                    IngameDialogInitiation();
-                }
+                    break;
+                default:
+                    //Check to see if the dialog continues and then resets or ends. 
+                    if (emptyDialogChecker == true)
+                    {
+                        IngameDialogInitiation();
+                    }
+                    break;
             }
+            
         }
         public void SetDialogToUsed(double id)
         {
