@@ -93,7 +93,13 @@
                             <Label Grid.Row="4" Grid.Column="0" Content="Level:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="4" Grid.Column="1" Content="{Binding CurrentPlayer.Level}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="5" Grid.Column="0" Content="Experience:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                            <Label Grid.Row="5" Grid.Column="1" Content="{Binding CurrentPlayer.ExperiencePoints}" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" Grid.ColumnSpan="3">
+                                <Label Content="{Binding CurrentPlayer.ExperiencePoints}" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="(" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="{Binding CurrentPlayer.ExperienceCap}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content=")" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            </StackPanel>
+                            
                             <Label Grid.Row="6" Grid.Column="0" Content="Free points:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="6" Grid.Column="1" Content="{Binding CurrentPlayer.UnAllocatedStatPoints}" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
 

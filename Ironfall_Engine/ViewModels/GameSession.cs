@@ -38,6 +38,7 @@ namespace Ironfall_Engine.ViewModels
                 {
                     _currentPlayer.OnActionPerformed -= OnCurrentPlayerActionPerfomed;
                     _currentPlayer.OnKilled -= OnCurrentPlayerKilled;
+                    _currentPlayer.OnLeveledUp -= OnCurrentPlayerLeveledUp;
                 }
 
                 _currentPlayer = value;
@@ -46,6 +47,8 @@ namespace Ironfall_Engine.ViewModels
                 {
                     _currentPlayer.OnActionPerformed += OnCurrentPlayerActionPerfomed;
                     _currentPlayer.OnKilled += OnCurrentPlayerKilled;
+                    _currentPlayer.OnLeveledUp += OnCurrentPlayerLeveledUp;
+
 
                 }
             }
@@ -130,7 +133,7 @@ namespace Ironfall_Engine.ViewModels
                 "UserID",                   //ID
                 0,                          //ExperienecPoints
                 3,                          //UnAllocatedStatPoints
-                0, 0, 0,                    //Stats
+                1, 1, 1,                    //Stats
                 "Happy New Adventurer",     //Name
                 "soldier.png",              //Image
                 10, 5,                      //Health
@@ -139,55 +142,12 @@ namespace Ironfall_Engine.ViewModels
                 5, 5,                       //AbilityPoints
                 1, 1,                       //Defence
                 1,                          //Level
-                0                          //Gold
+                0                           //Gold
                 );                         
 
             //This should not be here but maybe in localPlayer
 
             CurrentPlayer.Heal(CurrentPlayer.HpMax);
-
-            WeaponFactory weaponFactory = new WeaponFactory();
-            ArmorFactory armorFactory = new ArmorFactory();
-            ArtifactFactory artifactFactory = new ArtifactFactory();
-
-            Weapon testWeapon = weaponFactory.Create("Dev Weapon", "noisy kids must leave", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.OneHanded, 3, 5);
-            Weapon testWeapon2 = weaponFactory.Create("Dev Weapon 2", "noisy kids must leave", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.OneHanded, 3, 5);
-            Weapon testShield = weaponFactory.Create("Dev Shield", "noisy kids must leave", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.Shield, 0, 0);
-            Weapon testShield2 = weaponFactory.Create("Dev Shield 2", "noisy kids must leave", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.Shield, 0, 0);
-
-            Weapon test2Hander = weaponFactory.Create("Dev 2 Hander", "noisy kids must leave", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.TwoHanded, 6, 9);
-            Weapon testRanged = weaponFactory.Create("Dev Ranged", "noisy kids must leave", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.Ranged, 6, 9);
-
-            Armor testChest = armorFactory.Create("Dev Chest", "i wanna go home", 95, false, GameItem.ItemCategory.Armor, ItemEnum.Armor.Light, 3, 4);
-            Armor testChest2 = armorFactory.Create("Dev Chest 2", "i wanna go home", 95, false, GameItem.ItemCategory.Armor, ItemEnum.Armor.Light, 3, 4);
-
-            Artifact testHead = artifactFactory.Create(5991,"Dev Head", "From Malai, from Thailand", 5, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Head);
-            Artifact testHead2 = artifactFactory.Create(5992,"Dev Head 2", "From Malai, from Thailand", 5, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Head);
-            Artifact testNeck = artifactFactory.Create(5993,"Dev Neck", "hmmmmm", 55, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Neck);
-            Artifact testNeck2 = artifactFactory.Create(5994,"Dev Neck 2", "hmmmmm", 55, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Neck);
-            Artifact testFingerOne = artifactFactory.Create(5995,"Dev Finger", "hygge fingers", 35, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
-            Artifact testFingerTwo = artifactFactory.Create(5996,"The Second Ring", "hygge fingers", 99, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
-            Artifact testFingerThree = artifactFactory.Create(5997,"The Third Ring", "hygge fingers", 1, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
-            Artifact testFeet = artifactFactory.Create(5998,"Dev Feet", "Shoes", 555, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Feet);
-            Artifact testFeet2 = artifactFactory.Create(5999,"Dev Feet 2", "Shoes", 555, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Feet);
-
-            CurrentPlayer.AddItemToInventory(testWeapon);
-            CurrentPlayer.AddItemToInventory(testWeapon2);
-            CurrentPlayer.AddItemToInventory(testShield);
-            CurrentPlayer.AddItemToInventory(testShield2);
-            CurrentPlayer.AddItemToInventory(testChest);
-            CurrentPlayer.AddItemToInventory(testChest2);
-            CurrentPlayer.AddItemToInventory(testHead);
-            CurrentPlayer.AddItemToInventory(testHead2);
-            CurrentPlayer.AddItemToInventory(testNeck);
-            CurrentPlayer.AddItemToInventory(testNeck2);
-            CurrentPlayer.AddItemToInventory(testFingerOne);
-            CurrentPlayer.AddItemToInventory(testFingerTwo);
-            CurrentPlayer.AddItemToInventory(testFingerThree);
-            CurrentPlayer.AddItemToInventory(testFeet);
-            CurrentPlayer.AddItemToInventory(testFeet2);
-            CurrentPlayer.AddItemToInventory(test2Hander);
-            CurrentPlayer.AddItemToInventory(testRanged);
 
             CurrentWorld = WorldFactory.CreateWorld();
             CurrentLocation = CurrentWorld.LocationAt(0, 0);
@@ -545,6 +505,11 @@ namespace Ironfall_Engine.ViewModels
             RaiseMessage($"The {CurrentMonster.Name} killed you...");
             CurrentLocation = CurrentWorld.LocationAt(0, 0);
             CurrentPlayer.Heal(CurrentPlayer.HpMax);
+        }
+        private void OnCurrentPlayerLeveledUp(object sender, System.EventArgs eventArgs)
+        {
+            RaiseMessage("");
+            RaiseMessage($"You are now wiser! You have reached Level {CurrentPlayer.Level}.");
         }
         private void RaiseMessage(string message)
         {

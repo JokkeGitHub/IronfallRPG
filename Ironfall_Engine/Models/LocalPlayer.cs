@@ -10,6 +10,7 @@ namespace Ironfall_Engine.Models
     public class LocalPlayer : LivingEntity
     {
         private int _experiencePoints;
+        private double _experienceCap; 
         private int _unAllocatedStatPoints;
 
         public string CharacterClass { get; set; }
@@ -22,6 +23,15 @@ namespace Ironfall_Engine.Models
                 _experiencePoints = value;
                 OnPropertyChanged();
                 SetLevelUp();
+            }
+        }
+        public double ExperienceCap
+        {
+            get { return _experienceCap; }
+            set
+            {
+                _experienceCap = value;
+                OnPropertyChanged();
             }
         }
         public int UnAllocatedStatPoints
@@ -43,6 +53,7 @@ namespace Ironfall_Engine.Models
             CharacterClass = characterClass;
             UserID = userID;
             ExperiencePoints = experiencePoints;
+            ExperienceCap = 13;
             UnAllocatedStatPoints = unAllocatedStatPoints;
             Image = $"/Ironfall_Engine;component/Resource/Images/PlayerImages/{image}";
             QuestLog = new ObservableCollection<Quest>();
@@ -53,7 +64,13 @@ namespace Ironfall_Engine.Models
         private void SetLevelUp()
         {
             int originalLevel = Level;
-            Level = (ExperiencePoints / 15) + 1;
+
+            if (Level * 12.5 <= ExperiencePoints)
+            {
+                Level++;
+                ExperiencePoints = 0;
+                ExperienceCap = Level * 12.5;
+            }
             if (Level != originalLevel)
             {
                 HpMax += StatBody;
