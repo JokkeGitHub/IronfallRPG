@@ -26,7 +26,7 @@ namespace Ironfall_Engine.Factories
             _listOfQuests.Add
                 (new Quest(1, 
                 "Remove the bandits",
-                "Some bandits have been terrorizing River, help her teach them a lesson.",
+                "Some bandits have been terrorizing River, help her teach them a lesson and bring back 5 wooden runesbool",
                 "River",
                 25, 10,
                 rewardItems,

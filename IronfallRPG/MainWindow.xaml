@@ -432,17 +432,17 @@
 
                 <DataGrid Grid.Row="2" Grid.Column="0" 
                           Margin="10"
-                          ItemsSource="{Binding CurrentNpc.NpcCurrentDialogResponses}" AutoGenerateColumns="False"
+                          ItemsSource="{Binding CurrentNpc.PlayerCurrentDialogResponses}" AutoGenerateColumns="False"
                           HeadersVisibility="Column" CanUserDeleteRows="False" CanUserAddRows="False"
                           VerticalScrollBarVisibility="Auto"
                           Visibility="{Binding HasNpc, Converter={StaticResource BooleanToVisibility}}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Reply" IsReadOnly="True" Width="*" Binding="{Binding DialogText}"/>
-                        <DataGridTextColumn Header="ID" IsReadOnly="True" Width="Auto" Binding="{Binding DialogId}"/>
+                        <DataGridTextColumn Header="Number" IsReadOnly="True" Width="Auto" Binding="{Binding DialogNumber}"/>
                         <DataGridTemplateColumn MinWidth="50">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="Answer" Command="{Binding RowActionCommand}" CommandParameter="{Binding DialogId}" Click="OnClick_Answer"></Button>
+                                    <Button Content="Answer" Command="{Binding RowActionCommand}" CommandParameter="{Binding DialogNumber}" Click="OnClick_Answer"></Button>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

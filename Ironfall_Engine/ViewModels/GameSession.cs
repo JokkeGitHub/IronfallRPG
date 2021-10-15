@@ -349,19 +349,19 @@ namespace Ironfall_Engine.ViewModels
         public void IngameDialogInitiation()
         {
             //This function is used at start, and also if the dialog returns to start. It clears to avoid dublications.  
-            if (CurrentNpc.NpcCurrentDialogResponses.Any())
+            if (CurrentNpc.PlayerCurrentDialogResponses.Any())
             {
-                CurrentNpc.NpcCurrentDialogResponses.Clear();
+                CurrentNpc.PlayerCurrentDialogResponses.Clear();
             }
 
             Dialog currentDialog = CurrentNpc.NpcDialog.FirstOrDefault();
 
             //Add the start responses to response list. 
-            foreach (Dialog dialog in CurrentNpc.NpcDialogResponses)
+            foreach (Dialog dialog in CurrentNpc.PlayerDialogResponses)
             {
-                if (Math.Floor(dialog.DialogId) == currentDialog.DialogId && dialog.IsUsed != true)
+                if (Math.Floor(dialog.DialogNumber) == currentDialog.DialogNumber && dialog.IsUsed != true)
                 {
-                    CurrentNpc.NpcCurrentDialogResponses.Add(dialog);
+                    CurrentNpc.PlayerCurrentDialogResponses.Add(dialog);
                 }
             }
         }
@@ -381,39 +381,27 @@ namespace Ironfall_Engine.ViewModels
             foreach (Dialog dialog in CurrentNpc.NpcDialog)
             {
                 //Create a check that sees if the second number in the line is equal to any number in dialog
-                if (dialog.DialogId == responseNmb)
+                if (dialog.DialogNumber == responseNmb)
                 {
                     RaiseMessage($"{dialog.DialogText}");
                     savedDialog = dialog;
                                         
                     //Clear the player responses for new responses. 
-                    CurrentNpc.NpcCurrentDialogResponses.Clear();
+                    CurrentNpc.PlayerCurrentDialogResponses.Clear();
                     
                     //Finds all the responses that match the new number. 
-                    foreach (Dialog dialogR in CurrentNpc.NpcDialogResponses)
+                    foreach (Dialog dialogR in CurrentNpc.PlayerDialogResponses)
                     {
-                        if (Math.Floor(dialogR.DialogId) == dialog.DialogId && dialogR.IsUsed == false)
+                        if (Math.Floor(dialogR.DialogNumber) == dialog.DialogNumber && dialogR.IsUsed == false)
                         {
-                            CurrentNpc.NpcCurrentDialogResponses.Add(dialogR);
+                            CurrentNpc.PlayerCurrentDialogResponses.Add(dialogR);
                             //If any responses is added, the number will rise, making sure the it wont reset.
                             emptyDialogChecker = false;
                             
                         }
                     }
-                    if (emptyDialogChecker)
-                    {
-                        //There is no new dialog load the standard responses. 
-                        foreach (Dialog dialogR in CurrentNpc.NpcDialogResponses)
-                        {
-                            if (Math.Floor(dialogR.DialogId) == 10 && dialogR.IsUsed == false)
-                            {
-                                CurrentNpc.NpcCurrentDialogResponses.Add(dialogR);
-                            }
-                        }
-                    }
-                    //Setting the dialog in question as used if it isn't recuring.
-                    SetDialogToUsed(responseDialog);
                 }
+                    
             }
             
             switch (responseNmb)
@@ -426,9 +414,9 @@ namespace Ironfall_Engine.ViewModels
                             CurrentPlayer.QuestLog.Add(quest);
 
                             //Finding the following dialog and activates it. 
-                            foreach (Dialog dialog in CurrentNpc.NpcDialog)
+                            foreach (Dialog dialog in CurrentNpc.PlayerDialogResponses)
                             {
-                                if (dialog.DialogId == 97)
+                                if (dialog.DialogNumber == 10.97)
                                 {
                                     dialog.IsUsed = false;
                                 }
@@ -438,14 +426,19 @@ namespace Ironfall_Engine.ViewModels
                     break;
                 case 97:
                     //Check if quest is completed
-                    RaiseMessage("Cheking if quest is completed");
-                    CompleteQuest(savedDialog.DialogQuestId);
+                    if (CompleteQuest(savedDialog.DialogQuestId))
+                    {
+                        RaiseMessage(DialogFactory.GetDialogByID(Convert.ToDouble(string.Concat(CurrentNpc.NpcID, 97.01))).DialogText);
+                        RaiseMessage("");
+                        DialogFactory.GetDialogByID(Convert.ToDouble(string.Concat(CurrentNpc.NpcID, responseDialog))).IsUsed = true;
+                    }
+                    else { RaiseMessage(DialogFactory.GetDialogByID(Convert.ToDouble(string.Concat(CurrentNpc.NpcID, 97.02))).DialogText); }
                     break;
                 case 98:
                     Trade?.Invoke(this, new EventArgs()); 
                     break;
                 case 99:
-                    CurrentNpc.NpcCurrentDialogResponses.Clear();
+                    CurrentNpc.PlayerCurrentDialogResponses.Clear();
                     break;
                 default:
                     //Check to see if the dialog continues and then resets or ends. 
@@ -455,12 +448,27 @@ namespace Ironfall_Engine.ViewModels
                     }
                     break;
             }
+
+            //Setting the dialog in question as used if it isn't recuring.
+            SetDialogToUsed(responseDialog);
+            
+            if (emptyDialogChecker)
+            {
+                //There is no new dialog load the standard responses. 
+                foreach (Dialog dialogR in CurrentNpc.PlayerDialogResponses)
+                {
+                    if (Math.Floor(dialogR.DialogNumber) == 10 && dialogR.IsUsed == false)
+                    {
+                        CurrentNpc.PlayerCurrentDialogResponses.Add(dialogR);
+                    }
+                }
+            }
         }
         public void SetDialogToUsed(double id)
-        {
-            foreach (Dialog dialog in CurrentNpc.NpcDialogResponses)
             {
-                if (dialog.DialogId == id && dialog.IsRecurring == false)
+            foreach (Dialog dialog in CurrentNpc.PlayerDialogResponses)
+            {
+                if (dialog.DialogNumber == id && dialog.IsRecurring == false)
                 {
                     dialog.IsUsed = true;
                 }
@@ -469,7 +477,7 @@ namespace Ironfall_Engine.ViewModels
         #endregion
 
         #region Quest
-        private void CompleteQuest(int questID)
+        private bool CompleteQuest(int questID)
         {
             foreach (Quest quest in CurrentPlayer.QuestLog)
             {
@@ -509,9 +517,11 @@ namespace Ironfall_Engine.ViewModels
 
                         // Mark the Quest as completed
                         quest.IsComplete = true;
+                        return true;
                     }
                 }
             }
+            return false; 
         }
         #endregion
 
