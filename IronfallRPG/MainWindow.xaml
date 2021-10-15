@@ -385,9 +385,9 @@
                 <TabItem Header="Inventory">
                     <DataGrid AutoGenerateColumns="False" HeadersVisibility="Column" ItemsSource="{Binding CurrentPlayer.GroupedInventory}">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Description" Binding="{Binding Item.Name}" Width="*"/>
-                            <DataGridTextColumn Header="Qty" IsReadOnly="True" Width="Auto" Binding="{Binding Quantity}"/>
-                            <DataGridTextColumn Header="Price" Binding="{Binding Item.Value}" Width="Auto"/>
+                            <DataGridTextColumn Header="Description" Binding="{Binding Item.Name}" Width="*" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Qty" Width="Auto" Binding="{Binding Quantity}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Price" Binding="{Binding Item.Value}" Width="Auto" IsReadOnly="True"/>
                             
                             <DataGridTemplateColumn>
                                 <DataGridTemplateColumn.CellTemplate>
@@ -403,9 +403,9 @@
                 <TabItem Header="Quest">
                     <DataGrid AutoGenerateColumns="False" HeadersVisibility="Column" ItemsSource="{Binding CurrentPlayer.QuestLog}">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Name" Width="180" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Header="Description" Width="180" Binding="{Binding Description}"/>
-                            <DataGridTextColumn Header="Completed?" Width="100" Binding="{Binding IsComplete}"/>
+                            <DataGridTextColumn Header="Name" Width="180" Binding="{Binding Name}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Description" Width="180" Binding="{Binding Description}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Completed?" Width="100" Binding="{Binding IsComplete}" IsReadOnly="True"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </TabItem>

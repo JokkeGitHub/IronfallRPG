@@ -36,7 +36,6 @@ namespace Ironfall_Engine.Factories
             Dialog riverDialog97 = new Dialog(NpcFactory.GetNpcByName("River"), 197, 97, "", 1, false, true);
             Dialog riverDialog9701 = new Dialog(NpcFactory.GetNpcByName("River"), 197.01, 97.01, "Oh you are god send! Thank you so much!", 1, false, true);
             Dialog riverDialog9702 = new Dialog(NpcFactory.GetNpcByName("River"), 197.02, 97.02, "Sorry, but you are not done.", 1, false, true);
-
             Dialog riverDialog98 = new Dialog(NpcFactory.GetNpcByName("River"), 198, 98, "Sure! I am ready to trade anytime.", 0, false, true);
             Dialog riverDialog99 = new Dialog(NpcFactory.GetNpcByName("River"), 199, 99, "Okay Bye!", 0, false, true);
 
