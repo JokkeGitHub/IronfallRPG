@@ -111,7 +111,7 @@ namespace Ironfall_Engine.ViewModels
                 1, 1,                       //Defence
                 1,                          //Level
                 0,                          //Gold
-                inventory, gear, basicAction);                         
+                inventory, gear, basicAction);
 
             //This should not be here but maybe in localPlayer
 
