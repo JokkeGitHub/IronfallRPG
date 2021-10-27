@@ -14,9 +14,8 @@ namespace Ironfall_Engine.Factories
                 "You see a fountain here and two shops one to the north and one to the east. You live to the south",
                 "townsquare.jpg");
 
-            newWorld.AddLocation(-1, 1, "Trading Shop",
-                "The shop of a trader.",
-                "shop.jpg");
+            newWorld.AddLocation(-1, 1, "Trading Shop", "The shop of a trader.","shop.jpg");
+            newWorld.LocationAt(-1, 1).NpcHere = NpcFactory.GetNpcByName("River");
 
             newWorld.AddLocation(0, 2, "Back Alley", "It's not a nice place to linger.", "backalley.png");
             newWorld.LocationAt(0, 2).AddMonster(1, 100);

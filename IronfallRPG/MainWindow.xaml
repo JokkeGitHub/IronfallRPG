@@ -84,16 +84,22 @@
                             <Label Grid.Row="1" Grid.Column="1" Content="{Binding CurrentPlayer.CharacterClass}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="2" Grid.Column="0" Content="Health:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Grid.ColumnSpan="3">
-                                <Label Content="{Binding CurrentPlayer.HpMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                                <Label Content="/" Foreground="LightGray" FontFamily="Informal Roman"/>
                                 <Label Content="{Binding CurrentPlayer.HpCurrent}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="/" Foreground="LightGray" FontFamily="Informal Roman"/>
+                                <Label Content="{Binding CurrentPlayer.HpMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             </StackPanel>
                             <Label Grid.Row="3" Grid.Column="0" Content="Gold:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="3" Grid.Column="1" Content="{Binding CurrentPlayer.Gold}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="4" Grid.Column="0" Content="Level:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="4" Grid.Column="1" Content="{Binding CurrentPlayer.Level}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="5" Grid.Column="0" Content="Experience:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                            <Label Grid.Row="5" Grid.Column="1" Content="{Binding CurrentPlayer.ExperiencePoints}" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" Grid.ColumnSpan="3">
+                                <Label Content="{Binding CurrentPlayer.ExperiencePoints}" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="(" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="{Binding CurrentPlayer.ExperienceCap}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content=")" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                            </StackPanel>
+                            
                             <Label Grid.Row="6" Grid.Column="0" Content="Free points:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="6" Grid.Column="1" Content="{Binding CurrentPlayer.UnAllocatedStatPoints}" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
 
@@ -139,41 +145,41 @@
                             
                             <Label Grid.Row="0" Grid.Column="3" Content="Health:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <StackPanel Grid.Row="0" Grid.Column="4" Grid.RowSpan="4" Orientation="Horizontal" >
-                                <Label Content="{Binding CurrentPlayer.HpMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                                <Label Content="/" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                                 <Label Content="{Binding CurrentPlayer.HpCurrent}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="/" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="{Binding CurrentPlayer.HpMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             </StackPanel>
                            
                             <Label Grid.Row="1" Grid.Column="3" Content="Mana Points:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <StackPanel Grid.Row="1" Grid.Column="4" Grid.RowSpan="4" Orientation="Horizontal">
-                                <Label Content="{Binding CurrentPlayer.MpMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                                <Label Content="/" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                                 <Label Content="{Binding CurrentPlayer.MpCurrent}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="/" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="{Binding CurrentPlayer.MpMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             </StackPanel>
                             
                             <Label Grid.Row="2" Grid.Column="3" Content="Ability Points:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <StackPanel Grid.Row="2" Grid.Column="4" Grid.RowSpan="4" Orientation="Horizontal" >
-                                <Label Content="{Binding CurrentPlayer.ApMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                                <Label Content="/" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                                 <Label Content="{Binding CurrentPlayer.ApCurrent}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="/" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="{Binding CurrentPlayer.ApMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             </StackPanel>
 
                             <Label Grid.Row="3" Grid.Column="0" Content="Damage:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <StackPanel Grid.Row="3" Grid.Column="1" Grid.RowSpan="4" Orientation="Horizontal">
-                                <Label Content="{Binding CurrentPlayer.DamageMinimum}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="{Binding CurrentPlayer.DamageMinimum}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                                 <Label Content="-" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                                <Label Content="{Binding CurrentPlayer.DamageMaximum}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="{Binding CurrentPlayer.DamageMaximum}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             </StackPanel>
                             <Button Click="OnClick_AddStatDamage" Content="+" Grid.Row="3" Grid.Column="2" Margin="5,5,5,5" FontSize="10" FontFamily="Informal Roman" />
 
 
                             <Label Grid.Row="4" Grid.Column="0" Content="Defence:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <StackPanel Grid.Row="4" Grid.Column="1" Grid.RowSpan="4" Orientation="Horizontal">
-                                <Label Content="{Binding CurrentPlayer.DefenceMinimum}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="{Binding CurrentPlayer.DefenceMinimum}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
                                 <Label Content="-" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                                <Label Content="{Binding CurrentPlayer.DefenceMaximum}" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                                <Label Content="{Binding CurrentPlayer.DefenceMaximum}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             </StackPanel>
-                            <Button Click="OnClick_AddDefence" Content="+" Grid.Row="4" Grid.Column="2" Margin="5,5,5,5" FontSize="10" FontFamily="Informal Roman" />
+                            <Button Click="OnClick_AddStatDefence" Content="+" Grid.Row="4" Grid.Column="2" Margin="5,5,5,5" FontSize="10" FontFamily="Informal Roman" />
 
 
                             <Label Grid.Row="5" Grid.Column="0" Content="Spell Damage:" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
@@ -320,13 +326,14 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
+                    
                     <StackPanel Grid.Row="0" Visibility="{Binding HasMonster, Converter={StaticResource BooleanToVisibility}}" HorizontalAlignment="Center" Orientation="Horizontal" >
                         <TextBlock>-</TextBlock>
                         <TextBlock Text="{Binding CurrentMonster.Name}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                         <TextBlock Foreground="LightGray" FontFamily="Informal Roman" FontSize="18">-  Health: [</TextBlock>
-                        <TextBlock Text="{Binding CurrentMonster.HpMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
-                        <TextBlock Foreground="LightGray" FontFamily="Informal Roman" FontSize="18">/</TextBlock>
                         <TextBlock Text="{Binding CurrentMonster.HpCurrent}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                        <TextBlock Foreground="LightGray" FontFamily="Informal Roman" FontSize="18">/</TextBlock>
+                        <TextBlock Text="{Binding CurrentMonster.HpMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                         <TextBlock Foreground="LightGray" FontFamily="Informal Roman" FontSize="18">]</TextBlock>
                     </StackPanel>
 
@@ -343,10 +350,29 @@
                     </Image>
                     <TextBlock Grid.Row="2" HorizontalAlignment="Center" Text="{Binding CurrentMonster.Description}" TextWrapping="Wrap" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
 
+                    <StackPanel Grid.Row="0" Visibility="{Binding HasNpc, Converter={StaticResource BooleanToVisibility}}" HorizontalAlignment="Center" Orientation="Horizontal" >
+                        <TextBlock>-</TextBlock>
+                        <TextBlock Text="{Binding CurrentNpc.Name}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                        <TextBlock Foreground="LightGray" FontFamily="Informal Roman" FontSize="18">-  Health: [</TextBlock>
+                        <TextBlock Text="{Binding CurrentNpc.HpCurrent}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                        <TextBlock Foreground="LightGray" FontFamily="Informal Roman" FontSize="18">/</TextBlock>
+                        <TextBlock Text="{Binding CurrentNpc.HpMax}" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
+                        <TextBlock Foreground="LightGray" FontFamily="Informal Roman" FontSize="18">]</TextBlock>
+                    </StackPanel>
+                    
+                    <Image Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="Auto" Width="Auto" 
+                                     Source="{Binding CurrentNpc.Image}" RenderTransformOrigin="0.5,0.5">
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="-1"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
+                    <TextBlock Grid.Row="2" HorizontalAlignment="Center" Text="{Binding CurrentNpc.Description}" TextWrapping="Wrap" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
 
-                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text=""/>
-                    <Image Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="225" Width="225" Source="{Binding CurrentMerchant.Image}"/>
-                    <TextBlock Grid.Row="2" HorizontalAlignment="Center" Text="" TextWrapping="Wrap"/>
 
                 </Grid>
             </Border>
@@ -363,11 +389,12 @@
 
             <TabControl>
                 <TabItem Header="Inventory">
-                    <DataGrid AutoGenerateColumns="False" HeadersVisibility="Column" ItemsSource="{Binding CurrentPlayer.Inventory}">
+                    <DataGrid AutoGenerateColumns="False" HeadersVisibility="Column" ItemsSource="{Binding CurrentPlayer.GroupedInventory}">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Name" IsReadOnly="True" Width="200" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Header="#" IsReadOnly="True" Width="50"/>
-                            <DataGridTextColumn Header="Worth" IsReadOnly="True" Width="80" Binding="{Binding Value}"/>
+                            <DataGridTextColumn Header="Description" Binding="{Binding Item.Name}" Width="*" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Qty" Width="Auto" Binding="{Binding Quantity}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Price" Binding="{Binding Item.Value}" Width="Auto" IsReadOnly="True"/>
+                            
                             <DataGridTemplateColumn>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -375,14 +402,16 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
+                            
                         </DataGrid.Columns>
                     </DataGrid>
                 </TabItem>
                 <TabItem Header="Quest">
-                    <DataGrid AutoGenerateColumns="False" HeadersVisibility="Column">
+                    <DataGrid AutoGenerateColumns="False" HeadersVisibility="Column" ItemsSource="{Binding CurrentPlayer.QuestLog}">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Name" Width="180"/>
-                            <DataGridTextColumn Header="Completed?" Width="100"/>
+                            <DataGridTextColumn Header="Name" Width="180" Binding="{Binding Name}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Description" Width="180" Binding="{Binding Description}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Completed?" Width="100" Binding="{Binding IsComplete}" IsReadOnly="True"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </TabItem>
@@ -407,6 +436,25 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
+                <DataGrid Grid.Row="2" Grid.Column="0" 
+                          Margin="10"
+                          ItemsSource="{Binding CurrentNpc.PlayerCurrentDialogResponses}" AutoGenerateColumns="False"
+                          HeadersVisibility="Column" CanUserDeleteRows="False" CanUserAddRows="False"
+                          VerticalScrollBarVisibility="Auto"
+                          Visibility="{Binding HasNpc, Converter={StaticResource BooleanToVisibility}}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Reply" IsReadOnly="True" Width="*" Binding="{Binding DialogText}"/>
+                        <DataGridTextColumn Header="Number" IsReadOnly="True" Width="Auto" Binding="{Binding DialogNumber}"/>
+                        <DataGridTemplateColumn MinWidth="50">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Answer" Command="{Binding RowActionCommand}" CommandParameter="{Binding DialogNumber}" Click="OnClick_Answer"></Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
                 <!--Combat Controls-->
 
                 <Grid Grid.Row="0" Grid.Column="0" 
@@ -420,9 +468,6 @@
                         <ColumnDefinition Width="10"/>
                         <ColumnDefinition Width="60"/>
                     </Grid.ColumnDefinitions>
-                    <ComboBox Grid.Row="0" Grid.Column="0" 
-                              SelectedItem="" DisplayMemberPath="ItemName" SelectedValuePath="ItemTypeID"/>
-                    <Button Grid.Row="0" Grid.Column="2" Content="Attack" Click="OnClick_Attack" Visibility="{Binding HasMonster, Converter={StaticResource BooleanToVisibility}}"/>
 
                 </Grid>
 
@@ -462,9 +507,20 @@
                               Content="South"/>
                     <Button Grid.Row="1" Grid.Column="1" 
                               Height="50" Width="100" 
-                              Click="Button_Click"
-                              Visibility="{Binding HasMerchant, Converter={StaticResource BooleanToVisibility}}"
+                              Click="OnClick_Trade"
+                              Visibility="{Binding HasNpc, Converter={StaticResource BooleanToVisibility}}"
                               Content="Trade"/>
+                    <Button Grid.Row="0" Grid.Column="0" 
+                              Height="50" Width="100" 
+                              Click="OnClick_Talk"
+                              Visibility="{Binding HasNpc, Converter={StaticResource BooleanToVisibility}}"
+                              Content="Talk"/>
+                    <Button Grid.Row="0" Grid.Column="2" 
+                            Height="50" Width="100" 
+                            Content="Attack" 
+                            Click="OnClick_Attack" 
+                            Visibility="{Binding HasMonster, Converter={StaticResource BooleanToVisibility}}"/>
+
 
                 </Grid>
             </Grid>

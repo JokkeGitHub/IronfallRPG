@@ -30,9 +30,7 @@ namespace Ironfall_Engine.Models
         private int _level { get; set; }
         private int _gold { get; set; }
         private string _image { get; set; }
-        private ItemSlot _gear { get; set; }
         private BasicAction _basicAction { get; set; }
-        private ObservableCollection<GameItem> _inventory;
         #endregion
 
         #region Variables
@@ -190,25 +188,10 @@ namespace Ironfall_Engine.Models
                 OnPropertyChanged();
             }
         }
-        public ObservableCollection<GameItem> Inventory
-        {
-            get { return _inventory; }
-            set
-            {
-                _inventory = value;
-                OnPropertyChanged();
-            }
-        }
+        public ObservableCollection<GameItem> Inventory { get; set; }
+        public ObservableCollection<GroupedInventoryItem> GroupedInventory { get; set; }
 
-        public ItemSlot Gear
-        {
-            get { return _gear; }
-            private set
-            {
-                _gear = value;
-                OnPropertyChanged();
-            }
-        }
+        public ItemSlot Gear { get; set; }
         public BasicAction BasicAction
         {
             get { return _basicAction; }
@@ -241,7 +224,7 @@ namespace Ironfall_Engine.Models
         public event EventHandler<string> OnActionPerformed;
         #endregion
 
-        protected LivingEntity(string name, string image, int hpMax, int hpCurrent, int statBody, int statSpirit, int statFellowship, int damageMinimum, int damageMaximum, int mpMax, int mpCurrent, int apMax, int apCurrent, int defenceMinimum, int defenceMaximum, int level, int gold, ObservableCollection<GameItem> inventory, ItemSlot gear, BasicAction basicAction)
+        protected LivingEntity(string name, string image, int hpMax, int hpCurrent, int statBody, int statSpirit, int statFellowship, int damageMinimum, int damageMaximum, int mpMax, int mpCurrent, int apMax, int apCurrent, int defenceMinimum, int defenceMaximum, int level, int gold)
         {
             Name = name;
             Image = image;
@@ -260,9 +243,10 @@ namespace Ironfall_Engine.Models
             DefenceMaximum = defenceMaximum;
             Level = level;
             Gold = gold;
-            Inventory = inventory;
-            Gear = gear;
-            BasicAction = basicAction;
+            Inventory = new ObservableCollection<GameItem>();
+            GroupedInventory = new ObservableCollection<GroupedInventoryItem>();
+            Gear = new ItemSlot(ItemList.head, ItemList.neck, ItemList.chest, ItemList.mainHand, ItemList.offHand, ItemList.fingerRight, ItemList.fingerLeft, ItemList.feet);
+            BasicAction = new BasicAction();
         }
 
         //Basic functions
@@ -283,6 +267,48 @@ namespace Ironfall_Engine.Models
             {
                 HpCurrent = HpMax;
             }
+        }
+
+        //Inventory Functions
+        public void AddItemToInventory(GameItem item)
+        {
+            Inventory.Add(item);
+
+            if (item.IsUnique)
+            {
+                GroupedInventory.Add(new GroupedInventoryItem(item, 1));
+            }
+            else if (item.IsUnique == false)
+            {
+
+                if (!GroupedInventory.Any(gi => gi.Item.Id == item.Id))
+                {
+                    GroupedInventory.Add(new GroupedInventoryItem(item, 0));
+                }
+
+                GroupedInventory.First(gi => gi.Item.Id == item.Id).Quantity++;
+            }
+            OnPropertyChanged(nameof(Weapons));
+        }
+        public void RemoveItemFromInventory(GameItem item)
+        {
+            Inventory.Remove(item);
+
+            GroupedInventoryItem groupedInventoryItemToRemove = item.IsUnique ? GroupedInventory.FirstOrDefault(gi => gi.Item == item) : GroupedInventory.FirstOrDefault(gi => gi.Item.Id == item.Id);
+
+            if (groupedInventoryItemToRemove != null)
+            {
+                if (groupedInventoryItemToRemove.Quantity == 1)
+                {
+                    GroupedInventory.Remove(groupedInventoryItemToRemove);
+                }
+                else
+                {
+                    groupedInventoryItemToRemove.Quantity--;
+                }
+            }
+
+            OnPropertyChanged(nameof(Weapons));
         }
 
         //Use Actions

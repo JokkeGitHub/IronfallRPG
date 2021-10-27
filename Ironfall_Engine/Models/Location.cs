@@ -25,6 +25,7 @@ namespace Ironfall_Engine.Models
         }
 
         public List<MonsterEncounter> MonsterHere { get; } = new List<MonsterEncounter>();
+        public Npc NpcHere { get; set; }
 
         public void AddMonster(int monsterID, int chanceOfEncountering)
         {

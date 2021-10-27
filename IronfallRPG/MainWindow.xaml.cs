@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Ironfall_Engine.ViewModels;
 using Ironfall_Engine.Events;
+using Ironfall_Engine.Models.Item;
 
 namespace IronfallRPG
 {
@@ -28,10 +29,12 @@ namespace IronfallRPG
             InitializeComponent();
 
             _gameSession.OnMessageRaised += OnGameMessageRaised;
+            _gameSession.Trade += OnClick_Trade;
 
             DataContext = _gameSession;
         }
 
+        #region Move
         private void OnClick_MoveNorth(object sender, RoutedEventArgs e)
         {
             _gameSession.MoveNorth();
@@ -48,6 +51,7 @@ namespace IronfallRPG
         {
             _gameSession.MoveWest();
         }
+        #endregion
 
         private void OnGameMessageRaised(object sender, GameMessageEventArgs e)
         {
@@ -60,26 +64,66 @@ namespace IronfallRPG
         }
 
         //Add stat buttons
-        private void OnClick_AddStatBody(Object sender, RoutedEventArgs e)
+        private void OnClick_AddStatBody(object sender, RoutedEventArgs e)
         {
             _gameSession.CurrentPlayer.AddStatToBody();
         }
-        private void OnClick_AddStatSpirit(Object sender, RoutedEventArgs e)
+        private void OnClick_AddStatSpirit(object sender, RoutedEventArgs e)
         {
             _gameSession.CurrentPlayer.AddStatToSpirit();
         }
-        private void OnClick_AddStatFellowship(Object sender, RoutedEventArgs e)
+        private void OnClick_AddStatFellowship(object sender, RoutedEventArgs e)
         {
             _gameSession.CurrentPlayer.AddStatToFellowship();
         }
-        private void OnClick_AddStatDamage(Object sender, RoutedEventArgs e)
+        private void OnClick_AddStatDamage(object sender, RoutedEventArgs e)
         {
             _gameSession.CurrentPlayer.AddStatToDamage();
         }
-        private void OnClick_AddDefence(Object sender, RoutedEventArgs e)
+        private void OnClick_AddStatDefence(object sender, RoutedEventArgs e)
         {
             _gameSession.CurrentPlayer.AddStatToDefence();
         }
+        private void OnClick_Trade(object sender, EventArgs e)
+        {
+            TradeScreen tradeScreen = new TradeScreen();
+            tradeScreen.Owner = this;
+            tradeScreen.DataContext = _gameSession;
+            tradeScreen.ShowDialog();
+        }
+        private void OnClick_Talk(object sender, RoutedEventArgs e)
+        {
+            _gameSession.IngameDialogInitiation();
+        }
+        private void OnClick_Answer(object sender, RoutedEventArgs e)
+        {
+            object obj = ((Button)sender).CommandParameter;
+            
+            _gameSession.ChooseDialogOption(obj);
+        }
+
+        #region items
+        private void Button_UseItem(object sender, RoutedEventArgs e)
+        {
+            object obj = (object)((Button)e.Source).DataContext;
+            _gameSession.UseItem((GroupedInventoryItem)obj);
+        }
+
+        private void Button_UnequipItem(object sender, RoutedEventArgs e)
+        {
+            object obj = ((Button)sender).CommandParameter;
+            
+            _gameSession.UnequipItem(obj);
+        }
+
+        private void Button_ItemInfo(object sender, RoutedEventArgs e)
+        {
+            object obj = ((Button)sender).CommandParameter;
+            string itemInfo = _gameSession.ItemInfo(obj);
+
+            MessageBox.Show(itemInfo);
+        }
+        #endregion
 
 
         // Null Buttons
@@ -91,25 +135,6 @@ namespace IronfallRPG
 
         private void Button_Click(object sender, RoutedEventArgs e) { }
 
-        private void Button_UseItem(object sender, RoutedEventArgs e)
-        {
-            object obj = (object)((Button)e.Source).DataContext;
-            _gameSession.UseItem(obj);
-        }
-
-        private void Button_UnequipItem(object sender, RoutedEventArgs e)
-        {
-            object obj = ((Button)sender).CommandParameter;
-            _gameSession.UnequipItem(obj);
-        }
-
-        private void Button_ItemInfo(object sender, RoutedEventArgs e)
-        {
-            object obj = ((Button)sender).CommandParameter;
-            string itemInfo = _gameSession.ItemInfo(obj);
-
-            MessageBox.Show(itemInfo);
-        }
 
     }
 }
