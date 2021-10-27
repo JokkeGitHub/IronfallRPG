@@ -250,6 +250,7 @@
                             
                             <Label Grid.Row="6" Grid.Column="0" Content="Left Finger:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>
                             <Label Grid.Row="6" Grid.Column="1" Content="{Binding CurrentPlayer.Gear.FingerLeft.Name}" Grid.ColumnSpan="4" Grid.RowSpan="2" Foreground="Bisque" FontFamily="Informal Roman" FontSize="18"/>
+                            <Button Grid.Row="6" Grid.Column="2" Content="Info" Margin="18,8,18,8" FontFamily="Informal Roman" FontSize="18" CommandParameter="{Binding CurrentPlayer.Gear.FingerLeft}" Click="Button_ItemInfo"/>
                             <Button Grid.Row="6" Grid.Column="3" Content="Unequip" Margin="18,8,18,8" FontFamily="Informal Roman" FontSize="18" Padding="0" CommandParameter="{Binding CurrentPlayer.Gear.FingerLeft}" Click="Button_UnequipItem" />
                             
                             <Label Grid.Row="7" Grid.Column="0" Content="Feet:" Grid.RowSpan="2" Foreground="LightGray" FontFamily="Informal Roman" FontSize="18"/>

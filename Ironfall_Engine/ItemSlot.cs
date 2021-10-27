@@ -278,7 +278,7 @@ namespace Ironfall_Engine
             else
             {
                 currentPlayer.AddItemToInventory(currentPlayer.Gear.FingerRight);
-                currentPlayer.Gear.FingerRight = artifact;                
+                currentPlayer.Gear.FingerRight = artifact;
             }
         }
 
@@ -322,7 +322,11 @@ namespace Ironfall_Engine
                 default:
                     break;
             }
-            currentPlayer.AddItemToInventory(weapon);
+
+            if (weapon.Name != "Empty")
+            {
+                currentPlayer.AddItemToInventory(weapon);
+            }
 
             return weapon.Name;
         }
@@ -332,7 +336,11 @@ namespace Ironfall_Engine
             ArmorFactory armorFactory = new ArmorFactory();
 
             currentPlayer.Gear.Chest = armorFactory.GetEmptyChest();
-            currentPlayer.AddItemToInventory(armor);
+
+            if (armor.Name != "Empty")
+            {
+                currentPlayer.AddItemToInventory(armor);
+            }
 
             return armor.Name;
         }
@@ -362,7 +370,11 @@ namespace Ironfall_Engine
                 default:
                     break;
             }
-            currentPlayer.AddItemToInventory(artifact);
+
+            if (artifact.Name != "Empty")
+            {
+                currentPlayer.AddItemToInventory(artifact);
+            }
 
             return artifact.Name;
         }
@@ -386,7 +398,7 @@ namespace Ironfall_Engine
         public string InfoWeapon(LocalPlayer currentPlayer, Weapon weapon)
         {
             string weaponInfo = "";
-            
+
             switch (weapon.WeaponType)
             {
                 case ItemEnum.Weapon.OneHanded:
@@ -459,13 +471,7 @@ namespace Ironfall_Engine
                     break;
 
                 case ItemEnum.Artifact.Finger:
-
-                    // DO SOMETHING 
-
-                    artifactInfo = "Artifact Type: " + currentPlayer.Gear.FingerRight.ArtifactType.ToString();
-                    artifactInfo += "\nUnique: " + currentPlayer.Gear.FingerRight.IsUnique.ToString();
-                    artifactInfo += "\nArtifact Name: " + currentPlayer.Gear.FingerRight.Name;
-                    artifactInfo += "\nDescription: " + currentPlayer.Gear.FingerRight.Description;
+                    artifactInfo = InfoFinger(currentPlayer, artifact);
                     break;
 
                 case ItemEnum.Artifact.Feet:
@@ -478,6 +484,28 @@ namespace Ironfall_Engine
                 default:
                     break;
             }
+            return artifactInfo;
+        }
+
+        public string InfoFinger(LocalPlayer currentPlayer, Artifact artifact)
+        {
+            string artifactInfo = "";
+
+            if (artifact.Name == currentPlayer.Gear.FingerRight.Name)
+            {
+                artifactInfo = "Artifact Type: " + currentPlayer.Gear.FingerRight.ArtifactType.ToString();
+                artifactInfo += "\nUnique: " + currentPlayer.Gear.FingerRight.IsUnique.ToString();
+                artifactInfo += "\nArtifact Name: " + currentPlayer.Gear.FingerRight.Name;
+                artifactInfo += "\nDescription: " + currentPlayer.Gear.FingerRight.Description;
+            }
+            else if (artifact.Name == currentPlayer.Gear.FingerLeft.Name)
+            {
+                artifactInfo = "Artifact Type: " + currentPlayer.Gear.FingerLeft.ArtifactType.ToString();
+                artifactInfo += "\nUnique: " + currentPlayer.Gear.FingerLeft.IsUnique.ToString();
+                artifactInfo += "\nArtifact Name: " + currentPlayer.Gear.FingerLeft.Name;
+                artifactInfo += "\nDescription: " + currentPlayer.Gear.FingerLeft.Description;
+            }
+
             return artifactInfo;
         }
 
