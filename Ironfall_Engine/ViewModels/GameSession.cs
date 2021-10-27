@@ -363,7 +363,23 @@ namespace Ironfall_Engine.ViewModels
                 }
                     
             }
-            
+
+            //Setting the dialog in question as used if it isn't recuring.
+            SetDialogToUsed(responseDialog);
+
+            if (emptyDialogChecker)
+            {
+                //There is no new dialog load the standard responses. 
+                CurrentNpc.PlayerCurrentDialogResponses.Clear();
+                foreach (Dialog dialogR in CurrentNpc.PlayerDialogResponses)
+                {
+                    if (Math.Floor(dialogR.DialogNumber) == 10 && dialogR.IsUsed == false)
+                    {
+                        CurrentNpc.PlayerCurrentDialogResponses.Add(dialogR);
+                    }
+                }
+            }
+
             switch (responseNmb)
             {
                 case 96:
@@ -383,6 +399,7 @@ namespace Ironfall_Engine.ViewModels
                             }
                         }
                     }
+                    IngameDialogInitiation();
                     break;
                 case 97:
                     //Check if quest is completed
@@ -391,6 +408,7 @@ namespace Ironfall_Engine.ViewModels
                         RaiseMessage(DialogFactory.GetDialogByID(Convert.ToDouble(string.Concat(CurrentNpc.NpcID, 97.01))).DialogText);
                         RaiseMessage("");
                         DialogFactory.GetDialogByID(Convert.ToDouble(string.Concat(CurrentNpc.NpcID, responseDialog))).IsUsed = true;
+                        IngameDialogInitiation();
                     }
                     else { RaiseMessage(DialogFactory.GetDialogByID(Convert.ToDouble(string.Concat(CurrentNpc.NpcID, 97.02))).DialogText); }
                     break;
@@ -402,26 +420,11 @@ namespace Ironfall_Engine.ViewModels
                     break;
                 default:
                     //Check to see if the dialog continues and then resets or ends. 
-                    if (emptyDialogChecker == true)
+                    if (emptyDialogChecker)
                     {
                         IngameDialogInitiation();
                     }
                     break;
-            }
-
-            //Setting the dialog in question as used if it isn't recuring.
-            SetDialogToUsed(responseDialog);
-            
-            if (emptyDialogChecker)
-            {
-                //There is no new dialog load the standard responses. 
-                foreach (Dialog dialogR in CurrentNpc.PlayerDialogResponses)
-                {
-                    if (Math.Floor(dialogR.DialogNumber) == 10 && dialogR.IsUsed == false)
-                    {
-                        CurrentNpc.PlayerCurrentDialogResponses.Add(dialogR);
-                    }
-                }
             }
         }
         public void SetDialogToUsed(double id)
