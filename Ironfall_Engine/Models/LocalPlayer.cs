@@ -69,7 +69,7 @@ namespace Ironfall_Engine.Models
             {
                 Level++;
                 ExperiencePoints = 0;
-                ExperienceCap = Level * 12.5;
+                ExperienceCap = Math.Ceiling(Level * 12.5);
             }
             if (Level != originalLevel)
             {
