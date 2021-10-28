@@ -127,7 +127,7 @@ namespace Ironfall_Engine.ViewModels
 
         public GameSession()
         {
-            ItemSlot gear = new ItemSlotFactory().Create();
+            //ItemSlot gear = new ItemSlotFactory().Create();
             CurrentPlayer = new LocalPlayer(
                 "Classless",                //Class
                 "UserID",                   //ID
@@ -143,7 +143,7 @@ namespace Ironfall_Engine.ViewModels
                 1, 1,                       //Defence
                 1,                          //Level
                 0                           //Gold
-                );                         
+                );
 
             //This should not be here but maybe in localPlayer
 
@@ -152,6 +152,12 @@ namespace Ironfall_Engine.ViewModels
             CurrentWorld = WorldFactory.CreateWorld();
             CurrentLocation = CurrentWorld.LocationAt(0, 0);
 
+            ConsumableFactory consumableFactory = new ConsumableFactory();
+            Consumable healthPotion = consumableFactory.Create("Healing Potion", $"This item heals your HP.", 10, false, GameItem.ItemCategory.Consumable, ItemEnum.Consumable.Potion, 2, 3);
+
+            CurrentPlayer.AddItemToInventory(healthPotion);
+            CurrentPlayer.AddItemToInventory(healthPotion);
+            CurrentPlayer.AddItemToInventory(healthPotion);
         }
 
         #region Movement
@@ -232,6 +238,11 @@ namespace Ironfall_Engine.ViewModels
             {
                 string artifactName = CurrentPlayer.Gear.EquipArtifact(CurrentPlayer, (Artifact)item);
                 RaiseMessage($"You have equipped {artifactName}");
+            }
+            else if (item is Consumable)
+            {
+                //string consumableName = CurrentPlayer.Gear.EquipArtifact(CurrentPlayer, (Artifact)item);
+                CurrentPlayer.BasicAction.UsePotion(CurrentPlayer, (Consumable)item);
             }
         }
         public void UnequipItem(object item)

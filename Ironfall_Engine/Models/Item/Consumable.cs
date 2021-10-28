@@ -7,14 +7,13 @@ using Ironfall_Engine.Interfaces.Item;
 
 namespace Ironfall_Engine.Models.Item
 {
-    class Consumable : GameItem, IEffect
+    public class Consumable : GameItem, IEffect
     {
-        public int Quantity { get; set; }
         public int MinEffect { get; set; }
         public int MaxEffect { get; set; }
         public Enum ConsumableType { get; set; }
 
-        public Consumable(int id, string name, string description, int value, bool isUnique, ItemCategory category, Enum consumableType, int quantity, int minEffect, int maxEffect)
+        public Consumable(int id, string name, string description, int value, bool isUnique, ItemCategory category, Enum consumableType, int minEffect, int maxEffect)
         {
             Id = id;
             Name = name;
@@ -23,7 +22,6 @@ namespace Ironfall_Engine.Models.Item
             IsUnique = isUnique;
             Category = category;
             ConsumableType = consumableType;
-            Quantity = quantity;
             MinEffect = minEffect;
             MaxEffect = maxEffect;
         }

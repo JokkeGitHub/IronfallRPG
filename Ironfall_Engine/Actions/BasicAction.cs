@@ -33,6 +33,26 @@ namespace Ironfall_Engine.Actions
             }
         }
 
+        public void UsePotion(LivingEntity actor, Consumable item)
+        {
+            int healingOutput = RNG.NumberBetween(item.MinEffect, item.MaxEffect);
+
+            string actorName = (actor is LocalPlayer) ? "You" : $"The {actor.Name}";
+
+            if (healingOutput <= 0)
+            {
+                ReportResult($"{item.Name} had no effect on {actorName}");
+            }
+            else
+            {
+                ReportResult($"{item.Name} healed {actorName} for {healingOutput} point{(healingOutput > 1 ? "s" : "")} of HP.");
+
+                actor.Heal(healingOutput);
+            }
+
+            actor.RemoveItemFromInventory(item);
+        }
+
         private void ReportResult(string result)
         {
             OnActionPerformed?.Invoke(this, result);
