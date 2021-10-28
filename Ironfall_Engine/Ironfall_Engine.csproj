@@ -53,6 +53,7 @@
     <Compile Include="Factories\Item\ArtifactFactory.cs" />
     <Compile Include="Factories\Item\CommonFactory.cs" />
     <Compile Include="Factories\Item\ConsumableFactory.cs" />
+    <Compile Include="Factories\Item\TrinketFactory.cs" />
     <Compile Include="Factories\Item\WeaponFactory.cs" />
     <Compile Include="Factories\MonsterFactory.cs" />
     <Compile Include="Factories\NpcFactory.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Models\Item\Consumable.cs" />
     <Compile Include="Models\Item\GameItem.cs" />
     <Compile Include="Models\Item\GroupedInventoryItem.cs" />
+    <Compile Include="Models\Item\Trinket.cs" />
     <Compile Include="Models\Item\Weapon.cs" />
     <Compile Include="Models\LivingEntity.cs" />
     <Compile Include="Models\LocalPlayer.cs" />

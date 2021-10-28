@@ -8,6 +8,14 @@ namespace Ironfall_Engine.Enums
 {
     class ItemEnum
     {
+        public enum Weapon
+        {
+            OneHanded,
+            TwoHanded,
+            Ranged,
+            Shield
+        }
+
         public enum Armor
         {
             Light,
@@ -38,12 +46,12 @@ namespace Ironfall_Engine.Enums
             Scroll
         }
 
-        public enum Weapon
+        public enum Trinket
         {
-            OneHanded,
-            TwoHanded,
-            Ranged,
-            Shield
+            Heirloom,
+            Antique,
+            Magical,
+            Mechanism
         }
     }
 }

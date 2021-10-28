@@ -22,7 +22,7 @@ namespace Ironfall_Engine
 
         public Weapon testWeapon = new WeaponFactory().Create("Developers Axe", "Forged in the code of the Architects.", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.OneHanded, 1, 5);
         
-        public Common woodenRune = new CommonFactory().Create(401, "Wooden Rune", "Small rune for luck", 2, false, GameItem.ItemCategory.Common, GameItem.ItemCategory.Common);
-        public Artifact strangeOrb = new ArtifactFactory().Create(5001, "Strange Black Orb", "This black orb is like starring into the abyss", 50, true, GameItem.ItemCategory.Artefact, GameItem.ItemCategory.Artefact);
+        public Common woodenRune = new CommonFactory().Create(401, "Wooden Rune", "Small rune for luck", 2, false, GameItem.ItemCategory.Common, ItemEnum.Common.Trash);
+        public Artifact strangeOrb = new ArtifactFactory().Create(5001, "Strange Black Orb", "This black orb is like starring into the abyss", 50, true, GameItem.ItemCategory.Trinket, ItemEnum.Trinket.Magical);
     }
 }
