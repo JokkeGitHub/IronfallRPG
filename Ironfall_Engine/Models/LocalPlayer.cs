@@ -68,7 +68,7 @@ namespace Ironfall_Engine.Models
             if (Level * 12.5 <= ExperiencePoints)
             {
                 Level++;
-                ExperiencePoints = 0;
+                ExperiencePoints -= Convert.ToInt32(ExperienceCap);
                 ExperienceCap = Math.Ceiling(Level * 12.5);
             }
             if (Level != originalLevel)
