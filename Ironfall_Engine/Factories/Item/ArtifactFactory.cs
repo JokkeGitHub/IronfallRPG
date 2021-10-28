@@ -17,31 +17,31 @@ namespace Ironfall_Engine.Factories.Item
 
         public Artifact GetEmptyHead()
         {
-            Artifact emptyHead = new Artifact(-4, "Empty", "Nothing is eqiupped in this slot.", 0, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Head);
+            Artifact emptyHead = ItemList.head;
             return emptyHead;
         }
 
         public Artifact GetEmptyNeck()
         {
-            Artifact emptyNeck = new Artifact(-5, "Empty", "Nothing is eqiupped in this slot.", 0, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Neck);
+            Artifact emptyNeck = ItemList.neck;
             return emptyNeck;
         }
 
         public Artifact GetEmptyFingerRight()
         {
-            Artifact emptyFingerRight = new Artifact(-6, "Empty", "Nothing is eqiupped in this slot.", 0, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
+            Artifact emptyFingerRight = ItemList.fingerRight;
             return emptyFingerRight;
         }
 
         public Artifact GetEmptyFingerLeft()
         {
-            Artifact emptyFingerLeft = new Artifact(-7, "Empty", "Nothing is eqiupped in this slot.", 0, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
+            Artifact emptyFingerLeft = ItemList.fingerLeft;
             return emptyFingerLeft;
         }
 
         public Artifact GetEmptyFeet()
         {
-            Artifact emptyFeet = new Artifact(-8, "Empty", "Nothing is eqiupped in this slot.", 0, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Feet);
+            Artifact emptyFeet = ItemList.feet;
             return emptyFeet;
         }
 

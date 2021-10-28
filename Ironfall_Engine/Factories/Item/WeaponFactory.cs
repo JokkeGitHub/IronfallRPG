@@ -21,13 +21,13 @@ namespace Ironfall_Engine.Factories.Item
 
         public Weapon GetEmptyMainHand()
         {
-            Weapon emptyMainHand = new Weapon(-1, "Empty", "Nothing is eqiupped in this slot.", 0, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.OneHanded, 0, 0);
+            Weapon emptyMainHand = ItemList.mainHand;
             return emptyMainHand;
         }
 
         public Weapon GetEmptyOffHand()
         {
-            Weapon emptyOffHand = new Weapon(-2, "Empty", "Nothing is eqiupped in this slot.", 0, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.Shield, 0, 0);
+            Weapon emptyOffHand = ItemList.offHand;
             return emptyOffHand;
         }
     }

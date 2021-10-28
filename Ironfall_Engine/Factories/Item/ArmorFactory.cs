@@ -20,7 +20,7 @@ namespace Ironfall_Engine.Factories.Item
         }
         public Armor GetEmptyChest()
         {
-            Armor emptyChest = new Armor(-3, "Empty", "Nothing is eqiupped in this slot.", 0, false, GameItem.ItemCategory.Armor, ItemEnum.Armor.Light, 0, 0);
+            Armor emptyChest = ItemList.chest;
             return emptyChest;
         }
     }
