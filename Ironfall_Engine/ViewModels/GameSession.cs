@@ -242,7 +242,7 @@ namespace Ironfall_Engine.ViewModels
             else if (item is Consumable)
             {
                 //string consumableName = CurrentPlayer.Gear.EquipArtifact(CurrentPlayer, (Artifact)item);
-                CurrentPlayer.BasicAction.UsePotion(CurrentPlayer, (Consumable)item);
+                CurrentPlayer.BasicAction.UseConsumable(CurrentPlayer, (Consumable)item);
             }
         }
         public void UnequipItem(object item)

@@ -33,7 +33,7 @@ namespace Ironfall_Engine.Actions
             }
         }
 
-        public void UsePotion(LivingEntity actor, Consumable item)
+        public void UseConsumable(LivingEntity actor, Consumable item)
         {
             int healingOutput = RNG.NumberBetween(item.MinEffect, item.MaxEffect);
 
