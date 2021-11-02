@@ -147,17 +147,18 @@ namespace Ironfall_Engine.ViewModels
 
             //This should not be here but maybe in localPlayer
 
-            CurrentPlayer.Heal(CurrentPlayer.HpMax);
+            CurrentPlayer.RestoreHealthPoints(CurrentPlayer.HpMax);
 
             CurrentWorld = WorldFactory.CreateWorld();
             CurrentLocation = CurrentWorld.LocationAt(0, 0);
 
-            ConsumableFactory consumableFactory = new ConsumableFactory();
-            Consumable healthPotion = consumableFactory.Create("Healing Potion", $"This item heals your HP.", 10, false, GameItem.ItemCategory.Consumable, ItemEnum.Consumable.Potion, 2, 3);
-
-            CurrentPlayer.AddItemToInventory(healthPotion);
-            CurrentPlayer.AddItemToInventory(healthPotion);
-            CurrentPlayer.AddItemToInventory(healthPotion);
+            ItemList itemList = new ItemList();
+            CurrentPlayer.AddItemToInventory(itemList.healthPotionMinor);
+            CurrentPlayer.AddItemToInventory(itemList.healthPotionMinor);
+            CurrentPlayer.AddItemToInventory(itemList.manaPotionMinor);
+            CurrentPlayer.AddItemToInventory(itemList.manaPotionMinor);
+            CurrentPlayer.AddItemToInventory(itemList.abilityPotionMinor);
+            CurrentPlayer.AddItemToInventory(itemList.abilityPotionMinor);
         }
 
         #region Movement
@@ -226,8 +227,8 @@ namespace Ironfall_Engine.ViewModels
 
             if (item is Weapon)
             {
-               string weaponName =  CurrentPlayer.Gear.EquipWeapon(CurrentPlayer, (Weapon)item);
-               RaiseMessage($"You have equipped {weaponName}");
+                string weaponName = CurrentPlayer.Gear.EquipWeapon(CurrentPlayer, (Weapon)item);
+                RaiseMessage($"You have equipped {weaponName}");
             }
             else if (item is Armor)
             {
@@ -241,7 +242,6 @@ namespace Ironfall_Engine.ViewModels
             }
             else if (item is Consumable)
             {
-                //string consumableName = CurrentPlayer.Gear.EquipArtifact(CurrentPlayer, (Artifact)item);
                 CurrentPlayer.BasicAction.UseConsumable(CurrentPlayer, (Consumable)item);
             }
         }
@@ -266,7 +266,7 @@ namespace Ironfall_Engine.ViewModels
         public string ItemInfo(object item)
         {
             string itemInfo = "";
-            
+
             if (item is Weapon)
             {
                 itemInfo += CurrentPlayer.Gear.InfoWeapon(CurrentPlayer, (Weapon)item);
@@ -356,10 +356,10 @@ namespace Ironfall_Engine.ViewModels
                 {
                     RaiseMessage($"{dialog.DialogText}");
                     savedDialog = dialog;
-                                        
+
                     //Clear the player responses for new responses. 
                     CurrentNpc.PlayerCurrentDialogResponses.Clear();
-                    
+
                     //Finds all the responses that match the new number. 
                     foreach (Dialog dialogR in CurrentNpc.PlayerDialogResponses)
                     {
@@ -368,11 +368,11 @@ namespace Ironfall_Engine.ViewModels
                             CurrentNpc.PlayerCurrentDialogResponses.Add(dialogR);
                             //If any responses is added, the number will rise, making sure the it wont reset.
                             emptyDialogChecker = false;
-                            
+
                         }
                     }
                 }
-                    
+
             }
 
             //Setting the dialog in question as used if it isn't recuring.
@@ -424,7 +424,7 @@ namespace Ironfall_Engine.ViewModels
                     else { RaiseMessage(DialogFactory.GetDialogByID(Convert.ToDouble(string.Concat(CurrentNpc.NpcID, 97.02))).DialogText); }
                     break;
                 case 98:
-                    Trade?.Invoke(this, new EventArgs()); 
+                    Trade?.Invoke(this, new EventArgs());
                     break;
                 case 99:
                     CurrentNpc.PlayerCurrentDialogResponses.Clear();
@@ -439,7 +439,7 @@ namespace Ironfall_Engine.ViewModels
             }
         }
         public void SetDialogToUsed(double id)
-            {
+        {
             foreach (Dialog dialog in CurrentNpc.PlayerDialogResponses)
             {
                 if (dialog.DialogNumber == id && dialog.IsRecurring == false)
@@ -495,7 +495,7 @@ namespace Ironfall_Engine.ViewModels
                     }
                 }
             }
-            return false; 
+            return false;
         }
         #endregion
 
@@ -518,7 +518,7 @@ namespace Ironfall_Engine.ViewModels
             RaiseMessage("");
             RaiseMessage($"The {CurrentMonster.Name} killed you...");
             CurrentLocation = CurrentWorld.LocationAt(0, 0);
-            CurrentPlayer.Heal(CurrentPlayer.HpMax);
+            CurrentPlayer.RestoreHealthPoints(CurrentPlayer.HpMax);
         }
         private void OnCurrentPlayerLeveledUp(object sender, System.EventArgs eventArgs)
         {

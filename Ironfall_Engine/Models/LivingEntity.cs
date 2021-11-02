@@ -260,12 +260,28 @@ namespace Ironfall_Engine.Models
                 RaiseOnKilledEvent();
             }
         }
-        public void Heal(int pointsToHeal)
+        public void RestoreHealthPoints(int pointsToHeal)
         {
             HpCurrent += pointsToHeal;
             if (HpCurrent > HpMax)
             {
                 HpCurrent = HpMax;
+            }
+        }
+        public void RestoreManaPoints(int pointsToHeal)
+        {
+            MpCurrent += pointsToHeal;
+            if (MpCurrent > MpMax)
+            {
+                MpCurrent = MpMax;
+            }
+        }
+        public void RestoreAbilityPoints(int pointsToHeal)
+        {
+            ApCurrent += pointsToHeal;
+            if (ApCurrent > ApMax)
+            {
+                ApCurrent = ApMax;
             }
         }
 

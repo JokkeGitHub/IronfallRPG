@@ -35,22 +35,43 @@ namespace Ironfall_Engine.Actions
 
         public void UseConsumable(LivingEntity actor, Consumable item)
         {
-            int healingOutput = RNG.NumberBetween(item.MinEffect, item.MaxEffect);
+            int consumableOutput = RNG.NumberBetween(item.MinEffect, item.MaxEffect);
 
             string actorName = (actor is LocalPlayer) ? "You" : $"The {actor.Name}";
 
-            if (healingOutput <= 0)
+            if (consumableOutput <= 0)
             {
                 ReportResult($"{item.Name} had no effect on {actorName}");
             }
             else
             {
-                ReportResult($"{item.Name} healed {actorName} for {healingOutput} point{(healingOutput > 1 ? "s" : "")} of HP.");
-
-                actor.Heal(healingOutput);
+                string resource = DetermineType(actor, item.Name, consumableOutput);
+                ReportResult($"{item.Name} restored {consumableOutput} point{(consumableOutput > 1 ? "s" : "")} of {resource} for {actorName}.");
             }
 
             actor.RemoveItemFromInventory(item);
+        }
+
+        string DetermineType(LivingEntity actor, string itemName, int consumableOutput)
+        {
+            string resource = "";
+
+            if (itemName.Contains("Health"))
+            {
+                actor.RestoreHealthPoints(consumableOutput);
+                resource = "HP";
+            }
+            else if (itemName.Contains("Mana"))
+            {
+                actor.RestoreManaPoints(consumableOutput);
+                resource = "MP";
+            }
+            else if (itemName.Contains("Ability"))
+            {
+                actor.RestoreAbilityPoints(consumableOutput);
+                resource = "AP";
+            }
+            return resource;
         }
 
         private void ReportResult(string result)

@@ -26,6 +26,23 @@ namespace Ironfall_Engine.Models.Item
             MaxEffect = maxEffect;
         }
 
+
+
+        void HP()
+        {
+
+        }
+
+        void MP()
+        {
+
+        }
+
+        void AP()
+        {
+
+        }
+
         int IEffect.MinMax(int minEffect, int maxEffect, int affectedStat)
         {
             int effectOutput = RNG.NumberBetween(minEffect, maxEffect);
