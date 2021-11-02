@@ -11,7 +11,7 @@ namespace Ironfall_Engine.Factories
             newWorld.AddLocation(0, 0, "Home", "Test Location", "home.jpg");
 
             newWorld.AddLocation(0, 1, "Town square",
-                "You see a fountain here and two shops one to the north and one to the east. You live to the south",
+                "You see a fountain here and two shops one to the north and one to the west. You live to the south",
                 "townsquare.jpg");
 
             newWorld.AddLocation(-1, 1, "Trading Shop", "The shop of a trader.","shop.jpg");
