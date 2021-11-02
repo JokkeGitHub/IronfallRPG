@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ironfall_Engine.Models.Item
 {
-    class Trinket : GameItem
+    public class Trinket : GameItem
     {
         public Enum TrinketType { get; set; }
 
