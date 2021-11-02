@@ -9,12 +9,8 @@ namespace Ironfall_Engine.Factories.Item
 {
     class ConsumableFactory
     {
-        static int id = 0;
-
-        public Consumable Create(string name, string description, int value, bool isUnique, GameItem.ItemCategory category, Enum consumableType, int minEffect, int maxEffect)
+        public Consumable Create(int id, string name, string description, int value, bool isUnique, GameItem.ItemCategory category, Enum consumableType, int minEffect, int maxEffect)
         {
-            id += 1;
-
             return new Consumable(id, name, description, value, isUnique, category, consumableType, minEffect, maxEffect);
         }
     }

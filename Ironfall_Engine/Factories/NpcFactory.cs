@@ -16,6 +16,18 @@ namespace Ironfall_Engine.Factories
         static NpcFactory()
         {
             Npc river = new Npc("River", "river.png", 15,20, 5,5,10, 5,10, 5,5, 5,5, 3,5, 6, 150, 1, "She looks crazy.", 30);
+            
+            //Move this somewhere else
+            ItemList itemList = new ItemList();
+            river.AddItemToInventory(itemList.healthPotionMinor);
+            river.AddItemToInventory(itemList.healthPotionMinor);
+            river.AddItemToInventory(itemList.healthPotionMinor);
+            river.AddItemToInventory(itemList.manaPotionMinor);
+            river.AddItemToInventory(itemList.manaPotionMinor);
+            river.AddItemToInventory(itemList.manaPotionMinor);
+            river.AddItemToInventory(itemList.abilityPotionMinor);
+            river.AddItemToInventory(itemList.abilityPotionMinor);
+            river.AddItemToInventory(itemList.abilityPotionMinor);
 
             AddNpcToList(river);
         }
