@@ -15,8 +15,7 @@ namespace Ironfall_Engine.Factories
         private static readonly List<Npc> _npc = new List<Npc>();
         static NpcFactory()
         {
-            Npc river = new Npc("River", "river.png", 15,20, 5,5,10, 5,10, 5,5, 5,5, 3,5, 6, 150, 1, "She looks crazy.", 30);
-            
+            Npc river = new Npc("River", "river.png", 15,20, 5,5,10, 5,10, 5,5, 5,5, 3,5, 6, 150, 1, "She looks crazy.", 30);            
             //Move this somewhere else
             ItemList itemList = new ItemList();
             river.AddItemToInventory(itemList.healthPotionMinor);
@@ -28,8 +27,13 @@ namespace Ironfall_Engine.Factories
             river.AddItemToInventory(itemList.abilityPotionMinor);
             river.AddItemToInventory(itemList.abilityPotionMinor);
             river.AddItemToInventory(itemList.abilityPotionMinor);
-
+            
             AddNpcToList(river);
+
+
+            Npc earl = new Npc("Earl", "earl.png", 15, 20, 5, 5, 10, 5, 10, 5, 5, 5, 5, 3, 5, 6, 150, 2, "He looks like a nice guy.", 30);
+            earl.AddItemToInventory(itemList.ironSword);
+            AddNpcToList(earl);
         }
         public static Npc GetNpcByName(string name)
         {

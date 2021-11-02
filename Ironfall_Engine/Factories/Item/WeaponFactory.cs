@@ -10,12 +10,9 @@ namespace Ironfall_Engine.Factories.Item
 {
     class WeaponFactory
     {
-        static int id = 200;
 
-        public Weapon Create(string name, string description, int value, bool isUnique, GameItem.ItemCategory category, Enum weaponType, int minDamage, int maxDamage)
+        public Weapon Create(int id, string name, string description, int value, bool isUnique, GameItem.ItemCategory category, Enum weaponType, int minDamage, int maxDamage)
         {
-            id += 1;
-
             return new Weapon(id, name, description, value, isUnique, category, weaponType, minDamage, maxDamage);
         }
 

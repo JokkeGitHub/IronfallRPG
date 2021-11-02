@@ -18,9 +18,10 @@ namespace Ironfall_Engine.Factories
             /// A dialog has an id that is a double and a response bool. The response bool help sorts into the things the npc says
             /// and lines the player can say. If the double has a decimal, it means it will continue. So 10.XX means it's a follow up to
             /// 10. Then the dialogue goes to 23 and then the responses is 23.XX and so on.
-            
+
             // 98 Trade, 99 is exit. 96 Starts Quest, 97 checks if it's complete. 
             //Dialog ID NpcID + Dialog Number
+            #region RIVER
             Dialog riverDialog10 = new Dialog(NpcFactory.GetNpcByName("River"), 110, 10, "Welcome to my shop! How can I help you?", 0, false, true);
             Dialog riverDialog1023 = new Dialog(NpcFactory.GetNpcByName("River"), 110.23, 10.23, "What are the rumors around town?", 0, true, true);
             Dialog riverDialog1096 = new Dialog(NpcFactory.GetNpcByName("River"), 110.96, 10.96, "Do you need help with anything?", 0, true, false);
@@ -56,6 +57,15 @@ namespace Ironfall_Engine.Factories
             AddDialogToList(riverDialog9702);
             AddDialogToList(riverDialog98);
             AddDialogToList(riverDialog99);
+            #endregion
+
+            #region EARL
+            Dialog earlDialog11 = new Dialog(NpcFactory.GetNpcByName("Earl"), 110, 11, "Welcome to my shop! How can I help you?", 0, false, true);
+            Dialog earlDialog1198 = new Dialog(NpcFactory.GetNpcByName("Earl"), 110.98, 11.98, "Can I see your wares?", 0, true, true);
+
+            AddDialogToList(earlDialog11);
+            AddDialogToList(earlDialog1198);
+            #endregion
         }
 
         public static Dialog GetDialogByID(double id)

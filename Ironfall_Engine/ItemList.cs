@@ -22,13 +22,18 @@ namespace Ironfall_Engine
         public static Artifact fingerLeft = new Artifact(-1, "Empty", "Nothing is eqiupped in this slot.", 0, false, GameItem.ItemCategory.Artefact, ItemEnum.Artifact.Finger);
         #endregion
 
-        public Weapon testWeapon = new WeaponFactory().Create("Developers Axe", "Forged in the code of the Architects.", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.OneHanded, 1, 5);
+        public Weapon testWeapon = new WeaponFactory().Create(-10, "Developers Axe", "Forged in the code of the Architects.", 100, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.OneHanded, 1, 5);
 
         //ID 1 - 100
         #region CONSUMABLES
         public Consumable healthPotionMinor = new ConsumableFactory().Create(1, "Minor Health Potion", "This item heals your HP.", 10, false, GameItem.ItemCategory.Consumable, ItemEnum.Consumable.Potion, 1, 3);
         public Consumable manaPotionMinor = new ConsumableFactory().Create(2, "Minor Mana Potion", "This item heals your MP.", 10, false, GameItem.ItemCategory.Consumable, ItemEnum.Consumable.Potion, 1, 3);
         public Consumable abilityPotionMinor = new ConsumableFactory().Create(3, "Minor Ability Potion", "This item heals your AP.", 10, false, GameItem.ItemCategory.Consumable, ItemEnum.Consumable.Potion, 1, 3);
+        #endregion
+
+        //ID 101 - 200
+        #region WEAPONS
+        public Weapon ironSword = new WeaponFactory().Create(101, "Iron Sword", "Just a sword, nothing special.", 30, false, GameItem.ItemCategory.Weapon, ItemEnum.Weapon.OneHanded, 1, 2);
         #endregion
 
         //ID 401 - 500
