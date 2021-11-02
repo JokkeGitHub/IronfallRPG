@@ -30,6 +30,7 @@ namespace IronfallRPG
 
             _gameSession.OnMessageRaised += OnGameMessageRaised;
             _gameSession.Trade += OnClick_Trade;
+            _gameSession.Craft += OnClick_Craft;
 
             DataContext = _gameSession;
         }
@@ -90,6 +91,14 @@ namespace IronfallRPG
             tradeScreen.Owner = this;
             tradeScreen.DataContext = _gameSession;
             tradeScreen.ShowDialog();
+        }
+        
+        private void OnClick_Craft(object sender, EventArgs e)
+        {
+            CraftingScreen craftingScreen = new CraftingScreen();
+            craftingScreen.Owner = this;
+            craftingScreen.DataContext = _gameSession;
+            craftingScreen.ShowDialog();
         }
         private void OnClick_Talk(object sender, RoutedEventArgs e)
         {

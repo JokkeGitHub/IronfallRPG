@@ -22,6 +22,7 @@ namespace Ironfall_Engine.ViewModels
         public bool HasNpc => CurrentNpc != null;
         public event EventHandler<GameMessageEventArgs> OnMessageRaised;
         public event EventHandler<EventArgs> Trade;
+        public event EventHandler<EventArgs> Craft;
 
         private Location _currentLocation;
         private Monster _currentMonster;
@@ -393,6 +394,9 @@ namespace Ironfall_Engine.ViewModels
 
             switch (responseNmb)
             {
+                case 95:
+                    Craft?.Invoke(this, new EventArgs());
+                    break;
                 case 96:
                     foreach (Quest quest in CurrentNpc.NpcQuests)
                     {

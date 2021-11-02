@@ -62,9 +62,11 @@ namespace Ironfall_Engine.Factories
             #region EARL
             Dialog earlDialog11 = new Dialog(NpcFactory.GetNpcByName("Earl"), 110, 11, "Welcome to my shop! How can I help you?", 0, false, true);
             Dialog earlDialog1198 = new Dialog(NpcFactory.GetNpcByName("Earl"), 110.98, 11.98, "Can I see your wares?", 0, true, true);
+            Dialog earlDialog1195 = new Dialog(NpcFactory.GetNpcByName("Earl"), 110.95, 11.95, "Can I use your forge?", 0, true, true);
 
             AddDialogToList(earlDialog11);
             AddDialogToList(earlDialog1198);
+            AddDialogToList(earlDialog1195);
             #endregion
         }
 
