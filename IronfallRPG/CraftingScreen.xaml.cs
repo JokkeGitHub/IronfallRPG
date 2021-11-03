@@ -25,17 +25,11 @@ namespace IronfallRPG
     {
         public GameSession Session => DataContext as GameSession;
 
-        public List<GameItem> gameItems = new List<GameItem>();
+        public ObservableCollection<GameItem> gameItems = new ObservableCollection<GameItem>();
 
         public CraftingScreen()
         {
             InitializeComponent();
-            CopyCurrentPlayerInventory();
-        }
-
-        void CopyCurrentPlayerInventory()
-        {
-
         }
 
         private void OnClick_CloseScreen(object sender, RoutedEventArgs e)
@@ -81,12 +75,25 @@ namespace IronfallRPG
 
                 if (tempItem.Category is GameItem.ItemCategory.Loot)
                 {
-                    Loot tempLoot = (Loot)tempItem;
-
-
-                    Session.CurrentCraftingStation.AddItemToInventory(tempItem);
+                    gameItems.Add(tempItem);
+                }
+            }
+            SortItems();
+        }
+        void SortItems()
+        {
+            foreach (Loot item in gameItems)
+            {
+                if (item.LootType is ItemEnum.Loot.Material)
+                {
+                    Session.CurrentCraftingStation.AddItemToInventory(item);
+                }
+                else if (item.LootType is ItemEnum.Loot.Recipe)
+                {
+                    Session.CurrentCraftingStation.AddRecipeToInventory(item);
                 }
             }
         }
+
     }
 }
