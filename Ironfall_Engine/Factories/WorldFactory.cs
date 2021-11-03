@@ -22,6 +22,7 @@ namespace Ironfall_Engine.Factories
 
             newWorld.AddLocation(0, 3, "Blacksmith", "A merry blacksmith is forging in the streets.", "blacksmith.png");
             newWorld.LocationAt(0, 3).NpcHere = NpcFactory.GetNpcByName("Earl");
+            newWorld.LocationAt(0, 3).CraftingStationHere = CraftingStationFactory.GetCraftingStationByName("Forge");
 
             newWorld.AddLocation(99,99, "The other world", "You are dead, how sad.", "backalley.png");
 

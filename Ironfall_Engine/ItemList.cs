@@ -37,8 +37,10 @@ namespace Ironfall_Engine
         #endregion
 
         //ID 401 - 500
-        #region COMMON ITEMS
-        public Loot woodenRune = new LootFactory().Create(401, "Wooden Rune", "Small rune for luck", 2, false, GameItem.ItemCategory.Loot, ItemEnum.Loot.Trash);
+        #region LOOT ITEMS
+        public Loot woodenRune = new LootFactory().Create(401, "Wooden Rune", "Small rune for luck", 2, false, GameItem.ItemCategory.Loot, ItemEnum.Loot.Common);
+        public Loot ironIngot = new LootFactory().Create(402, "Iron Ingot", "Can be used for crafting", 5, false, GameItem.ItemCategory.Loot, ItemEnum.Loot.Material);
+        public Loot recipeIronSword = new LootFactory().Create(403, "Iron Sword Recipe", "Recipe for a regular iron sword", 2, false, GameItem.ItemCategory.Loot, ItemEnum.Loot.Recipe);
         #endregion
 
         //ID 5001 - 5100

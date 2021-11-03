@@ -20,6 +20,7 @@ namespace Ironfall_Engine.ViewModels
 
         public bool HasMonster => CurrentMonster != null;
         public bool HasNpc => CurrentNpc != null;
+        public bool HasCraftingStation => CurrentCraftingStation != null;
         public event EventHandler<GameMessageEventArgs> OnMessageRaised;
         public event EventHandler<EventArgs> Trade;
         public event EventHandler<EventArgs> Craft;
@@ -28,6 +29,7 @@ namespace Ironfall_Engine.ViewModels
         private Monster _currentMonster;
         private LocalPlayer _currentPlayer;
         private Npc _currentNpc;
+        private CraftingStation _currentCraftingStation;
 
 
         public LocalPlayer CurrentPlayer
@@ -97,6 +99,7 @@ namespace Ironfall_Engine.ViewModels
                 GetMonsterAtLocation();
 
                 CurrentNpc = CurrentLocation.NpcHere;
+                CurrentCraftingStation = CurrentLocation.CraftingStationHere;
             }
         }
         public Npc CurrentNpc
@@ -120,6 +123,16 @@ namespace Ironfall_Engine.ViewModels
                     }
                     RaiseMessage($"{CurrentNpc.NpcDialog.FirstOrDefault().DialogText}");
                 }
+            }
+        }
+        public CraftingStation CurrentCraftingStation
+        {
+            get { return _currentCraftingStation; }
+            set
+            {
+                _currentCraftingStation = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(HasCraftingStation));
             }
         }
         World CurrentWorld { get; set; }
@@ -159,7 +172,10 @@ namespace Ironfall_Engine.ViewModels
             CurrentPlayer.AddItemToInventory(itemList.manaPotionMinor);
             CurrentPlayer.AddItemToInventory(itemList.manaPotionMinor);
             CurrentPlayer.AddItemToInventory(itemList.abilityPotionMinor);
-            CurrentPlayer.AddItemToInventory(itemList.abilityPotionMinor);
+            CurrentPlayer.AddItemToInventory(itemList.ironIngot);
+            CurrentPlayer.AddItemToInventory(itemList.ironIngot);
+            CurrentPlayer.AddItemToInventory(itemList.ironIngot);
+            CurrentPlayer.AddItemToInventory(itemList.recipeIronSword);
         }
 
         #region Movement

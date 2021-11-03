@@ -24,44 +24,25 @@ namespace IronfallRPG
     public partial class CraftingScreen : Window
     {
         public GameSession Session => DataContext as GameSession;
-        public List<Loot> LootList = new List<Loot>();
-        public List<Loot> MaterialList = new List<Loot>();
+
+        public List<GameItem> gameItems = new List<GameItem>();
 
         public CraftingScreen()
         {
             InitializeComponent();
-            AddItemToLootList();
-            AddItemToMaterialList();
+            CopyCurrentPlayerInventory();
         }
 
-        void AddItemToLootList()
+        void CopyCurrentPlayerInventory()
         {
-            foreach (GroupedInventoryItem item in Session.CurrentPlayer.GroupedInventory)
-            {
-                object tempItem = item.ReturnItem();
 
-                if (tempItem is Loot)
-                {
-                    LootList.Add((Loot)tempItem);
-                }
-            }
-        }
-
-        void AddItemToMaterialList()
-        {
-            foreach (Loot item in LootList)
-            {
-                if (item.LootType is ItemEnum.Loot.Material)
-                {
-                    MaterialList.Add(item);
-                }
-            }
         }
 
         private void OnClick_CloseScreen(object sender, RoutedEventArgs e)
         {
             Close();
         }
+
         private void OnClick_Buy(object sender, RoutedEventArgs e)
         {
             GroupedInventoryItem groupedInventoryItem = ((FrameworkElement)sender).DataContext as GroupedInventoryItem;
@@ -89,6 +70,22 @@ namespace IronfallRPG
                 Session.CurrentPlayer.Gold += groupedInventoryItem.Item.Value;
                 Session.CurrentNpc.AddItemToInventory(groupedInventoryItem.Item);
                 Session.CurrentPlayer.RemoveItemFromInventory(groupedInventoryItem.Item);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var item in Session.CurrentPlayer.GroupedInventory)
+            {
+                GameItem tempItem = item.ReturnItem();
+
+                if (tempItem.Category is GameItem.ItemCategory.Loot)
+                {
+                    Loot tempLoot = (Loot)tempItem;
+
+
+                    Session.CurrentCraftingStation.AddItemToInventory(tempItem);
+                }
             }
         }
     }

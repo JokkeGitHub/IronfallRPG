@@ -47,6 +47,7 @@
     <Compile Include="Events\BaseNotificationClass.cs" />
     <Compile Include="Events\GameMessageEventArgs.cs" />
     <Compile Include="Enums\ItemEnum.cs" />
+    <Compile Include="Factories\CraftingStationFactory.cs" />
     <Compile Include="Factories\DialogFactory.cs" />
     <Compile Include="Factories\ItemSlotFactory.cs" />
     <Compile Include="Factories\Item\ArmorFactory.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Interfaces\Item\IEnchantment.cs" />
     <Compile Include="ItemList.cs" />
     <Compile Include="ItemSlot.cs" />
+    <Compile Include="Models\CraftingStation.cs" />
     <Compile Include="Models\Dialog.cs" />
     <Compile Include="Models\Item\Armor.cs" />
     <Compile Include="Models\Item\Artifact.cs" />
