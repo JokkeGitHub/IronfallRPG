@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Ironfall_Engine.Models.Item
 {
-    public class Common : GameItem
+    public class Loot : GameItem
     {
-        public Enum CommonType { get; set; }
+        public Enum LootType { get; set; }
 
-        public Common(int id, string name, string description, int value, bool isUnique, ItemCategory category, Enum commonType)
+        public Loot(int id, string name, string description, int value, bool isUnique, ItemCategory category, Enum commonType)
         {
             Id = id;
             Name = name;
@@ -18,7 +18,7 @@ namespace Ironfall_Engine.Models.Item
             Value = value;
             IsUnique = isUnique;
             Category = category;
-            CommonType = commonType;
+            LootType = commonType;
         }
     }
 }

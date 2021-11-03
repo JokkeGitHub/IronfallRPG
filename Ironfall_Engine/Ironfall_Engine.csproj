@@ -51,7 +51,7 @@
     <Compile Include="Factories\ItemSlotFactory.cs" />
     <Compile Include="Factories\Item\ArmorFactory.cs" />
     <Compile Include="Factories\Item\ArtifactFactory.cs" />
-    <Compile Include="Factories\Item\CommonFactory.cs" />
+    <Compile Include="Factories\Item\LootFactory.cs" />
     <Compile Include="Factories\Item\ConsumableFactory.cs" />
     <Compile Include="Factories\Item\TrinketFactory.cs" />
     <Compile Include="Factories\Item\WeaponFactory.cs" />
@@ -67,7 +67,7 @@
     <Compile Include="Models\Dialog.cs" />
     <Compile Include="Models\Item\Armor.cs" />
     <Compile Include="Models\Item\Artifact.cs" />
-    <Compile Include="Models\Item\Common.cs" />
+    <Compile Include="Models\Item\Loot.cs" />
     <Compile Include="Models\Item\Consumable.cs" />
     <Compile Include="Models\Item\GameItem.cs" />
     <Compile Include="Models\Item\GroupedInventoryItem.cs" />

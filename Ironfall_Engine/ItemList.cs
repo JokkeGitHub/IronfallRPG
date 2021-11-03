@@ -38,7 +38,7 @@ namespace Ironfall_Engine
 
         //ID 401 - 500
         #region COMMON ITEMS
-        public Common woodenRune = new CommonFactory().Create(401, "Wooden Rune", "Small rune for luck", 2, false, GameItem.ItemCategory.Loot, ItemEnum.Loot.Trash);
+        public Loot woodenRune = new LootFactory().Create(401, "Wooden Rune", "Small rune for luck", 2, false, GameItem.ItemCategory.Loot, ItemEnum.Loot.Trash);
         #endregion
 
         //ID 5001 - 5100
