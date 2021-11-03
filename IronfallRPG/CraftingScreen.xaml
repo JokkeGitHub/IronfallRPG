@@ -27,8 +27,8 @@
         </Grid.ColumnDefinitions>
 
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Content="{Binding CurrentCraftingStation.Name}" Foreground="Lavender" FontFamily="Informal Roman" FontSize="24"/>
-        <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Content="Your Inventory" Foreground="AntiqueWhite" FontFamily="Informal Roman" FontSize="18"/>
-        <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Content="Merchants Inventory" Foreground="AntiqueWhite" FontFamily="Informal Roman" FontSize="18"/>
+        <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Content="Materials" Foreground="AntiqueWhite" FontFamily="Informal Roman" FontSize="25"/>
+        <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Content="Recipes" Foreground="AntiqueWhite" FontFamily="Informal Roman" FontSize="25"/>
 
         <DataGrid Grid.Row="2" Grid.Column="1" Margin="10" 
                   ItemsSource="{Binding CurrentCraftingStation.ItemGroupedInventory}" AutoGenerateColumns="False"
@@ -68,7 +68,7 @@
 
         <Button Grid.Row="3" Grid.Column="1" Margin="5" HorizontalAlignment="Right" Width="75" Content="Close" Click="OnClick_CloseScreen"/>
         
-        <Button Name="StartCraftingStation" Grid.Row="3" Grid.Column="0" Margin="5" HorizontalAlignment="Right" Width="75" Content="Close" Click="Button_Click"/>
+        <Button Name="StartCraftingStation" Grid.Row="3" Grid.Column="0" Margin="5" HorizontalAlignment="Right" Width="75" Content="Start Crafting STation" Click="Button_Click"/>
 
     </Grid>
 </Window>
