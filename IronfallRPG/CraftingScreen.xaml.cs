@@ -93,6 +93,8 @@ namespace IronfallRPG
                     Session.CurrentCraftingStation.AddRecipeToInventory(item);
                 }
             }
+            gameItems.Clear();
+            StartCraftingStation.Visibility = Visibility.Hidden;
         }
 
     }

@@ -68,7 +68,7 @@
 
         <Button Grid.Row="3" Grid.Column="1" Margin="5" HorizontalAlignment="Right" Width="75" Content="Close" Click="OnClick_CloseScreen"/>
         
-        <Button Grid.Row="3" Grid.Column="0" Margin="5" HorizontalAlignment="Right" Width="75" Content="Close" Click="Button_Click"/>
+        <Button Name="StartCraftingStation" Grid.Row="3" Grid.Column="0" Margin="5" HorizontalAlignment="Right" Width="75" Content="Close" Click="Button_Click"/>
 
     </Grid>
 </Window>
