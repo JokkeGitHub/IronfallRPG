@@ -1,7 +1,9 @@
 ﻿using Ironfall_Engine.Models.Item;
 using Ironfall_Engine.ViewModels;
+using Ironfall_Engine.Enums;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,10 +24,40 @@ namespace IronfallRPG
     public partial class CraftingScreen : Window
     {
         public GameSession Session => DataContext as GameSession;
+        public List<Loot> LootList = new List<Loot>();
+        public List<Loot> MaterialList = new List<Loot>();
+
         public CraftingScreen()
         {
             InitializeComponent();
+            AddItemToLootList();
+            AddItemToMaterialList();
         }
+
+        void AddItemToLootList()
+        {
+            foreach (GroupedInventoryItem item in Session.CurrentPlayer.GroupedInventory)
+            {
+                object tempItem = item.ReturnItem();
+
+                if (tempItem is Loot)
+                {
+                    LootList.Add((Loot)tempItem);
+                }
+            }
+        }
+
+        void AddItemToMaterialList()
+        {
+            foreach (Loot item in LootList)
+            {
+                if (item.LootType is ItemEnum.Loot.Material)
+                {
+                    MaterialList.Add(item);
+                }
+            }
+        }
+
         private void OnClick_CloseScreen(object sender, RoutedEventArgs e)
         {
             Close();

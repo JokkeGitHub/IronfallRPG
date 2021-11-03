@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ironfall_Engine.Enums
 {
-    class ItemEnum
+    public class ItemEnum
     {
         public enum Weapon
         {
