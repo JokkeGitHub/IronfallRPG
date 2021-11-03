@@ -16,8 +16,8 @@ namespace Ironfall_Engine.Models.Item
             Consumable,
             Artefact,
             Armor,
-            Common,
-            Trinket
+            Trinket,
+            Loot
         }
         
         public int Id { get; set; }

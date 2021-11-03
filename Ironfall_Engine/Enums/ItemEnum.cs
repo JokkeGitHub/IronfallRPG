@@ -33,9 +33,12 @@ namespace Ironfall_Engine.Enums
             Finger
         }
 
-        public enum Common
+        public enum Loot
         {
             Trash,
+            Common,
+            Material,
+            Recipe,
             Quest
         }
 
@@ -43,7 +46,8 @@ namespace Ironfall_Engine.Enums
         {
             Ingredient,
             Potion,
-            Scroll
+            Scroll,
+            Food
         }
 
         public enum Trinket

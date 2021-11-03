@@ -37,7 +37,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Description" IsReadOnly="True" Width="*" Binding="{Binding Item.Name}"/>
                 <DataGridTextColumn Header="#" IsReadOnly="True" Binding="{Binding Quantity}" Width="50"/>
-                <DataGridTextColumn Header="Price" IsReadOnly="True" Width="Auto" Binding="{Binding Item.Value}"/>
+                <DataGridTextColumn Header="Price" IsReadOnly="True" Width="Auto" Binding="{Binding Item.Category}"/>
                 <DataGridTemplateColumn MinWidth="50">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
