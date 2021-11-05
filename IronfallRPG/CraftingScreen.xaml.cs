@@ -72,10 +72,14 @@ namespace IronfallRPG
             foreach (var item in Session.CurrentPlayer.GroupedInventory)
             {
                 GameItem tempItem = item.ReturnItem();
+                int quantity = item.Quantity;
 
                 if (tempItem.Category is GameItem.ItemCategory.Loot)
                 {
-                    gameItems.Add(tempItem);
+                    for (int i = 0; i < quantity; i++)
+                    {
+                        gameItems.Add(tempItem);
+                    }
                 }
             }
             SortItems();
@@ -96,6 +100,5 @@ namespace IronfallRPG
             gameItems.Clear();
             StartCraftingStation.Visibility = Visibility.Hidden;
         }
-
     }
 }
