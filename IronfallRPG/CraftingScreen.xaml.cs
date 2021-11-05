@@ -84,6 +84,7 @@ namespace IronfallRPG
             }
             SortItems();
         }
+
         void SortItems()
         {
             foreach (Loot item in gameItems)

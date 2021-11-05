@@ -15,7 +15,11 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
 
@@ -35,9 +39,9 @@
                   HeadersVisibility="Column" CanUserDeleteRows="False" CanUserAddRows="False"
                   VerticalScrollBarVisibility="Auto">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Description" IsReadOnly="True" Width="*" Binding="{Binding Item.Name}"/>
+                <DataGridTextColumn Header="Item Name" IsReadOnly="True" Width="*" Binding="{Binding Item.Name}"/>
                 <DataGridTextColumn Header="#" IsReadOnly="True" Binding="{Binding Quantity}" Width="50"/>
-                <DataGridTextColumn Header="Price" IsReadOnly="True" Width="Auto" Binding="{Binding Item.Category}"/>
+                <DataGridTextColumn Header="Item Type" IsReadOnly="True" Width="Auto" Binding="{Binding Item.Category}"/>
                 <DataGridTemplateColumn MinWidth="50">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -53,7 +57,7 @@
                   HeadersVisibility="Column" CanUserDeleteRows="False" CanUserAddRows="False"
                   VerticalScrollBarVisibility="Auto">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Description" IsReadOnly="True" Width="*" Binding="{Binding Item.Name}"/>
+                <DataGridTextColumn Header="Recipe Name" IsReadOnly="True" Width="*" Binding="{Binding Item.Name}"/>
                 <DataGridTextColumn Header="#" IsReadOnly="True" Binding="{Binding Quantity}" Width="50"/>
                 <DataGridTextColumn Header="Price" IsReadOnly="True" Width="Auto" Binding="{Binding Item.Value}"/>
                 <DataGridTemplateColumn MinWidth="50">
@@ -66,9 +70,9 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Grid.Row="3" Grid.Column="1" Margin="5" HorizontalAlignment="Right" Width="75" Content="Close" Click="OnClick_CloseScreen"/>
+        <Button Grid.Row="7" Grid.Column="1" Margin="5" HorizontalAlignment="Right" Width="75" Content="Close" Click="OnClick_CloseScreen"/>
         
-        <Button Name="StartCraftingStation" Grid.Row="3" Grid.Column="0" Margin="5" HorizontalAlignment="Right" Width="75" Content="Start Crafting STation" Click="Button_Click"/>
+        <Button Name="StartCraftingStation" Grid.Row="7" Grid.Column="0" Margin="5" HorizontalAlignment="Right" Width="75" Content="Start Crafting STation" Click="Button_Click"/>
 
     </Grid>
 </Window>

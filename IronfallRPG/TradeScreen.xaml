@@ -28,6 +28,8 @@
         </Grid.ColumnDefinitions>
 
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Content="{Binding CurrentNpc.Name}" Foreground="Lavender" FontFamily="Informal Roman" FontSize="24"/>
+        <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Content="Your Gold: " Margin="0,0,55,0" Foreground="Lavender" FontFamily="Informal Roman" FontSize="24"/>
+        <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Content="{Binding CurrentPlayer.Gold}" Foreground="Lavender" FontFamily="Informal Roman" FontSize="24"/>
         <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Content="Your Inventory" Foreground="AntiqueWhite" FontFamily="Informal Roman" FontSize="18"/>
         <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Content="Merchants Inventory" Foreground="AntiqueWhite" FontFamily="Informal Roman" FontSize="18"/>
 

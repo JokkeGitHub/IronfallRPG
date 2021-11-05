@@ -172,6 +172,7 @@ namespace Ironfall_Engine.ViewModels
             CurrentPlayer.AddItemToInventory(itemList.manaPotionMinor);
             CurrentPlayer.AddItemToInventory(itemList.manaPotionMinor);
             CurrentPlayer.AddItemToInventory(itemList.abilityPotionMinor);
+            CurrentPlayer.AddItemToInventory(itemList.abilityPotionMinor);
             CurrentPlayer.AddItemToInventory(itemList.ironIngot);
             CurrentPlayer.AddItemToInventory(itemList.ironIngot);
             CurrentPlayer.AddItemToInventory(itemList.ironIngot);
