@@ -34,6 +34,10 @@ namespace IronfallRPG
 
         private void OnClick_CloseScreen(object sender, RoutedEventArgs e)
         {
+            Session.CurrentCraftingStation.ItemInventory.Clear();
+            Session.CurrentCraftingStation.RecipeInventory.Clear();
+            Session.CurrentCraftingStation.ItemGroupedInventory.Clear();
+            Session.CurrentCraftingStation.RecipeGroupedInventory.Clear();
             Close();
         }
 

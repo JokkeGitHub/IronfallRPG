@@ -16,9 +16,9 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -34,6 +34,33 @@
         <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Content="Materials" Foreground="AntiqueWhite" FontFamily="Informal Roman" FontSize="25"/>
         <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Content="Recipes" Foreground="AntiqueWhite" FontFamily="Informal Roman" FontSize="25"/>
 
+        <!-- INVENTORY -->
+        
+        <DataGrid Grid.Row="2" Grid.Column="0" Margin="10" 
+                  ItemsSource="{Binding CurrentCraftingStation.RecipeGroupedInventory}" AutoGenerateColumns="False"
+                  HeadersVisibility="Column" CanUserDeleteRows="False" CanUserAddRows="False"
+                  VerticalScrollBarVisibility="Auto">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Recipe Name" IsReadOnly="True" Width="*" Binding="{Binding Item.Name}"/>
+                <DataGridTextColumn Header="#" IsReadOnly="True" Binding="{Binding Quantity}" Width="50"/>
+                <DataGridTextColumn Header="Price" IsReadOnly="True" Width="Auto" Binding="{Binding Item.Value}"/>
+                <DataGridTemplateColumn MinWidth="50">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Recipe" Width="47" Click="OnClick_Buy"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn MinWidth="50">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Use" Width="47" Click="OnClick_Buy"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        
         <DataGrid Grid.Row="2" Grid.Column="1" Margin="10" 
                   ItemsSource="{Binding CurrentCraftingStation.ItemGroupedInventory}" AutoGenerateColumns="False"
                   HeadersVisibility="Column" CanUserDeleteRows="False" CanUserAddRows="False"
@@ -51,8 +78,28 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        
+        <!-- CRAFTING -->
 
-        <DataGrid Grid.Row="2" Grid.Column="0" Margin="10" 
+        <DataGrid Grid.Row="3" Grid.Column="0" Margin="10,10,0,10" 
+                  ItemsSource="{Binding CurrentCraftingStation.RecipeGroupedInventory}" AutoGenerateColumns="False"
+                  HeadersVisibility="Column" CanUserDeleteRows="False" CanUserAddRows="False"
+                  VerticalScrollBarVisibility="Auto">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Recipe Name" IsReadOnly="True" Width="*" Binding="{Binding Item.Name}"/>
+                <DataGridTextColumn Header="#" IsReadOnly="True" Binding="{Binding Quantity}" Width="50"/>
+                <DataGridTextColumn Header="Price" IsReadOnly="True" Width="Auto" Binding="{Binding Item.Value}"/>
+                <DataGridTemplateColumn MinWidth="50">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Buy" Width="50" Click="OnClick_Buy"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <DataGrid Grid.Row="3" Grid.Column="1" Margin="0,10,10,10" 
                   ItemsSource="{Binding CurrentCraftingStation.RecipeGroupedInventory}" AutoGenerateColumns="False"
                   HeadersVisibility="Column" CanUserDeleteRows="False" CanUserAddRows="False"
                   VerticalScrollBarVisibility="Auto">
