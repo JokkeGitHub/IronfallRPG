@@ -86,13 +86,12 @@
                   HeadersVisibility="Column" CanUserDeleteRows="False" CanUserAddRows="False"
                   VerticalScrollBarVisibility="Auto">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Recipe Name" IsReadOnly="True" Width="*" Binding="{Binding Item.Name}"/>
-                <DataGridTextColumn Header="#" IsReadOnly="True" Binding="{Binding Quantity}" Width="50"/>
-                <DataGridTextColumn Header="Price" IsReadOnly="True" Width="Auto" Binding="{Binding Item.Value}"/>
+                <DataGridTextColumn Header="Recipe Info" IsReadOnly="True" Width="150" Binding="{Binding Item.Name}"/>
+                <DataGridTextColumn Header="Required Materials" IsReadOnly="True" Binding="{Binding Item.Description}" Width="*"/>
                 <DataGridTemplateColumn MinWidth="50">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Buy" Width="50" Click="OnClick_Buy"/>
+                            <Button Content="Remove" Width="50" Click="OnClick_Buy"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -104,13 +103,11 @@
                   HeadersVisibility="Column" CanUserDeleteRows="False" CanUserAddRows="False"
                   VerticalScrollBarVisibility="Auto">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Recipe Name" IsReadOnly="True" Width="*" Binding="{Binding Item.Name}"/>
-                <DataGridTextColumn Header="#" IsReadOnly="True" Binding="{Binding Quantity}" Width="50"/>
-                <DataGridTextColumn Header="Price" IsReadOnly="True" Width="Auto" Binding="{Binding Item.Value}"/>
+                <DataGridTextColumn Header="Added Materials" IsReadOnly="True" Width="*" Binding="{Binding Item.Name}"/>
                 <DataGridTemplateColumn MinWidth="50">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Buy" Width="50" Click="OnClick_Buy"/>
+                            <Button Content="Remove" Width="50" Click="OnClick_Buy"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -119,7 +116,7 @@
 
         <Button Grid.Row="7" Grid.Column="1" Margin="5" HorizontalAlignment="Right" Width="75" Content="Close" Click="OnClick_CloseScreen"/>
         
-        <Button Name="StartCraftingStation" Grid.Row="7" Grid.Column="0" Margin="5" HorizontalAlignment="Right" Width="75" Content="Start Crafting STation" Click="Button_Click"/>
+        <Button Name="StartCraftingStation" Grid.Row="7" Grid.Column="0" Margin="5" HorizontalAlignment="Right" Width="75" Content="Start Crafting Station" Click="Button_Click"/>
 
     </Grid>
 </Window>
