@@ -38,7 +38,6 @@ namespace Ironfall_Engine.Enums
             Trash,
             Common,
             Material,
-            Recipe,
             Quest
         }
 
@@ -56,6 +55,15 @@ namespace Ironfall_Engine.Enums
             Antique,
             Magical,
             Mechanism
+        }
+
+        public enum Recipe
+        {
+            Weapon,
+            Armor,
+            Artifact,
+            Trinket,
+            Consumable
         }
     }
 }

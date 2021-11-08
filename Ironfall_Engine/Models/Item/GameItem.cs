@@ -17,7 +17,8 @@ namespace Ironfall_Engine.Models.Item
             Artefact,
             Armor,
             Trinket,
-            Loot
+            Loot,
+            Recipe
         }
         
         public int Id { get; set; }

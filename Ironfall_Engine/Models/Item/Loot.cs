@@ -10,7 +10,7 @@ namespace Ironfall_Engine.Models.Item
     {
         public Enum LootType { get; set; }
 
-        public Loot(int id, string name, string description, int value, bool isUnique, ItemCategory category, Enum commonType)
+        public Loot(int id, string name, string description, int value, bool isUnique, ItemCategory category, Enum lootType)
         {
             Id = id;
             Name = name;
@@ -18,7 +18,7 @@ namespace Ironfall_Engine.Models.Item
             Value = value;
             IsUnique = isUnique;
             Category = category;
-            LootType = commonType;
+            LootType = lootType;
         }
     }
 }
