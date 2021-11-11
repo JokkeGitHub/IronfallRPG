@@ -21,8 +21,8 @@ namespace Ironfall_Engine.Models
         
         public Type StationType { get; set; }
         public string Name{ get; set; }
-        public ObservableCollection<GameItem> ItemInventory { get; set; }
-        public ObservableCollection<GameItem> RecipeInventory { get; set; }
+        public ObservableCollection<Loot> ItemInventory { get; set; }
+        public ObservableCollection<Recipe> RecipeInventory { get; set; }
         public ObservableCollection<GroupedInventoryItem> ItemGroupedInventory { get; set; }
         public ObservableCollection<GroupedInventoryItem> RecipeGroupedInventory { get; set; }
 
@@ -32,14 +32,14 @@ namespace Ironfall_Engine.Models
         {
             Name = name;
             StationType = stationType;
-            ItemInventory = new ObservableCollection<GameItem>();
-            RecipeInventory = new ObservableCollection<GameItem>();
+            ItemInventory = new ObservableCollection<Loot>();
+            RecipeInventory = new ObservableCollection<Recipe>();
             ItemGroupedInventory = new ObservableCollection<GroupedInventoryItem>();
             RecipeGroupedInventory = new ObservableCollection<GroupedInventoryItem>();
         }
 
         //Inventory Functions
-        public void AddItemToInventory(GameItem item)
+        public void AddItemToInventory(Loot item)
         {
             ItemInventory.Add(item);
 
@@ -59,7 +59,7 @@ namespace Ironfall_Engine.Models
             }
             //OnPropertyChanged(nameof(Weapons));
         }
-        public void RemoveItemFromInventory(GameItem item)
+        public void RemoveItemFromInventory(Loot item)
         {
             ItemInventory.Remove(item);
 
@@ -85,7 +85,7 @@ namespace Ironfall_Engine.Models
 
 
         //Inventory Functions
-        public void AddRecipeToInventory(GameItem item)
+        public void AddRecipeToInventory(Recipe item)
         {
             RecipeInventory.Add(item);
 
@@ -105,7 +105,7 @@ namespace Ironfall_Engine.Models
             }
             //OnPropertyChanged(nameof(Weapons));
         }
-        public void RemoveRecipeFromInventory(GameItem item)
+        public void RemoveRecipeFromInventory(Recipe item)
         {
             RecipeInventory.Remove(item);
 

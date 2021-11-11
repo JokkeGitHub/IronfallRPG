@@ -25,7 +25,9 @@ namespace IronfallRPG
     {
         public GameSession Session => DataContext as GameSession;
 
-        public ObservableCollection<GameItem> gameItems = new ObservableCollection<GameItem>();
+        public ObservableCollection<Loot> lootItems = new ObservableCollection<Loot>();
+        public ObservableCollection<GameItem> recipeItems = new ObservableCollection<GameItem>();
+
 
         public CraftingScreen()
         {
@@ -41,6 +43,7 @@ namespace IronfallRPG
             Close();
         }
 
+        #region BUY/SELL CHANGE THESE LATER
         private void OnClick_Buy(object sender, RoutedEventArgs e)
         {
             GroupedInventoryItem groupedInventoryItem = ((FrameworkElement)sender).DataContext as GroupedInventoryItem;
@@ -70,6 +73,7 @@ namespace IronfallRPG
                 Session.CurrentPlayer.RemoveItemFromInventory(groupedInventoryItem.Item);
             }
         }
+        #endregion
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -78,11 +82,15 @@ namespace IronfallRPG
                 GameItem tempItem = item.ReturnItem();
                 int quantity = item.Quantity;
 
-                if (tempItem.Category is GameItem.ItemCategory.Loot)
+                if (tempItem.Category is GameItem.ItemCategory.Recipe)
+                {
+                    recipeItems.Add((Recipe)tempItem);
+                }
+                else if (tempItem.Category is GameItem.ItemCategory.Loot)
                 {
                     for (int i = 0; i < quantity; i++)
                     {
-                        gameItems.Add(tempItem);
+                        lootItems.Add((Loot)tempItem);
                     }
                 }
             }
@@ -91,18 +99,22 @@ namespace IronfallRPG
 
         void SortItems()
         {
-            foreach (Loot item in gameItems)
+            foreach (Loot item in lootItems)
             {
                 if (item.LootType is ItemEnum.Loot.Material)
                 {
                     Session.CurrentCraftingStation.AddItemToInventory(item);
                 }
-                else if (item.LootType is ItemEnum.Loot.Recipe)
+            }
+            foreach (Recipe item in recipeItems)
+            {
+                if (item.RecipeType is ItemEnum.Recipe.Weapon)
                 {
                     Session.CurrentCraftingStation.AddRecipeToInventory(item);
                 }
             }
-            gameItems.Clear();
+            lootItems.Clear();
+            recipeItems.Clear();
             StartCraftingStation.Visibility = Visibility.Hidden;
         }
     }

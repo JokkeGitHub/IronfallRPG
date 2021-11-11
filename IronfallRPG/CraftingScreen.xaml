@@ -99,32 +99,32 @@
         </DataGrid>
 
         <DataGrid Grid.Row="3" Grid.Column="1" Margin="0,10,10,50" 
-                  ItemsSource="{Binding CurrentCraftingStation.RecipeGroupedInventory}" AutoGenerateColumns="False"
+                  ItemsSource="{Binding CurrentCraftingStation.RecipeInventory}" AutoGenerateColumns="False"
                   HeadersVisibility="Column" CanUserDeleteRows="False" CanUserAddRows="False"
                   VerticalScrollBarVisibility="Auto">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Chance to get:" IsReadOnly="True" Width="Auto" Binding="{Binding Item.Name}"/>
-                <DataGridTextColumn Header="Low Quality" IsReadOnly="True" Width="*" Binding="{Binding Item.Name}"/>
-                <DataGridTextColumn Header="Normal Quality" IsReadOnly="True" Width="*" Binding="{Binding Item.Name}"/>
-                <DataGridTextColumn Header="High Quality" IsReadOnly="True" Width="*" Binding="{Binding Item.Name}"/>
+                <DataGridTextColumn Header="Chance to get:" IsReadOnly="True" Width="Auto"/>
+                <DataGridTextColumn Header="Low Quality" IsReadOnly="True" Width="*" Binding="{Binding Recipe.QualityLowChance}"/>
+                <DataGridTextColumn Header="Normal Quality" IsReadOnly="True" Width="*" Binding="{Binding Recipe.QualityNormalChance}"/>
+                <DataGridTextColumn Header="High Quality" IsReadOnly="True" Width="*" Binding="{Binding Recipe.QualityHighChance}"/>
             </DataGrid.Columns>
         </DataGrid>
 
         <DataGrid Grid.Row="4" Grid.Column="0" Margin="10,-50,0,10" 
-                  ItemsSource="{Binding CurrentCraftingStation.RecipeGroupedInventory}" AutoGenerateColumns="False"
+                  ItemsSource="{Binding CurrentCraftingStation.RecipeInventory}" AutoGenerateColumns="False"
                   HeadersVisibility="Column" CanUserDeleteRows="False" CanUserAddRows="False"
                   VerticalScrollBarVisibility="Auto">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Required Materials" IsReadOnly="True" Binding="{Binding Item.Description}" Width="*"/>
+                <DataGridTextColumn Header="Required Materials" IsReadOnly="True" Binding="{Binding Recipe.Material1}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
 
         <DataGrid Grid.Row="4" Grid.Column="1" Margin="0,-50,10,10" 
-                  ItemsSource="{Binding CurrentCraftingStation.RecipeGroupedInventory}" AutoGenerateColumns="False"
+                  ItemsSource="{Binding CurrentCraftingStation.ItemGroupedInventory}" AutoGenerateColumns="False"
                   HeadersVisibility="Column" CanUserDeleteRows="False" CanUserAddRows="False"
                   VerticalScrollBarVisibility="Auto">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Added Materials" IsReadOnly="True" Width="*" Binding="{Binding Item.Name}"/>
+                <DataGridTextColumn Header="Added Materials" IsReadOnly="True" Width="*" Binding="{Binding Loot.Item.Name}"/>
                 <DataGridTemplateColumn MinWidth="50">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
